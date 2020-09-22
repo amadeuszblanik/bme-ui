@@ -1,3 +1,5 @@
-import TestComponent from "./TestComponent/TestComponent";
+import GlobalStyles from "./Components/GlobalStyles/GlobalStyles";
+import Text from "./Components/Text/Text";
 
-export { TestComponent };
+export { GlobalStyles as BMEGlobalStyles };
+export { Text as BMEText };

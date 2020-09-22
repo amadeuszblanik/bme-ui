@@ -1,4 +1,4 @@
-import {TextFontFamilies} from "../Text/Text.types";
+import {TextFontFamilies} from "../Components/Text/Text.types";
 
 interface Thm {
   bme: {
