@@ -20,6 +20,8 @@ const Text: React.FunctionComponent<TextComponentProps> = ({ children, ...args }
 Text.defaultProps = {
   size: "m",
   fontFamily: "sansSerif",
+  weight: "regular",
+  align: "left",
 }
 
 export default Text;
