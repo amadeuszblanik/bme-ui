@@ -1,16 +1,12 @@
 import React from "react";
 import Text from "./Text";
-import GlobalStyles from "../GlobalStyles/GlobalStyles";
 
 export default {
   title: "Text"
 };
 
 export const Component = ({ content, ...args }) => (
-  <>
-    <GlobalStyles />
-    <Text {...args}>{content}</Text>
-  </>
+  <Text {...args}>{content}</Text>
 );
 
 Component.args = {
@@ -18,11 +14,8 @@ Component.args = {
 }
 
 Component.argTypes = {
-  weight: {
-    control: {
-      type: 'inline-radio',
-      options: ['bold', 'regular', 'light'],
-    },
+  content: {
+    control: 'text',
   },
   size: {
     control: {
@@ -36,8 +29,14 @@ Component.argTypes = {
       options: ['sansSerif', 'serif', 'mono'],
     },
   },
-  content: {
-    control: 'text',
+  italic: {
+    control: 'boolean',
+  },
+  weight: {
+    control: {
+      type: 'inline-radio',
+      options: ['bold', 'regular', 'light'],
+    },
   },
   align: {
     control: {

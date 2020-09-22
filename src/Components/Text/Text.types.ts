@@ -8,4 +8,5 @@ export interface TextComponentProps {
   fontFamily?: TextFontFamilies;
   weight?: TextFontWeights;
   align?: TextAligns;
+  italic?: boolean;
 }

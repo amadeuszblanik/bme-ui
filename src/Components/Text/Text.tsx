@@ -9,6 +9,7 @@ const StyledText = styled.p<TextComponentProps>`
   font-family: ${({ theme, fontFamily }) => theme.bme.fonts[fontFamily]};
   font-weight: ${({ weight }) => TextFontWeight[weight]};
   text-align: ${({ align }) => align};
+  ${({ italic }) => italic ? 'font-style: italic;' : ''}
 `;
 
 const Text: React.FunctionComponent<TextComponentProps> = ({ children, ...args }) => (
