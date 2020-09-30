@@ -6,7 +6,8 @@ https://www.npmjs.com/package/bme-ui
 Use the package manager [npm](https://docs.npmjs.com/cli/install) or [yarn](https://yarnpkg.com/getting-started) to install BME-UI.
 
 ```bash
-pip install foobar
+yarn add bme-ui
+npm install --save bme-ui
 ```
 
 ## Usage
