@@ -46,10 +46,14 @@ const spacing = (type: Type, size: SpacingSize): string => {
           }
         }
         case "string": {
-          response.push(`${type}-left: ${sizeToPx(y as Sizes)}px;`);
-          response.push(`${type}-right: ${sizeToPx(y as Sizes)}px;`);
+          response.push(`${type}-top: ${sizeToPx(y as Sizes)}px;`);
+          response.push(`${type}-bottom: ${sizeToPx(y as Sizes)}px;`);
         }
       }
+
+      console.debug({ response });
+
+      return response.join("");
     }
     case "string": {
       return `${type}: ${sizeToPx(size as Sizes)}px;`
