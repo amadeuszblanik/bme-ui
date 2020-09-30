@@ -1,12 +1,24 @@
 import React from "react";
+import "./main.scss";
 import { ThemeProvider } from 'styled-components';
-import GlobalStyles from "../src/Components/GlobalStyles/GlobalStyles";
 import theme from "../src/Theme/Theme";
+import {BMEBox, BMEGlobalStyles, BMEText} from "../src";
+import packageJSON from "../package.json";
 
 export const decorators = [
   (Story) => (
     <ThemeProvider theme={theme}>
-      <GlobalStyles/>
+      <BMEGlobalStyles/>
+      <BMEBox alignX="center" direction="column" padding={{ y: "s" }}>
+        <BMEBox alignX="center" direction="column" padding={{ y: { bottom: "s" } }}>
+          <BMEText align="center">
+            BME-UI Playground — {packageJSON.version}
+          </BMEText>
+        </BMEBox>
+        <BMEText size="s" align="center">
+          💅 by Amadeusz Blanik &copy; 2020 MIT
+        </BMEText>
+      </BMEBox>
       <Story />
     </ThemeProvider>
   ),

@@ -1,5 +1,9 @@
-# BME-UI 0.0.0
-https://www.npmjs.com/package/bme-ui
+# BME-UI 0.1.0
+
+## Quick-links
+
+[npm](https://www.npmjs.com/package/bme-ui)
+[storybook](https://amadeuszblanik.github.io/bme-ui)
 
 ## Installation
 
@@ -14,9 +18,9 @@ npm install --save bme-ui
 
 ```typescript
 import { BMEBox } from "@bme-ui"
-
-<BMEBox>Dummy example</BMEBox>
 ```
+
+More about usage: [storybook](https://amadeuszblanik.github.io/bme-ui)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

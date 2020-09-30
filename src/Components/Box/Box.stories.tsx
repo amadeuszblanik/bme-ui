@@ -5,15 +5,63 @@ export default {
   title: "Box"
 };
 
-export const Component = ({ ...args }) => (
-  <BMEBox {...args}>
-    <BMEText fontFamily="mono">
-      Lorem ipsum.
-    </BMEText>
-    <BMEText fontFamily="mono">
-      Dolor sit amet.
-    </BMEText>
-  </BMEBox>
+export const Component = ({...args}) => (
+  <>
+    <BMEBox background="light" alignX="left" alignY="center" padding={{y: "xl", x: "m"}}>
+      <BMEBox {...args}>
+        <BMEText fontFamily="mono">
+          Lorem ipsum.
+        </BMEText>
+        <BMEText fontFamily="mono">
+          Dolor sit amet.
+        </BMEText>
+      </BMEBox>
+    </BMEBox>
+
+    <BMEBox background="dark" alignX="left" alignY="center" padding={{y: "xl", x: "m"}}>
+      <BMEBox {...args}>
+        <BMEText fontFamily="mono">
+          Lorem ipsum.
+        </BMEText>
+        <BMEText fontFamily="mono">
+          Dolor sit amet.
+        </BMEText>
+      </BMEBox>
+    </BMEBox>
+
+    <BMEBox background="primary" alignX="left" alignY="center" padding={{y: "xl", x: "m"}}>
+      <BMEBox {...args}>
+        <BMEText fontFamily="mono">
+          Lorem ipsum.
+        </BMEText>
+        <BMEText fontFamily="mono">
+          Dolor sit amet.
+        </BMEText>
+      </BMEBox>
+    </BMEBox>
+
+    <BMEBox background="secondary" alignX="left" alignY="center" padding={{y: "xl", x: "m"}}>
+      <BMEBox {...args}>
+        <BMEText fontFamily="mono">
+          Lorem ipsum.
+        </BMEText>
+        <BMEText fontFamily="mono">
+          Dolor sit amet.
+        </BMEText>
+      </BMEBox>
+    </BMEBox>
+
+    <BMEBox background="tertiary" alignX="left" alignY="center" padding={{y: "xl", x: "m"}}>
+      <BMEBox {...args}>
+        <BMEText fontFamily="mono">
+          Lorem ipsum.
+        </BMEText>
+        <BMEText fontFamily="mono">
+          Dolor sit amet.
+        </BMEText>
+      </BMEBox>
+    </BMEBox>
+  </>
 );
 
 Component.argTypes = {

@@ -1,37 +1,36 @@
 import React from "react";
-import Text from "./Text";
-import {BMEBox} from "../../index";
+import {BMEBox, BMEHeader} from "../../index";
 
 export default {
-  title: "Text"
+  title: "Header"
 };
 
 export const Component = ({ content, ...args }) => (
   <>
     <BMEBox background="light" alignX="left" alignY="center" padding={{y: "xl", x:  "m"}}>
-      <Text {...args}>{content}</Text>
+      <BMEHeader {...args}>{content}</BMEHeader>
     </BMEBox>
 
     <BMEBox background="dark" alignX="left" alignY="center" padding={{y: "xl", x:  "m"}}>
-      <Text {...args}>{content}</Text>
+      <BMEHeader {...args}>{content}</BMEHeader>
     </BMEBox>
 
     <BMEBox background="primary" alignX="left" alignY="center" padding={{y: "xl", x:  "m"}}>
-      <Text {...args}>{content}</Text>
+      <BMEHeader {...args}>{content}</BMEHeader>
     </BMEBox>
 
     <BMEBox background="secondary" alignX="left" alignY="center" padding={{y: "xl", x:  "m"}}>
-      <Text {...args}>{content}</Text>
+      <BMEHeader {...args}>{content}</BMEHeader>
     </BMEBox>
 
     <BMEBox background="tertiary" alignX="left" alignY="center" padding={{y: "xl", x:  "m"}}>
-      <Text {...args}>{content}</Text>
+      <BMEHeader {...args}>{content}</BMEHeader>
     </BMEBox>
   </>
 );
 
 Component.args = {
-  content: 'Lorem ipsum dolor sit amet.'
+  content: 'Lorem ipsum dolor sit amet.',
 }
 
 Component.argTypes = {
@@ -48,15 +47,6 @@ Component.argTypes = {
     control: {
       type: 'inline-radio',
       options: ['sansSerif', 'serif', 'mono'],
-    },
-  },
-  italic: {
-    control: 'boolean',
-  },
-  weight: {
-    control: {
-      type: 'inline-radio',
-      options: ['bold', 'regular', 'light'],
     },
   },
   align: {
