@@ -156,9 +156,9 @@ var spacing = function (type, size) {
 var Thm = {
     bme: {
         palette: {
-            primary: '#14213d',
-            secondary: '#fca311',
-            tertiary: '#e5e5e5',
+            primary: '#300032',
+            secondary: '#c43235',
+            tertiary: '#0066FF',
             dark: '#000000',
             light: '#ffffff',
         },
@@ -178,7 +178,8 @@ var textColour = function (value, theme) {
     var green = (rgb >> 8) & 0xff;
     var blue = (rgb >> 0) & 0xff;
     var luma = 0.2126 * red + 0.7152 * green + 0.0722 * blue;
-    return luma < 40 ? theme.bme.palette.light : theme.bme.palette.dark;
+    console.debug({ hex: hex, luma: luma });
+    return luma < 95 ? theme.bme.palette.light : theme.bme.palette.dark;
 };
 
 var WIDTH_HEIGHT_VALUES = {
@@ -298,5 +299,42 @@ var Button = function (_a) {
 };
 var templateObject_1$4;
 
-export { Box as BMEBox, Button as BMEButton, GlobalStyles as BMEGlobalStyles, Text as BMEText };
+var HeaderFontSize = {
+    xxl: 62,
+    xl: 42,
+    l: 32,
+    m: 24,
+    s: 22,
+    xs: 18,
+    xxs: 16,
+};
+
+var StyledHeader = styled.header(templateObject_1$5 || (templateObject_1$5 = __makeTemplateObject(["\n  width: 100%;\n  font-size: ", "px;\n  font-family: ", ";\n  font-weight: ", ";\n  text-align: ", ";\n"], ["\n  width: 100%;\n  font-size: ", "px;\n  font-family: ", ";\n  font-weight: ", ";\n  text-align: ", ";\n"])), function (_a) {
+    var size = _a.size;
+    return HeaderFontSize[size];
+}, function (_a) {
+    var theme = _a.theme, fontFamily = _a.fontFamily;
+    return theme.bme.fonts[fontFamily];
+}, TextFontWeight.bold, function (_a) {
+    var align = _a.align;
+    return align;
+});
+var StyledAccent = styled.span(templateObject_2$1 || (templateObject_2$1 = __makeTemplateObject(["\n  ", "\n  background: ", ";\n  -webkit-background-clip: text;\n  -webkit-text-fill-color: transparent;\n  font-style: italic;\n"], ["\n  ", "\n  background: ", ";\n  -webkit-background-clip: text;\n  -webkit-text-fill-color: transparent;\n  font-style: italic;\n"])), spacing('margin', { x: { right: "xs" } }), function (_a) {
+    var theme = _a.theme;
+    return "linear-gradient(45deg, " + theme.bme.palette.primary + ", " + theme.bme.palette.secondary + ", " + theme.bme.palette.tertiary + ")";
+});
+var Header = function (_a) {
+    var children = _a.children, args = __rest(_a, ["children"]);
+    return (React.createElement(StyledHeader, __assign({}, args),
+        React.createElement(StyledAccent, null, "#"),
+        children));
+};
+Header.defaultProps = {
+    size: "m",
+    fontFamily: "mono",
+    align: "left",
+};
+var templateObject_1$5, templateObject_2$1;
+
+export { Box as BMEBox, Button as BMEButton, GlobalStyles as BMEGlobalStyles, Header as BMEHeader, Text as BMEText };
 //# sourceMappingURL=index.esm.js.map
