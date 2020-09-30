@@ -7,7 +7,7 @@ export default {
 
 export const Component = ({content, ...args}) => (
   <>
-    <BMEBox background="light" alignX="center" alignY="center" padding={{y: "xl"}}>
+    <BMEBox background="light" alignX="center" alignY="center" padding={{y: "xl", x: "m"}}>
       <BMEButton {...args}>
         <BMEText>
           {content}
@@ -15,7 +15,31 @@ export const Component = ({content, ...args}) => (
       </BMEButton>
     </BMEBox>
 
-    <BMEBox background="dark" alignX="center" alignY="center" padding={{y: "xl"}}>
+    <BMEBox background="dark" alignX="center" alignY="center" padding={{y: "xl", x: "m"}}>
+      <BMEButton {...args}>
+        <BMEText>
+          {content}
+        </BMEText>
+      </BMEButton>
+    </BMEBox>
+
+    <BMEBox background="primary" alignX="center" alignY="center" padding={{y: "xl", x: "m"}}>
+      <BMEButton {...args}>
+        <BMEText>
+          {content}
+        </BMEText>
+      </BMEButton>
+    </BMEBox>
+
+    <BMEBox background="secondary" alignX="center" alignY="center" padding={{y: "xl", x: "m"}}>
+      <BMEButton {...args}>
+        <BMEText>
+          {content}
+        </BMEText>
+      </BMEButton>
+    </BMEBox>
+
+    <BMEBox background="tertiary" alignX="center" alignY="center" padding={{y: "xl", x: "m"}}>
       <BMEButton {...args}>
         <BMEText>
           {content}

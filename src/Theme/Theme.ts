@@ -13,9 +13,9 @@ interface Thm {
 const Thm: Thm = {
   bme: {
     palette: {
-      primary: '#14213d',
-      secondary: '#fca311',
-      tertiary: '#e5e5e5',
+      primary: '#300032',
+      secondary: '#c43235',
+      tertiary: '#0066FF',
       dark: '#000000',
       light: '#ffffff',
     },

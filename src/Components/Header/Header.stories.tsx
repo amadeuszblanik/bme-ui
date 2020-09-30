@@ -10,7 +10,20 @@ export const Component = ({ content, ...args }) => (
     <BMEBox background="light" alignX="left" alignY="center" padding={{y: "xl", x:  "m"}}>
       <BMEHeader {...args}>{content}</BMEHeader>
     </BMEBox>
+
     <BMEBox background="dark" alignX="left" alignY="center" padding={{y: "xl", x:  "m"}}>
+      <BMEHeader {...args}>{content}</BMEHeader>
+    </BMEBox>
+
+    <BMEBox background="primary" alignX="left" alignY="center" padding={{y: "xl", x:  "m"}}>
+      <BMEHeader {...args}>{content}</BMEHeader>
+    </BMEBox>
+
+    <BMEBox background="secondary" alignX="left" alignY="center" padding={{y: "xl", x:  "m"}}>
+      <BMEHeader {...args}>{content}</BMEHeader>
+    </BMEBox>
+
+    <BMEBox background="tertiary" alignX="left" alignY="center" padding={{y: "xl", x:  "m"}}>
       <BMEHeader {...args}>{content}</BMEHeader>
     </BMEBox>
   </>
