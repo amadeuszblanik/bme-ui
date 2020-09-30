@@ -148,10 +148,12 @@ var spacing = function (type, size) {
                     }
                 }
                 case "string": {
-                    response.push(type + "-left: " + sizeToPx(y) + "px;");
-                    response.push(type + "-right: " + sizeToPx(y) + "px;");
+                    response.push(type + "-top: " + sizeToPx(y) + "px;");
+                    response.push(type + "-bottom: " + sizeToPx(y) + "px;");
                 }
             }
+            console.debug({ response: response });
+            return response.join("");
         }
         case "string": {
             return type + ": " + sizeToPx(size) + "px;";
@@ -217,6 +219,29 @@ var makeFlex = function (direction, x, y) {
     return response.join('');
 };
 
+var hexToRGBA = function (value, opacity) {
+    if (opacity === void 0) { opacity = 1; }
+    var hex = value.replace(/#/g, '');
+    var rgb = parseInt(hex, 16);
+    var red = (rgb >> 16) & 0xff;
+    var green = (rgb >> 8) & 0xff;
+    var blue = (rgb >> 0) & 0xff;
+    return "rgba(" + red + ", " + green + ", " + blue + ", " + opacity + ")";
+};
+
+var TransitionVariantsEnum;
+(function (TransitionVariantsEnum) {
+    TransitionVariantsEnum["standard"] = "cubic-bezier(0.4, 0.0, 0.2, 1);";
+    TransitionVariantsEnum["decelerated"] = "cubic-bezier(0.0, 0.0, 0.2, 1);";
+    TransitionVariantsEnum["accelerated"] = "cubic-bezier(0.4, 0.0, 1, 1);";
+})(TransitionVariantsEnum || (TransitionVariantsEnum = {}));
+var transition = function (property, durationInMs, variant) {
+    if (property === void 0) { property = ["all"]; }
+    if (durationInMs === void 0) { durationInMs = 750; }
+    if (variant === void 0) { variant = TransitionVariantsEnum.standard; }
+    return "\n  transition-property: " + property.join(" ") + ";\n  transition-duration: " + durationInMs + "ms;\n  transition-timing-function: " + TransitionVariantsEnum[variant] + ";\n  will-change: " + property.join(",") + ";\n  ";
+};
+
 var StyledBox = styled__default['default'].div(templateObject_1$3 || (templateObject_1$3 = __makeTemplateObject(["\n  display: ", ";\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n"], ["\n  display: ", ";\n  ",
     "\n  ",
     "\n  ",
@@ -260,7 +285,30 @@ var Box = function (_a) {
 };
 var templateObject_1$3;
 
+var StyledButton = styled__default['default'].button(templateObject_1$4 || (templateObject_1$4 = __makeTemplateObject(["\n  position: relative;\n\n  display: inline-flex;\n  ", "\n  ", "\n  overflow: hidden;\n\n  color: ", ";\n  background: ", ";\n  border: ", ";\n  border-radius: ", "px;\n  appearance: none;\n  --webkit-appearance: none;\n  \n  &::after, &&::before {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n\n    display: block;\n    width: 1000px;\n    height: 1000px;\n    max-width: 0;\n    max-height: 0;\n    content: '';\n    transform: translate(-50%, -50%);\n\n    border-radius: 1000px;\n    background: ", ";\n\n    ", ";\n  }\n  \n  &:hover {\n    &::after {\n      max-width: 1000px;\n      max-height: 1000px;\n    }\n  }\n  \n  &:active {\n    &::before {\n      max-width: 1000px;\n      max-height: 1000px;\n    }\n  }\n"], ["\n  position: relative;\n\n  display: inline-flex;\n  ", "\n  ", "\n  overflow: hidden;\n\n  color: ", ";\n  background: ", ";\n  border: ", ";\n  border-radius: ", "px;\n  appearance: none;\n  --webkit-appearance: none;\n  \n  &::after, &&::before {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n\n    display: block;\n    width: 1000px;\n    height: 1000px;\n    max-width: 0;\n    max-height: 0;\n    content: '';\n    transform: translate(-50%, -50%);\n\n    border-radius: 1000px;\n    background: ", ";\n\n    ", ";\n  }\n  \n  &:hover {\n    &::after {\n      max-width: 1000px;\n      max-height: 1000px;\n    }\n  }\n  \n  &:active {\n    &::before {\n      max-width: 1000px;\n      max-height: 1000px;\n    }\n  }\n"])), makeFlex('row', 'center', 'center'), spacing('padding', { x: "m", y: "s" }), function (_a) {
+    var theme = _a.theme, variant = _a.variant, outline = _a.outline;
+    return !outline && variant ? "" + textColour(theme.bme.palette[variant], theme) : 'var(--bme-colour-text)';
+}, function (_a) {
+    var theme = _a.theme, variant = _a.variant, outline = _a.outline;
+    return !outline && variant ? "" + theme.bme.palette[variant] : 'transparent';
+}, function (_a) {
+    var theme = _a.theme, variant = _a.variant, outline = _a.outline;
+    return outline && variant ? theme.bme.palette[variant] + " 2px solid" : 'none';
+}, function (_a) {
+    var rounded = _a.rounded;
+    return rounded ? 1000 : 5;
+}, function (_a) {
+    var theme = _a.theme;
+    return hexToRGBA(theme.bme.palette.dark, .11);
+}, transition(["max-width", "max-height"]));
+var Button = function (_a) {
+    var children = _a.children, styledComponentsProperties = __rest(_a, ["children"]);
+    return (React__default['default'].createElement(StyledButton, __assign({}, styledComponentsProperties), children));
+};
+var templateObject_1$4;
+
 exports.BMEBox = Box;
+exports.BMEButton = Button;
 exports.BMEGlobalStyles = GlobalStyles;
 exports.BMEText = Text;
 //# sourceMappingURL=index.js.map
