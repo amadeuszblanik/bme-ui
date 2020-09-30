@@ -1,13 +1,24 @@
 import {TextFontFamilies} from "../Components/Text/Text.types";
 
+export type Palette = "primary" | "secondary" | "tertiary" | "dark" | "light";
+export type Sizes = "xxl" | "xl" | "l" | "m" | "s" | "xs" | "xxs";
+
 interface Thm {
   bme: {
+    palette: { [key in Palette]: string },
     fonts: { [key in TextFontFamilies]: string }
   }
 }
 
 const Thm: Thm = {
   bme: {
+    palette: {
+      primary: '#14213d',
+      secondary: '#fca311',
+      tertiary: '#e5e5e5',
+      dark: '#000000',
+      light: '#ffffff',
+    },
     fonts: {
       sansSerif: "\"IBM Plex Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
       serif: "\"IBM Plex Serif\", \"Palatino Linotype\", \"Book Antiqua\", Palatino, serif",
