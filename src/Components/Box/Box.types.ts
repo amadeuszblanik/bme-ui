@@ -11,6 +11,6 @@ export interface BoxStyledComponentProps {
   alignY?: AlignYValues;
   inline?: boolean;
   direction?: AlignDirectionValues;
-  width?: "full";
-  height?: "full";
+  width?: "full" | "half";
+  height?: "full" | "fullPage" | "half";
 };

@@ -68,13 +68,13 @@ Component.argTypes = {
   width: {
     control: {
       type: 'inline-radio',
-      options: ['full', false],
+      options: ['full', 'half', false],
     },
   },
   height: {
     control: {
       type: 'inline-radio',
-      options: ['full', 'fullPage', false],
+      options: ['full', 'fullPage', 'half', false],
     },
   },
   inline: {

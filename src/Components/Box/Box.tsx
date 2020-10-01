@@ -20,6 +20,7 @@ const StyledBox = styled.div<BoxStyledComponentProps>`
   ${({rounded}) => rounded ? `border-radius: ${rounded === "full" ? 1000 : 5}px;` : ''}
   ${({theme, background}) => background ? `color: ${textColour(theme.bme.palette[background], theme)};` : ''}
   ${({theme, background}) => background ? `background: ${theme.bme.palette[background]};` : ''}
+  ${({theme, background}) => background ? `--bme-colour-text: ${textColour(theme.bme.palette[background], theme)};` : ''}
 `;
 
 const Box: React.FunctionComponent<BoxStyledComponentProps> = ({children, ...styledComponentsProperties}) => (

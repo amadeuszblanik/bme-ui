@@ -3,9 +3,11 @@ import Text from "./Components/Text/Text";
 import Box from "./Components/Box/Box";
 import Button from "./Components/Button/Button";
 import Header from "./Components/Header/Header";
+import Image from "./Components/Image/Image";
 
 export { GlobalStyles as BMEGlobalStyles };
 export { Text as BMEText };
 export { Box as BMEBox };
 export { Button as BMEButton };
 export { Header as BMEHeader };
+export { Image as BMEImage };
