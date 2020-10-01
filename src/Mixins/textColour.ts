@@ -10,8 +10,6 @@ const textColour = (value: Palette, theme = Thm): string => {
 
   const luma = 0.2126 * red + 0.7152 * green + 0.0722 * blue;
 
-  console.debug({ hex, luma });
-
   return luma < 95 ? theme.bme.palette.light : theme.bme.palette.dark;
 };
 

@@ -143,7 +143,7 @@ var spacing = function (type, size) {
                     response.push(type + "-bottom: " + sizeToPx(y) + "px;");
                 }
             }
-            console.debug({ response: response });
+
             return response.join("");
         }
         case "string": {
@@ -178,7 +178,7 @@ var textColour = function (value, theme) {
     var green = (rgb >> 8) & 0xff;
     var blue = (rgb >> 0) & 0xff;
     var luma = 0.2126 * red + 0.7152 * green + 0.0722 * blue;
-    console.debug({ hex: hex, luma: luma });
+
     return luma < 95 ? theme.bme.palette.light : theme.bme.palette.dark;
 };
 
