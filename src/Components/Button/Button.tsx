@@ -10,6 +10,7 @@ const StyledButton = styled.button<ButtonStyledComponentProps>`
   ${makeFlex('row', 'center', 'center')}
   ${spacing('padding', { x: "m", y: "s" })}
   overflow: hidden;
+  cursor: pointer;
 
   color: ${({theme, variant, outline}) => !outline && variant ? `${textColour(theme.bme.palette[variant], theme)}` : 'var(--bme-colour-text)'};
   background: ${({theme, variant, outline}) => !outline && variant ? `${theme.bme.palette[variant]}` : 'transparent'};
