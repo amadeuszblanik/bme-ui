@@ -288,7 +288,7 @@ var Box = function (_a) {
 };
 var templateObject_1$3;
 
-var StyledButton = styled__default['default'].button(templateObject_1$4 || (templateObject_1$4 = __makeTemplateObject(["\n  position: relative;\n\n  display: inline-flex;\n  ", "\n  ", "\n  overflow: hidden;\n  cursor: pointer;\n\n  color: ", ";\n  background: ", ";\n  border: ", ";\n  border-radius: ", "px;\n  appearance: none;\n  --webkit-appearance: none;\n  \n  &::after, &&::before {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n\n    display: block;\n    width: 1000px;\n    height: 1000px;\n    max-width: 0;\n    max-height: 0;\n    content: '';\n    transform: translate(-50%, -50%);\n\n    border-radius: 1000px;\n    background: ", ";\n\n    ", ";\n  }\n  \n  &:hover {\n    &::after {\n      max-width: 1000px;\n      max-height: 1000px;\n    }\n  }\n  \n  &:active {\n    &::before {\n      max-width: 1000px;\n      max-height: 1000px;\n    }\n  }\n"], ["\n  position: relative;\n\n  display: inline-flex;\n  ", "\n  ", "\n  overflow: hidden;\n  cursor: pointer;\n\n  color: ", ";\n  background: ", ";\n  border: ", ";\n  border-radius: ", "px;\n  appearance: none;\n  --webkit-appearance: none;\n  \n  &::after, &&::before {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n\n    display: block;\n    width: 1000px;\n    height: 1000px;\n    max-width: 0;\n    max-height: 0;\n    content: '';\n    transform: translate(-50%, -50%);\n\n    border-radius: 1000px;\n    background: ", ";\n\n    ", ";\n  }\n  \n  &:hover {\n    &::after {\n      max-width: 1000px;\n      max-height: 1000px;\n    }\n  }\n  \n  &:active {\n    &::before {\n      max-width: 1000px;\n      max-height: 1000px;\n    }\n  }\n"])), makeFlex('row', 'center', 'center'), spacing('padding', { x: "m", y: "s" }), function (_a) {
+var StyledButton = styled__default['default'].button(templateObject_1$4 || (templateObject_1$4 = __makeTemplateObject(["\n  position: relative;\n\n  display: inline-flex;\n  ", "\n  ", "\n  overflow: hidden;\n  cursor: pointer;\n\n  color: ", ";\n  background: ", ";\n  border: ", ";\n  border-radius: ", "px;\n  appearance: none;\n  --webkit-appearance: none;\n  \n  ", ";\n  \n  &::after, &&::before {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n\n    display: block;\n    width: 1000px;\n    height: 1000px;\n    max-width: 0;\n    max-height: 0;\n    content: '';\n    transform: translate(-50%, -50%);\n\n    border-radius: 1000px;\n    background: ", ";\n\n    ", ";\n  }\n  \n  &:hover {\n    &::after {\n      max-width: 1000px;\n      max-height: 1000px;\n    }\n  }\n  \n  &:active {\n    &::before {\n      max-width: 1000px;\n      max-height: 1000px;\n    }\n  }\n"], ["\n  position: relative;\n\n  display: inline-flex;\n  ", "\n  ", "\n  overflow: hidden;\n  cursor: pointer;\n\n  color: ", ";\n  background: ", ";\n  border: ", ";\n  border-radius: ", "px;\n  appearance: none;\n  --webkit-appearance: none;\n  \n  ", ";\n  \n  &::after, &&::before {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n\n    display: block;\n    width: 1000px;\n    height: 1000px;\n    max-width: 0;\n    max-height: 0;\n    content: '';\n    transform: translate(-50%, -50%);\n\n    border-radius: 1000px;\n    background: ", ";\n\n    ", ";\n  }\n  \n  &:hover {\n    &::after {\n      max-width: 1000px;\n      max-height: 1000px;\n    }\n  }\n  \n  &:active {\n    &::before {\n      max-width: 1000px;\n      max-height: 1000px;\n    }\n  }\n"])), makeFlex('row', 'center', 'center'), spacing('padding', { x: "m", y: "s" }), function (_a) {
     var theme = _a.theme, variant = _a.variant, outline = _a.outline;
     return !outline && variant ? "" + textColour(theme.bme.palette[variant], theme) : 'var(--bme-colour-text)';
 }, function (_a) {
@@ -300,6 +300,9 @@ var StyledButton = styled__default['default'].button(templateObject_1$4 || (temp
 }, function (_a) {
     var rounded = _a.rounded;
     return rounded ? 1000 : 5;
+}, function (_a) {
+    var theme = _a.theme, variant = _a.variant, outline = _a.outline;
+    return !outline && variant ? "--bme-colour-text: " + textColour(theme.bme.palette[variant], theme) + ";" : '';
 }, function (_a) {
     var theme = _a.theme;
     return hexToRGBA(theme.bme.palette.dark, .11);
@@ -490,6 +493,32 @@ Card.Body = CardBody;
 Card.Footer = CardFooter;
 var templateObject_1$7, templateObject_2$3, templateObject_3, templateObject_4, templateObject_5;
 
+var StyledBadge = styled__default['default'].span(templateObject_1$8 || (templateObject_1$8 = __makeTemplateObject(["\n  display: inline-block;\n  ", "\n  ", "\n  color: ", ";\n  background: ", ";\n  border: ", ";\n  border-radius: ", "px;\n  \n  font-family: ", ";\n  font-style: italic;\n"], ["\n  display: inline-block;\n  ", "\n  ", "\n  color: ", ";\n  background: ", ";\n  border: ", ";\n  border-radius: ", "px;\n  \n  font-family: ", ";\n  font-style: italic;\n"])), spacing('padding', { x: "m", y: "xs" }), spacing('margin', { x: "xs", y: "xxs" }), function (_a) {
+    var theme = _a.theme, variant = _a.variant, outline = _a.outline;
+    return !outline && variant ? "" + textColour(theme.bme.palette[variant], theme) : 'var(--bme-colour-text)';
+}, function (_a) {
+    var theme = _a.theme, variant = _a.variant, outline = _a.outline;
+    return !outline && variant ? "" + theme.bme.palette[variant] : 'transparent';
+}, function (_a) {
+    var theme = _a.theme, variant = _a.variant, outline = _a.outline;
+    return outline && variant ? theme.bme.palette[variant] + " 2px solid" : 'none';
+}, function (_a) {
+    var rounded = _a.rounded;
+    return rounded ? 1000 : 5;
+}, function (_a) {
+    var theme = _a.theme;
+    return theme.bme.fonts.mono;
+});
+var Badge = function (_a) {
+    var children = _a.children, args = __rest(_a, ["children"]);
+    return (React__default['default'].createElement(StyledBadge, __assign({}, args), children));
+};
+Badge.defaultProps = {
+    variant: "dark",
+};
+var templateObject_1$8;
+
+exports.BMEBadge = Badge;
 exports.BMEBox = Box;
 exports.BMEButton = Button;
 exports.BMECard = Card;

@@ -1,4 +1,4 @@
-# BME-UI 0.1.1
+# BME-UI 0.1.2
 
 ## Quick-links
 
