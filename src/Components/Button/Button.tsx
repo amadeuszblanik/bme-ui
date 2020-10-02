@@ -19,6 +19,8 @@ const StyledButton = styled.button<ButtonStyledComponentProps>`
   appearance: none;
   --webkit-appearance: none;
   
+  ${({theme, variant, outline}) => !outline && variant ? `--bme-colour-text: ${textColour(theme.bme.palette[variant], theme)};` : ''};
+  
   &::after, &&::before {
     position: absolute;
     top: 50%;
