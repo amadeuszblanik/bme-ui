@@ -9,7 +9,8 @@ const StyledFigure = styled.figure<ImageComponentStyledFigureProps>`
   position: relative;
   overflow: hidden;
 
-  ${({ width }) => width ? `width: ${width}px;` : ''}
+  ${({ width }) => width ? `width: ${width};` : ''}
+  ${({ height }) => height ? `height: ${height};` : ''}
   margin: 0;
   padding: 0;
   background-color: ${({lazy, loaded}) => lazy && !loaded ? 'var(--bme-colour-text)' : 'transparent'};
@@ -26,13 +27,21 @@ const StyledFigure = styled.figure<ImageComponentStyledFigureProps>`
 `
 
 const StyledImage = styled.img<ImageComponentStyledImageProps>`
+  ${({ fixedSize }) => fixedSize 
+  ? `
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  ` 
+  : ''}
   max-width: 100%;
   height: auto;
   opacity: ${({ loaded }) => loaded ? 1 : 0};
   ${transition(["opacity"])}
 `;
 
-const Image: React.FunctionComponent<ImageComponentProps> = ({ source, alt, lazy, width }) => {
+const Image: React.FunctionComponent<ImageComponentProps> = ({ source, alt, lazy, width, height }) => {
   const {ref, intersectionRatio} = useIntersection();
   const [loading, setLoading] = useState(false);
   const [loaded, setLoaded] = useState(!lazy);
@@ -49,8 +58,8 @@ const Image: React.FunctionComponent<ImageComponentProps> = ({ source, alt, lazy
   }
 
   return (
-    <StyledFigure ref={ref} width={width} lazy={lazy} loaded={loaded}>
-      <StyledImage src={loading ? source : ''} alt={alt} onLoad={handleLoaded} loaded={loaded} />
+    <StyledFigure ref={ref} width={width} height={height} lazy={lazy} loaded={loaded}>
+      <StyledImage fixedSize={Boolean(width && height)} src={loading ? source : ''} alt={alt} onLoad={handleLoaded} loaded={loaded} />
     </StyledFigure>
   );
 }

@@ -5,15 +5,20 @@ export type TextAligns = "left" | "center" | "right";
 
 export interface ImageComponentStyledFigureProps {
   lazy?: boolean;
-  width?: number;
-  loaded: boolean;
+  width?: string;
+  height?: string;
+  loaded?: boolean;
 }
 
 export interface ImageComponentStyledImageProps {
-  loaded: boolean;
+  loaded?: boolean;
+  fixedSize?: boolean;
 }
 
-export interface ImageComponentProps extends ImageComponentStyledFigureProps{
+export interface ImageComponentProps {
   source: string;
   alt?: string;
+  width?: string;
+  height?: string;
+  lazy?: boolean;
 }
