@@ -19,7 +19,21 @@ export const decorators = [
           💅 by Amadeusz Blanik &copy; 2020 MIT
         </BMEText>
       </BMEBox>
-      <Story />
+      <BMEBox background="light" alignX="left" alignY="center" padding={{y: "xl", x:  "m"}}>
+        <Story />
+      </BMEBox>
+      <BMEBox background="dark" alignX="left" alignY="center" padding={{y: "xl", x:  "m"}}>
+        <Story />
+      </BMEBox>
+      <BMEBox background="primary" alignX="left" alignY="center" padding={{y: "xl", x:  "m"}}>
+        <Story />
+      </BMEBox>
+      <BMEBox background="secondary" alignX="left" alignY="center" padding={{y: "xl", x:  "m"}}>
+        <Story />
+      </BMEBox>
+      <BMEBox background="tertiary" alignX="left" alignY="center" padding={{y: "xl", x:  "m"}}>
+        <Story />
+      </BMEBox>
     </ThemeProvider>
   ),
 ];

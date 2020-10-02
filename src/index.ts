@@ -5,6 +5,7 @@ import Button from "./Components/Button/Button";
 import Header from "./Components/Header/Header";
 import Image from "./Components/Image/Image";
 import Card from "./Components/Card/Card";
+import Badge from "./Components/Badge/Badge";
 
 export { GlobalStyles as BMEGlobalStyles };
 export { Text as BMEText };
@@ -13,3 +14,4 @@ export { Button as BMEButton };
 export { Header as BMEHeader };
 export { Image as BMEImage };
 export { Card as BMECard };
+export { Badge as BMEBadge };

@@ -7,34 +7,8 @@ export default {
 
 export const Component = ({ content, source, ...args }) => (
   <>
-    <BMEBox background="light" alignX="center" alignY="center" padding={{y: "xl", x:  "m"}}>
-      <BMEBox width="half" alignX="center" alignY="center">
-        <BMEImage source={source} {...args}/>
-      </BMEBox>
-    </BMEBox>
-
-    <BMEBox background="dark" alignX="center" alignY="center" padding={{y: "xl", x:  "m"}}>
-      <BMEBox width="half" alignX="center" alignY="center">
-        <BMEImage source={source} {...args}/>
-      </BMEBox>
-    </BMEBox>
-
-    <BMEBox background="primary" alignX="center" alignY="center" padding={{y: "xl", x:  "m"}}>
-      <BMEBox width="half" alignX="center" alignY="center">
-        <BMEImage source={source} {...args}/>
-      </BMEBox>
-    </BMEBox>
-
-    <BMEBox background="secondary" alignX="center" alignY="center" padding={{y: "xl", x:  "m"}}>
-      <BMEBox width="half" alignX="center" alignY="center">
-        <BMEImage source={source} {...args}/>
-      </BMEBox>
-    </BMEBox>
-
-    <BMEBox background="tertiary" alignX="center" alignY="center" padding={{y: "xl", x:  "m"}}>
-      <BMEBox width="half" alignX="center" alignY="center">
-        <BMEImage source={source} {...args}/>
-      </BMEBox>
+    <BMEBox width="half" alignX="center" alignY="center">
+      <BMEImage source={source} {...args}/>
     </BMEBox>
   </>
 );
