@@ -152,7 +152,6 @@ var spacing = function (type, size) {
                     response.push(type + "-bottom: " + sizeToPx(y) + "px;");
                 }
             }
-            console.debug({ response: response });
             return response.join("");
         }
         case "string": {
@@ -187,12 +186,12 @@ var textColour = function (value, theme) {
     var green = (rgb >> 8) & 0xff;
     var blue = (rgb >> 0) & 0xff;
     var luma = 0.2126 * red + 0.7152 * green + 0.0722 * blue;
-    console.debug({ hex: hex, luma: luma });
     return luma < 95 ? theme.bme.palette.light : theme.bme.palette.dark;
 };
 
 var WIDTH_HEIGHT_VALUES = {
     full: '100%',
+    half: '50%',
     fullPage: '100vh',
 };
 var VALUE_TO_CSS = {
@@ -243,10 +242,10 @@ var transition = function (property, durationInMs, variant) {
     return "\n  transition-property: " + property.join(" ") + ";\n  transition-duration: " + durationInMs + "ms;\n  transition-timing-function: " + TransitionVariantsEnum[variant] + ";\n  will-change: " + property.join(",") + ";\n  ";
 };
 
-var StyledBox = styled__default['default'].div(templateObject_1$3 || (templateObject_1$3 = __makeTemplateObject(["\n  display: ", ";\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n"], ["\n  display: ", ";\n  ",
+var StyledBox = styled__default['default'].div(templateObject_1$3 || (templateObject_1$3 = __makeTemplateObject(["\n  display: ", ";\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n"], ["\n  display: ", ";\n  ",
     "\n  ",
     "\n  ",
-    "\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n"])), function (_a) {
+    "\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n"])), function (_a) {
     var inline = _a.inline;
     return inline ? 'inline-flex' : 'flex';
 }, function (_a) {
@@ -279,6 +278,9 @@ var StyledBox = styled__default['default'].div(templateObject_1$3 || (templateOb
 }, function (_a) {
     var theme = _a.theme, background = _a.background;
     return background ? "background: " + theme.bme.palette[background] + ";" : '';
+}, function (_a) {
+    var theme = _a.theme, background = _a.background;
+    return background ? "--bme-colour-text: " + textColour(theme.bme.palette[background], theme) + ";" : '';
 });
 var Box = function (_a) {
     var children = _a.children, styledComponentsProperties = __rest(_a, ["children"]);
@@ -286,7 +288,7 @@ var Box = function (_a) {
 };
 var templateObject_1$3;
 
-var StyledButton = styled__default['default'].button(templateObject_1$4 || (templateObject_1$4 = __makeTemplateObject(["\n  position: relative;\n\n  display: inline-flex;\n  ", "\n  ", "\n  overflow: hidden;\n\n  color: ", ";\n  background: ", ";\n  border: ", ";\n  border-radius: ", "px;\n  appearance: none;\n  --webkit-appearance: none;\n  \n  &::after, &&::before {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n\n    display: block;\n    width: 1000px;\n    height: 1000px;\n    max-width: 0;\n    max-height: 0;\n    content: '';\n    transform: translate(-50%, -50%);\n\n    border-radius: 1000px;\n    background: ", ";\n\n    ", ";\n  }\n  \n  &:hover {\n    &::after {\n      max-width: 1000px;\n      max-height: 1000px;\n    }\n  }\n  \n  &:active {\n    &::before {\n      max-width: 1000px;\n      max-height: 1000px;\n    }\n  }\n"], ["\n  position: relative;\n\n  display: inline-flex;\n  ", "\n  ", "\n  overflow: hidden;\n\n  color: ", ";\n  background: ", ";\n  border: ", ";\n  border-radius: ", "px;\n  appearance: none;\n  --webkit-appearance: none;\n  \n  &::after, &&::before {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n\n    display: block;\n    width: 1000px;\n    height: 1000px;\n    max-width: 0;\n    max-height: 0;\n    content: '';\n    transform: translate(-50%, -50%);\n\n    border-radius: 1000px;\n    background: ", ";\n\n    ", ";\n  }\n  \n  &:hover {\n    &::after {\n      max-width: 1000px;\n      max-height: 1000px;\n    }\n  }\n  \n  &:active {\n    &::before {\n      max-width: 1000px;\n      max-height: 1000px;\n    }\n  }\n"])), makeFlex('row', 'center', 'center'), spacing('padding', { x: "m", y: "s" }), function (_a) {
+var StyledButton = styled__default['default'].button(templateObject_1$4 || (templateObject_1$4 = __makeTemplateObject(["\n  position: relative;\n\n  display: inline-flex;\n  ", "\n  ", "\n  overflow: hidden;\n  cursor: pointer;\n\n  color: ", ";\n  background: ", ";\n  border: ", ";\n  border-radius: ", "px;\n  appearance: none;\n  --webkit-appearance: none;\n  \n  &::after, &&::before {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n\n    display: block;\n    width: 1000px;\n    height: 1000px;\n    max-width: 0;\n    max-height: 0;\n    content: '';\n    transform: translate(-50%, -50%);\n\n    border-radius: 1000px;\n    background: ", ";\n\n    ", ";\n  }\n  \n  &:hover {\n    &::after {\n      max-width: 1000px;\n      max-height: 1000px;\n    }\n  }\n  \n  &:active {\n    &::before {\n      max-width: 1000px;\n      max-height: 1000px;\n    }\n  }\n"], ["\n  position: relative;\n\n  display: inline-flex;\n  ", "\n  ", "\n  overflow: hidden;\n  cursor: pointer;\n\n  color: ", ";\n  background: ", ";\n  border: ", ";\n  border-radius: ", "px;\n  appearance: none;\n  --webkit-appearance: none;\n  \n  &::after, &&::before {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n\n    display: block;\n    width: 1000px;\n    height: 1000px;\n    max-width: 0;\n    max-height: 0;\n    content: '';\n    transform: translate(-50%, -50%);\n\n    border-radius: 1000px;\n    background: ", ";\n\n    ", ";\n  }\n  \n  &:hover {\n    &::after {\n      max-width: 1000px;\n      max-height: 1000px;\n    }\n  }\n  \n  &:active {\n    &::before {\n      max-width: 1000px;\n      max-height: 1000px;\n    }\n  }\n"])), makeFlex('row', 'center', 'center'), spacing('padding', { x: "m", y: "s" }), function (_a) {
     var theme = _a.theme, variant = _a.variant, outline = _a.outline;
     return !outline && variant ? "" + textColour(theme.bme.palette[variant], theme) : 'var(--bme-colour-text)';
 }, function (_a) {
@@ -345,9 +347,154 @@ Header.defaultProps = {
 };
 var templateObject_1$5, templateObject_2$1;
 
+var useIntersection = function (root, rootMargin) {
+    if (root === void 0) { root = null; }
+    if (rootMargin === void 0) { rootMargin = '0px'; }
+    var ref = React.useRef(null);
+    var _a = React.useState(null), entry = _a[0], setEntry = _a[1];
+    var handleIntersect = React.useCallback(function (_a) {
+        var event = _a[0];
+        setEntry(event);
+    }, []);
+    var buildTresholdList = function () {
+        var thresholdList = [];
+        var numSteps = 20;
+        for (var i = 1.0; i <= numSteps; i++) {
+            var ratio = i / numSteps;
+            thresholdList.push(ratio);
+        }
+        thresholdList.push(0);
+        return thresholdList;
+    };
+    var options = { root: root, rootMargin: rootMargin, threshold: buildTresholdList() };
+    React.useEffect(function () {
+        var observer = new IntersectionObserver(handleIntersect, options);
+        if (ref && ref.current) {
+            observer.observe(ref.current);
+        }
+        return function () {
+            observer.disconnect();
+        };
+    }, [ref, handleIntersect]);
+    var isIntersecting = false;
+    var intersectionRatio = NaN;
+    if (entry !== null) {
+        if (entry.isIntersecting) {
+            isIntersecting = entry.isIntersecting;
+        }
+        if (entry.intersectionRatio) {
+            intersectionRatio = entry.intersectionRatio;
+        }
+    }
+    return { isIntersecting: isIntersecting, ref: ref, intersectionRatio: intersectionRatio };
+};
+
+var StyledFigure = styled__default['default'].figure(templateObject_1$6 || (templateObject_1$6 = __makeTemplateObject(["\n  position: relative;\n  overflow: hidden;\n\n  ", "\n  ", "\n  margin: 0;\n  padding: 0;\n  background-color: ", ";\n  opacity: ", ";\n  ", "\n  \n  &:after {\n    position: relative;\n    display: inline-block;\n    padding-bottom: ", "%;\n    content: '';\n    ", "\n  }\n"], ["\n  position: relative;\n  overflow: hidden;\n\n  ", "\n  ", "\n  margin: 0;\n  padding: 0;\n  background-color: ", ";\n  opacity: ", ";\n  ", "\n  \n  &:after {\n    position: relative;\n    display: inline-block;\n    padding-bottom: ", "%;\n    content: '';\n    ", "\n  }\n"])), function (_a) {
+    var width = _a.width;
+    return width ? "width: " + width + ";" : '';
+}, function (_a) {
+    var height = _a.height;
+    return height ? "height: " + height + ";" : '';
+}, function (_a) {
+    var lazy = _a.lazy, loaded = _a.loaded;
+    return lazy && !loaded ? 'var(--bme-colour-text)' : 'transparent';
+}, function (_a) {
+    var loaded = _a.loaded;
+    return loaded ? 1 : .33;
+}, transition(["opacity", "background-color"]), function (_a) {
+    var lazy = _a.lazy;
+    return lazy ? 100 : 0;
+}, transition(["padding-bottom"]));
+var StyledImage = styled__default['default'].img(templateObject_2$2 || (templateObject_2$2 = __makeTemplateObject(["\n  ", "\n  max-width: 100%;\n  height: auto;\n  opacity: ", ";\n  ", "\n"], ["\n  ",
+    "\n  max-width: 100%;\n  height: auto;\n  opacity: ", ";\n  ", "\n"])), function (_a) {
+    var fixedSize = _a.fixedSize;
+    return fixedSize
+        ? "\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  "
+        : '';
+}, function (_a) {
+    var loaded = _a.loaded;
+    return loaded ? 1 : 0;
+}, transition(["opacity"]));
+var Image = function (_a) {
+    var source = _a.source, alt = _a.alt, lazy = _a.lazy, width = _a.width, height = _a.height;
+    var _b = useIntersection(), ref = _b.ref, intersectionRatio = _b.intersectionRatio;
+    var _c = React.useState(false), loading = _c[0], setLoading = _c[1];
+    var _d = React.useState(!lazy), loaded = _d[0], setLoaded = _d[1];
+    React.useEffect(function () {
+        if (intersectionRatio > 0.5) {
+            setLoading(true);
+        }
+    }, [intersectionRatio]);
+    var handleLoaded = function () {
+        setLoaded(true);
+    };
+    return (React__default['default'].createElement(StyledFigure, { ref: ref, width: width, height: height, lazy: lazy, loaded: loaded },
+        React__default['default'].createElement(StyledImage, { fixedSize: Boolean(width && height), src: loading ? source : '', alt: alt, onLoad: handleLoaded, loaded: loaded })));
+};
+Image.defaultProps = {
+    alt: '',
+};
+var templateObject_1$6, templateObject_2$2;
+
+var StyledCard = styled__default['default'](Box)(templateObject_1$7 || (templateObject_1$7 = __makeTemplateObject(["\n  overflow: hidden;\n  border: ", " 1px solid;\n"], ["\n  overflow: hidden;\n  border: ", " 1px solid;\n"])), function (_a) {
+    var borderColour = _a.borderColour, theme = _a.theme;
+    return hexToRGBA(theme.bme.palette[borderColour], .33);
+});
+var StyledCardHeader = styled__default['default'](Box)(templateObject_2$3 || (templateObject_2$3 = __makeTemplateObject(["\n  border-bottom: ", " 1px solid;\n"], ["\n  border-bottom: ", " 1px solid;\n"])), function (_a) {
+    var borderColour = _a.borderColour, theme = _a.theme;
+    return hexToRGBA(theme.bme.palette[borderColour], .33);
+});
+var StyledCardThumbnail = styled__default['default'](Box)(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  border-bottom: ", " 1px solid;\n"], ["\n  border-bottom: ", " 1px solid;\n"])), function (_a) {
+    var borderColour = _a.borderColour, theme = _a.theme;
+    return hexToRGBA(theme.bme.palette[borderColour], .33);
+});
+var StyledCardBody = styled__default['default'](Box)(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  border-bottom: ", " 1px solid;\n"], ["\n  border-bottom: ", " 1px solid;\n"])), function (_a) {
+    var borderColour = _a.borderColour, theme = _a.theme;
+    return hexToRGBA(theme.bme.palette[borderColour], .33);
+});
+var StyledCardFooter = styled__default['default'](Box)(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n"], ["\n"])));
+var CardHeader = function (_a) {
+    var children = _a.children, borderColour = _a.borderColour;
+    return (React__default['default'].createElement(StyledCardHeader, { borderColour: borderColour, direction: "column", padding: { x: "m", y: "s" } }, children));
+};
+var CardThumbnail = function (_a) {
+    var borderColour = _a.borderColour, source = _a.source, alt = _a.alt;
+    return (React__default['default'].createElement(StyledCardThumbnail, { borderColour: borderColour },
+        React__default['default'].createElement(Image, { source: source, alt: alt, width: "100%", height: "350px" })));
+};
+var CardBody = function (_a) {
+    var children = _a.children, borderColour = _a.borderColour;
+    return (React__default['default'].createElement(StyledCardBody, { borderColour: borderColour, padding: { x: "m", y: "m" } }, children));
+};
+var CardFooter = function (_a) {
+    var children = _a.children;
+    return (React__default['default'].createElement(StyledCardFooter, { padding: { x: "m", y: "s" } }, children));
+};
+var Card = function (_a) {
+    var children = _a.children, borderColour = _a.borderColour, background = _a.background;
+    var childrenWithProps = React__default['default'].Children.map(children, function (child) {
+        var props = { borderColour: borderColour };
+        if (React__default['default'].isValidElement(child)) {
+            return React__default['default'].cloneElement(child, props);
+        }
+        return child;
+    });
+    return (React__default['default'].createElement(StyledCard, { width: "full", direction: "column", rounded: true, borderColour: borderColour, background: background }, childrenWithProps));
+};
+Card.defaultProps = {
+    borderColour: "light",
+};
+Card.Header = CardHeader;
+Card.Thumbnail = CardThumbnail;
+Card.Body = CardBody;
+Card.Footer = CardFooter;
+var templateObject_1$7, templateObject_2$3, templateObject_3, templateObject_4, templateObject_5;
+
 exports.BMEBox = Box;
 exports.BMEButton = Button;
+exports.BMECard = Card;
 exports.BMEGlobalStyles = GlobalStyles;
 exports.BMEHeader = Header;
+exports.BMEImage = Image;
 exports.BMEText = Text;
 //# sourceMappingURL=index.js.map
