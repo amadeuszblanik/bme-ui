@@ -6,6 +6,7 @@ import Header from "./Components/Header/Header";
 import Image from "./Components/Image/Image";
 import Card from "./Components/Card/Card";
 import Badge from "./Components/Badge/Badge";
+import Grid from "./Components/Grid/Grid";
 
 export { GlobalStyles as BMEGlobalStyles };
 export { Text as BMEText };
@@ -15,3 +16,4 @@ export { Header as BMEHeader };
 export { Image as BMEImage };
 export { Card as BMECard };
 export { Badge as BMEBadge };
+export { Grid as BMEGrid };
