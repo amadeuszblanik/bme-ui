@@ -7,90 +7,20 @@ export default {
 
 export const Component = ({ content, ...args }) => (
   <>
-    <BMEBox background="light" alignX="left" alignY="center" padding={{y: "xl", x:  "m"}}>
-      <BMEBox width="full">
-        <BMEText>
-          Messages
-          <BMEBadge {...args}>{content}</BMEBadge>
-        </BMEText>
-      </BMEBox>
-      <BMEBox width="full">
-        <BMEButton variant="tertiary">
-          <BMEText>
-            Messages
-            <BMEBadge {...args}>{content}</BMEBadge>
-          </BMEText>
-        </BMEButton>
-      </BMEBox>
-    </BMEBox>
-
-    <BMEBox background="dark" alignX="left" alignY="center" padding={{y: "xl", x:  "m"}}>
-      <BMEBox width="full">
-        <BMEText>
-          Messages
-          <BMEBadge {...args}>{content}</BMEBadge>
-        </BMEText>
-      </BMEBox>
-      <BMEBox width="full">
-        <BMEButton variant="tertiary">
-          <BMEText>
-            Messages
-            <BMEBadge {...args}>{content}</BMEBadge>
-          </BMEText>
-        </BMEButton>
-      </BMEBox>
-    </BMEBox>
-
-    <BMEBox background="primary" alignX="left" alignY="center" padding={{y: "xl", x:  "m"}}>
-      <BMEBox width="full">
-        <BMEText>
-          Messages
-          <BMEBadge {...args}>{content}</BMEBadge>
-        </BMEText>
-      </BMEBox>
-      <BMEBox width="full">
-        <BMEButton variant="tertiary">
-          <BMEText>
-            Messages
-            <BMEBadge {...args}>{content}</BMEBadge>
-          </BMEText>
-        </BMEButton>
-      </BMEBox>
-    </BMEBox>
-
-    <BMEBox background="secondary" alignX="left" alignY="center" padding={{y: "xl", x:  "m"}}>
-      <BMEBox width="full">
-        <BMEText>
-          Messages
-          <BMEBadge {...args}>{content}</BMEBadge>
-        </BMEText>
-      </BMEBox>
-      <BMEBox width="full">
-        <BMEButton variant="tertiary">
-          <BMEText>
-            Messages
-            <BMEBadge {...args}>{content}</BMEBadge>
-          </BMEText>
-        </BMEButton>
-      </BMEBox>
-    </BMEBox>
-
-    <BMEBox background="tertiary" alignX="left" alignY="center" padding={{y: "xl", x:  "m"}}>
-      <BMEBox width="full">
-        <BMEText>
-          Messages
-          <BMEBadge {...args}>{content}</BMEBadge>
-        </BMEText>
-      </BMEBox>
-      <BMEBox width="full">
-        <BMEButton variant="tertiary">
-          <BMEText>
-            Messages
-            <BMEBadge {...args}>{content}</BMEBadge>
-          </BMEText>
-        </BMEButton>
-      </BMEBox>
-    </BMEBox>
+  <BMEBox width="full">
+    <BMEText>
+      Messages
+      <BMEBadge {...args}>{content}</BMEBadge>
+    </BMEText>
+  </BMEBox>
+  <BMEBox width="full">
+    <BMEButton variant="tertiary">
+      <BMEText>
+        Messages
+        <BMEBadge {...args}>{content}</BMEBadge>
+      </BMEText>
+    </BMEButton>
+  </BMEBox>
   </>
 );
 
