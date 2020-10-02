@@ -5,7 +5,7 @@ export default {
   title: "Grid"
 };
 
-export const Component = ({content, ...args}) => (
+export const Component = ({mobile, tablet, desktop}) => (
   <>
     <BMEBox width="full" direction="column">
       <BMEGrid.Container>
@@ -72,7 +72,7 @@ export const Component = ({content, ...args}) => (
           </BMEGrid.Col>
         </BMEGrid>
         <BMEGrid>
-          <BMEGrid.Col {...args}>
+          <BMEGrid.Col mobile={mobile} tablet={tablet} desktop={desktop}>
             <BMEBox background="primary" padding={{x: "m", y: "s"}}>
               <BMEText>Yours</BMEText>
             </BMEBox>
@@ -93,9 +93,6 @@ Component.args = {
 }
 
 Component.argTypes = {
-  content: {
-    control: 'text',
-  },
   mobile: {
     control: {
       type: 'inline-radio',
