@@ -7,6 +7,8 @@ import Image from "./Components/Image/Image";
 import Card from "./Components/Card/Card";
 import Badge from "./Components/Badge/Badge";
 import Grid from "./Components/Grid/Grid";
+import Topbar from "./Components/Topbar/Topbar";
+import Nav from "./Components/Nav/Nav";
 
 export { GlobalStyles as BMEGlobalStyles };
 export { Text as BMEText };
@@ -17,3 +19,5 @@ export { Image as BMEImage };
 export { Card as BMECard };
 export { Badge as BMEBadge };
 export { Grid as BMEGrid };
+export { Topbar as BMETopbar };
+export { Nav as BMENav };

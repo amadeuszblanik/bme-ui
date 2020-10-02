@@ -1,6 +1,6 @@
-import Thm, {Palette} from "../Theme/Theme";
+import Thm from "../Theme/Theme";
 
-const textColour = (value: Palette, theme = Thm): string => {
+const textColour = (value: string, theme = Thm): string => {
   const hex = value.substring(1);
   const rgb = parseInt(hex, 16);
 
