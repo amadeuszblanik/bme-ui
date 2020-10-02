@@ -51,8 +51,6 @@ const spacing = (type: Type, size: SpacingSize): string => {
         }
       }
 
-      console.debug({ response });
-
       return response.join("");
     }
     case "string": {

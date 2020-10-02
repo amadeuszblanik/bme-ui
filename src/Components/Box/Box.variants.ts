@@ -2,6 +2,7 @@ import {AlignXValues, AlignYValues} from "../../Mixins/makeFlex";
 
 export const WIDTH_HEIGHT_VALUES = {
   full: '100%',
+  half: '50%',
   fullPage: '100vh',
 }
 
