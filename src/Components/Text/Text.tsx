@@ -5,6 +5,7 @@ import { TextComponentProps } from "./Text.types";
 import { TextFontSize, TextFontWeight } from "./Text.variants";
 
 const StyledText = styled.p<TextComponentProps>`
+  color: ${({ variant, theme }) => variant ? theme.bme.palette[variant] : 'var(--bme-colour-text)'};
   font-size: ${({ size }) => TextFontSize[size]}px;
   font-family: ${({ theme, fontFamily }) => theme.bme.fonts[fontFamily]};
   font-weight: ${({ weight }) => TextFontWeight[weight]};

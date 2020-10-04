@@ -5,6 +5,7 @@ import {makeFlex, spacing, textColour} from "../../Mixins";
 import {WIDTH_HEIGHT_VALUES} from "./Box.variants";
 
 const StyledBox = styled.div<BoxStyledComponentProps>`
+  position: relative;
   display: ${({inline}) => inline ? 'inline-flex' : 'flex'};
   ${({width}) => WIDTH_HEIGHT_VALUES[width]
   ? `width: ${WIDTH_HEIGHT_VALUES[width]};`

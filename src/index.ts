@@ -9,6 +9,7 @@ import Badge from "./Components/Badge/Badge";
 import Grid from "./Components/Grid/Grid";
 import Topbar from "./Components/Topbar/Topbar";
 import Nav from "./Components/Nav/Nav";
+import Form from "./Components/Form/Form";
 
 export { GlobalStyles as BMEGlobalStyles };
 export { Text as BMEText };
@@ -21,3 +22,4 @@ export { Badge as BMEBadge };
 export { Grid as BMEGrid };
 export { Topbar as BMETopbar };
 export { Nav as BMENav };
+export { Form as BMEForm };

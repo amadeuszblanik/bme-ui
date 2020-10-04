@@ -1,7 +1,7 @@
 import {TextFontFamilies} from "../Components/Text/Text.types";
 import {DefaultTheme} from "styled-components";
 
-export type Palette = "primary" | "secondary" | "tertiary" | "dark" | "light";
+export type Palette = "primary" | "secondary" | "tertiary" | "dark" | "light" | "focus" | "required";
 export type Sizes = "xxl" | "xl" | "l" | "m" | "s" | "xs" | "xxs";
 
 const Thm: DefaultTheme = {
@@ -12,6 +12,8 @@ const Thm: DefaultTheme = {
       tertiary: '#0066FF',
       dark: '#000000',
       light: '#ffffff',
+      focus: '#f9c642',
+      required: '#cd2026',
     },
     fonts: {
       sansSerif: "\"IBM Plex Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
