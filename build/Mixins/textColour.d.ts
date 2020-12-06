@@ -1,3 +1,2 @@
-import Thm, { Palette } from "../Theme/Theme";
-declare const textColour: (value: Palette, theme?: Thm) => string;
+declare const textColour: (value: string, theme?: import("styled-components").DefaultTheme) => string;
 export default textColour;
