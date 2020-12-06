@@ -12,5 +12,5 @@ export const VALUE_TO_CSS: { [key in AlignXValues | AlignYValues]: string } = {
   bottom: "flex-end",
   left: "flex-start",
   right: "flex-end",
-  justify: "stretch",
+  justify: "space-between",
 }
