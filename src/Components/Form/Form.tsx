@@ -1,6 +1,6 @@
-import React from "react";
-import {FormSubcomponents} from "./Form.types";
-import TextField from "./TextField/TextField";
+import React from 'react';
+import { FormSubcomponents } from './Form.types';
+import TextField from './TextField/TextField';
 
 const Form: React.FunctionComponent & FormSubcomponents = ({ children }) => <>{children}</>;
 
