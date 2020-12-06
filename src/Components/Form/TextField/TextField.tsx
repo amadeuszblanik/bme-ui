@@ -6,7 +6,7 @@ import {TextFontSize} from "../../Text/Text.variants";
 import {sizeToPx} from "../../../Utils";
 import {TextFieldComponentProps} from "./TextField.types";
 
-const StyledLabel = styled.label<{ filled?: boolean, required?: boolean }>`
+const StyledLabel = styled.label<{ for?: string; filled?: boolean, required?: boolean }>`
   position: absolute;
   top: ${({ filled }) => filled ? `${TextFontSize.s}px` : '50%'};
   left: ${sizeToPx('m')}px;

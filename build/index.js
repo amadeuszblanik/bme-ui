@@ -62,7 +62,7 @@ var reset = styled.css(templateObject_1 || (templateObject_1 = __makeTemplateObj
 var Reset = styled.createGlobalStyle(templateObject_2 || (templateObject_2 = __makeTemplateObject$1(["", ""], ["", ""])), reset);
 var templateObject_1, templateObject_2;
 
-var GlobalStyles = styled.createGlobalStyle(templateObject_1$1 || (templateObject_1$1 = __makeTemplateObject(["\n  ", "\n\n  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');\n"], ["\n  ", "\n\n  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');\n"])), reset);
+var GlobalStyles = styled.createGlobalStyle(templateObject_1$1 || (templateObject_1$1 = __makeTemplateObject(["\n  ", "\n\n  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');\n  @import url('https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css');\n  \n  * {\n    box-sizing: border-box;\n  }\n"], ["\n  ", "\n\n  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');\n  @import url('https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css');\n  \n  * {\n    box-sizing: border-box;\n  }\n"])), reset);
 var templateObject_1$1;
 
 var TextFontSize = {
@@ -80,7 +80,10 @@ var TextFontWeight = {
     light: 300,
 };
 
-var StyledText = styled__default['default'].p(templateObject_1$2 || (templateObject_1$2 = __makeTemplateObject(["\n  font-size: ", "px;\n  font-family: ", ";\n  font-weight: ", ";\n  text-align: ", ";\n  ", "\n"], ["\n  font-size: ", "px;\n  font-family: ", ";\n  font-weight: ", ";\n  text-align: ", ";\n  ", "\n"])), function (_a) {
+var StyledText = styled__default['default'].p(templateObject_1$2 || (templateObject_1$2 = __makeTemplateObject(["\n  color: ", ";\n  font-size: ", "px;\n  font-family: ", ";\n  font-weight: ", ";\n  text-align: ", ";\n  ", "\n"], ["\n  color: ", ";\n  font-size: ", "px;\n  font-family: ", ";\n  font-weight: ", ";\n  text-align: ", ";\n  ", "\n"])), function (_a) {
+    var variant = _a.variant, theme = _a.theme;
+    return variant ? theme.bme.palette[variant] : 'var(--bme-colour-text)';
+}, function (_a) {
     var size = _a.size;
     return TextFontSize[size];
 }, function (_a) {
@@ -118,6 +121,16 @@ var SIZES_IN_PX = {
     "xxs": 2,
 };
 var sizeToPx = function (size) { return SIZES_IN_PX[size]; };
+
+var validURL = function (value) {
+    var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+        '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+    return pattern.test(value);
+};
 
 var spacing = function (type, size) {
     switch (typeof size) {
@@ -169,13 +182,33 @@ var Thm = {
             tertiary: '#0066FF',
             dark: '#000000',
             light: '#ffffff',
+            focus: '#f9c642',
+            required: '#cd2026',
         },
         fonts: {
             sansSerif: "\"IBM Plex Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
             serif: "\"IBM Plex Serif\", \"Palatino Linotype\", \"Book Antiqua\", Palatino, serif",
             mono: "\"IBM Plex Mono\", \"Lucida Console\", Monaco, monospace",
+        },
+        grid: {
+            sizes: {
+                mobile: 4,
+                tablet: 8,
+                desktop: 12,
+            },
+            gap: {
+                mobile: 16,
+                tablet: 24,
+            },
         }
-    }
+    },
+    breakpoints: {
+        xs: 0,
+        sm: 520,
+        md: 720,
+        lg: 840,
+        xl: 1280,
+    },
 };
 
 var textColour = function (value, theme) {
@@ -200,7 +233,7 @@ var VALUE_TO_CSS = {
     bottom: "flex-end",
     left: "flex-start",
     right: "flex-end",
-    justify: "stretch",
+    justify: "space-between",
 };
 
 var makeFlex = function (direction, x, y) {
@@ -242,7 +275,7 @@ var transition = function (property, durationInMs, variant) {
     return "\n  transition-property: " + property.join(" ") + ";\n  transition-duration: " + durationInMs + "ms;\n  transition-timing-function: " + TransitionVariantsEnum[variant] + ";\n  will-change: " + property.join(",") + ";\n  ";
 };
 
-var StyledBox = styled__default['default'].div(templateObject_1$3 || (templateObject_1$3 = __makeTemplateObject(["\n  display: ", ";\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n"], ["\n  display: ", ";\n  ",
+var StyledBox = styled__default['default'].div(templateObject_1$3 || (templateObject_1$3 = __makeTemplateObject(["\n  position: relative;\n  display: ", ";\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n"], ["\n  position: relative;\n  display: ", ";\n  ",
     "\n  ",
     "\n  ",
     "\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n  ", "\n"])), function (_a) {
@@ -518,12 +551,548 @@ Badge.defaultProps = {
 };
 var templateObject_1$8;
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _templateObject = _taggedTemplateLiteral(['@media (', ': ', 'em) {\n      ', '\n    }'], ['@media (', ': ', 'em) {\n      ', '\n    }']),
+    _templateObject2 = _taggedTemplateLiteral(['@media (min-width: ', 'em) and (max-width: ', 'em) {\n      ', '\n    }'], ['@media (min-width: ', 'em) and (max-width: ', 'em) {\n      ', '\n    }']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+// eslint-disable-line no-undef
+
+function convertPxToEm(pixels) {
+  // @media is always calculated off 16px regardless of whether the root font size is the default or not
+  return pixels / 16;
+}
+
+function getValueFromName(breakpoints, name) {
+  var value = breakpoints[name];
+  if (process.env.NODE_ENV !== 'production' && typeof value === 'undefined') {
+    console.error('A breakpoint named "' + name + '" does not exist.'); // eslint-disable-line no-console
+    return 0;
+  }
+  return value;
+}
+
+function withSingleCriteria(breakpoints, name, operator) {
+  var offset = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
+
+  var value = getValueFromName(breakpoints, name);
+
+  // special case for 0 to avoid wrapping styles in an unnecessary @media block
+  // FIXME: typings
+  // if (operator === 'max-width' && value === 0) {
+  //   return () => '';
+  // }
+
+  // special case for 0 to avoid wrapping styles in an unnecessary @media block
+  if (operator === 'min-width' && value === 0) {
+    return function (strings) {
+      for (var _len = arguments.length, interpolations = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        interpolations[_key - 1] = arguments[_key];
+      }
+
+      return styled.css.apply(undefined, [strings].concat(_toConsumableArray(interpolations)));
+    };
+  }
+
+  return function (strings) {
+    for (var _len2 = arguments.length, interpolations = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      interpolations[_key2 - 1] = arguments[_key2];
+    }
+
+    return styled.css(_templateObject, operator, convertPxToEm(value + offset), styled.css.apply(undefined, [strings].concat(_toConsumableArray(interpolations))));
+  };
+}
+
+function _gte(breakpoints, name) {
+  return withSingleCriteria(breakpoints, name, 'min-width');
+}
+
+// TODO: allow the operator to be customised
+function _map(breakpoints, value, mapValueToCSS) {
+  var values = value;
+
+  if (values === null || (typeof values === 'undefined' ? 'undefined' : _typeof(values)) !== 'object') {
+    return mapValueToCSS(values);
+  }
+
+  return [
+  // eslint-disable-next-line no-undefined
+  mapValueToCSS(undefined)].concat(_toConsumableArray(Object.keys(values).map(function (name) {
+    var tag = _gte(breakpoints, name);
+    var val = values[name];
+    var styles = tag([], [].concat(mapValueToCSS(val)));
+    return styles;
+  })));
+}
+
+var defaultBreakpoints = {
+  mobile: 0, // targeting all devices
+  tablet: 737, // targeting devices that are LARGER than the iPhone 6 Plus (which is 736px in landscape mode)
+  desktop: 1025 // targeting devices that are LARGER than the iPad (which is 1024px in landscape mode)
+};
+
+function map(value, mapValueToCSS) {
+  return function (_ref2) {
+    var _ref2$theme = _ref2.theme,
+        theme = _ref2$theme === undefined ? {} : _ref2$theme;
+
+    return _map(theme.breakpoints || defaultBreakpoints, value, mapValueToCSS);
+  };
+}
+
+var _templateObject$1 = _taggedTemplateLiteral$1(['\n    display: flex;\n    ', '\n    ', '\n    ', '\n    ', '\n  '], ['\n    display: flex;\n    ', '\n    ', '\n    ', '\n    ', '\n  ']);
+
+function _taggedTemplateLiteral$1(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function halign(_ref) {
+  var halign = _ref.halign,
+      reverse = _ref.reverse;
+
+  //if no value is specified, then don't output any css (it just makes it harder for the consumer to override)
+  if (typeof halign === 'undefined' && typeof reverse === 'undefined') {
+    return '';
+  }
+
+  return map(halign, function () {
+    var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'left';
+
+    var rule = '';
+    switch (value) {
+      case 'left':
+        if (reverse) {
+          rule = 'flex-end';
+        } else {
+          rule = 'flex-start';
+        }
+        break;
+
+      case 'right':
+        if (reverse) {
+          rule = 'flex-start';
+        } else {
+          rule = 'flex-end';
+        }
+        break;
+
+      case 'center':
+        rule = 'center';
+        break;
+
+      case 'justify-center':
+        rule = 'space-around';
+        break;
+
+      case 'justify':
+        rule = 'space-between';
+        break;
+
+      default:
+        throw new Error('styled-components-grid: halign must be one of "left", "right", "center", "justify-center" or "justify". Got "' + String(value) + '"');
+    }
+    return 'justify-content: ' + rule + ';';
+  });
+}
+
+function valign(_ref2) {
+  var valign = _ref2.valign;
+
+  //if no value is specified, then don't output any css (it just makes it harder for the consumer to override)
+  if (typeof valign === 'undefined') {
+    return '';
+  }
+
+  return map(valign, function () {
+    var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'stretch';
+
+    var rule = '';
+    switch (value) {
+      case 'top':
+        rule = 'flex-start';
+        break;
+
+      case 'bottom':
+        rule = 'flex-end';
+        break;
+
+      case 'center':
+        rule = 'center';
+        break;
+
+      case 'stretch':
+        rule = 'stretch';
+        break;
+
+      default:
+        throw new Error('styled-components-grid: valign must be one of "top", "bottom", "center" or "stretch". Got "' + String(value) + '".');
+    }
+    return 'align-items: ' + rule + ';';
+  });
+}
+
+function reverse(_ref3) {
+  var reverse = _ref3.reverse;
+
+  //if no value is specified, then don't output any css (it just makes it harder for the consumer to override)
+  if (typeof reverse === 'undefined') {
+    return '';
+  }
+
+  return map(reverse, function () {
+    var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+    return 'flex-direction: ' + (value && 'row-reverse' || 'row') + ';';
+  });
+}
+
+function wrap(_ref4) {
+  var wrap = _ref4.wrap,
+      reverse = _ref4.reverse;
+
+  return map(wrap, function () {
+    var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+
+    if (value && reverse) {
+      return 'flex-wrap: wrap-reverse;';
+    } else if (value === false) {
+      return 'flex-wrap: nowrap;';
+    } else {
+      return 'flex-wrap: wrap;';
+    }
+  });
+}
+
+function grid (props) {
+  return styled.css(_templateObject$1, halign(props), valign(props), reverse(props), wrap(props));
+}
+
+var _templateObject$2 = _taggedTemplateLiteral$2(['\n    box-sizing: border-box;\n    ', ' ', ';\n  '], ['\n    box-sizing: border-box;\n    ', ' ', ';\n  ']);
+
+function _taggedTemplateLiteral$2(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function size(_ref) {
+  var size = _ref.size;
+
+  return map(size, function () {
+    var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+
+    switch (value) {
+      case 'min':
+        return '\n          flex-grow: 0;\n          flex-basis: auto;\n          width: auto;\n          max-width: none;\n        ';
+
+      case 'max':
+        return '\n          flex-grow: 1;\n          flex-basis: auto;\n          width: auto;\n          max-width: none;\n          max-width: 100%; /* TODO: does this always work as expected? */\n        ';
+
+      default:
+        {
+          var pct = Math.round((typeof value === 'number' ? value : 1) * 100 * 10000) / 10000; //round to 4 decimal places
+          return '\n          flex-basis: ' + pct + '%;\n          max-width: ' + pct + '%;\n        ';
+        }
+    }
+  });
+}
+
+function visible(_ref2) {
+  var visible = _ref2.visible;
+
+  //if no value is specified, then don't output any css (it just makes it harder for the consumer to override)
+  if (typeof visible === 'undefined') {
+    return '';
+  }
+
+  return map(visible, function (value) {
+    if (value === false) {
+      return 'display: none;';
+    } else {
+      return 'display: flex;'; /* TODO: does this always work as expected? */
+    }
+  });
+}
+
+function gridUnit (props) {
+  return styled.css(_templateObject$2, size(props), visible(props));
+}
+
+function getDefaultExportFromCjs (x) {
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+}
+
+function createCommonjsModule(fn, basedir, module) {
+	return module = {
+		path: basedir,
+		exports: {},
+		require: function (path, base) {
+			return commonjsRequire(path, (base === undefined || base === null) ? module.path : base);
+		}
+	}, fn(module, module.exports), module.exports;
+}
+
+function commonjsRequire () {
+	throw new Error('Dynamic requires are not currently supported by @rollup/plugin-commonjs');
+}
+
+var dist = createCommonjsModule(function (module, exports) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+
+
+var _react2 = _interopRequireDefault(React__default['default']);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function omitKeys(keys, object) {
+  return Object.keys(object).reduce(function (cleanObject, key) {
+    if (keys.includes(key)) {
+      return cleanObject;
+    } else {
+      return _extends({}, cleanObject, _defineProperty({}, key, object[key]));
+    }
+  }, {});
+}
+
+exports.default = function () {
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      _ref$tag = _ref.tag,
+      defaultTag = _ref$tag === undefined ? 'div' : _ref$tag,
+      _ref$prop = _ref.prop,
+      prop = _ref$prop === undefined ? 'tag' : _ref$prop,
+      _ref$propsToOmit = _ref.propsToOmit,
+      propsToOmit = _ref$propsToOmit === undefined ? [] : _ref$propsToOmit;
+
+  return function (_ref2) {
+    var children = _ref2.children,
+        otherProps = _objectWithoutProperties(_ref2, ['children']);
+
+    var tag = otherProps[prop] || defaultTag;
+    var omitPropsKeys = [prop].concat(_toConsumableArray(propsToOmit));
+    var props = omitKeys(omitPropsKeys, otherProps);
+    return _react2.default.createElement(tag, props, children);
+  };
+};
+});
+
+var createComponentFromTagProp = /*@__PURE__*/getDefaultExportFromCjs(dist);
+
+var _templateObject$3 = _taggedTemplateLiteral$3(['\n  box-sizing: border-box;\n  ', '\n'], ['\n  box-sizing: border-box;\n  ', '\n']);
+
+function _taggedTemplateLiteral$3(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var GridUnitComponent = createComponentFromTagProp({
+  tag: 'div',
+  prop: 'component',
+  propsToOmit: ['width', 'visible']
+});
+
+var GridUnit = styled__default['default'](GridUnitComponent)(_templateObject$3, gridUnit);
+
+var _templateObject$4 = _taggedTemplateLiteral$4(['\n  display: flex;\n  ', '\n'], ['\n  display: flex;\n  ', '\n']);
+
+function _taggedTemplateLiteral$4(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var GridComponent = createComponentFromTagProp({
+  tag: 'div',
+  prop: 'component',
+  propsToOmit: ['halign', 'valign', 'reverse', 'wrap']
+});
+
+var Grid = styled__default['default'](GridComponent)(_templateObject$4, grid);
+
+grid.unit = gridUnit;
+Grid.Unit = GridUnit;
+
+var StyledGrid = styled__default['default'](Grid)(templateObject_1$9 || (templateObject_1$9 = __makeTemplateObject(["\n  ", "\n"], ["\n  ",
+    "\n"])), function (_a) {
+    var width = _a.width;
+    return WIDTH_HEIGHT_VALUES[width]
+        ? "width: " + WIDTH_HEIGHT_VALUES[width] + ";"
+        : '';
+});
+var StyledCol = styled__default['default'](Grid.Unit)(templateObject_2$4 || (templateObject_2$4 = __makeTemplateObject(["\n  padding: ", "px;\n  \n  @media screen and (min-width: ", ") {\n    padding: ", "px;\n  }\n"], ["\n  padding: ", "px;\n  \n  @media screen and (min-width: ", ") {\n    padding: ", "px;\n  }\n"])), function (_a) {
+    var theme = _a.theme;
+    return theme.bme.grid.gap.mobile / 2;
+}, function (_a) {
+    var theme = _a.theme;
+    return theme.breakpoints.md;
+}, function (_a) {
+    var theme = _a.theme;
+    return theme.bme.grid.gap.tablet / 2;
+});
+var GridCol = function (_a) {
+    var children = _a.children, mobile = _a.mobile, tablet = _a.tablet, desktop = _a.desktop;
+    var sizes = styled.useTheme().bme.grid.sizes;
+    var size = {
+        xs: mobile / sizes.mobile,
+        md: tablet / sizes.tablet,
+        xl: desktop / sizes.desktop,
+    };
+    return (React__default['default'].createElement(StyledCol, { size: size }, children));
+};
+var StyledContainer = styled__default['default'].div(templateObject_3$1 || (templateObject_3$1 = __makeTemplateObject(["\n  width: 100%;\n  ", "\n  margin: 0 auto;\n  \n  @media screen and (min-width: ", "px) {\n    max-width: 1180px;\n  }\n"], ["\n  width: 100%;\n  ", "\n  margin: 0 auto;\n  \n  @media screen and (min-width: ", "px) {\n    max-width: 1180px;\n  }\n"])), spacing("padding", { x: "m" }), function (_a) {
+    var theme = _a.theme;
+    return theme.breakpoints.xl;
+});
+var GridContainer = function (_a) {
+    var children = _a.children;
+    return (React__default['default'].createElement(StyledContainer, null, children));
+};
+var Grid$1 = function (_a) {
+    var children = _a.children, args = __rest(_a, ["children"]);
+    return (React__default['default'].createElement(StyledGrid, __assign({}, args), children));
+};
+Grid$1.Col = GridCol;
+Grid$1.Container = GridContainer;
+var templateObject_1$9, templateObject_2$4, templateObject_3$1;
+
+var StyledTopbar = styled__default['default'].header(templateObject_1$a || (templateObject_1$a = __makeTemplateObject(["\n  position: ", ";\n  top: 0;\n  left: 0;\n  \n  display: flex;\n  ", "\n  width: 100%;\n  ", "\n  ", "\n  ", "\n"], ["\n  position: ", ";\n  top: 0;\n  left: 0;\n  \n  display: flex;\n  ", "\n  width: 100%;\n  ", "\n  ", "\n  ", "\n"])), function (_a) {
+    var fixed = _a.fixed;
+    return fixed ? 'fixed' : 'relative';
+}, makeFlex("row", "center", "center"), function (_a) {
+    var theme = _a.theme, variant = _a.variant;
+    return variant ? "color: " + textColour(theme.bme.palette[variant], theme) + ";" : '';
+}, function (_a) {
+    var theme = _a.theme, variant = _a.variant;
+    return variant ? "background: " + theme.bme.palette[variant] + ";" : '';
+}, function (_a) {
+    var theme = _a.theme, variant = _a.variant;
+    return variant ? "--bme-colour-text: " + textColour(theme.bme.palette[variant], theme) + ";" : '';
+});
+var Topbar = function (_a) {
+    var children = _a.children, brand = _a.brand, args = __rest(_a, ["children", "brand"]);
+    var brandIsURL = validURL(brand);
+    return (React__default['default'].createElement(StyledTopbar, __assign({}, args),
+        React__default['default'].createElement(Grid$1.Container, null,
+            React__default['default'].createElement(Grid$1, null,
+                React__default['default'].createElement(Grid$1.Col, { mobile: 1, tablet: 1, desktop: 2 },
+                    React__default['default'].createElement(Box, { alignY: "center" }, brandIsURL ? (React__default['default'].createElement(Image, { source: brand, width: "42px" })) : (React__default['default'].createElement(Text, { fontFamily: "mono" }, brand)))),
+                React__default['default'].createElement(Grid$1.Col, { mobile: 3, tablet: 7, desktop: 10 },
+                    React__default['default'].createElement(Box, { alignX: "right", alignY: "center", width: "full", height: "full" }, children))))));
+};
+var templateObject_1$a;
+
+var StyledNavWrapper = styled__default['default'].div(templateObject_1$b || (templateObject_1$b = __makeTemplateObject(["\n  display: block;\n  width: 100%;\n  max-width: 80vw;\n  overflow-x: scroll;\n"], ["\n  display: block;\n  width: 100%;\n  max-width: 80vw;\n  overflow-x: scroll;\n"])));
+var StyledNav = styled__default['default'](Box)(templateObject_2$5 || (templateObject_2$5 = __makeTemplateObject(["\n  min-width: max-content;\n  white-space: nowrap;\n"], ["\n  min-width: max-content;\n  white-space: nowrap;\n"])));
+var StyledText$1 = styled__default['default'](Text)(templateObject_3$2 || (templateObject_3$2 = __makeTemplateObject(["\n  cursor: pointer;\n  opacity: ", ";\n  ", "\n  \n  &:active, &:hover {\n    opacity: 1;\n  }\n"], ["\n  cursor: pointer;\n  opacity: ", ";\n  ", "\n  \n  &:active, &:hover {\n    opacity: 1;\n  }\n"])), function (_a) {
+    var active = _a.active;
+    return active ? '1' : '.66';
+}, transition(["opacity"], 350));
+var StyledAccent$1 = styled__default['default'].span(templateObject_4$1 || (templateObject_4$1 = __makeTemplateObject(["\n  ", "\n  background: ", ";\n  ", "\n  ", "\n  opacity: ", ";\n  ", "\n  font-style: italic;\n"], ["\n  ", "\n  background: ", ";\n  ", "\n  ", "\n  opacity: ", ";\n  ", "\n  font-style: italic;\n"])), spacing('margin', { x: { right: "xxs" } }), function (_a) {
+    var active = _a.active, theme = _a.theme;
+    return active ? "linear-gradient(45deg, " + theme.bme.palette.primary + ", " + theme.bme.palette.secondary + ", " + theme.bme.palette.tertiary + ")" : 'var(--bme-colour-texts)';
+}, function (_a) {
+    var active = _a.active;
+    return active ? '-webkit-background-clip: text;' : '';
+}, function (_a) {
+    var active = _a.active;
+    return active ? '-webkit-text-fill-color: transparent;' : '';
+}, function (_a) {
+    var active = _a.active;
+    return !active ? '0.82' : '1';
+}, transition(["opacity"], 350));
+var NavItem = function (_a) {
+    var children = _a.children, active = _a.active;
+    return (React__default['default'].createElement(Box, { padding: { x: "s" } },
+        React__default['default'].createElement(StyledText$1, { fontFamily: "mono", italic: true, active: active },
+            React__default['default'].createElement(StyledAccent$1, { active: active }, "#"),
+            children)));
+};
+var Nav = function (_a) {
+    var children = _a.children, alignX = _a.alignX;
+    return (React__default['default'].createElement(StyledNavWrapper, null,
+        React__default['default'].createElement(StyledNav, { width: "full", alignX: alignX, margin: { y: "m" } }, children)));
+};
+Nav.defaultProps = {
+    alignX: "justify",
+};
+Nav.Item = NavItem;
+var templateObject_1$b, templateObject_2$5, templateObject_3$2, templateObject_4$1;
+
+var StyledLabel = styled__default['default'].label(templateObject_1$c || (templateObject_1$c = __makeTemplateObject(["\n  position: absolute;\n  top: ", ";\n  left: ", "px;\n  \n  color: ", ";\n  \n  transform: translateY(-50%);\n  ", "\n"], ["\n  position: absolute;\n  top: ", ";\n  left: ", "px;\n  \n  color: ", ";\n  \n  transform: translateY(-50%);\n  ", "\n"])), function (_a) {
+    var filled = _a.filled;
+    return filled ? TextFontSize.s + "px" : '50%';
+}, sizeToPx('m'), function (_a) {
+    var required = _a.required, theme = _a.theme;
+    return !required ? theme.bme.palette.required : 'var(--bme-colour-text)';
+}, transition(["top", "font-size"], 350));
+var StyledInput = styled__default['default'].input(templateObject_2$6 || (templateObject_2$6 = __makeTemplateObject(["\n  width: 100%;\n  ", "\n  color: ", ";\n  background: ", ";\n  border-radius: 5px;\n  border: ", " 1px solid;\n  \n  font-size: ", "px;\n  \n  appearance: none;\n  ", "\n  \n  &:hover, &:active {\n    background: ", ";\n  }\n  \n  &:focus {\n    border-color: ", ";\n    outline: none;\n  }\n"], ["\n  width: 100%;\n  ", "\n  color: ", ";\n  background: ", ";\n  border-radius: 5px;\n  border: ", " 1px solid;\n  \n  font-size: ", "px;\n  \n  appearance: none;\n  ", "\n  \n  &:hover, &:active {\n    background: ", ";\n  }\n  \n  &:focus {\n    border-color: ", ";\n    outline: none;\n  }\n"])), spacing("padding", { x: "m", y: { top: "l", bottom: "s" } }), function (_a) {
+    var required = _a.required, theme = _a.theme;
+    return !required ? theme.bme.palette.required : 'var(--bme-colour-text)';
+}, function (_a) {
+    var theme = _a.theme;
+    return hexToRGBA(theme.bme.palette.dark, 0);
+}, function (_a) {
+    var required = _a.required, theme = _a.theme;
+    return !required ? theme.bme.palette.required : 'var(--bme-colour-text)';
+}, TextFontSize.m, transition(["background"], 350), function (_a) {
+    var theme = _a.theme;
+    return hexToRGBA(theme.bme.palette.dark, .13);
+}, function (_a) {
+    var theme = _a.theme;
+    return theme.bme.palette.focus;
+});
+var TextField = function (_a) {
+    var name = _a.name, value = _a.value, label = _a.label, characterLimit = _a.characterLimit, helperText = _a.helperText, errorText = _a.errorText, onChange = _a.onChange, required = _a.required, valid = _a.valid;
+    var _b = React.useState(false), valueHasChanged = _b[0], setValueHasChanged = _b[1];
+    var filled = value && value.length > 0;
+    var characterLimitEnabled = Boolean(characterLimit);
+    var requiredValid = valid || (required && valueHasChanged ? filled : true);
+    var handleChange = function (_a) {
+        var value = _a.target.value;
+        setValueHasChanged(true);
+        if (characterLimitEnabled && value.length > characterLimit) {
+            onChange(value.substring(0, characterLimit));
+            return;
+        }
+        onChange(value);
+    };
+    return (React__default['default'].createElement(Box, { width: "full", direction: "column" },
+        React__default['default'].createElement(Box, { width: "full" },
+            React__default['default'].createElement(StyledLabel, { for: name, filled: filled, required: requiredValid || valid },
+                React__default['default'].createElement(Text, { size: filled ? "xxs" : "m" },
+                    label,
+                    required ? '*' : '')),
+            React__default['default'].createElement(StyledInput, { id: name, name: name, value: value, onChange: handleChange, required: requiredValid })),
+        React__default['default'].createElement(Box, { width: "full", alignX: "justify", padding: { y: "s", x: "m" } },
+            React__default['default'].createElement(Text, { size: "xxs", variant: !requiredValid ? "required" : null }, !requiredValid ? errorText : helperText),
+            characterLimitEnabled && (React__default['default'].createElement(Text, { size: "xxs" },
+                value.length,
+                " / ",
+                characterLimit)))));
+};
+TextField.defaultProps = {
+    helperText: '&nbsp;',
+    errorText: '&nbsp;',
+};
+var templateObject_1$c, templateObject_2$6;
+
+var Form = function (_a) {
+    var children = _a.children;
+    return React__default['default'].createElement(React__default['default'].Fragment, null, children);
+};
+Form.TextField = TextField;
+
 exports.BMEBadge = Badge;
 exports.BMEBox = Box;
 exports.BMEButton = Button;
 exports.BMECard = Card;
+exports.BMEForm = Form;
 exports.BMEGlobalStyles = GlobalStyles;
+exports.BMEGrid = Grid$1;
 exports.BMEHeader = Header;
 exports.BMEImage = Image;
+exports.BMENav = Nav;
 exports.BMEText = Text;
+exports.BMETopbar = Topbar;
 //# sourceMappingURL=index.js.map
