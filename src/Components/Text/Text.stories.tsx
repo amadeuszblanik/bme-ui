@@ -1,50 +1,49 @@
-import React from "react";
-import {BMEText} from "../../index";
+import React from 'react';
+import { BMEText } from '../../index';
 
 export default {
-  title: "Text"
+    title: 'Text',
 };
 
 export const Component = ({ content, ...args }) => (
-  <>
-    <BMEText {...args}>{content}</BMEText>
-  </>
+    <>
+        <BMEText {...args}>{content}</BMEText>
+    </>
 );
 
 Component.args = {
-  content: 'Lorem ipsum dolor sit amet.'
-}
+    content: 'Lorem ipsum dolor sit amet.',
+};
 
 Component.argTypes = {
-  content: {
-    control: 'text',
-  },
-  size: {
-    control: {
-      type: 'inline-radio',
-      options: ['xxl', 'xl', 'l', 'm', 's', 'xs', 'xxs'],
+    content: {
+        control: 'text',
     },
-  },
-  fontFamily: {
-    control: {
-      type: 'inline-radio',
-      options: ['sansSerif', 'serif', 'mono'],
+    size: {
+        control: {
+            type: 'inline-radio',
+            options: ['xxl', 'xl', 'l', 'm', 's', 'xs', 'xxs'],
+        },
     },
-  },
-  italic: {
-    control: 'boolean',
-  },
-  weight: {
-    control: {
-      type: 'inline-radio',
-      options: ['bold', 'regular', 'light'],
+    fontFamily: {
+        control: {
+            type: 'inline-radio',
+            options: ['sansSerif', 'serif', 'mono'],
+        },
     },
-  },
-  align: {
-    control: {
-      type: 'inline-radio',
-      options: ['left', 'center', 'right'],
+    italic: {
+        control: 'boolean',
     },
-  },
-}
-
+    weight: {
+        control: {
+            type: 'inline-radio',
+            options: ['bold', 'regular', 'light'],
+        },
+    },
+    align: {
+        control: {
+            type: 'inline-radio',
+            options: ['left', 'center', 'right'],
+        },
+    },
+};

@@ -1,76 +1,75 @@
-import React, {useState} from "react";
-import {BMEForm} from "../../index";
+import React, { useState } from 'react';
+import { BMEForm } from '../../index';
 
 export default {
-  title: "Form"
+    title: 'Form',
 };
 
-
 export const Component = () => (
-  <BMEForm>
-    <BMEForm.TextField />
-  </BMEForm>
+    <BMEForm>
+        <BMEForm.TextField />
+    </BMEForm>
 );
 
 export const TextField = ({ value, ...args }) => {
-  const [stateValue, setStateValue] = useState(value);
+    const [stateValue, setStateValue] = useState(value);
 
-  return (
-    <BMEForm>
-      <BMEForm.TextField value={stateValue} onChange={setStateValue} {...args} />
-    </BMEForm>
-  );
-}
+    return (
+        <BMEForm>
+            <BMEForm.TextField value={stateValue} onChange={setStateValue} {...args} />
+        </BMEForm>
+    );
+};
 
 TextField.args = {
-  value: '',
-  name: 'name',
-  label: 'Name',
-  characterLimit: 20,
-  helperText: 'eg. John Doe',
-  errorText: 'This field is not valid',
-  required: true,
-}
+    value: '',
+    name: 'name',
+    label: 'Name',
+    characterLimit: 20,
+    helperText: 'eg. John Doe',
+    errorText: 'This field is not valid',
+    required: true,
+};
 
 TextField.argTypes = {
-  value: {
-    control: {
-      type: 'text',
+    value: {
+        control: {
+            type: 'text',
+        },
     },
-  },
-  name: {
-    control: {
-      type: 'text',
+    name: {
+        control: {
+            type: 'text',
+        },
     },
-  },
-  label: {
-    control: {
-      type: 'text',
+    label: {
+        control: {
+            type: 'text',
+        },
     },
-  },
-  characterLimit: {
-    control: {
-      type: 'number',
+    characterLimit: {
+        control: {
+            type: 'number',
+        },
     },
-  },
-  helperText: {
-    control: {
-      type: 'string',
+    helperText: {
+        control: {
+            type: 'string',
+        },
     },
-  },
-  errorText: {
-    control: {
-      type: 'string',
+    errorText: {
+        control: {
+            type: 'string',
+        },
     },
-  },
-  required: {
-    control: {
-      type: 'boolean',
+    required: {
+        control: {
+            type: 'boolean',
+        },
     },
-  },
-  valid: {
-    control: {
-      type: 'boolean',
+    valid: {
+        control: {
+            type: 'boolean',
+        },
     },
-  },
 };
