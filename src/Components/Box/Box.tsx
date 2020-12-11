@@ -5,6 +5,8 @@ import { clearButtonStyles, makeFlex, spacing, textColour } from '../../Mixins';
 import { WIDTH_HEIGHT_VALUES } from './Box.variants';
 
 const StyledBox = styled.div<BoxStyledComponentProps>`
+    ${() => clearButtonStyles()}
+
     position: relative;
     display: ${({ inline }) => (inline ? 'inline-flex' : 'flex')};
     ${({ width }) => (WIDTH_HEIGHT_VALUES[width] ? `width: ${WIDTH_HEIGHT_VALUES[width]};` : '')}
@@ -17,7 +19,6 @@ const StyledBox = styled.div<BoxStyledComponentProps>`
     ${({ theme, background }) => (background ? `background: ${theme.bme.palette[background]};` : '')}
     ${({ theme, background }) =>
         background ? `--bme-colour-text: ${textColour(theme.bme.palette[background], theme)};` : ''}
-    ${() => clearButtonStyles()}
 `;
 
 const Box: React.FunctionComponent<BoxStyledComponentProps> = ({ children, ...styledComponentsProperties }) => (
