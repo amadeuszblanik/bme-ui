@@ -1,5 +1,5 @@
-import React from "react";
-import { Palette } from "../../Theme/Theme";
+import React from 'react';
+import { Palette } from '../../Theme/Theme';
 export interface CardStyledComponentProps {
     borderColour: Palette;
 }

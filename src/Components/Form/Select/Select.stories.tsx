@@ -1,40 +1,43 @@
 import React, { useState } from 'react';
-import { BMEForm } from '../../index';
+import { BMEForm } from '../../../index';
 
 export default {
-    title: 'Form',
+    title: 'Form/Select',
 };
 
-export const Component = () => (
-    <BMEForm>
-        <BMEForm.TextField />
-    </BMEForm>
-);
-
-export const TextField = ({ value, ...args }) => {
+export const Component = ({ value, options, name, ...args }) => {
     const [stateValue, setStateValue] = useState(value);
 
     return (
         <BMEForm>
-            <BMEForm.TextField value={stateValue} onChange={setStateValue} {...args} />
+            <BMEForm.Select options={options} name={name} value={stateValue} onChange={setStateValue} {...args} />
         </BMEForm>
     );
 };
 
-TextField.args = {
+Component.args = {
     value: '',
+    options: [
+        { value: '1', content: 'Lorem' },
+        { value: '2', content: 'Ipsum' },
+        { value: '3', content: 'Dolor' },
+    ],
     name: 'name',
     label: 'Name',
-    characterLimit: 20,
     helperText: 'eg. John Doe',
-    errorText: 'This field is not valid',
+    errorText: 'This field is required',
     required: true,
 };
 
-TextField.argTypes = {
+Component.argTypes = {
     value: {
         control: {
             type: 'text',
+        },
+    },
+    options: {
+        control: {
+            type: 'object',
         },
     },
     name: {
@@ -47,19 +50,14 @@ TextField.argTypes = {
             type: 'text',
         },
     },
-    characterLimit: {
-        control: {
-            type: 'number',
-        },
-    },
     helperText: {
         control: {
-            type: 'string',
+            type: 'text',
         },
     },
     errorText: {
         control: {
-            type: 'string',
+            type: 'text',
         },
     },
     required: {

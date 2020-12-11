@@ -3,6 +3,7 @@ import { Palette } from '../../Theme/Theme';
 import { AlignDirectionValues, AlignXValues, AlignYValues } from '../../Mixins/makeFlex';
 
 export interface BoxStyledComponentProps {
+    as?: 'button' | 'div' | 'a';
     rounded?: 'full' | boolean;
     background?: Palette;
     padding?: SpacingSize;

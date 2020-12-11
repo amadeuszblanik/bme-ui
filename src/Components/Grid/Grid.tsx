@@ -4,13 +4,15 @@ import { default as SCGrid } from 'styled-components-grid';
 
 import { GridColComponentProps, GridComponentProps, GridSubcomponents } from './Grid.types';
 import { WIDTH_HEIGHT_VALUES } from '../Box/Box.variants';
-import { spacing } from '../../Mixins';
+import { makeFlex, spacing } from '../../Mixins';
 
 const StyledGrid = styled(SCGrid)<GridComponentProps>`
-    ${({ width }) => (WIDTH_HEIGHT_VALUES[width] ? `width: ${WIDTH_HEIGHT_VALUES[width]};` : '')}
+    width: ${({ width }) => WIDTH_HEIGHT_VALUES[width] || '100%'};
 `;
 
 const StyledCol = styled(SCGrid.Unit)`
+    display: flex;
+    ${({ direction, alignX, alignY }) => (direction || alignX || alignY ? makeFlex(direction, alignX, alignY) : '')}
     padding: ${({ theme }) => theme.bme.grid.gap.mobile / 2}px;
 
     @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -18,7 +20,7 @@ const StyledCol = styled(SCGrid.Unit)`
     }
 `;
 
-const GridCol: React.FunctionComponent<GridColComponentProps> = ({ children, mobile, tablet, desktop }) => {
+const GridCol: React.FunctionComponent<GridColComponentProps> = ({ children, mobile, tablet, desktop, ...props }) => {
     const {
         bme: {
             grid: { sizes },
@@ -31,7 +33,11 @@ const GridCol: React.FunctionComponent<GridColComponentProps> = ({ children, mob
         xl: desktop / sizes.desktop,
     };
 
-    return <StyledCol size={size}>{children}</StyledCol>;
+    return (
+        <StyledCol size={size} {...props}>
+            {children}
+        </StyledCol>
+    );
 };
 
 const StyledContainer = styled.div`

@@ -1,5 +1,5 @@
-import React from "react";
-import { AlignXValues } from "../../Mixins/makeFlex";
+import React from 'react';
+import { AlignXValues } from '../../Mixins/makeFlex';
 export interface NavItemComponentProps {
     active?: boolean;
 }

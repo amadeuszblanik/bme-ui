@@ -1,4 +1,4 @@
-import { TextFontWeights, TextSizes } from "./Text.types";
+import { TextFontWeights, TextSizes } from './Text.types';
 declare const TextFontSize: {
     [key in TextSizes]: number;
 };

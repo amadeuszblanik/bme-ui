@@ -11,6 +11,7 @@ import Topbar from './Components/Topbar/Topbar';
 import Nav from './Components/Nav/Nav';
 import Form from './Components/Form/Form';
 import Mapbox from './Components/Mapbox/Mapbox';
+import List from './Components/List/List';
 
 export { GlobalStyles as BMEGlobalStyles };
 export { Text as BMEText };
@@ -25,3 +26,4 @@ export { Topbar as BMETopbar };
 export { Nav as BMENav };
 export { Form as BMEForm };
 export { Mapbox as BMEMapbox };
+export { List as BMEList };
