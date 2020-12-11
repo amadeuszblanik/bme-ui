@@ -6,6 +6,7 @@ export interface TopbarStyledComponentProps {
     fixed?: boolean;
 }
 
-export interface TopbarComponentProps extends TopbarStyledComponentProps {
-    brand: string;
+export interface TopSubcomponents {
+    Brand: React.FunctionComponent;
+    Content: React.FunctionComponent;
 }
