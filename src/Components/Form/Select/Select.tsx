@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BMEBox, BMEText } from '../../../index';
 import { SelectComponentProps } from './Select.types';
-import { StyledSelect } from '../TextField/TextField.styled';
+import { StyledSelect } from './Select.styled';
 
 const Select: React.FunctionComponent<SelectComponentProps> = ({
     name,
