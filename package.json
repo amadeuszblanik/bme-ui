@@ -14,7 +14,8 @@
     "test:watch": "jest --watch",
     "lint": "eslint src/**/*.ts src/**/*.tsx --ignore-pattern *.stories.*",
     "storybook": "start-storybook -p 6006",
-    "storybook:export": "build-storybook -o docs-build"
+    "storybook:export": "build-storybook -o docs-build",
+    "storybook:publish": "storybook-to-ghpages"
   },
   "repository": {
     "type": "git",
