@@ -40,7 +40,7 @@ const StyledAccent = styled.span<NavItemComponentProps>`
 `;
 
 const NavItem: React.FunctionComponent<NavItemComponentProps> = ({ children, active }) => (
-    <BMEBox padding={{ x: 's' }}>
+    <BMEBox padding={{ x: 's' }} as="button">
         <StyledText fontFamily="mono" italic active={active}>
             <StyledAccent active={active}>#</StyledAccent>
             {children}
