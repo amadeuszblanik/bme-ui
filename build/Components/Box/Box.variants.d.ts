@@ -1,4 +1,4 @@
-import { AlignXValues, AlignYValues } from "../../Mixins/makeFlex";
+import { AlignXValues, AlignYValues } from '../../Mixins/makeFlex';
 export declare const WIDTH_HEIGHT_VALUES: {
     full: string;
     half: string;
