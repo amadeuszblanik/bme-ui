@@ -27,7 +27,7 @@ const Topbar: React.FunctionComponent<TopbarComponentProps> = ({ children, brand
         <StyledTopbar {...args}>
             <BMEGrid.Container>
                 <BMEGrid>
-                    <BMEGrid.Col mobile={1} tablet={1} desktop={2}>
+                    <BMEGrid.Col mobile={1} tablet={1} desktop={2} alignY="center">
                         <BMEBox alignY="center">
                             {brandIsURL ? (
                                 <BMEImage source={brand} width="42px" />
