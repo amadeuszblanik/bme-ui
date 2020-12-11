@@ -7,7 +7,7 @@ import { WIDTH_HEIGHT_VALUES } from '../Box/Box.variants';
 import { spacing } from '../../Mixins';
 
 const StyledGrid = styled(SCGrid)<GridComponentProps>`
-    ${({ width }) => (WIDTH_HEIGHT_VALUES[width] ? `width: ${WIDTH_HEIGHT_VALUES[width]};` : '')}
+    width: ${({ width }) => WIDTH_HEIGHT_VALUES[width] || '100%'};
 `;
 
 const StyledCol = styled(SCGrid.Unit)`
