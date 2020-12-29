@@ -24,8 +24,6 @@ Component.args = {
     ],
     name: 'name',
     label: 'Name',
-    helperText: 'eg. John Doe',
-    errorText: 'This field is required',
     required: true,
 };
 
@@ -50,22 +48,7 @@ Component.argTypes = {
             type: 'text',
         },
     },
-    helperText: {
-        control: {
-            type: 'text',
-        },
-    },
-    errorText: {
-        control: {
-            type: 'text',
-        },
-    },
     required: {
-        control: {
-            type: 'boolean',
-        },
-    },
-    valid: {
         control: {
             type: 'boolean',
         },

@@ -8,9 +8,6 @@ export interface SelectComponentProps {
     name: string;
     label?: string;
     value?: string;
-    helperText?: string;
-    errorText?: string;
-    valid?: boolean;
     onChange: (value: string) => void;
     required?: boolean;
 }
