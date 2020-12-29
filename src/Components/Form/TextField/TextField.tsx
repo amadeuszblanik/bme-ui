@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BMEBox, BMEText } from '../../../index';
 import { TextFieldComponentProps } from './TextField.types';
 import { StyledInput, StyledLabel } from './TextField.styled';
+import { renderLabel } from '../../../Utils';
 
 const TextField: React.FunctionComponent<TextFieldComponentProps> = ({
     name,
@@ -35,10 +36,7 @@ const TextField: React.FunctionComponent<TextFieldComponentProps> = ({
         <BMEBox width="full" direction="column">
             <BMEBox width="full">
                 <StyledLabel for={name} filled={filled} required={requiredValid || valid}>
-                    <BMEText size={filled ? 'xxs' : 'm'}>
-                        {label}
-                        {required ? '*' : ''}
-                    </BMEText>
+                    <BMEText size={filled ? 'xxs' : 'm'}>{renderLabel(label, required)}</BMEText>
                 </StyledLabel>
                 <StyledInput id={name} name={name} value={value} onChange={handleChange} required={requiredValid} />
             </BMEBox>
