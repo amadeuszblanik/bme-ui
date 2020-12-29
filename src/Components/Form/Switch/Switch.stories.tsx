@@ -1,22 +1,28 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import { action } from '@storybook/addon-actions';
 import { BMEForm } from '../../../index';
 
 export default {
-    title: 'Form/Select',
+    title: 'Form/Switch',
 };
 
-export const Component = ({ value, options, name, ...args }) => {
+export const Component = ({ value, name, label, ...args }) => {
     const [stateValue, setStateValue] = useState(value);
+
+    const handleChange = useCallback((nextValue) => {
+        action('Changed value')(nextValue);
+        setStateValue(nextValue);
+    }, []);
 
     return (
         <BMEForm>
-            <BMEForm.Select options={options} name={name} value={stateValue} onChange={setStateValue} {...args} />
+            <BMEForm.Switch name={name} value={stateValue} label={label} onChange={handleChange} {...args} />
         </BMEForm>
     );
 };
 
 Component.args = {
-    value: '',
+    value: false,
     options: [
         { value: '1', content: 'Lorem' },
         { value: '2', content: 'Ipsum' },
@@ -25,12 +31,13 @@ Component.args = {
     name: 'name',
     label: 'Name',
     required: true,
+    variant: 'primary',
 };
 
 Component.argTypes = {
     value: {
         control: {
-            type: 'text',
+            type: 'boolean',
         },
     },
     options: {
@@ -51,6 +58,12 @@ Component.argTypes = {
     required: {
         control: {
             type: 'boolean',
+        },
+    },
+    variant: {
+        control: {
+            type: 'inline-radio',
+            options: ['primary', 'secondary', 'tertiary', 'dark', 'light'],
         },
     },
 };

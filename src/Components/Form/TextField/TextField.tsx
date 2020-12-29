@@ -2,63 +2,39 @@ import React, { useState } from 'react';
 import { BMEBox, BMEText } from '../../../index';
 import { TextFieldComponentProps } from './TextField.types';
 import { StyledInput, StyledLabel } from './TextField.styled';
+import { isEmpty, renderLabel } from '../../../Utils';
 
-const TextField: React.FunctionComponent<TextFieldComponentProps> = ({
-    name,
-    value,
-    label,
-    characterLimit,
-    helperText,
-    errorText,
-    onChange,
-    required,
-    valid,
-}) => {
-    const [valueHasChanged, setValueHasChanged] = useState(false);
-    const filled = value && value.length > 0;
-    const characterLimitEnabled = Boolean(characterLimit);
-    const requiredValid = valid || (required && valueHasChanged ? filled : true);
+const TextField: React.FunctionComponent<TextFieldComponentProps> = ({ name, value, label, onChange, required }) => {
+    const [filled, setFilled] = useState(!isEmpty(value));
 
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    const handleChange = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) => {
-        setValueHasChanged(true);
+    const handleChange = ({ target: { value: targetValue } }: React.ChangeEvent<HTMLInputElement>) => {
+        setFilled(!isEmpty(targetValue));
+        onChange(targetValue);
+    };
 
-        if (characterLimitEnabled && value.length > characterLimit) {
-            onChange(value.substring(0, characterLimit));
-            return;
-        }
+    const handleFocus = () => {
+        setFilled(true);
+    };
 
-        onChange(value);
+    const handleBlur = ({ target: { value: targetValue } }: React.ChangeEvent<HTMLInputElement>) => {
+        setFilled(!isEmpty(targetValue));
     };
 
     return (
-        <BMEBox width="full" direction="column">
-            <BMEBox width="full">
-                <StyledLabel for={name} filled={filled} required={requiredValid || valid}>
-                    <BMEText size={filled ? 'xxs' : 'm'}>
-                        {label}
-                        {required ? '*' : ''}
-                    </BMEText>
-                </StyledLabel>
-                <StyledInput id={name} name={name} value={value} onChange={handleChange} required={requiredValid} />
-            </BMEBox>
-            <BMEBox width="full" alignX="justify" padding={{ y: 's', x: 'm' }}>
-                <BMEText size="xxs" variant={!requiredValid ? 'required' : null}>
-                    {!requiredValid ? errorText : helperText}
-                </BMEText>
-                {characterLimitEnabled && (
-                    <BMEText size="xxs">
-                        {value.length} / {characterLimit!}
-                    </BMEText>
-                )}
-            </BMEBox>
+        <BMEBox width="full">
+            <StyledLabel for={name} filled={filled}>
+                <BMEText size={filled ? 'xxs' : 'm'}>{renderLabel(label, required)}</BMEText>
+            </StyledLabel>
+            <StyledInput
+                id={name}
+                name={name}
+                value={value}
+                onChange={handleChange}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+            />
         </BMEBox>
     );
-};
-
-TextField.defaultProps = {
-    helperText: '&nbsp;',
-    errorText: '&nbsp;',
 };
 
 export default TextField;
