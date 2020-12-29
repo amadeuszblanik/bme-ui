@@ -2,12 +2,26 @@ const path = require("path");
 
 module.exports = {
   stories: ["../src/**/*.stories.tsx"],
-  addons: [{
-    name: '@storybook/addon-essentials',
-    options: {
-      backgrounds: false,
-    }
-  }],
+  addons: [
+    {
+      name: '@storybook/addon-essentials',
+      options: {
+        backgrounds: false,
+      }
+    },
+    '@storybook/addon-viewport',
+    {
+      name: '@storybook/addon-storysource',
+      options: {
+        rule: {
+          include: [path.resolve(__dirname, '../src')],
+        },
+        loaderOptions: {
+          prettierConfig: { printWidth: 80, singleQuote: false },
+        },
+      },
+    },
+  ],
   webpackFinal: async (config) => {
     config.module.rules.push({
       test: /\.scss$/,
