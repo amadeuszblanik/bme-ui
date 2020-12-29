@@ -1,8 +1,22 @@
 import React, { useState } from 'react';
 import { BMEBox, BMEText } from '../../../index';
-import { LabelComponentProps } from './Label.types';
+import { LabelCharacterLimitComponentProps, LabelComponentProps } from './Label.types';
+import { isRealNumber } from '../../../Utils';
 
-const Label: React.FunctionComponent<LabelComponentProps> = ({ helperText, errorText, valid, children }) => {
+const CharacterLimit: React.FunctionComponent<LabelCharacterLimitComponentProps> = ({ characters, maxLimit }) =>
+    isRealNumber(characters) && maxLimit ? (
+        <BMEText size="xxs">
+            {characters} / {maxLimit}
+        </BMEText>
+    ) : null;
+
+const Label: React.FunctionComponent<LabelComponentProps> = ({
+    helperText,
+    errorText,
+    valid,
+    children,
+    ...characterLimitProps
+}) => {
     const [stateValid] = useState(valid || true);
 
     return (
@@ -12,6 +26,7 @@ const Label: React.FunctionComponent<LabelComponentProps> = ({ helperText, error
                 <BMEText size="xxs" variant={!stateValid ? 'required' : null}>
                     {!stateValid ? errorText : helperText}
                 </BMEText>
+                <CharacterLimit {...characterLimitProps}></CharacterLimit>
             </BMEBox>
         </BMEBox>
     );

@@ -35,4 +35,14 @@ Component.argTypes = {
             type: 'boolean',
         },
     },
+    characters: {
+        control: {
+            type: 'number',
+        },
+    },
+    maxLimit: {
+        control: {
+            type: 'number',
+        },
+    },
 };
