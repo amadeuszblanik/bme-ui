@@ -11,11 +11,11 @@ export const decorators = [
       <BMEGlobalStyles/>
       <BMEBox alignX="center" direction="column" padding={{ y: "s" }}>
         <BMEBox alignX="center" direction="column" padding={{ y: { bottom: "s" } }}>
-          <BMEText align="center">
+          <BMEText align="center" variant="light">
             BME-UI Playground — {packageJSON.version}
           </BMEText>
         </BMEBox>
-        <BMEText size="s" align="center">
+        <BMEText size="s" align="center" variant="light">
           💅 by Amadeusz Blanik &copy; 2020 MIT
         </BMEText>
       </BMEBox>

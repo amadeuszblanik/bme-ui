@@ -45,6 +45,7 @@
     "@babel/core": "^7.11.6",
     "@rollup/plugin-commonjs": "^15.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
+    "@storybook/addon-viewport": "^6.1.11",
     "@storybook/react": "^6.1.10",
     "@storybook/storybook-deployer": "^2.8.7",
     "@testing-library/jest-dom": "^5.11.4",
@@ -81,6 +82,9 @@
   },
   "dependencies": {
     "@storybook/addon-essentials": "^6.1.10",
+    "@storybook/addon-storysource": "^6.1.11",
+    "@storybook/addons": "^6.1.11",
+    "@storybook/theming": "^6.1.11",
     "styled-components-grid": "^2.2.2",
     "styled-reset": "^4.2.3"
   },
