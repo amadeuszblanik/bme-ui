@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { BMEBox, BMEText } from '../../../index';
+import { BMEBox, BMESwitch, BMEText } from '../../../index';
 import { SwitchComponentProps } from './Switch.types';
-import { StyledCustomSwitch, StyledCustomSwitchIndicator, StyledLabel, StyledSwitch } from './Switch.styled';
+import { StyledLabel, StyledSwitch } from './Switch.styled';
 import { renderLabel } from '../../../Utils';
 
 const Switch: React.FunctionComponent<SwitchComponentProps> = ({ name, value, label, onChange, required, variant }) => {
@@ -13,13 +13,11 @@ const Switch: React.FunctionComponent<SwitchComponentProps> = ({ name, value, la
     };
 
     return (
-        <BMEBox width="full">
+        <BMEBox width="full" padding={{ x: 'm' }}>
             <StyledLabel htmlFor={name}>
                 <BMEBox width="full" alignX="justify">
                     <BMEText>{renderLabel(label, required)}</BMEText>
-                    <StyledCustomSwitch checked={value} variant={variant}>
-                        <StyledCustomSwitchIndicator checked={value} variant={variant} />
-                    </StyledCustomSwitch>
+                    <BMESwitch checked={value} variant={variant} />
                 </BMEBox>
             </StyledLabel>
             <StyledSwitch
