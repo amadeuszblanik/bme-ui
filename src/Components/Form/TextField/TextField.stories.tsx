@@ -19,9 +19,6 @@ Component.args = {
     value: '',
     name: 'name',
     label: 'Name',
-    characterLimit: 20,
-    helperText: 'eg. John Doe',
-    errorText: 'This field is not valid',
     required: true,
 };
 
@@ -41,27 +38,7 @@ Component.argTypes = {
             type: 'text',
         },
     },
-    characterLimit: {
-        control: {
-            type: 'number',
-        },
-    },
-    helperText: {
-        control: {
-            type: 'text',
-        },
-    },
-    errorText: {
-        control: {
-            type: 'text',
-        },
-    },
     required: {
-        control: {
-            type: 'boolean',
-        },
-    },
-    valid: {
         control: {
             type: 'boolean',
         },
