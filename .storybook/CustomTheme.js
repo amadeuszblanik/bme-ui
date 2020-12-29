@@ -26,9 +26,9 @@ export default create({
   barBg: '#070614',
 
   // Form colors
-  inputBg: '#30d158',
+  inputBg: '#020208',
   inputBorder: '#020208',
-  inputTextColor: '#30d158',
+  inputTextColor: '#e6e6e8',
   inputBorderRadius: 1,
 
   brandTitle: 'Blanik.me',
