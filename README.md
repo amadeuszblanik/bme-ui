@@ -35,3 +35,6 @@ Please make sure to update tests as appropriate.
 
 ## License
 [MIT](https://github.com/amadeuszblanik/bme-ui/blob/master/LICENSE)
+
+## Credits
+*[leungwensen/svg-icon](https://github.com/leungwensen/svg-icon)
