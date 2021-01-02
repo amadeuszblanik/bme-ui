@@ -2,7 +2,7 @@ import React from 'react';
 import { BMEBox, BMEHeader, BMENav } from '../../index';
 
 export default {
-    title: 'Navigation',
+    title: 'Components/Navigation',
 };
 
 export const Component = ({ ...args }) => (

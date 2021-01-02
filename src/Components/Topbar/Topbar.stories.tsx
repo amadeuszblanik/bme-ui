@@ -2,13 +2,13 @@ import React from 'react';
 import { BMEBox, BMEImage, BMENav, BMEText, BMETopbar } from '../../index';
 
 export default {
-    title: 'App Top Bar',
+    title: 'Components/App Top Bar',
 };
 
-export const Component = ({ brand, ...args }) => (
+export const Component = ({ ...args }) => (
     <>
         <BMETopbar {...args}>
-            <BMETopbar.Brand brand={brand}>
+            <BMETopbar.Brand>
                 <BMEImage source="https://blanik.me/assets/logo.svg" width="42px" />
                 <BMEBox padding={{ x: { left: 's' } }}>
                     <BMEText fontFamily="mono" italic>

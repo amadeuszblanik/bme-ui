@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BMEForm } from '../../../index';
 
 export default {
-    title: 'Form/Select',
+    title: 'Forms/Select',
 };
 
 export const Component = ({ value, options, name, ...args }) => {

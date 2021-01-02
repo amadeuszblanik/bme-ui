@@ -2,7 +2,7 @@ import React from 'react';
 import { BMEBox, BMEGrid, BMEText } from '../../index';
 
 export default {
-    title: 'Grid',
+    title: 'Components/Grid',
 };
 
 export const Component = ({ mobile, tablet, desktop }) => (
