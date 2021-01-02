@@ -56,7 +56,6 @@ const generateIconKey = (key, duplicatedKeys, index) => {
         wordsInKey[1] = wordsInKey[0];
         wordsInKey[0] = secondWord;
 
-        console.debug('Fucked up', wordsInKey);
         return wordsInKey.join('');
     }
 
