@@ -28,6 +28,43 @@ const findIconContent = (content) => {
     return contentByLine.split('content: "')[1].split('";')[0];
 };
 
+const isStartWithNumber = (value) => (typeof value === 'string' ? !isNaN(Number(value[0])) : false);
+
+const generateIconKey = (key, duplicatedKeys, index) => {
+    if (!key || !duplicatedKeys) {
+        return;
+    }
+
+    if (duplicatedKeys.includes(key)) {
+        console.debug({ key, duplicatedKeys });
+        key = `${key}${index}`;
+    }
+
+    if (isStartWithNumber(key)) {
+        const wordsInKey = key.split(/(?=[A-Z])/);
+
+        if (wordsInKey.length < 2) {
+            return `Icon${key}`;
+        }
+
+        const secondWord = wordsInKey[1];
+
+        if (isStartWithNumber(secondWord)) {
+            return `Icon${key}`;
+        }
+
+        wordsInKey[1] = wordsInKey[0];
+        wordsInKey[0] = secondWord;
+
+        console.debug('Fucked up', wordsInKey);
+        return wordsInKey.join('');
+    }
+
+    return key;
+};
+
+const findDuplicates = (values) => values.filter((item, index) => values.indexOf(item) != index);
+
 generateFonts({
     name: 'bme-icons',
     fontTypes: ['eot', 'woff2', 'woff'],
@@ -54,7 +91,11 @@ generateFonts({
             .map((entry) => [findIconName(entry), findIconContent(entry)])
             .filter((entry) => entry.every(Boolean));
 
-        const contentAsEnum = content.map((entry) => `i${entry[0]} = '${entry[1]}',`);
+        const duplicatedKeys = findDuplicates(content.flatMap(([key]) => key));
+
+        const contentAsEnum = content.map(
+            (entry, index) => `${generateIconKey(entry[0], duplicatedKeys, index)} = '${entry[1]}',`,
+        );
 
         const dataToWrite = `export enum IconNames {
     ${contentAsEnum.join('\n    ')}
