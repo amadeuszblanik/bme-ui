@@ -14,6 +14,7 @@ import List from './Components/List/List';
 import Switch from './Components/Switch/Switch';
 import Icon from './Components/Icon/Icon';
 import { GlobalIcon } from './Components/Icon/Icon.styled';
+import Alert from './Components/Alert/Alert';
 
 export { GlobalStyles as BMEGlobalStyles };
 export { Text as BMEText };
@@ -31,3 +32,4 @@ export { List as BMEList };
 export { Switch as BMESwitch };
 export { Icon as BMEIcon };
 export { GlobalIcon as BMEGlobalIcon };
+export { Alert as BMEAlert };
