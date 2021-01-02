@@ -192,8 +192,8 @@ export type BmeIconsId =
   | "loading-spinner"
   | "loading"
   | "locate-o"
-  | "location-"
   | "location-delete"
+  | "location-selected"
   | "location"
   | "lock-row"
   | "lock"
@@ -564,8 +564,8 @@ export type BmeIconsKey =
   | "LoadingSpinner"
   | "Loading"
   | "LocateO"
-  | "Location"
   | "LocationDelete"
+  | "LocationSelected"
   | "Location"
   | "LockRow"
   | "Lock"
@@ -936,8 +936,8 @@ export enum BmeIcons {
   LoadingSpinner = "loading-spinner",
   Loading = "loading",
   LocateO = "locate-o",
-  Location = "location-",
   LocationDelete = "location-delete",
+  LocationSelected = "location-selected",
   Location = "location",
   LockRow = "lock-row",
   Lock = "lock",
@@ -1309,8 +1309,8 @@ export const BME_ICONS_CODEPOINTS: { [key in BmeIcons]: string } = {
   [BmeIcons.LoadingSpinner]: "61887",
   [BmeIcons.Loading]: "61888",
   [BmeIcons.LocateO]: "61889",
-  [BmeIcons.Location]: "61890",
-  [BmeIcons.LocationDelete]: "61891",
+  [BmeIcons.LocationDelete]: "61890",
+  [BmeIcons.LocationSelected]: "61891",
   [BmeIcons.Location]: "61892",
   [BmeIcons.LockRow]: "61893",
   [BmeIcons.Lock]: "61894",

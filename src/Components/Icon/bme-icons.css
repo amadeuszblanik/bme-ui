@@ -1,8 +1,8 @@
 @font-face {
     font-family: "bme-icons";
-    src: url("./bme-icons.eot?6ce6f9f2446a81b8252782a54f751e06#iefix") format("embedded-opentype"),
-url("./bme-icons.woff2?6ce6f9f2446a81b8252782a54f751e06") format("woff2"),
-url("./bme-icons.woff?6ce6f9f2446a81b8252782a54f751e06") format("woff");
+    src: url("./bme-icons.eot?79787a32e421977268e765bf30701e92#iefix") format("embedded-opentype"),
+url("./bme-icons.woff2?79787a32e421977268e765bf30701e92") format("woff2"),
+url("./bme-icons.woff?79787a32e421977268e765bf30701e92") format("woff");
 }
 
 .bme-icon:before {
@@ -595,10 +595,10 @@ url("./bme-icons.woff?6ce6f9f2446a81b8252782a54f751e06") format("woff");
 .bme-icon.icon-locate-o:before {
     content: "\f1c1";
 }
-.bme-icon.icon-location-:before {
+.bme-icon.icon-location-delete:before {
     content: "\f1c2";
 }
-.bme-icon.icon-location-delete:before {
+.bme-icon.icon-location-selected:before {
     content: "\f1c3";
 }
 .bme-icon.icon-location:before {
