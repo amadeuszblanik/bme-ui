@@ -2,7 +2,7 @@ import React from 'react';
 import { BMEGrid, BMEList, BMEText } from '../../index';
 
 export default {
-    title: 'List',
+    title: 'Components/List',
 };
 
 export const Component = ({ ...args }) => (

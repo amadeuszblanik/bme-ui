@@ -2,7 +2,7 @@ import React from 'react';
 import { BMEButton, BMEText } from '../../index';
 
 export default {
-    title: 'Button',
+    title: 'Components/Button',
 };
 
 export const Component = ({ content, ...args }) => (

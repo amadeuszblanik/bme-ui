@@ -3,7 +3,7 @@ import { BMESwitch } from '../../index';
 import { action } from '@storybook/addon-actions';
 
 export default {
-    title: 'Switch',
+    title: 'Components/Switch',
 };
 
 export const Component = ({ checked, ...args }) => {

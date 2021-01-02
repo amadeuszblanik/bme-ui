@@ -3,7 +3,7 @@ import { BMEGlobalIcon, BMEIcon } from '../../index';
 import { IconNames } from './Icons.names';
 
 export default {
-    title: 'Icon',
+    title: 'Components/Icon',
 };
 
 export const Component = ({ icon, variant, sizeInPx }) => (

@@ -2,7 +2,7 @@ import React from 'react';
 import { BMEBox, BMEImage } from '../../index';
 
 export default {
-    title: 'Image',
+    title: 'Components/Image',
 };
 
 export const Component = ({ content, source, ...args }) => (

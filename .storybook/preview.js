@@ -5,6 +5,16 @@ import theme from "../src/Theme/Theme";
 import {BMEBox, BMEGlobalStyles, BMEText} from "../src";
 import packageJSON from "../package.json";
 
+export const parameters = {
+  options: {
+    storySort: {
+      method: '',
+      order: ['Getting started', 'Components', 'Forms'],
+      locales: '',
+    },
+  }
+}
+
 export const decorators = [
   (Story) => (
     <ThemeProvider theme={theme}>

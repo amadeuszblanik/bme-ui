@@ -2,7 +2,7 @@ import React from 'react';
 import { BMEBadge, BMEBox, BMEButton, BMEText } from '../../index';
 
 export default {
-    title: 'Badge',
+    title: 'Components/Badge',
 };
 
 export const Component = ({ content, ...args }) => (

@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { BMEForm } from '../../../index';
 
 export default {
-    title: 'Form/Switch',
+    title: 'Forms/Switch',
 };
 
 export const Component = ({ value, name, label, ...args }) => {

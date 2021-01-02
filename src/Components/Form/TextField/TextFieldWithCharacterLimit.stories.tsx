@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { BMEForm } from '../../../index';
 
 export default {
-    title: 'Form/Input with character limit',
+    title: 'Forms/Input with character limit',
 };
 
 export const Component = ({ value, name, helperText, errorText, maxLimit, ...args }) => {
