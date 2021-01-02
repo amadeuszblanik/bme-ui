@@ -16,6 +16,7 @@
     "storybook": "start-storybook -p 6006",
     "storybook:export": "build-storybook -o docs-build",
     "storybook:publish": "storybook-to-ghpages",
+    "generate:component": "node scripts/generateComponent",
     "generate:fontIcon": "node scripts/generateFontIcon"
   },
   "repository": {
