@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ButtonStyledComponentProps } from './Button.types';
+import { ButtonComponentProps, ButtonStyledComponentProps } from './Button.types';
 import { hexToRGBA, makeFlex, spacing, textColour, transition } from '../../Mixins';
 
 const StyledButton = styled.button<ButtonStyledComponentProps>`
@@ -60,8 +60,14 @@ const StyledButton = styled.button<ButtonStyledComponentProps>`
     }
 `;
 
-const Button: React.FunctionComponent<ButtonStyledComponentProps> = ({ children, ...styledComponentsProperties }) => (
-    <StyledButton {...styledComponentsProperties}>{children}</StyledButton>
+const Button: React.FunctionComponent<ButtonComponentProps> = ({
+    children,
+    onClick,
+    ...styledComponentsProperties
+}) => (
+    <StyledButton onClick={onClick} {...styledComponentsProperties}>
+        {children}
+    </StyledButton>
 );
 
 export default Button;
