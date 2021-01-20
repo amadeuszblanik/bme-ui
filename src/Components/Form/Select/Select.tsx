@@ -10,7 +10,7 @@ const Select: React.FunctionComponent<SelectComponentProps> = ({ name, options, 
 
     return (
         <StyledSelect as="select" id={name} name={name} value={value} onChange={handleChange}>
-            <option value="null" selected>
+            <option value="null" selected disabled>
                 {renderLabel(label, required)}
             </option>
             {options.map(({ value: optionValue, content }) => (
