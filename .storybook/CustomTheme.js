@@ -33,5 +33,5 @@ export default create({
 
   brandTitle: 'Blanik.me',
   brandUrl: 'https://blanik.me',
-  brandImage: 'https://blanik.me/assets/logo.svg',
+  brandImage: './logo.svg',
 });
