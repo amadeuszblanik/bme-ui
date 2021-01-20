@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "./main.scss";
 import { ThemeProvider } from 'styled-components';
-import theme, { Palette } from "../src/Theme/Theme";
+import theme from "../src/Theme/Theme";
 import { BMEBox, BMEForm, BMEGlobalStyles, BMEText } from "../src";
 import packageJSON from "../package.json";
 
