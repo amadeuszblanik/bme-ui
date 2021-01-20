@@ -8,6 +8,7 @@ const SIZES_IN_PX: { [key in Sizes]: number } = {
     s: 8,
     xs: 4,
     xxs: 2,
+    none: 0,
 };
 
 const sizeToPx = (size: Sizes): number => SIZES_IN_PX[size];
