@@ -1,0 +1,123 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Getting started/Introduction" />
+
+# Introduction
+BME-UI was created for easy building React application. My side projects mostly fail because of lacks of willingness to build UIs for each of them. So, I decided to start developing a UI library that will handle all of my side projects ideas. Due to lacks of time, the development process of BME-UI library might take some time to release the first stable version.
+
+## In-development state
+This library is still in development. Some component might change, but still should be backward compatible. Please follow **breaking** changes in the changelog.
+
+## Project requirements
+Your projects will require:
+* React >= 16.13.1
+* styled-components >= 5.2.0
+* npm / yarn
+
+🎉 *typescript* and *Next.JS* are fully supported! 🎉
+
+## Quick-start
+
+1. Install library using npm or yarn (`npm i bme-ui` or `yarn add bme-ui`)
+2. Define theme values
+```typescript
+// main.d.ts
+
+declare module 'styled-components' {
+    export interface DefaultTheme {
+        bme: {
+            palette: { [key in Palette]: string };
+            fonts: { [key in TextFontFamilies]: string };
+            grid: {
+                sizes: {
+                    mobile: number;
+                    tablet: number;
+                    desktop: number;
+                };
+                gap: {
+                    mobile: number;
+                    tablet: number;
+                };
+            };
+        };
+        breakpoints: {
+            xs: number;
+            sm: number;
+            md: number;
+            lg: number;
+            xl: number;
+        };
+    }
+}
+```
+```typescript
+// theme.ts
+
+const Thm: DefaultTheme = {
+    bme: {
+        palette: {
+            primary: '#300032',
+            secondary: '#c43235',
+            tertiary: '#0066FF',
+            dark: '#000000',
+            light: '#ffffff',
+            focus: '#f9c642',
+            required: '#cd2026',
+            blue: '#007aff',
+            green: '#34c759',
+            indigo: '#5856d6',
+            orange: '#ff9500',
+            pink: '#ff2d55',
+            purple: '#af52de',
+            red: '#ff3b30',
+            teal: '#5ac8fa',
+            yellow: '#ffcc00',
+        },
+        fonts: {
+            sansSerif:
+                '"IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+            serif: '"IBM Plex Serif", "Palatino Linotype", "Book Antiqua", Palatino, serif',
+            mono: '"IBM Plex Mono", "Lucida Console", Monaco, monospace',
+        },
+        grid: {
+            sizes: {
+                mobile: 4,
+                tablet: 8,
+                desktop: 12,
+            },
+            gap: {
+                mobile: 16,
+                tablet: 24,
+            },
+        },
+    },
+    breakpoints: {
+        xs: 0,
+        sm: 520,
+        md: 720,
+        lg: 840,
+        xl: 1280,
+    },
+};
+
+export default Thm;
+```
+3. Add a theme provider
+[Learn more about theme provider](https://styled-components.com/docs/advanced)
+```typescript jsx
+import theme from './theme.ts';
+
+<ThemeProvider theme={theme}>
+  {children}
+</ThemeProvider>
+```
+4. Now you can use BME-UI components
+```typescript jsx
+import React from 'react';
+import { BMEText } from 'bme-ui';
+
+const Foo: React.FunctionComponent = () => <BMEText>Hello world</BMEText>
+
+export default Foo;
+```
+For more check story for each component and **story tab** on a **bottom panel**.
