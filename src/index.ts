@@ -16,6 +16,7 @@ import Icon from './Components/Icon/Icon';
 import { GlobalIcon } from './Components/Icon/Icon.styled';
 import Alert from './Components/Alert/Alert';
 import Breadcrumbs from './Components/Breadcrumbs/Breadcrumbs';
+import Accordion from './Components/Accordion/Accordion';
 
 export { GlobalStyles as BMEGlobalStyles };
 export { Text as BMEText };
@@ -35,3 +36,4 @@ export { Icon as BMEIcon };
 export { GlobalIcon as BMEGlobalIcon };
 export { Alert as BMEAlert };
 export { Breadcrumbs as BMEBreadcrumbs };
+export { Accordion as BMEAccordion };

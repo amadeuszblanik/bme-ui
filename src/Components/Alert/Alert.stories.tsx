@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { BMEAlert, BMEBox, BMEButton, BMEGlobalIcon, BMEText } from '../../index';
+import {PaletteValues} from "../../Theme/Theme";
 
 export default {
     title: 'Components/Alert',
@@ -44,8 +45,8 @@ Component.args = {
 Component.argTypes = {
     variant: {
         control: {
-            type: 'inline-radio',
-            options: ['primary', 'secondary', 'tertiary', 'dark', 'light', false],
+            type: 'select',
+            options: PaletteValues,
         },
     },
 };

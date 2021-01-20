@@ -1,5 +1,6 @@
 import React from 'react';
 import { BMEGrid, BMEList, BMEText } from '../../index';
+import { PaletteValues } from '../../Theme/Theme';
 
 export default {
     title: 'Components/List',
@@ -24,14 +25,14 @@ export const Component = ({ ...args }) => (
 Component.argTypes = {
     background: {
         control: {
-            type: 'inline-radio',
-            options: ['primary', 'secondary', 'tertiary', 'dark', 'light', false],
+            type: 'select',
+            options: PaletteValues,
         },
     },
     borderColour: {
         control: {
-            type: 'inline-radio',
-            options: ['primary', 'secondary', 'tertiary', 'dark', 'light'],
+            type: 'select',
+            options: PaletteValues,
         },
     },
 };

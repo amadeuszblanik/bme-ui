@@ -1,5 +1,6 @@
 import React from 'react';
 import { BMEBadge, BMEBox, BMEButton, BMEText } from '../../index';
+import {PaletteValues} from "../../Theme/Theme";
 
 export default {
     title: 'Components/Badge',
@@ -35,8 +36,8 @@ Component.argTypes = {
     },
     variant: {
         control: {
-            type: 'inline-radio',
-            options: ['primary', 'secondary', 'tertiary', 'dark', 'light', false],
+            type: 'select',
+            options: PaletteValues,
         },
     },
     outline: {

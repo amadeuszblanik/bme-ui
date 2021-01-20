@@ -1,5 +1,6 @@
 import React from 'react';
 import { BMEBox, BMEImage, BMENav, BMEText, BMETopbar } from '../../index';
+import {PaletteValues} from "../../Theme/Theme";
 
 export default {
     title: 'Components/App Top Bar',
@@ -42,8 +43,8 @@ Component.argTypes = {
     },
     variant: {
         control: {
-            type: 'inline-radio',
-            options: ['primary', 'secondary', 'tertiary', 'dark', 'light', false],
+            type: 'select',
+            options: PaletteValues,
         },
     },
 };
