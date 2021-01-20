@@ -15,7 +15,7 @@
     "lint": "eslint src/**/*.ts src/**/*.tsx --ignore-pattern *.stories.*",
     "storybook": "start-storybook -p 6006 -s ./public",
     "storybook:export": "build-storybook -s ./public -o docs-build",
-    "storybook:publish": "storybook-to-ghpages",
+    "storybook:publish": "storybook-to-ghpages -s ./public -o docs-build",
     "generate:component": "node scripts/generateComponent",
     "generate:fontIcon": "node scripts/generateFontIcon"
   },

@@ -102,6 +102,64 @@ Text.defaultProps = {
 };
 var templateObject_1$2;
 
+var addFocus = function (theme) { return "\n  box-shadow: 0 0 0 0 " + hexToRGBA(theme.bme.palette.focus, 0) + ";\n  " + transition(['box-shadow'], 275) + "\n\n  &:focus {\n    box-shadow: 0 0 0 5px " + theme.bme.palette.focus + ";\n    border-radius: 3px;\n    outline: none;\n  }\n"; };
+
+var boxShadowLevels = [
+    '0px 3px 3px 0px rgba(0,0,0,0.33)',
+    '0px 3px 5px 0px rgba(0,0,0,0.33)',
+    '0px 3px 7px 3px rgba(0,0,0,0.33)',
+    '1px 7px 9px 9px rgba(0,0,0,0.33)',
+    '1px 7px 9px 9px rgba(0,0,0,0.66)',
+];
+var boxShadow = function (level) {
+    if (level === void 0) { level = 0; }
+    return boxShadowLevels[level];
+};
+
+var clearButtonStyles = function () { return "\n  cursor: pointer;\n  border: none;\n  border-radius: 0;\n  background: transparent;\n  appearance: none;\n"; };
+
+var hexToRGBA = function (value, opacity) {
+    if (opacity === void 0) { opacity = 1; }
+    var hex = value.replace(/#/g, '');
+    var rgb = parseInt(hex, 16);
+    var red = (rgb >> 16) & 0xff;
+    var green = (rgb >> 8) & 0xff;
+    var blue = (rgb >> 0) & 0xff;
+    return "rgba(" + red + ", " + green + ", " + blue + ", " + opacity + ")";
+};
+
+var WIDTH_HEIGHT_VALUES = {
+    full: '100%',
+    half: '50%',
+    fullPage: '100vh',
+};
+var VALUE_TO_CSS = {
+    top: 'flex-start',
+    center: 'center',
+    bottom: 'flex-end',
+    left: 'flex-start',
+    right: 'flex-end',
+    justify: 'space-between',
+};
+
+var makeFlex = function (direction, x, y) {
+    var response = [];
+    response.push("flex-direction: " + direction + ";");
+    switch (direction) {
+        case 'column': {
+            response.push("align-items: " + VALUE_TO_CSS[x] + ";");
+            response.push("justify-content: " + VALUE_TO_CSS[y] + ";");
+            break;
+        }
+        default: {
+            response.push("align-items: " + VALUE_TO_CSS[y] + ";");
+            response.push("justify-content: " + VALUE_TO_CSS[x] + ";");
+            break;
+        }
+    }
+    return response.join('');
+};
+
 var SIZES_IN_PX = {
     xxl: 42,
     xl: 32,
@@ -110,6 +168,7 @@ var SIZES_IN_PX = {
     s: 8,
     xs: 4,
     xxs: 2,
+    none: 0,
 };
 var sizeToPx = function (size) { return SIZES_IN_PX[size]; };
 
@@ -175,6 +234,15 @@ var Thm = {
             light: '#ffffff',
             focus: '#f9c642',
             required: '#cd2026',
+            blue: '#007aff',
+            green: '#34c759',
+            indigo: '#5856d6',
+            orange: '#ff9500',
+            pink: '#ff2d55',
+            purple: '#af52de',
+            red: '#ff3b30',
+            teal: '#5ac8fa',
+            yellow: '#ffcc00',
         },
         fonts: {
             sansSerif: '"IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
@@ -213,48 +281,6 @@ var textColour = function (value, theme) {
     return luma < 95 ? theme.bme.palette.light : theme.bme.palette.dark;
 };
 
-var WIDTH_HEIGHT_VALUES = {
-    full: '100%',
-    half: '50%',
-    fullPage: '100vh',
-};
-var VALUE_TO_CSS = {
-    top: 'flex-start',
-    center: 'center',
-    bottom: 'flex-end',
-    left: 'flex-start',
-    right: 'flex-end',
-    justify: 'space-between',
-};
-
-var makeFlex = function (direction, x, y) {
-    var response = [];
-    response.push("flex-direction: " + direction + ";");
-    switch (direction) {
-        case 'column': {
-            response.push("align-items: " + VALUE_TO_CSS[x] + ";");
-            response.push("justify-content: " + VALUE_TO_CSS[y] + ";");
-            break;
-        }
-        default: {
-            response.push("align-items: " + VALUE_TO_CSS[y] + ";");
-            response.push("justify-content: " + VALUE_TO_CSS[x] + ";");
-            break;
-        }
-    }
-    return response.join('');
-};
-
-var hexToRGBA = function (value, opacity) {
-    if (opacity === void 0) { opacity = 1; }
-    var hex = value.replace(/#/g, '');
-    var rgb = parseInt(hex, 16);
-    var red = (rgb >> 16) & 0xff;
-    var green = (rgb >> 8) & 0xff;
-    var blue = (rgb >> 0) & 0xff;
-    return "rgba(" + red + ", " + green + ", " + blue + ", " + opacity + ")";
-};
-
 var TransitionVariantsEnum;
 (function (TransitionVariantsEnum) {
     TransitionVariantsEnum["standard"] = "cubic-bezier(0.4, 0.0, 0.2, 1);";
@@ -267,8 +293,6 @@ var transition = function (property, durationInMs, variant) {
     if (variant === void 0) { variant = TransitionVariantsEnum.standard; }
     return "\n  transition-property: " + property.join(' ') + ";\n  transition-duration: " + durationInMs + "ms;\n  transition-timing-function: " + TransitionVariantsEnum[variant] + ";\n  will-change: " + property.join(',') + ";\n  ";
 };
-
-var clearButtonStyles = function () { return "\n  border: none;\n  border-radius: 0;\n  background: transparent;\n  appearance: none;\n"; };
 
 var StyledBox = styled.div(templateObject_1$3 || (templateObject_1$3 = __makeTemplateObject(["\n    ", "\n\n    position: relative;\n    display: ", ";\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n"], ["\n    ", "\n\n    position: relative;\n    display: ", ";\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n    ",
     "\n"])), function () { return clearButtonStyles(); }, function (_a) {
@@ -332,8 +356,8 @@ var StyledButton = styled.button(templateObject_1$4 || (templateObject_1$4 = __m
     return hexToRGBA(theme.bme.palette.dark, 0.11);
 }, transition(['max-width', 'max-height']));
 var Button = function (_a) {
-    var children = _a.children, styledComponentsProperties = __rest(_a, ["children"]);
-    return (React.createElement(StyledButton, __assign({}, styledComponentsProperties), children));
+    var children = _a.children, onClick = _a.onClick, styledComponentsProperties = __rest(_a, ["children", "onClick"]);
+    return (React.createElement(StyledButton, __assign({ onClick: onClick }, styledComponentsProperties), children));
 };
 var templateObject_1$4;
 
@@ -1084,7 +1108,7 @@ var Select = function (_a) {
         onChange(targetValue);
     };
     return (React.createElement(StyledSelect, { as: "select", id: name, name: name, value: value, onChange: handleChange },
-        React.createElement("option", { value: "null", selected: true }, renderLabel(label, required)),
+        React.createElement("option", { value: "null", selected: true, disabled: true }, renderLabel(label, required)),
         options.map(function (_a) {
             var optionValue = _a.value, content = _a.content;
             return (React.createElement("option", { key: optionValue, value: optionValue, selected: false }, content));
@@ -1225,5 +1249,520 @@ var Icon = function (_a) {
     return (React.createElement(StyledIcon, { icon: icon, variant: variant }));
 };
 
-export { Badge as BMEBadge, Box as BMEBox, Button as BMEButton, Card as BMECard, Form as BMEForm, GlobalIcon as BMEGlobalIcon, GlobalStyles as BMEGlobalStyles, Grid$1 as BMEGrid, Header as BMEHeader, Icon as BMEIcon, Image as BMEImage, List as BMEList, Nav as BMENav, Switch$1 as BMESwitch, Text as BMEText, Topbar as BMETopbar };
+var StyledAlert = styled.div(templateObject_1$i || (templateObject_1$i = __makeTemplateObject(["\n    display: block;\n    width: 100%;\n    ", "\n    border-radius: 5px;\n    background-color: ", ";\n    box-shadow: ", ";\n\n    ", "\n    ", "\n    \n    ", "\n    \n    &:hover {\n        box-shadow: ", ";\n    }\n"], ["\n    display: block;\n    width: 100%;\n    ", "\n    border-radius: 5px;\n    background-color: ", ";\n    box-shadow: ", ";\n\n    ", "\n    ", "\n    \n    ", "\n    \n    &:hover {\n        box-shadow: ", ";\n    }\n"])), spacing('padding', { x: 'l', y: 'm' }), function (_a) {
+    var theme = _a.theme, variant = _a.variant;
+    return theme.bme.palette[variant];
+}, boxShadow(), function (_a) {
+    var theme = _a.theme, variant = _a.variant;
+    return (variant ? "--bme-colour-text: " + textColour(theme.bme.palette[variant], theme) + ";" : '');
+}, function (_a) {
+    var theme = _a.theme, variant = _a.variant;
+    return (variant ? "--icon-color: " + textColour(theme.bme.palette[variant], theme) + ";" : '');
+}, transition(['box-shadow']), boxShadow(2));
+var StyledAlertCloseButton = styled.button(templateObject_2$b || (templateObject_2$b = __makeTemplateObject(["\n    ", "\n"], ["\n    ", "\n"])), clearButtonStyles());
+var templateObject_1$i, templateObject_2$b;
+
+var IconNames;
+(function (IconNames) {
+    IconNames["List3"] = "\f101";
+    IconNames["AddFolder"] = "\f102";
+    IconNames["Agent"] = "\f103";
+    IconNames["Align2Bottom"] = "\f104";
+    IconNames["Align2Center"] = "\f105";
+    IconNames["Align2Left"] = "\f106";
+    IconNames["Align2Middle"] = "\f107";
+    IconNames["Align2Right"] = "\f108";
+    IconNames["Align2Top"] = "\f109";
+    IconNames["AlignCenter"] = "\f10a";
+    IconNames["AlignLeft"] = "\f10b";
+    IconNames["AlignRight"] = "\f10c";
+    IconNames["Analysis"] = "\f10d";
+    IconNames["Anchor"] = "\f10e";
+    IconNames["AppDashboard"] = "\f10f";
+    IconNames["AppPai"] = "\f110";
+    IconNames["AppWorksheet"] = "\f111";
+    IconNames["AreaChart"] = "\f112";
+    IconNames["ArrowBottomDot"] = "\f113";
+    IconNames["ArrowBottomL"] = "\f114";
+    IconNames["ArrowDownL"] = "\f115";
+    IconNames["ArrowDown"] = "\f116";
+    IconNames["ArrowLeftDL"] = "\f117";
+    IconNames["ArrowLeftL"] = "\f118";
+    IconNames["ArrowLeft"] = "\f119";
+    IconNames["ArrowMinus"] = "\f11a";
+    IconNames["ArrowReduce"] = "\f11b";
+    IconNames["ArrowRightDL"] = "\f11c";
+    IconNames["ArrowRightL"] = "\f11d";
+    IconNames["ArrowRightO"] = "\f11e";
+    IconNames["ArrowRight"] = "\f11f";
+    IconNames["ArrowRise"] = "\f120";
+    IconNames["ArrowTopDot"] = "\f121";
+    IconNames["ArrowTopL"] = "\f122";
+    IconNames["ArrowTop"] = "\f123";
+    IconNames["ArrowUpL"] = "\f124";
+    IconNames["ArrowUp"] = "\f125";
+    IconNames["Asterisk"] = "\f126";
+    IconNames["Attachment"] = "\f127";
+    IconNames["AutoAlign24"] = "\f128";
+    IconNames["AutoMergeCell"] = "\f129";
+    IconNames["BackwardCyclyO"] = "\f12a";
+    IconNames["BringToBottom"] = "\f12b";
+    IconNames["BringToDowner"] = "\f12c";
+    IconNames["BringToTop"] = "\f12d";
+    IconNames["BringToUpper"] = "\f12e";
+    IconNames["BucketA"] = "\f12f";
+    IconNames["Bucket"] = "\f130";
+    IconNames["C"] = "\f131";
+    IconNames["Calendar"] = "\f132";
+    IconNames["CenterJustified"] = "\f133";
+    IconNames["ChartBar"] = "\f134";
+    IconNames["ChartFromTo"] = "\f135";
+    IconNames["ChartFunnelPlot"] = "\f136";
+    IconNames["ChartFunnel"] = "\f137";
+    IconNames["ChartIndex"] = "\f138";
+    IconNames["ChartNew"] = "\f139";
+    IconNames["ChartScatter"] = "\f13a";
+    IconNames["ChartWordCloud"] = "\f13b";
+    IconNames["Chart"] = "\f13c";
+    IconNames["CheckTriangle"] = "\f13d";
+    IconNames["Clear"] = "\f13e";
+    IconNames["Click"] = "\f13f";
+    IconNames["CloseC"] = "\f140";
+    IconNames["CloseL"] = "\f141";
+    IconNames["CloseO"] = "\f142";
+    IconNames["Closedhand24"] = "\f143";
+    IconNames["Collapse"] = "\f144";
+    IconNames["Color"] = "\f145";
+    IconNames["CommentFullL"] = "\f146";
+    IconNames["CommentL"] = "\f147";
+    IconNames["Component24"] = "\f148";
+    IconNames["Component"] = "\f149";
+    IconNames["ConcentricPieChart"] = "\f14a";
+    IconNames["Console24"] = "\f14b";
+    IconNames["CopyL"] = "\f14c";
+    IconNames["CopyNode"] = "\f14d";
+    IconNames["Cry"] = "\f14e";
+    IconNames["CustomText"] = "\f14f";
+    IconNames["Cut"] = "\f150";
+    IconNames["Cycle24"] = "\f151";
+    IconNames["Dashboard24"] = "\f152";
+    IconNames["DataAgentLegendDimension"] = "\f153";
+    IconNames["DataAgentLegendMeasure"] = "\f154";
+    IconNames["DataSource24"] = "\f155";
+    IconNames["Data"] = "\f156";
+    IconNames["Default24"] = "\f157";
+    IconNames["DefaultJustified"] = "\f158";
+    IconNames["DeleteColumn"] = "\f159";
+    IconNames["DeleteRow"] = "\f15a";
+    IconNames["Delete"] = "\f15b";
+    IconNames["Desktop24"] = "\f15c";
+    IconNames["Desktop"] = "\f15d";
+    IconNames["Dials"] = "\f15e";
+    IconNames["Diamond24"] = "\f15f";
+    IconNames["DiamondOkL"] = "\f160";
+    IconNames["Diamond"] = "\f161";
+    IconNames["Dimensions"] = "\f162";
+    IconNames["DirectionHorizontal"] = "\f163";
+    IconNames["DirectionVertical"] = "\f164";
+    IconNames["Dislike24"] = "\f165";
+    IconNames["DislikeFill"] = "\f166";
+    IconNames["DislikeL24"] = "\f167";
+    IconNames["Dislike"] = "\f168";
+    IconNames["DocCsv"] = "\f169";
+    IconNames["DocPdf"] = "\f16a";
+    IconNames["DocTxt"] = "\f16b";
+    IconNames["DocXls"] = "\f16c";
+    IconNames["DocumentFull"] = "\f16d";
+    IconNames["Document"] = "\f16e";
+    IconNames["Dot"] = "\f16f";
+    IconNames["Download"] = "\f170";
+    IconNames["Drag"] = "\f171";
+    IconNames["Edit"] = "\f172";
+    IconNames["EmptyBox"] = "\f173";
+    IconNames["Enterprise"] = "\f174";
+    IconNames["ExchangeXy"] = "\f175";
+    IconNames["ExitFullscreen"] = "\f176";
+    IconNames["Expand"] = "\f177";
+    IconNames["ExportExcel"] = "\f178";
+    IconNames["Export"] = "\f179";
+    IconNames["File"] = "\f17a";
+    IconNames["Filter"] = "\f17b";
+    IconNames["Fire"] = "\f17c";
+    IconNames["Fitscreen24"] = "\f17d";
+    IconNames["Fliter"] = "\f17e";
+    IconNames["FolderOpen"] = "\f17f";
+    IconNames["Folder"] = "\f180";
+    IconNames["FontBold"] = "\f181";
+    IconNames["FontColorMergeA"] = "\f182";
+    IconNames["FontColorMerge"] = "\f183";
+    IconNames["FontColor"] = "\f184";
+    IconNames["FontItalics"] = "\f185";
+    IconNames["FontSize"] = "\f186";
+    IconNames["FontStrikethrough"] = "\f187";
+    IconNames["FontUnderline"] = "\f188";
+    IconNames["ForwardO"] = "\f189";
+    IconNames["FreezeCell"] = "\f18a";
+    IconNames["FreezeColumn"] = "\f18b";
+    IconNames["FreezeRow"] = "\f18c";
+    IconNames["Freeze"] = "\f18d";
+    IconNames["Fullscreen"] = "\f18e";
+    IconNames["Function"] = "\f18f";
+    IconNames["GlobeO24"] = "\f190";
+    IconNames["Group24"] = "\f191";
+    IconNames["GuideAdd"] = "\f192";
+    IconNames["GuideDelete"] = "\f193";
+    IconNames["HelpO24"] = "\f194";
+    IconNames["HelpO"] = "\f195";
+    IconNames["HelpS"] = "\f196";
+    IconNames["Hexagon"] = "\f197";
+    IconNames["HiddenCloumn"] = "\f198";
+    IconNames["HiddenRow"] = "\f199";
+    IconNames["Hierarchy"] = "\f19a";
+    IconNames["Host"] = "\f19b";
+    IconNames["If"] = "\f19c";
+    IconNames["Iframe"] = "\f19d";
+    IconNames["Import"] = "\f19e";
+    IconNames["Indent"] = "\f19f";
+    IconNames["InfoO"] = "\f1a0";
+    IconNames["Info"] = "\f1a1";
+    IconNames["Initial"] = "\f1a2";
+    IconNames["InnerJoin"] = "\f1a3";
+    IconNames["InsertColumn"] = "\f1a4";
+    IconNames["InsertRow"] = "\f1a5";
+    IconNames["Invisible"] = "\f1a6";
+    IconNames["Ipad24"] = "\f1a7";
+    IconNames["Ipad"] = "\f1a8";
+    IconNames["LabShutDown"] = "\f1a9";
+    IconNames["Label0401"] = "\f1aa";
+    IconNames["Label1"] = "\f1ab";
+    IconNames["Label2"] = "\f1ac";
+    IconNames["Label3"] = "\f1ad";
+    IconNames["Label4"] = "\f1ae";
+    IconNames["LbsLocation"] = "\f1af";
+    IconNames["LeftJoin"] = "\f1b0";
+    IconNames["LeftJustified"] = "\f1b1";
+    IconNames["Legend1"] = "\f1b2";
+    IconNames["Lib24"] = "\f1b3";
+    IconNames["Lib"] = "\f1b4";
+    IconNames["Lighting"] = "\f1b5";
+    IconNames["Like24"] = "\f1b6";
+    IconNames["LikeFill"] = "\f1b7";
+    IconNames["LikeL24"] = "\f1b8";
+    IconNames["Like"] = "\f1b9";
+    IconNames["LineChart"] = "\f1ba";
+    IconNames["Link"] = "\f1bb";
+    IconNames["ListAlt"] = "\f1bc";
+    IconNames["ListOl"] = "\f1bd";
+    IconNames["List"] = "\f1be";
+    IconNames["LoadingSpinner"] = "\f1bf";
+    IconNames["Loading"] = "\f1c0";
+    IconNames["LocateO"] = "\f1c1";
+    IconNames["LocationDelete"] = "\f1c2";
+    IconNames["LocationSelected"] = "\f1c3";
+    IconNames["Location"] = "\f1c4";
+    IconNames["LockRow"] = "\f1c5";
+    IconNames["Lock"] = "\f1c6";
+    IconNames["LogoBg"] = "\f1c7";
+    IconNames["Mail"] = "\f1c8";
+    IconNames["MapBubbleHover"] = "\f1c9";
+    IconNames["MapBubble"] = "\f1ca";
+    IconNames["MapColorHover"] = "\f1cb";
+    IconNames["MapColor"] = "\f1cc";
+    IconNames["MapSankey"] = "\f1cd";
+    IconNames["MergeCell"] = "\f1ce";
+    IconNames["MinusCycleO"] = "\f1cf";
+    IconNames["More"] = "\f1d0";
+    IconNames["Movable"] = "\f1d1";
+    IconNames["Moveto"] = "\f1d2";
+    IconNames["MultiLineText"] = "\f1d3";
+    IconNames["Multidimensional24"] = "\f1d4";
+    IconNames["NewDocument24"] = "\f1d5";
+    IconNames["NewDocumentDashboard"] = "\f1d6";
+    IconNames["NewDocumentWorksheet"] = "\f1d7";
+    IconNames["NewDocument"] = "\f1d8";
+    IconNames["NodeCollapse"] = "\f1d9";
+    IconNames["NodeExpand"] = "\f1da";
+    IconNames["Num"] = "\f1db";
+    IconNames["OC"] = "\f1dc";
+    IconNames["OilTableChart"] = "\f1dd";
+    IconNames["OkC"] = "\f1de";
+    IconNames["OkL"] = "\f1df";
+    IconNames["OkO"] = "\f1e0";
+    IconNames["OkS"] = "\f1e1";
+    IconNames["Ok"] = "\f1e2";
+    IconNames["OpenL"] = "\f1e3";
+    IconNames["Open"] = "\f1e4";
+    IconNames["Operation"] = "\f1e5";
+    IconNames["Optimization"] = "\f1e6";
+    IconNames["Page1"] = "\f1e7";
+    IconNames["Paragraph"] = "\f1e8";
+    IconNames["PasteL"] = "\f1e9";
+    IconNames["PauseO"] = "\f1ea";
+    IconNames["Pause"] = "\f1eb";
+    IconNames["PencilL"] = "\f1ec";
+    IconNames["Percent"] = "\f1ed";
+    IconNames["Permission"] = "\f1ee";
+    IconNames["Phone24"] = "\f1ef";
+    IconNames["Phone"] = "\f1f0";
+    IconNames["Picture"] = "\f1f1";
+    IconNames["Pie3dChart"] = "\f1f2";
+    IconNames["PieChart"] = "\f1f3";
+    IconNames["Pin"] = "\f1f4";
+    IconNames["Plus24"] = "\f1f5";
+    IconNames["PlusDotO"] = "\f1f6";
+    IconNames["PlusLThin"] = "\f1f7";
+    IconNames["PlusL"] = "\f1f8";
+    IconNames["PlusO24"] = "\f1f9";
+    IconNames["PlusO"] = "\f1fa";
+    IconNames["Plus"] = "\f1fb";
+    IconNames["Pointer"] = "\f1fc";
+    IconNames["PolarChart"] = "\f1fd";
+    IconNames["PositionBottom"] = "\f1fe";
+    IconNames["PositionLeft"] = "\f1ff";
+    IconNames["PositionRight"] = "\f200";
+    IconNames["PositionTop"] = "\f201";
+    IconNames["Preview24"] = "\f202";
+    IconNames["Project24"] = "\f203";
+    IconNames["PublishFail24"] = "\f204";
+    IconNames["PublishL24"] = "\f205";
+    IconNames["PublishRun24"] = "\f206";
+    IconNames["PublishStop24"] = "\f207";
+    IconNames["PublishSuccess24"] = "\f208";
+    IconNames["PublishWait24"] = "\f209";
+    IconNames["Publish"] = "\f20a";
+    IconNames["Query"] = "\f20b";
+    IconNames["RadarChart"] = "\f20c";
+    IconNames["Radius"] = "\f20d";
+    IconNames["RealSize24"] = "\f20e";
+    IconNames["Redo1"] = "\f20f";
+    IconNames["Redo"] = "\f210";
+    IconNames["Refresh"] = "\f211";
+    IconNames["Rename"] = "\f212";
+    IconNames["Report24"] = "\f213";
+    IconNames["Report"] = "\f214";
+    IconNames["Rerun24"] = "\f215";
+    IconNames["Rerun"] = "\f216";
+    IconNames["RightJustified"] = "\f217";
+    IconNames["Rmb"] = "\f218";
+    IconNames["Rocket"] = "\f219";
+    IconNames["RunFrom"] = "\f21a";
+    IconNames["RunNode"] = "\f21b";
+    IconNames["RunO24"] = "\f21c";
+    IconNames["RunStop"] = "\f21d";
+    IconNames["Run"] = "\f21e";
+    IconNames["S"] = "\f21f";
+    IconNames["Save24"] = "\f220";
+    IconNames["SaveAs24"] = "\f221";
+    IconNames["SaveAs"] = "\f222";
+    IconNames["Save"] = "\f223";
+    IconNames["Schema"] = "\f224";
+    IconNames["Script"] = "\f225";
+    IconNames["Search24"] = "\f226";
+    IconNames["Search"] = "\f227";
+    IconNames["Selected"] = "\f228";
+    IconNames["SeparateCell"] = "\f229";
+    IconNames["Separators"] = "\f22a";
+    IconNames["SequenceHAZ"] = "\f22b";
+    IconNames["SequenceHZA"] = "\f22c";
+    IconNames["SequenceH"] = "\f22d";
+    IconNames["SequenceVAZ"] = "\f22e";
+    IconNames["SequenceVZA"] = "\f22f";
+    IconNames["SequenceV"] = "\f230";
+    IconNames["Setting24"] = "\f231";
+    IconNames["Setting"] = "\f232";
+    IconNames["Shape"] = "\f233";
+    IconNames["ShareFrom"] = "\f234";
+    IconNames["Share"] = "\f235";
+    IconNames["Sheet1"] = "\f236";
+    IconNames["Sheet4"] = "\f237";
+    IconNames["Slash"] = "\f238";
+    IconNames["SliderPlay"] = "\f239";
+    IconNames["Slider"] = "\f23a";
+    IconNames["SortAZ"] = "\f23b";
+    IconNames["Sort"] = "\f23c";
+    IconNames["Sql"] = "\f23d";
+    IconNames["Stack"] = "\f23e";
+    IconNames["StarL"] = "\f23f";
+    IconNames["StarRemoveL"] = "\f240";
+    IconNames["Star"] = "\f241";
+    IconNames["StopO24"] = "\f242";
+    IconNames["StopO"] = "\f243";
+    IconNames["String"] = "\f244";
+    IconNames["StrokeBottom"] = "\f245";
+    IconNames["StrokeLeft"] = "\f246";
+    IconNames["StrokeRight"] = "\f247";
+    IconNames["StrokeTop"] = "\f248";
+    IconNames["Stroke"] = "\f249";
+    IconNames["Subscribe24"] = "\f24a";
+    IconNames["Subtotals"] = "\f24b";
+    IconNames["Sum"] = "\f24c";
+    IconNames["SuspendCycleO"] = "\f24d";
+    IconNames["Suspend"] = "\f24e";
+    IconNames["SyncO"] = "\f24f";
+    IconNames["Sync"] = "\f250";
+    IconNames["Tab"] = "\f251";
+    IconNames["Table"] = "\f252";
+    IconNames["Target"] = "\f253";
+    IconNames["Text"] = "\f254";
+    IconNames["Thumnail"] = "\f255";
+    IconNames["TimeO"] = "\f256";
+    IconNames["Transfer"] = "\f257";
+    IconNames["Transform1"] = "\f258";
+    IconNames["Transform2"] = "\f259";
+    IconNames["Triangle24"] = "\f25a";
+    IconNames["Undo1"] = "\f25b";
+    IconNames["Undo"] = "\f25c";
+    IconNames["Ungroup24"] = "\f25d";
+    IconNames["Unindent"] = "\f25e";
+    IconNames["Unlink"] = "\f25f";
+    IconNames["Unstack"] = "\f260";
+    IconNames["Unstroke"] = "\f261";
+    IconNames["UploadL24"] = "\f262";
+    IconNames["UploadL"] = "\f263";
+    IconNames["Upload"] = "\f264";
+    IconNames["UserO24"] = "\f265";
+    IconNames["UserO"] = "\f266";
+    IconNames["User"] = "\f267";
+    IconNames["VisibleL"] = "\f268";
+    IconNames["Visible"] = "\f269";
+    IconNames["WarningO"] = "\f26a";
+    IconNames["Warning"] = "\f26b";
+    IconNames["YAxis"] = "\f26c";
+    IconNames["YyAxis"] = "\f26d";
+    IconNames["ZoomIn24"] = "\f26e";
+    IconNames["ZoomIn"] = "\f26f";
+    IconNames["ZoomOut24"] = "\f270";
+    IconNames["ZoomOut"] = "\f271";
+    IconNames["ZoomPart"] = "\f272";
+})(IconNames || (IconNames = {}));
+
+var AlertClose = function (_a) {
+    var onClose = _a.onClose;
+    return onClose ? (React.createElement(StyledAlertCloseButton, { onClick: function () { return onClose(); } },
+        React.createElement(Icon, { icon: IconNames.CloseL }))) : (React.createElement(React.Fragment, null));
+};
+var Alert = function (_a) {
+    var children = _a.children, onClose = _a.onClose, variant = _a.variant;
+    return (React.createElement(StyledAlert, { variant: variant },
+        React.createElement(Box, { width: "full", alignX: "justify" },
+            React.createElement(Box, null, children),
+            React.createElement(Box, null,
+                React.createElement(AlertClose, { onClose: onClose })))));
+};
+Alert.defaultProps = {
+    variant: 'primary',
+};
+
+var StyledBreadcrumbs = styled.div(templateObject_1$j || (templateObject_1$j = __makeTemplateObject(["\n    display: flex;\n    justify-content: center;\n    align-items: center;\n"], ["\n    display: flex;\n    justify-content: center;\n    align-items: center;\n"])));
+var templateObject_1$j;
+
+var BreadcrumbsItem = styled.div(templateObject_1$k || (templateObject_1$k = __makeTemplateObject(["\n    ", "\n"], ["\n    ", "\n"])), spacing('margin', { x: 's' }));
+var BreadcrumbsItemLink = styled.button(templateObject_2$c || (templateObject_2$c = __makeTemplateObject(["\n    ", "\n    position: relative;\n\n    &:after {\n        content: '';\n        position: absolute;\n        bottom: 2px;\n        left: 50%;\n        display: block;\n        width: 100%;\n        max-width: 85%;\n        height: 100%;\n        max-height: 1px;\n        background-color: var(--bme-colour-text);\n        border-radius: 0;\n        opacity: 1;\n        transform: translateX(-50%);\n        ", "\n    }\n\n    &:hover,\n    &:active {\n        &:after {\n            bottom: 50%;\n            max-width: 100%;\n            height: 100%;\n            max-height: 100%;\n            border-radius: 2px;\n            opacity: 0.33;\n            transform: translateX(-50%) translateY(50%);\n        }\n    }\n"], ["\n    ", "\n    position: relative;\n\n    &:after {\n        content: '';\n        position: absolute;\n        bottom: 2px;\n        left: 50%;\n        display: block;\n        width: 100%;\n        max-width: 85%;\n        height: 100%;\n        max-height: 1px;\n        background-color: var(--bme-colour-text);\n        border-radius: 0;\n        opacity: 1;\n        transform: translateX(-50%);\n        ", "\n    }\n\n    &:hover,\n    &:active {\n        &:after {\n            bottom: 50%;\n            max-width: 100%;\n            height: 100%;\n            max-height: 100%;\n            border-radius: 2px;\n            opacity: 0.33;\n            transform: translateX(-50%) translateY(50%);\n        }\n    }\n"])), clearButtonStyles(), transition(['max-width', 'max-height', 'opacity', 'bottom', 'transform'], 125));
+var templateObject_1$k, templateObject_2$c;
+
+var Item = function (_a) {
+    var text = _a.text, callBack = _a.callBack, active = _a.active;
+    return (React.createElement(BreadcrumbsItem, null, !active ? (React.createElement(BreadcrumbsItemLink, { onClick: callBack },
+        React.createElement(Text, { size: "s" }, text))) : (React.createElement(Text, { size: "s" }, text))));
+};
+
+var BreadcrumbsDivider = styled.div(templateObject_1$l || (templateObject_1$l = __makeTemplateObject(["\n    ", "\n"], ["\n    ", "\n"])), spacing('margin', { x: 'xs' }));
+var templateObject_1$l;
+
+var Divider = function (_a) {
+    var dividerChar = _a.dividerChar;
+    return (React.createElement(BreadcrumbsDivider, null,
+        React.createElement(Text, { size: "s" }, dividerChar)));
+};
+
+var Breadcrumbs = function (_a) {
+    var items = _a.items, customDivider = _a.customDivider;
+    return (React.createElement(StyledBreadcrumbs, null, items.map(function (item, index) { return (React.createElement(React.Fragment, null,
+        index > 0 ? React.createElement(Divider, { dividerChar: customDivider }) : React.createElement(React.Fragment, null),
+        React.createElement(Item, __assign({ key: index }, item)))); })));
+};
+Breadcrumbs.defaultProps = {
+    customDivider: '→',
+};
+
+var StyledAccordionTitle = styled.button(templateObject_1$m || (templateObject_1$m = __makeTemplateObject(["\n    ", "\n    display: block;\n    width: 100%;\n    ", "\n    ", "\n    background-color: ", ";\n    border-radius: 8px;\n    ", "\n    ", ";\n    ", "\n"], ["\n    ", "\n    display: block;\n    width: 100%;\n    ", "\n    ", "\n    background-color: ", ";\n    border-radius: 8px;\n    ", "\n    ", ";\n    ", "\n"])), clearButtonStyles(), spacing('margin', { y: { bottom: 'm' } }), spacing('padding', { x: 'l', y: 'm' }), function (_a) {
+    var theme = _a.theme, variant = _a.variant;
+    return theme.bme.palette[variant];
+}, function (_a) {
+    var theme = _a.theme, variant = _a.variant;
+    return (variant ? "--bme-colour-text: " + textColour(theme.bme.palette[variant], theme) + ";" : '');
+}, transition(['background', 'background-color']), function (_a) {
+    var theme = _a.theme;
+    return addFocus(theme);
+});
+var templateObject_1$m;
+
+var Title = function (_a) {
+    var children = _a.children, variant = _a.variant, onClick = _a.onClick;
+    return (React.createElement(StyledAccordionTitle, { variant: variant, onClick: onClick },
+        React.createElement(Text, null, children)));
+};
+
+var ItemWrapperStyled = styled.div(templateObject_1$n || (templateObject_1$n = __makeTemplateObject([""], [""])));
+var ContentStyled = styled.div(templateObject_2$d || (templateObject_2$d = __makeTemplateObject(["\n    display: block;\n    width: 100%;\n    max-height: ", ";\n    height: ", ";\n    ", "\n    ", "\n    opacity: ", ";\n    overflow: hidden;\n"], ["\n    display: block;\n    width: 100%;\n    max-height: ", ";\n    height: ", ";\n    ", "\n    ", "\n    opacity: ", ";\n    overflow: hidden;\n"])), function (_a) {
+    var open = _a.open;
+    return (open ? '100%' : '0');
+}, function (_a) {
+    var open = _a.open;
+    return (open ? 'inherit' : '0');
+}, function (_a) {
+    var open = _a.open;
+    return spacing('margin', { y: { bottom: open ? 'm' : 'none' } });
+}, function (_a) {
+    var open = _a.open;
+    return spacing('padding', { x: open ? 'l' : 'none', y: open ? 'm' : 'none' });
+}, function (_a) {
+    var open = _a.open;
+    return (open ? 1 : 0);
+});
+var templateObject_1$n, templateObject_2$d;
+
+var Item$1 = function (_a) {
+    var children = _a.children, title = _a.title, variant = _a.variant, onClick = _a.onClick, open = _a.open;
+    return (React.createElement(ItemWrapperStyled, null,
+        React.createElement(Title, { variant: variant, onClick: onClick }, title),
+        React.createElement(ContentStyled, { open: open }, children)));
+};
+Item$1.defaultProps = {
+    open: false,
+};
+
+var Accordion = function (_a) {
+    var children = _a.children, variant = _a.variant, variantActive = _a.variantActive;
+    var _b = useState(0), stateOpenIndex = _b[0], setStateOpenIndex = _b[1];
+    var handleClickAccordionTab = function (index) {
+        return useCallback(function () {
+            if (index === stateOpenIndex) {
+                setStateOpenIndex(-1);
+                return;
+            }
+            setStateOpenIndex(index);
+        }, [stateOpenIndex]);
+    };
+    var childrenWithProps = React.Children.map(children, function (child, index) {
+        var active = index === stateOpenIndex;
+        var props = {
+            variant: active ? variantActive : variant,
+            onClick: handleClickAccordionTab(index),
+            open: active,
+        };
+        if (React.isValidElement(child)) {
+            return React.cloneElement(child, props);
+        }
+        return child;
+    });
+    return (React.createElement(Box, { width: "full", direction: "column", rounded: true }, childrenWithProps));
+};
+Accordion.defaultProps = {
+    variant: 'primary',
+    variantActive: 'secondary',
+};
+Accordion.Item = Item$1;
+
+export { Accordion as BMEAccordion, Alert as BMEAlert, Badge as BMEBadge, Box as BMEBox, Breadcrumbs as BMEBreadcrumbs, Button as BMEButton, Card as BMECard, Form as BMEForm, GlobalIcon as BMEGlobalIcon, GlobalStyles as BMEGlobalStyles, Grid$1 as BMEGrid, Header as BMEHeader, Icon as BMEIcon, Image as BMEImage, List as BMEList, Nav as BMENav, Switch$1 as BMESwitch, Text as BMEText, Topbar as BMETopbar };
 //# sourceMappingURL=index.esm.js.map
