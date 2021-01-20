@@ -1,7 +1,43 @@
 import { DefaultTheme } from 'styled-components';
 
-export type Palette = 'primary' | 'secondary' | 'tertiary' | 'dark' | 'light' | 'focus' | 'required';
-export type Sizes = 'xxl' | 'xl' | 'l' | 'm' | 's' | 'xs' | 'xxs';
+export type Palette =
+    | 'primary'
+    | 'secondary'
+    | 'tertiary'
+    | 'dark'
+    | 'light'
+    | 'focus'
+    | 'required'
+    | 'blue'
+    | 'green'
+    | 'indigo'
+    | 'orange'
+    | 'pink'
+    | 'purple'
+    | 'red'
+    | 'teal'
+    | 'yellow';
+
+export type Sizes = 'none' | 'xxl' | 'xl' | 'l' | 'm' | 's' | 'xs' | 'xxs';
+
+export const PaletteValues: Palette[] = [
+    'primary',
+    'secondary',
+    'tertiary',
+    'dark',
+    'light',
+    'focus',
+    'required',
+    'blue',
+    'green',
+    'indigo',
+    'orange',
+    'pink',
+    'purple',
+    'red',
+    'teal',
+    'yellow',
+];
 
 const Thm: DefaultTheme = {
     bme: {
@@ -13,6 +49,15 @@ const Thm: DefaultTheme = {
             light: '#ffffff',
             focus: '#f9c642',
             required: '#cd2026',
+            blue: '#007aff',
+            green: '#34c759',
+            indigo: '#5856d6',
+            orange: '#ff9500',
+            pink: '#ff2d55',
+            purple: '#af52de',
+            red: '#ff3b30',
+            teal: '#5ac8fa',
+            yellow: '#ffcc00',
         },
         fonts: {
             sansSerif:

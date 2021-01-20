@@ -2,7 +2,7 @@ import React from 'react';
 import { BMEHeader } from '../../index';
 
 export default {
-    title: 'Header',
+    title: 'Components/Header',
 };
 
 export const Component = ({ content, ...args }) => (

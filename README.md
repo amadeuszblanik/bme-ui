@@ -1,4 +1,4 @@
-# BME-UI 0.1.4
+# BME-UI
 
 ## Quick-links
 
@@ -23,7 +23,12 @@ Due to styled-compopnents issue you need to add manually styles:
 ## Usage
 
 ```typescript
-import { BMEBox } from "@bme-ui"
+import React from 'react';
+import { BMEText } from 'bme-ui';
+
+const Foo: React.FunctionComponent = () => <BMEText>Hello world</BMEText>
+
+export default Foo;
 ```
 
 More about usage: [storybook](https://amadeuszblanik.github.io/bme-ui)
@@ -35,3 +40,6 @@ Please make sure to update tests as appropriate.
 
 ## License
 [MIT](https://github.com/amadeuszblanik/bme-ui/blob/master/LICENSE)
+
+## Credits
+*[leungwensen/svg-icon](https://github.com/leungwensen/svg-icon)

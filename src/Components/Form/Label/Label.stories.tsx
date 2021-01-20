@@ -2,7 +2,7 @@ import React from 'react';
 import { BMEForm } from '../../../index';
 
 export default {
-    title: 'Form/Label',
+    title: 'Forms/Label',
 };
 
 export const Component = ({ ...args }) => (

@@ -1,4 +1,5 @@
 const clearButtonStyles = (): string => `
+  cursor: pointer;
   border: none;
   border-radius: 0;
   background: transparent;

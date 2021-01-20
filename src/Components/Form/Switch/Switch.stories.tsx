@@ -1,9 +1,10 @@
 import React, { useCallback, useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { BMEForm } from '../../../index';
+import {PaletteValues} from "../../../Theme/Theme";
 
 export default {
-    title: 'Form/Switch',
+    title: 'Forms/Switch',
 };
 
 export const Component = ({ value, name, label, ...args }) => {
@@ -62,8 +63,8 @@ Component.argTypes = {
     },
     variant: {
         control: {
-            type: 'inline-radio',
-            options: ['primary', 'secondary', 'tertiary', 'dark', 'light'],
+            type: 'select',
+            options: PaletteValues,
         },
     },
 };

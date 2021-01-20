@@ -1,6 +1,6 @@
 {
   "name": "bme-ui",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "build/index.js",
   "module": "build/index.esm.js",
   "files": [
@@ -13,9 +13,11 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint src/**/*.ts src/**/*.tsx --ignore-pattern *.stories.*",
-    "storybook": "start-storybook -p 6006",
-    "storybook:export": "build-storybook -o docs-build",
-    "storybook:publish": "storybook-to-ghpages"
+    "storybook": "start-storybook -p 6006 -s ./public",
+    "storybook:export": "build-storybook -s ./public -o docs-build",
+    "storybook:publish": "storybook-to-ghpages -s ./public -o docs-build",
+    "generate:component": "node scripts/generateComponent",
+    "generate:fontIcon": "node scripts/generateFontIcon"
   },
   "repository": {
     "type": "git",
@@ -45,6 +47,7 @@
     "@babel/core": "^7.11.6",
     "@rollup/plugin-commonjs": "^15.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
+    "@storybook/addon-viewport": "^6.1.11",
     "@storybook/react": "^6.1.10",
     "@storybook/storybook-deployer": "^2.8.7",
     "@testing-library/jest-dom": "^5.11.4",
@@ -81,6 +84,11 @@
   },
   "dependencies": {
     "@storybook/addon-essentials": "^6.1.10",
+    "@storybook/addon-storysource": "^6.1.11",
+    "@storybook/addons": "^6.1.11",
+    "@storybook/theming": "^6.1.11",
+    "fantasticon": "^1.0.27",
+    "rollup-plugin-url": "^3.0.1",
     "styled-components-grid": "^2.2.2",
     "styled-reset": "^4.2.3"
   },

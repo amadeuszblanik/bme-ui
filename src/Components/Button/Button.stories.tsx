@@ -1,8 +1,9 @@
 import React from 'react';
 import { BMEButton, BMEText } from '../../index';
+import {PaletteValues} from "../../Theme/Theme";
 
 export default {
-    title: 'Button',
+    title: 'Components/Button',
 };
 
 export const Component = ({ content, ...args }) => (
@@ -24,8 +25,8 @@ Component.argTypes = {
     },
     variant: {
         control: {
-            type: 'inline-radio',
-            options: ['primary', 'secondary', 'tertiary', 'dark', 'light', false],
+            type: 'select',
+            options: PaletteValues,
         },
     },
 

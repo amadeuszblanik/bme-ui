@@ -1,8 +1,9 @@
 import React from 'react';
 import { BMEBox, BMEText } from '../../index';
+import {PaletteValues} from "../../Theme/Theme";
 
 export default {
-    title: 'Box',
+    title: 'Components/Box',
 };
 
 export const Component = ({ ...args }) => (
@@ -59,8 +60,8 @@ Component.argTypes = {
     },
     background: {
         control: {
-            type: 'inline-radio',
-            options: ['primary', 'secondary', 'tertiary', 'dark', 'light', false],
+            type: 'select',
+            options: PaletteValues,
         },
     },
     padding: {

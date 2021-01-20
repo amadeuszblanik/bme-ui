@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { BMESwitch } from '../../index';
 import { action } from '@storybook/addon-actions';
+import {PaletteValues} from "../../Theme/Theme";
 
 export default {
-    title: 'Switch',
+    title: 'Components/Switch',
 };
 
 export const Component = ({ checked, ...args }) => {
@@ -30,8 +31,8 @@ Component.argTypes = {
     },
     variant: {
         control: {
-            type: 'inline-radio',
-            options: ['primary', 'secondary', 'tertiary', 'dark', 'light'],
+            type: 'select',
+            options: PaletteValues,
         },
     },
 };

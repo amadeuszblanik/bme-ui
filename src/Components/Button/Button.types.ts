@@ -5,3 +5,7 @@ export interface ButtonStyledComponentProps {
     outline?: boolean;
     rounded?: boolean;
 }
+
+export interface ButtonComponentProps extends ButtonStyledComponentProps {
+    onClick?: () => void;
+}
