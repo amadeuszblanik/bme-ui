@@ -10,8 +10,8 @@ const makeFlex = (direction: AlignDirectionValues, x: AlignXValues, y: AlignYVal
 
     switch (direction) {
         case 'column': {
-            response.push(`align-items: ${VALUE_TO_CSS[x]};`);
-            response.push(`justify-content: ${VALUE_TO_CSS[y]};`);
+            response.push(`align-items: ${VALUE_TO_CSS[y]};`);
+            response.push(`justify-content: ${VALUE_TO_CSS[x]};`);
             break;
         }
         default: {

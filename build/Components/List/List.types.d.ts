@@ -1,10 +1,13 @@
 import React from 'react';
 import { Palette } from '../../Theme/Theme';
 export interface ListStyledComponentProps {
-    borderColour: Palette;
+    borderColour?: Palette;
+    lastChild?: boolean;
 }
 export interface ListStyledSubComponentProps {
     borderColour?: Palette;
+    lastChild?: boolean;
+    onClick?: () => void;
 }
 export interface ListComponentProps {
     background?: Palette;

@@ -1,6 +1,6 @@
 {
   "name": "bme-ui",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "main": "build/index.js",
   "module": "build/index.esm.js",
   "files": [
@@ -13,9 +13,10 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint src/**/*.ts src/**/*.tsx --ignore-pattern *.stories.*",
+    "build-storybook": "build-storybook -s ./public -o docs-build",
     "storybook": "start-storybook -p 6006 -s ./public",
     "storybook:export": "build-storybook -s ./public -o docs-build",
-    "storybook:publish": "storybook-to-ghpages -s ./public -o docs-build",
+    "storybook:publish": "storybook-to-ghpages",
     "generate:component": "node scripts/generateComponent",
     "generate:fontIcon": "node scripts/generateFontIcon"
   },

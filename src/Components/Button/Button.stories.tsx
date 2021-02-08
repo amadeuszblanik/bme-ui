@@ -1,6 +1,7 @@
 import React from 'react';
 import { BMEButton, BMEText } from '../../index';
-import {PaletteValues} from "../../Theme/Theme";
+import { PaletteValues } from '../../Theme/Theme';
+import { action } from '@storybook/addon-actions';
 
 export default {
     title: 'Components/Button',
@@ -8,7 +9,7 @@ export default {
 
 export const Component = ({ content, ...args }) => (
     <>
-        <BMEButton {...args}>
+        <BMEButton onClick={() => action('Button')('onClick')} {...args}>
             <BMEText>{content}</BMEText>
         </BMEButton>
     </>
