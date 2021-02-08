@@ -125,7 +125,7 @@ var boxShadow = function (level) {
     return boxShadowLevels[level];
 };
 
-var clearButtonStyles = function () { return "\n  cursor: pointer;\n  border: none;\n  border-radius: 0;\n  background: transparent;\n  appearance: none;\n"; };
+var clearButtonStyles = function () { return "\n  border: none;\n  border-radius: 0;\n  background: transparent;\n  appearance: none;\n"; };
 
 var hexToRGBA = function (value, opacity) {
     if (opacity === void 0) { opacity = 1; }
@@ -156,8 +156,8 @@ var makeFlex = function (direction, x, y) {
     response.push("flex-direction: " + direction + ";");
     switch (direction) {
         case 'column': {
-            response.push("align-items: " + VALUE_TO_CSS[x] + ";");
-            response.push("justify-content: " + VALUE_TO_CSS[y] + ";");
+            response.push("align-items: " + VALUE_TO_CSS[y] + ";");
+            response.push("justify-content: " + VALUE_TO_CSS[x] + ";");
             break;
         }
         default: {
@@ -1177,22 +1177,31 @@ Form.Select = Select;
 Form.Switch = Switch;
 Form.Label = Label;
 
-var StyledList = styled__default['default'](Box)(templateObject_1$f || (templateObject_1$f = __makeTemplateObject(["\n    overflow: hidden;\n    border: ", " 1px solid;\n"], ["\n    overflow: hidden;\n    border: ", " 1px solid;\n"])), function (_a) {
+var StyledList = styled__default['default'](Box)(templateObject_1$f || (templateObject_1$f = __makeTemplateObject(["\n    overflow: hidden;\n    border: ", "\n        1px solid;\n"], ["\n    overflow: hidden;\n    border: ",
+    "\n        1px solid;\n"])), function (_a) {
     var borderColour = _a.borderColour, theme = _a.theme;
-    return hexToRGBA(theme.bme.palette[borderColour], 0.33);
+    return borderColour ? hexToRGBA(theme.bme.palette[borderColour], 0.33) : "var(--bme-colour-text)";
 });
-var StyledListItem = styled__default['default'](Box)(templateObject_2$8 || (templateObject_2$8 = __makeTemplateObject(["\n    border-bottom: ", " 1px solid;\n"], ["\n    border-bottom: ", " 1px solid;\n"])), function (_a) {
+var StyledListItem = styled__default['default'].button(templateObject_2$8 || (templateObject_2$8 = __makeTemplateObject(["\n    ", "\n    position: relative;\n    display: inline-flex;\n    width: ", ";\n    ", "\n    border-bottom: ", "\n        1px solid;\n    ", "\n"], ["\n    ", "\n    position: relative;\n    display: inline-flex;\n    width: ", ";\n    ", "\n    border-bottom: ",
+    "\n        1px solid;\n    ", "\n"])), clearButtonStyles(), makeFlex('row', 'left', 'center'), spacing('padding', { x: 'm', y: 's' }), function (_a) {
     var borderColour = _a.borderColour, theme = _a.theme;
-    return hexToRGBA(theme.bme.palette[borderColour], 0.33);
+    return borderColour ? hexToRGBA(theme.bme.palette[borderColour], 0.33) : "var(--bme-colour-text)";
+}, function (_a) {
+    var lastChild = _a.lastChild;
+    return (lastChild ? 'border: none;' : '');
 });
+var templateObject_1$f, templateObject_2$8;
+
 var ListItem = function (_a) {
-    var children = _a.children, borderColour = _a.borderColour;
-    return (React__default['default'].createElement(StyledListItem, { borderColour: borderColour, direction: "column", padding: { x: 'm', y: 's' } }, children));
+    var children = _a.children, borderColour = _a.borderColour, lastChild = _a.lastChild, onClick = _a.onClick;
+    return (React__default['default'].createElement(StyledListItem, { as: onClick ? 'button' : 'div', borderColour: borderColour, lastChild: lastChild, onClick: function () { return (onClick ? onClick() : null); } }, children));
 };
+
 var List = function (_a) {
     var children = _a.children, borderColour = _a.borderColour, background = _a.background;
-    var childrenWithProps = React__default['default'].Children.map(children, function (child) {
-        var props = { borderColour: borderColour };
+    var childrenWithProps = React__default['default'].Children.map(children, function (child, index) {
+        var lastChild = index === React__default['default'].Children.toArray(children).length - 1;
+        var props = { borderColour: borderColour, lastChild: lastChild };
         if (React__default['default'].isValidElement(child)) {
             return React__default['default'].cloneElement(child, props);
         }
@@ -1200,11 +1209,7 @@ var List = function (_a) {
     });
     return (React__default['default'].createElement(StyledList, { width: "full", direction: "column", rounded: true, borderColour: borderColour, background: background }, childrenWithProps));
 };
-List.defaultProps = {
-    borderColour: 'light',
-};
 List.Item = ListItem;
-var templateObject_1$f, templateObject_2$8;
 
 var StyledCustomSwitch = styled__default['default'].div(templateObject_1$g || (templateObject_1$g = __makeTemplateObject(["\n    display: flex;\n    ", "\n    width: ", "px;\n    height: ", "px;\n    border: solid 1px ", ";\n    background: ", ";\n    border-radius: 1000px;\n    ", ";\n    cursor: pointer;\n"], ["\n    display: flex;\n    ", "\n    width: ", "px;\n    height: ", "px;\n    border: solid 1px ", ";\n    background: ", ";\n    border-radius: 1000px;\n    ", ";\n    cursor: pointer;\n"])), makeFlex('row', 'center', 'center'), sizeToPx('l') * 2, sizeToPx('l'), function (_a) {
     var variant = _a.variant, theme = _a.theme;
