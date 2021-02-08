@@ -1,4 +1,4 @@
 import React from 'react';
-import { ButtonStyledComponentProps } from './Button.types';
-declare const Button: React.FunctionComponent<ButtonStyledComponentProps>;
+import { ButtonComponentProps } from './Button.types';
+declare const Button: React.FunctionComponent<ButtonComponentProps>;
 export default Button;
