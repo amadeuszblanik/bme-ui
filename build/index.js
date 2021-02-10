@@ -80,7 +80,7 @@ var TextFontWeight = {
     light: 300,
 };
 
-var StyledText = styled__default['default'].p(templateObject_1$2 || (templateObject_1$2 = __makeTemplateObject(["\n    color: ", ";\n    font-size: ", "px;\n    font-family: ", ";\n    font-weight: ", ";\n    text-align: ", ";\n    ", "\n"], ["\n    color: ", ";\n    font-size: ", "px;\n    font-family: ", ";\n    font-weight: ", ";\n    text-align: ", ";\n    ", "\n"])), function (_a) {
+var StyledText = styled__default['default'].p(templateObject_1$2 || (templateObject_1$2 = __makeTemplateObject(["\n    color: ", ";\n    font-size: ", "px;\n    font-family: ", ";\n    font-weight: ", ";\n    text-align: ", ";\n    ", "\n    ", "\n"], ["\n    color: ", ";\n    font-size: ", "px;\n    font-family: ", ";\n    font-weight: ", ";\n    text-align: ", ";\n    ", "\n    ", "\n"])), function (_a) {
     var variant = _a.variant, theme = _a.theme;
     return (variant ? theme.bme.palette[variant] : 'var(--bme-colour-text)');
 }, function (_a) {
@@ -98,6 +98,9 @@ var StyledText = styled__default['default'].p(templateObject_1$2 || (templateObj
 }, function (_a) {
     var italic = _a.italic;
     return (italic ? 'font-style: italic;' : '');
+}, function (_a) {
+    var noWrap = _a.noWrap;
+    return (noWrap ? 'white-space: nowrap;' : '');
 });
 var Text = function (_a) {
     var children = _a.children, args = __rest(_a, ["children"]);
@@ -180,6 +183,16 @@ var SIZES_IN_PX = {
     none: 0,
 };
 var sizeToPx = function (size) { return SIZES_IN_PX[size]; };
+
+var validURL = function (value) {
+    var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+        '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+    return pattern.test(value);
+};
 
 var renderLabel = function (content, required) { return content + (required ? '*' : ''); };
 
@@ -1276,7 +1289,6 @@ var StyledAlert = styled__default['default'].div(templateObject_1$i || (template
 var StyledAlertCloseButton = styled__default['default'].button(templateObject_2$b || (templateObject_2$b = __makeTemplateObject(["\n    ", "\n"], ["\n    ", "\n"])), clearButtonStyles());
 var templateObject_1$i, templateObject_2$b;
 
-var IconNames;
 (function (IconNames) {
     IconNames["List3"] = "\f101";
     IconNames["AddFolder"] = "\f102";
@@ -1648,12 +1660,12 @@ var IconNames;
     IconNames["ZoomOut24"] = "\f270";
     IconNames["ZoomOut"] = "\f271";
     IconNames["ZoomPart"] = "\f272";
-})(IconNames || (IconNames = {}));
+})(exports.BMETypesIconNames || (exports.BMETypesIconNames = {}));
 
 var AlertClose = function (_a) {
     var onClose = _a.onClose;
     return onClose ? (React__default['default'].createElement(StyledAlertCloseButton, { onClick: function () { return onClose(); } },
-        React__default['default'].createElement(Icon, { icon: IconNames.CloseL }))) : (React__default['default'].createElement(React__default['default'].Fragment, null));
+        React__default['default'].createElement(Icon, { icon: exports.BMETypesIconNames.CloseL }))) : (React__default['default'].createElement(React__default['default'].Fragment, null));
 };
 var Alert = function (_a) {
     var children = _a.children, onClose = _a.onClose, variant = _a.variant;
@@ -1797,4 +1809,18 @@ exports.BMENav = Nav;
 exports.BMESwitch = Switch$1;
 exports.BMEText = Text;
 exports.BMETopbar = Topbar;
+exports.addFocus = addFocus;
+exports.boxShadow = boxShadow;
+exports.clearButtonStyles = clearButtonStyles;
+exports.hexToRGBA = hexToRGBA;
+exports.isEmpty = isEmpty;
+exports.isRealNumber = isRealNumber;
+exports.makeFlex = makeFlex;
+exports.renderLabel = renderLabel;
+exports.sizeToPx = sizeToPx;
+exports.spacing = spacing;
+exports.textColour = textColour;
+exports.transition = transition;
+exports.useIntersection = useIntersection;
+exports.validURL = validURL;
 //# sourceMappingURL=index.js.map

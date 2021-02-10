@@ -10,4 +10,5 @@ export interface TextComponentProps {
     weight?: TextFontWeights;
     align?: TextAligns;
     italic?: boolean;
+    noWrap?: boolean;
 }
