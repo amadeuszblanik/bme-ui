@@ -71,7 +71,7 @@ var TextFontWeight = {
     light: 300,
 };
 
-var StyledText = styled.p(templateObject_1$2 || (templateObject_1$2 = __makeTemplateObject(["\n    color: ", ";\n    font-size: ", "px;\n    font-family: ", ";\n    font-weight: ", ";\n    text-align: ", ";\n    ", "\n"], ["\n    color: ", ";\n    font-size: ", "px;\n    font-family: ", ";\n    font-weight: ", ";\n    text-align: ", ";\n    ", "\n"])), function (_a) {
+var StyledText = styled.p(templateObject_1$2 || (templateObject_1$2 = __makeTemplateObject(["\n    color: ", ";\n    font-size: ", "px;\n    font-family: ", ";\n    font-weight: ", ";\n    text-align: ", ";\n    ", "\n    ", "\n"], ["\n    color: ", ";\n    font-size: ", "px;\n    font-family: ", ";\n    font-weight: ", ";\n    text-align: ", ";\n    ", "\n    ", "\n"])), function (_a) {
     var variant = _a.variant, theme = _a.theme;
     return (variant ? theme.bme.palette[variant] : 'var(--bme-colour-text)');
 }, function (_a) {
@@ -89,6 +89,9 @@ var StyledText = styled.p(templateObject_1$2 || (templateObject_1$2 = __makeTemp
 }, function (_a) {
     var italic = _a.italic;
     return (italic ? 'font-style: italic;' : '');
+}, function (_a) {
+    var noWrap = _a.noWrap;
+    return (noWrap ? 'white-space: nowrap;' : '');
 });
 var Text = function (_a) {
     var children = _a.children, args = __rest(_a, ["children"]);
@@ -171,6 +174,16 @@ var SIZES_IN_PX = {
     none: 0,
 };
 var sizeToPx = function (size) { return SIZES_IN_PX[size]; };
+
+var validURL = function (value) {
+    var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+        '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+    return pattern.test(value);
+};
 
 var renderLabel = function (content, required) { return content + (required ? '*' : ''); };
 
@@ -1769,5 +1782,5 @@ Accordion.defaultProps = {
 };
 Accordion.Item = Item$1;
 
-export { Accordion as BMEAccordion, Alert as BMEAlert, Badge as BMEBadge, Box as BMEBox, Breadcrumbs as BMEBreadcrumbs, Button as BMEButton, Card as BMECard, Form as BMEForm, GlobalIcon as BMEGlobalIcon, GlobalStyles as BMEGlobalStyles, Grid$1 as BMEGrid, Header as BMEHeader, Icon as BMEIcon, Image as BMEImage, List as BMEList, Nav as BMENav, Switch$1 as BMESwitch, Text as BMEText, Topbar as BMETopbar };
+export { Accordion as BMEAccordion, Alert as BMEAlert, Badge as BMEBadge, Box as BMEBox, Breadcrumbs as BMEBreadcrumbs, Button as BMEButton, Card as BMECard, Form as BMEForm, GlobalIcon as BMEGlobalIcon, GlobalStyles as BMEGlobalStyles, Grid$1 as BMEGrid, Header as BMEHeader, Icon as BMEIcon, Image as BMEImage, List as BMEList, Nav as BMENav, Switch$1 as BMESwitch, Text as BMEText, Topbar as BMETopbar, IconNames as BMETypesIconNames, addFocus, boxShadow, clearButtonStyles, hexToRGBA, isEmpty, isRealNumber, makeFlex, renderLabel, sizeToPx, spacing, textColour, transition, useIntersection, validURL };
 //# sourceMappingURL=index.esm.js.map

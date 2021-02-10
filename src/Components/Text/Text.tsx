@@ -11,6 +11,7 @@ const StyledText = styled.p<TextComponentProps>`
     font-weight: ${({ weight }) => TextFontWeight[weight]};
     text-align: ${({ align }) => align};
     ${({ italic }) => (italic ? 'font-style: italic;' : '')}
+    ${({ noWrap }) => (noWrap ? 'white-space: nowrap;' : '')}
 `;
 
 const Text: React.FunctionComponent<TextComponentProps> = ({ children, ...args }) => (
