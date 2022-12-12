@@ -1,0 +1,45 @@
+{
+  "processors": [
+    "stylelint-processor-styled-components"
+  ],
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-styled-components",
+    "stylelint-config-rational-order"
+  ],
+  "plugins": [
+    "stylelint-order",
+    "stylelint-prettier"
+  ],
+  "customSyntax": "postcss-scss",
+  "rules": {
+    "selector-type-no-unknown": [
+      true,
+      {
+        "ignoreTypes": []
+      }
+    ],
+    "no-descending-specificity": null,
+    "color-no-invalid-hex": true,
+    "color-hex-case": [
+      "lower",
+      {
+        "message": "Lowercase letters are easier to distinguish from numbers"
+      }
+    ],
+    "max-empty-lines": 1,
+    "unit-allowed-list": [
+      "em",
+      "rem",
+      "%",
+      "px",
+      "vw",
+      "vh",
+      "s",
+      "ms",
+      "fr",
+      "deg"
+    ],
+    "prettier/prettier": true
+  }
+}
