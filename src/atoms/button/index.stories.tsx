@@ -1,19 +1,47 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { THEME_COLOURS_KEYS } from "../../settings/theme";
 import Button from "./index";
 
 export default {
   title: "Atoms/Button",
   component: Button,
   argTypes: {
-    backgroundColor: { control: "color" },
+    children: {
+      control: {
+        type: "text",
+      },
+    },
+    variant: {
+      options: THEME_COLOURS_KEYS,
+      control: { type: "radio" },
+    },
+    size: {
+      options: ["small", "medium", "large"],
+      control: { type: "radio" },
+    },
+    outline: {
+      control: { type: "boolean" },
+    },
+    disabled: {
+      control: { type: "boolean" },
+    },
   },
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
-export const Primary = Template.bind({});
+export const Playground = Template.bind({});
 
-Primary.args = {
-  variant: "primary",
+Playground.args = {
+  variant: "blue",
+  size: "medium",
   children: "Button",
+};
+
+Template.parameters = {
+  pseudo: {
+    hover: ["#one", "#two", "#three"],
+    focus: ["#two", "#three"],
+    active: "#three",
+  },
 };

@@ -1,0 +1,90 @@
+import { Meta } from '@storybook/addon-docs';
+import Button from "./index";
+import { ThemeProvider } from "styled-components";
+import theme, { THEME_COLOURS_KEYS } from "../../settings/theme";
+
+<Meta title="Atoms/Button/Docs" />
+
+# Buttons
+
+Buttons are used to trigger actions.
+
+## Usage
+Check playground for more examples.
+
+## Variants
+<ThemeProvider theme={theme}>
+  <table>
+    <thead>
+    <tr>
+      <th>
+        Colour
+      </th>
+      <th>
+        Large
+      </th>
+      <th>
+        Medium
+      </th>
+      <th>
+        Small
+      </th>
+      <th>
+        Outline Large
+      </th>
+      <th>
+        Outline Medium
+      </th>
+      <th>
+        Outline Small
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+      {THEME_COLOURS_KEYS.map((colour) =>
+        <tr>
+          <td>{colour}</td>
+            <td>
+              <Button variant={colour} size="large">Lorem</Button>
+            </td>
+          <td>
+            <Button variant={colour} size="medium">Lorem</Button>
+          </td>
+          <td>
+            <Button variant={colour} size="small">Lorem</Button>
+          </td>
+          <td>
+            <Button variant={colour} size="large" outline>Lorem</Button>
+          </td>
+          <td>
+            <Button variant={colour} size="medium" outline>Lorem</Button>
+          </td>
+          <td>
+            <Button variant={colour} size="small" outline>Lorem</Button>
+          </td>
+        </tr>
+      )}
+      <tr>
+        <td>Disabled</td>
+        <td>
+          <Button disabled size="large">Lorem</Button>
+        </td>
+        <td>
+          <Button disabled size="medium">Lorem</Button>
+        </td>
+        <td>
+          <Button disabled size="small">Lorem</Button>
+        </td>
+        <td>
+          <Button disabled size="large" outline>Lorem</Button>
+        </td>
+        <td>
+          <Button disabled size="medium" outline>Lorem</Button>
+        </td>
+        <td>
+          <Button disabled size="small" outline>Lorem</Button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ThemeProvider>
