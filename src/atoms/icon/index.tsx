@@ -5,6 +5,7 @@ import { CloseCircleOutline } from "./svg/close-circle-outline";
 import { SearchOutline } from "./svg/search-outline";
 import { MailOutline } from "./svg/mail-outline";
 import { LockClosedOutline } from "./svg/lock-closed-outline";
+import { LockOpenOutline } from "./svg/lock-open-outline";
 
 const DEFAULT_ICON_SIZE = 24;
 
@@ -23,7 +24,7 @@ const Icon: React.FC<IconProps> = ({ name, size, color }) => {
       IconToRender = LockClosedOutline;
       break;
     case "lock-open":
-      IconToRender = LockClosedOutline;
+      IconToRender = LockOpenOutline;
       break;
     case "close-circle":
       IconToRender = CloseCircleOutline;
@@ -41,10 +42,6 @@ const Icon: React.FC<IconProps> = ({ name, size, color }) => {
       {IconToRender}
     </StyledIcon>
   );
-};
-
-Icon.defaultProps = {
-  name: "close-circle",
 };
 
 export default Icon;

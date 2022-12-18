@@ -7,9 +7,8 @@ export default {
   component: Icon,
   argTypes: {
     name: {
-      control: {
-        type: "text",
-      },
+      options: ["lock-closed", "lock-open", "close-circle", "mail", "search"],
+      control: { type: "select" },
     },
     color: {
       options: THEME_COLOURS_KEYS,
@@ -21,10 +20,6 @@ export default {
 const Template: ComponentStory<typeof Icon> = (args) => <Icon {...args} />;
 
 export const Playground = Template.bind({});
-
-Playground.args = {
-  name: "close-circle",
-};
 
 Template.parameters = {
   pseudo: {
