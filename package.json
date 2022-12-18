@@ -64,6 +64,7 @@
     "rollup-plugin-postcss": "^4.0.2",
     "storybook-addon-pseudo-states": "^1.15.1",
     "storybook-addon-styled-component-theme": "^2.0.0",
+    "styled-normalize": "^8.0.7",
     "stylelint": "^14.16.0",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-recommended": "^9.0.0",
