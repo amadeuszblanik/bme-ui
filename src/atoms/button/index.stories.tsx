@@ -13,7 +13,7 @@ export default {
     },
     variant: {
       options: THEME_COLOURS_KEYS,
-      control: { type: "radio" },
+      control: { type: "select" },
     },
     size: {
       options: ["small", "medium", "large"],
