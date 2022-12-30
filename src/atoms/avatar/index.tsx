@@ -78,6 +78,7 @@ const StyledAvatar = styled.div<StyledAvatarProps>`
   width: ${({ size, borderInner }) => size.mobile + borderInner.mobile}px;
   height: ${({ size, borderInner }) => size.mobile + borderInner.mobile}px;
   overflow: hidden;
+  color: ${({ theme }) => theme.colors.background};
   background: ${({ theme, variant }) => theme.colors[variant]};
   border: ${({ borderInner }) => borderInner.mobile}px solid ${({ theme }) => theme.colors.background};
   border-radius: ${({ theme, rounded, size }) => (rounded ? size.desktop : theme.radius)}px;
