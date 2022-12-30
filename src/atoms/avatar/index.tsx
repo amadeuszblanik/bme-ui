@@ -60,7 +60,7 @@ const StyledAvatarWrapper = styled.div<StyledAvatarWrapperProps>`
   height: ${({ size, borderInner, borderOuter }) => size.mobile + borderInner.mobile + borderOuter.mobile}px;
   background: ${({ theme, variant }) => theme.colors[variant]};
   border-radius: ${({ theme, rounded, size }) => (rounded ? size.desktop : theme.radius)}px;
-  ${animationsMixin(["width", "height", "border-radius", "background"])}
+  ${animationsMixin(["width", "height", "border-radius", "background"])};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     width: ${({ size, borderInner, borderOuter }) => size.desktop + borderInner.desktop + borderOuter.desktop}px;
@@ -82,7 +82,7 @@ const StyledAvatar = styled.div<StyledAvatarProps>`
   border: ${({ borderInner }) => borderInner.mobile}px solid ${({ theme }) => theme.colors.background};
   border-radius: ${({ theme, rounded, size }) => (rounded ? size.desktop : theme.radius)}px;
   transform: translate(-50%, -50%);
-  ${animationsMixin(["width", "height", "border", "border-radius", "background"])}
+  ${animationsMixin(["width", "height", "border", "border-radius", "background"])};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     width: ${({ size, borderInner }) => size.desktop + borderInner.desktop}px;
@@ -110,7 +110,7 @@ const StyledStatus = styled.i<StyledStatusProps>`
   border: ${({ borderOuter }) => borderOuter.mobile}px solid ${({ theme }) => theme.colors.background};
   border-radius: ${({ size }) => size.desktop}px;
   transform: ${({ rounded }) => (rounded ? "translate(0, 0)" : "translate(50%, 50%)")};
-  ${animationsMixin(["transform", "background"])}
+  ${animationsMixin(["transform", "background"])};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     width: ${({ size, borderOuter }) => (size.desktop + borderOuter.desktop) / STATUS_SIZE_RATIO}px;
