@@ -1,4 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { IconNames } from "./types";
 import { THEME_COLOURS_KEYS } from "../../settings/theme";
 import Icon from "./index";
 
@@ -7,7 +8,7 @@ export default {
   component: Icon,
   argTypes: {
     name: {
-      options: ["checkmark", "lock-closed", "lock-open", "close-circle", "mail", "person", "search"],
+      options: IconNames,
       control: { type: "select" },
     },
     color: {
