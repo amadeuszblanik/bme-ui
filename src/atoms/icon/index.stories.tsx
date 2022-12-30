@@ -7,7 +7,7 @@ export default {
   component: Icon,
   argTypes: {
     name: {
-      options: ["checkmark", "lock-closed", "lock-open", "close-circle", "mail", "search"],
+      options: ["checkmark", "lock-closed", "lock-open", "close-circle", "mail", "person", "search"],
       control: { type: "select" },
     },
     color: {

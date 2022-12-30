@@ -7,6 +7,7 @@ import { MailOutline } from "./svg/mail-outline";
 import { LockClosedOutline } from "./svg/lock-closed-outline";
 import { LockOpenOutline } from "./svg/lock-open-outline";
 import { CheckmarkOutline } from "./svg/checkmark-outline";
+import { PersonOutline } from "./svg/person-outline";
 
 const DEFAULT_ICON_SIZE = 24;
 
@@ -35,6 +36,9 @@ const Icon: React.FC<IconProps> = ({ name, size, color }) => {
       break;
     case "mail":
       IconToRender = MailOutline;
+      break;
+    case "person":
+      IconToRender = PersonOutline;
       break;
     case "search":
       IconToRender = SearchOutline;
