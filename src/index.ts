@@ -1,4 +1,5 @@
 export * from "./atoms";
 export * from "./components";
-export { default as BmeDefaultTheme } from "./settings/theme";
-export { default as BmeGlobalStyle } from "./settings/global-styles";
+export * as bmeMixins from "./mixins";
+export * as bmeUtils from "./utils";
+export * from "./settings";

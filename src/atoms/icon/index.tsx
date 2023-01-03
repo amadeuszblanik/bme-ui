@@ -8,6 +8,8 @@ import { LockClosedOutline } from "./svg/lock-closed-outline";
 import { LockOpenOutline } from "./svg/lock-open-outline";
 import { CheckmarkOutline } from "./svg/checkmark-outline";
 import { PersonOutline } from "./svg/person-outline";
+import { GridOutline } from "./svg/grid-outline";
+import { MenuOutline } from "./svg/menu-outline";
 import ThemeProviderContext from "../../components/theme-provider/context";
 
 const DEFAULT_ICON_SIZE = 24;
@@ -28,17 +30,23 @@ const Icon: React.FC<IconProps> = ({ name, size, color }) => {
     case "checkmark":
       IconToRender = CheckmarkOutline;
       break;
+    case "grid":
+      IconToRender = GridOutline;
+      break;
+    case "close-circle":
+      IconToRender = CloseCircleOutline;
+      break;
     case "lock-closed":
       IconToRender = LockClosedOutline;
       break;
     case "lock-open":
       IconToRender = LockOpenOutline;
       break;
-    case "close-circle":
-      IconToRender = CloseCircleOutline;
-      break;
     case "mail":
       IconToRender = MailOutline;
+      break;
+    case "menu":
+      IconToRender = MenuOutline;
       break;
     case "person":
       IconToRender = PersonOutline;

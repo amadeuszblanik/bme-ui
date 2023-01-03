@@ -1,9 +1,10 @@
 import { describe, expect, test } from "@jest/globals";
+import theme from "../settings/theme";
 import { margins } from "./index";
 
 describe("Mixin:: margins", () => {
   test("empty should not return css", () => {
-    const results = margins("");
+    const results = margins("", theme);
 
     expect(results).toBeFalsy();
     expect(results).not.toBeUndefined();
@@ -14,7 +15,7 @@ describe("Mixin:: margins", () => {
   });
 
   test("undefined should not return css", () => {
-    const results = margins(undefined);
+    const results = margins(undefined, theme);
 
     expect(results).toBeFalsy();
     expect(results).not.toBeUndefined();
@@ -25,7 +26,7 @@ describe("Mixin:: margins", () => {
   });
 
   test("null should not return css", () => {
-    const results = margins(null);
+    const results = margins(null, theme);
 
     expect(results).toBeFalsy();
     expect(results).not.toBeUndefined();
@@ -37,7 +38,7 @@ describe("Mixin:: margins", () => {
 
   test("not allowed values should throw error", () => {
     try {
-      const results = margins("all|small");
+      const results = margins("all|small", theme);
 
       expect(results).toBe("NOT_ALLOWED");
     } catch (error) {
@@ -49,7 +50,7 @@ describe("Mixin:: margins", () => {
 
   test("too many values should throw error", () => {
     try {
-      const results = margins("xs|sm|md|lg|xl|xxl|xxl");
+      const results = margins("xs|sm|md|lg|xl|xxl|xxl", theme);
 
       expect(results).toBe("NOT_ALLOWED");
     } catch (error) {
@@ -59,25 +60,25 @@ describe("Mixin:: margins", () => {
 
   // @TODO: Refactor all tests be
   test("xs values should be array", () => {
-    const results = margins("xs");
+    const results = margins("xs", theme);
 
     expect(Array.isArray(results)).toBeTruthy();
   });
 
   test("xs|sm values should be array", () => {
-    const results = margins("xs|sm");
+    const results = margins("xs|sm", theme);
 
     expect(Array.isArray(results)).toBeTruthy();
   });
 
   test("xs|sm|md values should be array", () => {
-    const results = margins("xs|sm|md");
+    const results = margins("xs|sm|md", theme);
 
     expect(Array.isArray(results)).toBeTruthy();
   });
 
   test("xs|sm|md|lg values should be array", () => {
-    const results = margins("xs|sm|md|lg");
+    const results = margins("xs|sm|md|lg", theme);
 
     expect(Array.isArray(results)).toBeTruthy();
   });

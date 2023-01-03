@@ -1,9 +1,10 @@
 import { describe, expect, test } from "@jest/globals";
+import theme from "../settings/theme";
 import { paddings } from "./index";
 
 describe("Mixin:: paddings", () => {
   test("empty should not return css", () => {
-    const results = paddings("");
+    const results = paddings("", theme);
 
     expect(results).toBeFalsy();
     expect(results).not.toBeUndefined();
@@ -14,7 +15,7 @@ describe("Mixin:: paddings", () => {
   });
 
   test("undefined should not return css", () => {
-    const results = paddings(undefined);
+    const results = paddings(undefined, theme);
 
     expect(results).toBeFalsy();
     expect(results).not.toBeUndefined();
@@ -25,7 +26,7 @@ describe("Mixin:: paddings", () => {
   });
 
   test("null should not return css", () => {
-    const results = paddings(null);
+    const results = paddings(null, theme);
 
     expect(results).toBeFalsy();
     expect(results).not.toBeUndefined();
@@ -37,7 +38,7 @@ describe("Mixin:: paddings", () => {
 
   test("not allowed values should throw error", () => {
     try {
-      const results = paddings("all|small");
+      const results = paddings("all|small", theme);
 
       expect(results).toBe("NOT_ALLOWED");
     } catch (error) {
@@ -49,7 +50,7 @@ describe("Mixin:: paddings", () => {
 
   test("too many values should throw error", () => {
     try {
-      const results = paddings("xs|sm|md|lg|xl|xxl|xxl");
+      const results = paddings("xs|sm|md|lg|xl|xxl|xxl", theme);
 
       expect(results).toBe("NOT_ALLOWED");
     } catch (error) {
@@ -59,25 +60,25 @@ describe("Mixin:: paddings", () => {
 
   // @TODO: Refactor all tests be
   test("xs values should be array", () => {
-    const results = paddings("xs");
+    const results = paddings("xs", theme);
 
     expect(Array.isArray(results)).toBeTruthy();
   });
 
   test("xs|sm values should be array", () => {
-    const results = paddings("xs|sm");
+    const results = paddings("xs|sm", theme);
 
     expect(Array.isArray(results)).toBeTruthy();
   });
 
   test("xs|sm|md values should be array", () => {
-    const results = paddings("xs|sm|md");
+    const results = paddings("xs|sm|md", theme);
 
     expect(Array.isArray(results)).toBeTruthy();
   });
 
   test("xs|sm|md|lg values should be array", () => {
-    const results = paddings("xs|sm|md|lg");
+    const results = paddings("xs|sm|md|lg", theme);
 
     expect(Array.isArray(results)).toBeTruthy();
   });

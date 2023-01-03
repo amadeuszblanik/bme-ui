@@ -3,7 +3,7 @@ import { ThemeColours } from "../../settings/theme";
 import { StyledComponent } from "../../types/styled-component";
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
-  children: string;
+  children: React.ReactNode;
   variant?: ThemeColours;
   size?: "small" | "medium" | "large";
   outline?: boolean;

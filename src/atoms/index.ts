@@ -7,4 +7,5 @@ export { default as BmeInput } from "./input";
 export { default as BmeProgressBar } from "./progress-bar";
 export { default as BmeTag } from "./tag";
 export { default as BmeTest } from "./test";
+export { default as BmeText } from "./text";
 export { default as BmeTextArea } from "./text-area";

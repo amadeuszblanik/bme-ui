@@ -1,4 +1,5 @@
 import { css } from "styled-components";
+import theme from "../settings/theme";
 
 const MARGIN_SAME_LENGTH = 1;
 const MARGIN_X_Y_LENGTH = 2;
@@ -39,7 +40,7 @@ const DEFAULT_SIZES: MarginSizes = {
   },
 };
 
-const mixin = (value: string | null | undefined, sizes: MarginSizes = DEFAULT_SIZES) => {
+const mixin = (value: string | null | undefined, bmeTheme: typeof theme, sizes: MarginSizes = DEFAULT_SIZES) => {
   if (!value) {
     return "";
   }
@@ -67,7 +68,7 @@ const mixin = (value: string | null | undefined, sizes: MarginSizes = DEFAULT_SI
     return css`
       margin: ${margin.mobile};
 
-      @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
+      @media (min-width: ${bmeTheme.breakpoints.desktop}px) {
         margin: ${margin.desktop};
       }
     `;
@@ -79,7 +80,7 @@ const mixin = (value: string | null | undefined, sizes: MarginSizes = DEFAULT_SI
     return css`
       margin: ${marginX.mobile} ${marginY.mobile};
 
-      @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
+      @media (min-width: ${bmeTheme.breakpoints.desktop}px) {
         margin: ${marginX.desktop} ${marginY.desktop};
       }
     `;
@@ -91,7 +92,7 @@ const mixin = (value: string | null | undefined, sizes: MarginSizes = DEFAULT_SI
     return css`
       margin: ${marginTop.mobile} ${marginX.mobile} ${marginBottom.mobile};
 
-      @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
+      @media (min-width: ${bmeTheme.breakpoints.desktop}px) {
         margin: ${marginTop.desktop} ${marginX.desktop} ${marginBottom.desktop};
       }
     `;
@@ -103,7 +104,7 @@ const mixin = (value: string | null | undefined, sizes: MarginSizes = DEFAULT_SI
     return css`
       margin: ${marginTop.mobile} ${marginRight.mobile} ${marginBottom.mobile} ${marginLeft.mobile};
 
-      @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
+      @media (min-width: ${bmeTheme.breakpoints.desktop}px) {
         margin: ${marginTop.desktop} ${marginRight.desktop} ${marginBottom.desktop} ${marginLeft.desktop};
       }
     `;

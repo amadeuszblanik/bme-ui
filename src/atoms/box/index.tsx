@@ -43,8 +43,8 @@ const StyledBox = styled.div<StyledBoxProps>`
   border: ${({ bmeTheme, border }) => (border ? `2px solid ${bmeTheme.colors[border]}` : "none")};
   border-radius: ${({ bmeTheme, rounded }) => (rounded ? bmeTheme.radius : "0")}px;
 
-  ${({ padding }) => paddings(padding)};
-  ${({ margin }) => margins(margin)};
+  ${({ padding, bmeTheme }) => paddings(padding, bmeTheme)};
+  ${({ margin, bmeTheme }) => margins(margin, bmeTheme)};
   ${animations([
     "color",
     "background",
