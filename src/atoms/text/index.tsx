@@ -27,11 +27,7 @@ export type TextWeights =
   | "Heavy"
   | "Black";
 
-export enum TextAlignment {
-  Left = "left",
-  Center = "center",
-  Right = "right",
-}
+export type TextAlignment = "left" | "center" | "right";
 
 export interface StyledTextProps extends StyledComponent {
   size: number;
