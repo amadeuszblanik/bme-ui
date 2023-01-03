@@ -11,7 +11,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "dev": "start-storybook -p 6006",
-    "build": "rollup -c --bundleConfigAsCjs",
+    "build": "rollup -c --bundleConfigAsCjs && npm pack",
     "build:storybook": "build-storybook",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src && stylelint './**/*.{css,scss,js,jsx,ts,tsx}'",
     "lint:script": "eslint --ext .js,.jsx,.ts,.tsx src",
