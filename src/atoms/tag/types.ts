@@ -1,5 +1,6 @@
 import { ThemeColours } from "../../settings/theme";
 import { IconName } from "../icon/types";
+import { StyledComponent } from "../../types/styled-component";
 
 export interface TagProps {
   label: string;
@@ -9,7 +10,7 @@ export interface TagProps {
   onRemove?: () => void;
 }
 
-export interface StyledTagProps {
+export interface StyledTagProps extends StyledComponent {
   variant: ThemeColours;
   paddingX: {
     mobile: number;
@@ -25,7 +26,7 @@ export interface StyledTagProps {
   };
 }
 
-export interface StyledIconProps {
+export interface StyledIconProps extends StyledComponent {
   fontSize: {
     mobile: number;
     desktop: number;

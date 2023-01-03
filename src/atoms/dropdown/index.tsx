@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { isEmpty } from "bme-utils";
 import { DropdownProps, StyledSelectProps, StyledHintProps, StyledLabelProps } from "./types";
@@ -6,6 +6,7 @@ import { ThemeColours } from "../../settings/theme";
 import { animations } from "../../mixins";
 import { StyledClearProps } from "../input/types";
 import { BmeIcon } from "../index";
+import ThemeProviderContext from "../../components/theme-provider/context";
 
 const VALUES = {
   mobile: {
@@ -68,13 +69,13 @@ const StyledLabel = styled.label<StyledLabelProps>`
   top: ${({ isFilled }) => (isFilled ? "0" : "50%")};
   left: ${({ paddingX }) => paddingX.mobile - LABEL_PADDING_X}px;
   padding: 0 ${LABEL_PADDING_X}px 0 ${({ isFilled, fontSize }) => (!isFilled ? fontSize.mobile : LABEL_PADDING_X)}px;
-  color: ${({ theme, variant, isFilled }) => (isFilled ? theme.colors[variant] : theme.colors.gray)};
+  color: ${({ bmeTheme, variant, isFilled }) => (isFilled ? bmeTheme.colors[variant] : bmeTheme.colors.gray)};
   font-size: ${({ fontSize }) => fontSize.mobile}px;
-  background: ${({ theme, isFilled }) => (isFilled ? theme.colors.background : "transparent")};
+  background: ${({ bmeTheme, isFilled }) => (isFilled ? bmeTheme.colors.background : "transparent")};
   transform: translateY(-50%);
   ${animations(["top", "left", "padding", "font-size", "background"])};
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
+  @media (min-width: ${({ bmeTheme }) => bmeTheme.breakpoints.desktop}px) {
     left: ${({ paddingX }) => paddingX.desktop - LABEL_PADDING_X}px;
     padding: 0 ${LABEL_PADDING_X}px 0
       ${({ isFilled, fontSize }) =>
@@ -90,17 +91,17 @@ const StyledSelect = styled.select<StyledSelectProps>`
   width: 100%;
   min-width: 240px;
   padding: ${({ paddingX, paddingY }) => `${paddingY.mobile}px ${paddingX.mobile}px;`};
-  color: ${({ theme, disabled }) => (disabled ? theme.colors.gray5 : theme.colors.text)};
+  color: ${({ bmeTheme, disabled }) => (disabled ? bmeTheme.colors.gray5 : bmeTheme.colors.text)};
   font-size: ${({ fontSize }) => fontSize.mobile}px;
-  background: ${({ theme }) => theme.colors.gray5};
-  border: ${({ theme }) => theme.colors.gray5} solid 2px;
-  border-radius: ${({ theme }) => theme.radius}px;
+  background: ${({ bmeTheme }) => bmeTheme.colors.gray5};
+  border: ${({ bmeTheme }) => bmeTheme.colors.gray5} solid 2px;
+  border-radius: ${({ bmeTheme }) => bmeTheme.radius}px;
   appearance: none;
 
-  ${({ theme, variant, isFilled, disabled }) =>
+  ${({ bmeTheme, variant, isFilled, disabled }) =>
     isFilled &&
     `background: transparent;
-      border: ${disabled ? theme.colors.gray : theme.colors[variant]} solid 2px;
+      border: ${disabled ? bmeTheme.colors.gray : bmeTheme.colors[variant]} solid 2px;
       outline: none;`}
 `;
 
@@ -117,14 +118,14 @@ const StyledClear = styled.button<StyledClearProps>`
   appearance: none;
   ${animations(["right", "opacity"])};
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
+  @media (min-width: ${({ bmeTheme }) => bmeTheme.breakpoints.desktop}px) {
     right: ${({ paddingX }) => paddingX.desktop}px;
   }
 `;
 
 const StyledHint = styled.div<StyledHintProps>`
   padding: ${({ paddingX }) => `4px ${paddingX.mobile}px 0`};
-  color: ${({ theme, variant }) => theme.colors[variant]};
+  color: ${({ bmeTheme, variant }) => bmeTheme.colors[variant]};
   font-size: ${({ fontSize }) => fontSize.mobile}px;
 `;
 
@@ -142,6 +143,8 @@ const Input: React.FC<DropdownProps> = ({
   variant,
 }) => {
   size = size ?? "medium";
+
+  const { theme } = useContext(ThemeProviderContext);
 
   const variantDynamic = disabled ? "gray" : error ? "red" : valid ? "green" : variant ?? VARIANT;
   const hintVariant: ThemeColours = error ? "red" : valid ? "green" : "gray";
@@ -173,6 +176,7 @@ const Input: React.FC<DropdownProps> = ({
           variant={variantDynamic}
           paddingX={paddingX}
           fontSize={fontSize}
+          bmeTheme={theme}
         >
           {label}
         </StyledLabel>
@@ -187,6 +191,8 @@ const Input: React.FC<DropdownProps> = ({
           onChange={(e) => onValue(list.find((item) => item.key === e.target.value) || null)}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
+          disabled={disabled}
+          bmeTheme={theme}
         >
           <option disabled selected={!selectedValueKey} />
           {list.map(({ key, label: itemLabel }) => (
@@ -196,13 +202,13 @@ const Input: React.FC<DropdownProps> = ({
           ))}
         </StyledSelect>
         {!disabled && (
-          <StyledClear isFilled={!!selectedValueKey} paddingX={paddingX} onClick={() => onValue(null)}>
+          <StyledClear isFilled={!!selectedValueKey} paddingX={paddingX} onClick={() => onValue(null)} bmeTheme={theme}>
             <BmeIcon name="close-circle" size={ICON_SIZE} color={variantDynamic} />
           </StyledClear>
         )}
       </StyledFormControlInput>
       {!disabled && (
-        <StyledHint variant={hintVariant} paddingX={paddingX} fontSize={fontSize}>
+        <StyledHint variant={hintVariant} paddingX={paddingX} fontSize={fontSize} bmeTheme={theme}>
           {hintMessage}
         </StyledHint>
       )}

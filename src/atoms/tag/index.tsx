@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { TagProps, StyledTagProps, StyledIconProps } from "./types";
 import { ThemeColours } from "../../settings/theme";
 import { BmeIcon } from "../index";
 import { animations, isDark } from "../../mixins";
+import ThemeProviderContext from "../../components/theme-provider/context";
 
 const VALUES = {
   mobile: {
@@ -49,14 +50,15 @@ const StyledTag = styled.div<StyledTagProps>`
   display: inline-flex;
   align-items: center;
   padding: ${({ paddingY, paddingX }) => `${paddingY.mobile}px ${paddingX.mobile}px`};
-  color: ${({ theme, variant }) => (isDark(theme.colors[variant]) ? theme.colors.light : theme.colors.dark)};
+  color: ${({ bmeTheme, variant }) =>
+    isDark(bmeTheme.colors[variant]) ? bmeTheme.colors.light : bmeTheme.colors.dark};
   font-size: ${({ fontSize }) => fontSize.mobile}px;
   text-align: center;
-  background: ${({ theme, variant }) => theme.colors[variant]};
+  background: ${({ bmeTheme, variant }) => bmeTheme.colors[variant]};
   border-radius: ${({ paddingX }) => paddingX.desktop}px;
   ${animations(["padding", "color", "font-size", "background"])};
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
+  @media (min-width: ${({ bmeTheme }) => bmeTheme.breakpoints.desktop}px) {
     padding: ${({ paddingY, paddingX }) => `${paddingY.desktop}px ${paddingX.desktop}px`};
     font-size: ${({ fontSize }) => fontSize.desktop}px;
   }
@@ -69,7 +71,7 @@ const StyledIcon = styled.div<StyledIconProps>`
   font-size: ${({ fontSize }) => fontSize.mobile}px;
   ${animations(["font-size"])};
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
+  @media (min-width: ${({ bmeTheme }) => bmeTheme.breakpoints.desktop}px) {
     font-size: ${({ fontSize }) => fontSize.desktop}px;
   }
 `;
@@ -88,6 +90,8 @@ const Tag: React.FC<TagProps> = ({ label, size, variant, icon, onRemove }) => {
   size = size ?? "medium";
   variant = variant ?? VARIANT;
 
+  const { theme } = useContext(ThemeProviderContext);
+
   const paddingX = {
     mobile: VALUES.mobile[size].paddingX,
     desktop: VALUES.desktop[size].paddingX,
@@ -104,9 +108,9 @@ const Tag: React.FC<TagProps> = ({ label, size, variant, icon, onRemove }) => {
   };
 
   return (
-    <StyledTag variant={variant} paddingX={paddingX} paddingY={paddingY} fontSize={fontSize}>
+    <StyledTag variant={variant} paddingX={paddingX} paddingY={paddingY} fontSize={fontSize} bmeTheme={theme}>
       {icon && (
-        <StyledIcon fontSize={fontSize}>
+        <StyledIcon fontSize={fontSize} bmeTheme={theme}>
           <BmeIcon name={icon} />
         </StyledIcon>
       )}

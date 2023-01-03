@@ -1,5 +1,6 @@
 import React from "react";
 import { ThemeColours } from "../../settings/theme";
+import { StyledComponent } from "../../types/styled-component";
 
 export interface DropdownItem {
   key: string;
@@ -21,7 +22,7 @@ export interface DropdownProps extends React.HTMLAttributes<HTMLSelectElement> {
   children?: undefined | null;
 }
 
-export interface StyledLabelProps {
+export interface StyledLabelProps extends StyledComponent {
   isFilled: boolean;
   variant: ThemeColours;
   paddingX: {
@@ -34,7 +35,7 @@ export interface StyledLabelProps {
   };
 }
 
-export interface StyledSelectProps {
+export interface StyledSelectProps extends StyledComponent {
   isFilled: boolean;
   variant: ThemeColours;
   paddingX: {
@@ -59,7 +60,7 @@ export interface StyledClearProps {
   };
 }
 
-export interface StyledHintProps {
+export interface StyledHintProps extends StyledComponent {
   variant: ThemeColours;
   paddingX: {
     mobile: number;

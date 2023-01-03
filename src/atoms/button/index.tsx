@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { ButtonProps, StyledButtonProps } from "./types";
 import { animations, isDark } from "../../mixins";
 import { darkenColor } from "../../utils";
+import ThemeProviderContext from "../../components/theme-provider/context";
 
 const VALUES = {
   mobile: {
@@ -46,18 +47,18 @@ const StyledButton = styled.button<StyledButtonProps>`
   align-items: center;
   justify-content: center;
   padding: ${({ paddingX, paddingY }) => `${paddingY.mobile}px ${paddingX.mobile}px`};
-  color: ${({ theme, variant, outline, disabled }) =>
+  color: ${({ bmeTheme, variant, outline, disabled }) =>
     outline
       ? disabled
-        ? theme.colors.light
-        : theme.colors[variant]
-      : isDark(theme.colors[variant])
-      ? theme.colors.light
-      : theme.colors.dark};
+        ? bmeTheme.colors.light
+        : bmeTheme.colors[variant]
+      : isDark(bmeTheme.colors[variant])
+      ? bmeTheme.colors.light
+      : bmeTheme.colors.dark};
   font-size: ${({ fontSize }) => fontSize.mobile}px;
-  background: ${({ theme, variant, outline }) => (outline ? `transparent` : theme.colors[variant])};
-  border: ${({ theme, variant, disabled }) => (disabled ? theme.colors.gray : theme.colors[variant])} solid 2px;
-  border-radius: ${({ theme }) => theme.radius}px;
+  background: ${({ bmeTheme, variant, outline }) => (outline ? `transparent` : bmeTheme.colors[variant])};
+  border: ${({ bmeTheme, variant, disabled }) => (disabled ? bmeTheme.colors.gray : bmeTheme.colors[variant])} solid 2px;
+  border-radius: ${({ bmeTheme }) => bmeTheme.radius}px;
   cursor: pointer;
   appearance: none;
   ${animations(["background-color", "color", "padding", "font-size"])};
@@ -65,16 +66,14 @@ const StyledButton = styled.button<StyledButtonProps>`
   &:not([disabled]) {
     &:hover,
     &:active {
-      color: ${({ theme, variant }) =>
-        isDark(darkenColor(theme.colors[variant]).hex) ? theme.colors.light : theme.colors.dark};
-      background: ${({ theme, variant }) => darkenColor(theme.colors[variant]).hex};
+      color: ${({ bmeTheme, variant }) =>
+        isDark(darkenColor(bmeTheme.colors[variant]).hex) ? bmeTheme.colors.light : bmeTheme.colors.dark};
+      background: ${({ bmeTheme, variant }) => darkenColor(bmeTheme.colors[variant]).hex};
     }
 
     &:focus {
       position: relative;
       outline: none;
-      // border: ${({ theme, variant }) => theme.colors[variant]} solid 2px;
-      // outline: none;
 
       &:after {
         position: absolute;
@@ -82,8 +81,8 @@ const StyledButton = styled.button<StyledButtonProps>`
         right: -4px;
         bottom: -4px;
         left: -4px;
-        border: ${({ theme, variant }) => theme.colors[variant]} solid 2px;
-        border-radius: ${({ theme }) => theme.radius}px;
+        border: ${({ bmeTheme, variant }) => bmeTheme.colors[variant]} solid 2px;
+        border-radius: ${({ bmeTheme }) => bmeTheme.radius}px;
         content: "";
       }
     }
@@ -91,11 +90,11 @@ const StyledButton = styled.button<StyledButtonProps>`
 
   &:disabled,
   &[disabled] {
-    background: ${({ theme }) => theme.colors.gray} !important;
+    background: ${({ bmeTheme }) => bmeTheme.colors.gray} !important;
     cursor: not-allowed;
   }
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
+  @media (min-width: ${({ bmeTheme }) => bmeTheme.breakpoints.desktop}px) {
     padding: ${({ paddingX, paddingY }) => `${paddingY.desktop}px ${paddingX.desktop}px`};
     font-size: ${({ fontSize }) => fontSize.desktop}px;
   }
@@ -104,6 +103,8 @@ const StyledButton = styled.button<StyledButtonProps>`
 const Button: React.FC<ButtonProps> = ({ children, size, variant, ...props }) => {
   size = size ?? "medium";
   variant = variant ?? "blue";
+
+  const { theme } = useContext(ThemeProviderContext);
 
   const paddingX = {
     mobile: VALUES.mobile[size].paddingX,
@@ -119,7 +120,14 @@ const Button: React.FC<ButtonProps> = ({ children, size, variant, ...props }) =>
   };
 
   return (
-    <StyledButton paddingX={paddingX} paddingY={paddingY} variant={variant} fontSize={fontSize} {...props}>
+    <StyledButton
+      paddingX={paddingX}
+      paddingY={paddingY}
+      variant={variant}
+      fontSize={fontSize}
+      bmeTheme={theme}
+      {...props}
+    >
       {children}
     </StyledButton>
   );

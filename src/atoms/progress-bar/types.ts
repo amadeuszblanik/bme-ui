@@ -1,4 +1,5 @@
 import { ThemeColours } from "../../settings/theme";
+import { StyledComponent } from "../../types/styled-component";
 
 export interface ProgressBarProps {
   value?: number;
@@ -9,11 +10,11 @@ export interface ProgressBarProps {
   done?: string;
 }
 
-export interface StyledProgressBarValueProps {
+export interface StyledProgressBarValueProps extends StyledComponent {
   value?: number;
   variant: ThemeColours;
 }
 
-export interface StyledProgressBarLabelProps {
+export interface StyledProgressBarLabelProps extends StyledComponent {
   variant: ThemeColours;
 }

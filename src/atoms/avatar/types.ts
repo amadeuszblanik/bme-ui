@@ -1,4 +1,5 @@
 import { ThemeColours } from "../../settings/theme";
+import { StyledComponent } from "../../types/styled-component";
 
 export interface AvatarProps {
   src?: string;
@@ -9,7 +10,7 @@ export interface AvatarProps {
   status?: ThemeColours;
 }
 
-export interface StyledAvatarWrapperProps {
+export interface StyledAvatarWrapperProps extends StyledComponent {
   size: {
     mobile: number;
     desktop: number;
@@ -26,7 +27,7 @@ export interface StyledAvatarWrapperProps {
   rounded?: boolean;
 }
 
-export interface StyledAvatarProps {
+export interface StyledAvatarProps extends StyledComponent {
   size: {
     mobile: number;
     desktop: number;
@@ -39,7 +40,7 @@ export interface StyledAvatarProps {
   rounded?: boolean;
 }
 
-export interface StyledStatusProps {
+export interface StyledStatusProps extends StyledComponent {
   size: {
     mobile: number;
     desktop: number;

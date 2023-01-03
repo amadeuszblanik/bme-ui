@@ -1,5 +1,6 @@
 import React from "react";
 import { ThemeColours } from "../../settings/theme";
+import { StyledComponent } from "../../types/styled-component";
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children: string;
@@ -8,7 +9,7 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   outline?: boolean;
 }
 
-export interface StyledButtonProps {
+export interface StyledButtonProps extends StyledComponent {
   paddingX: {
     mobile: number;
     desktop: number;

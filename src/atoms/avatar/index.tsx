@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { AvatarProps, StyledAvatarWrapperProps, StyledAvatarProps, StyledStatusProps } from "./types";
 import { ThemeColours } from "../../settings/theme";
 import { BmeIcon } from "../index";
 import animationsMixin from "../../mixins/animations.mixin";
+import ThemeProviderContext from "../../components/theme-provider/context";
 
 const VALUES = {
   mobile: {
@@ -58,11 +59,11 @@ const StyledAvatarWrapper = styled.div<StyledAvatarWrapperProps>`
   display: inline-flex;
   width: ${({ size, borderInner, borderOuter }) => size.mobile + borderInner.mobile + borderOuter.mobile}px;
   height: ${({ size, borderInner, borderOuter }) => size.mobile + borderInner.mobile + borderOuter.mobile}px;
-  background: ${({ theme, variant }) => theme.colors[variant]};
-  border-radius: ${({ theme, rounded, size }) => (rounded ? size.desktop : theme.radius)}px;
+  background: ${({ bmeTheme, variant }) => bmeTheme.colors[variant]};
+  border-radius: ${({ bmeTheme, rounded, size }) => (rounded ? size.desktop : bmeTheme.radius)}px;
   ${animationsMixin(["width", "height", "border-radius", "background"])};
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
+  @media (min-width: ${({ bmeTheme }) => bmeTheme.breakpoints.desktop}px) {
     width: ${({ size, borderInner, borderOuter }) => size.desktop + borderInner.desktop + borderOuter.desktop}px;
     height: ${({ size, borderInner, borderOuter }) => size.desktop + borderInner.desktop + borderOuter.desktop}px;
   }
@@ -78,14 +79,14 @@ const StyledAvatar = styled.div<StyledAvatarProps>`
   width: ${({ size, borderInner }) => size.mobile + borderInner.mobile}px;
   height: ${({ size, borderInner }) => size.mobile + borderInner.mobile}px;
   overflow: hidden;
-  color: ${({ theme }) => theme.colors.background};
-  background: ${({ theme, variant }) => theme.colors[variant]};
-  border: ${({ borderInner }) => borderInner.mobile}px solid ${({ theme }) => theme.colors.background};
-  border-radius: ${({ theme, rounded, size }) => (rounded ? size.desktop : theme.radius)}px;
+  color: ${({ bmeTheme }) => bmeTheme.colors.background};
+  background: ${({ bmeTheme, variant }) => bmeTheme.colors[variant]};
+  border: ${({ borderInner }) => borderInner.mobile}px solid ${({ bmeTheme }) => bmeTheme.colors.background};
+  border-radius: ${({ bmeTheme, rounded, size }) => (rounded ? size.desktop : bmeTheme.radius)}px;
   transform: translate(-50%, -50%);
   ${animationsMixin(["width", "height", "border", "border-radius", "background"])};
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
+  @media (min-width: ${({ bmeTheme }) => bmeTheme.breakpoints.desktop}px) {
     width: ${({ size, borderInner }) => size.desktop + borderInner.desktop}px;
     height: ${({ size, borderInner }) => size.desktop + borderInner.desktop}px;
     border-width: ${({ borderInner }) => borderInner.desktop}px;
@@ -107,13 +108,13 @@ const StyledStatus = styled.i<StyledStatusProps>`
   bottom: 0;
   width: ${({ size, borderOuter }) => (size.mobile + borderOuter.mobile) / STATUS_SIZE_RATIO}px;
   height: ${({ size, borderOuter }) => (size.mobile + borderOuter.mobile) / STATUS_SIZE_RATIO}px;
-  background: ${({ theme, variant }) => theme.colors[variant]};
-  border: ${({ borderOuter }) => borderOuter.mobile}px solid ${({ theme }) => theme.colors.background};
+  background: ${({ bmeTheme, variant }) => bmeTheme.colors[variant]};
+  border: ${({ borderOuter }) => borderOuter.mobile}px solid ${({ bmeTheme }) => bmeTheme.colors.background};
   border-radius: ${({ size }) => size.desktop}px;
   transform: ${({ rounded }) => (rounded ? "translate(0, 0)" : "translate(50%, 50%)")};
   ${animationsMixin(["transform", "background"])};
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
+  @media (min-width: ${({ bmeTheme }) => bmeTheme.breakpoints.desktop}px) {
     width: ${({ size, borderOuter }) => (size.desktop + borderOuter.desktop) / STATUS_SIZE_RATIO}px;
     height: ${({ size, borderOuter }) => (size.desktop + borderOuter.desktop) / STATUS_SIZE_RATIO}px;
     border-width: ${({ borderOuter }) => borderOuter.desktop}px;
@@ -123,6 +124,8 @@ const StyledStatus = styled.i<StyledStatusProps>`
 const Avatar: React.FC<AvatarProps> = ({ src, size, variant, rounded, border, status }) => {
   size = size ?? "medium";
   variant = variant ?? VARIANT;
+
+  const { theme } = useContext(ThemeProviderContext);
 
   const [isError, setIsError] = React.useState(false);
 
@@ -163,15 +166,24 @@ const Avatar: React.FC<AvatarProps> = ({ src, size, variant, rounded, border, st
       rounded={rounded}
       borderInner={borderInner}
       borderOuter={borderOuter}
+      bmeTheme={theme}
     >
-      <StyledAvatar size={sizeValue} variant={variant} rounded={rounded} borderInner={borderInner}>
+      <StyledAvatar size={sizeValue} variant={variant} rounded={rounded} borderInner={borderInner} bmeTheme={theme}>
         {displayError ? (
           <BmeIcon name="person" size={sizeValue.mobile * ERROR_ICON_RATIO} />
         ) : (
           <StyledImage src={src} onError={handleImageError} />
         )}
       </StyledAvatar>
-      {status && <StyledStatus size={sizeValue} borderOuter={statusBorderOuter} variant={status} rounded={rounded} />}
+      {status && (
+        <StyledStatus
+          size={sizeValue}
+          borderOuter={statusBorderOuter}
+          variant={status}
+          rounded={rounded}
+          bmeTheme={theme}
+        />
+      )}
     </StyledAvatarWrapper>
   );
 };

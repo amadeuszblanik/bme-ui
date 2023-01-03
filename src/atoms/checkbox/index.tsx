@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import {
   CheckboxProps,
@@ -10,6 +10,7 @@ import {
 import { ThemeColours } from "../../settings/theme";
 import { animations } from "../../mixins";
 import { BmeIcon } from "../index";
+import ThemeProviderContext from "../../components/theme-provider/context";
 
 const VALUES = {
   mobile: {
@@ -74,14 +75,14 @@ const StyledCheckbox = styled.button<StyledCheckboxProps>`
   width: ${({ size }) => size.mobile}px;
   height: ${({ size }) => size.mobile}px;
   margin-right: 8px;
-  background: ${({ theme, variant, disabled, checked }) =>
-    disabled ? theme.colors.gray : checked ? theme.colors[variant] : theme.colors.background};
-  border: 3px solid ${({ theme, variant, disabled }) => (disabled ? theme.colors.gray : theme.colors[variant])};
-  border-radius: ${({ theme }) => theme.radius}px;
+  background: ${({ bmeTheme, variant, disabled, checked }) =>
+    disabled ? bmeTheme.colors.gray : checked ? bmeTheme.colors[variant] : bmeTheme.colors.background};
+  border: 3px solid ${({ bmeTheme, variant, disabled }) => (disabled ? bmeTheme.colors.gray : bmeTheme.colors[variant])};
+  border-radius: ${({ bmeTheme }) => bmeTheme.radius}px;
   ${animations(["background", "border"])};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
+  @media (min-width: ${({ bmeTheme }) => bmeTheme.breakpoints.desktop}px) {
     width: ${({ size }) => size.desktop}px;
     height: ${({ size }) => size.desktop}px;
   }
@@ -98,7 +99,7 @@ const StyledCheckboxCheckmark = styled.div<StyledCheckboxCheckmarkProps>`
 
 const StyledHint = styled.div<StyledHintProps>`
   padding: 4px 0 0;
-  color: ${({ theme, variant }) => theme.colors[variant]};
+  color: ${({ bmeTheme, variant }) => bmeTheme.colors[variant]};
   font-size: ${({ fontSize }) => fontSize.mobile}px;
 `;
 
@@ -115,6 +116,8 @@ const Input: React.FC<CheckboxProps> = ({
   variant,
 }) => {
   size = size ?? "medium";
+
+  const { theme } = useContext(ThemeProviderContext);
 
   const variantDynamic = disabled ? "gray" : error ? "red" : valid ? "green" : variant ?? VARIANT;
   const hintVariant: ThemeColours = error ? "red" : valid ? "green" : "gray";
@@ -146,6 +149,7 @@ const Input: React.FC<CheckboxProps> = ({
           size={sizeInPx}
           variant={variantDynamic}
           fontSize={fontSize}
+          bmeTheme={theme}
         >
           <StyledCheckboxCheckmark checked={value} onClick={() => onValue(!value)}>
             <BmeIcon name="checkmark" size={sizeInPx.mobile * CHECKMARK_RELATIVE_SIZE} color="light" />
@@ -156,7 +160,7 @@ const Input: React.FC<CheckboxProps> = ({
         </StyledLabel>
       </StyledFormControlInput>
       {!disabled && (
-        <StyledHint variant={hintVariant} size={sizeInPx} fontSize={fontSize}>
+        <StyledHint variant={hintVariant} size={sizeInPx} fontSize={fontSize} bmeTheme={theme}>
           {hintMessage}
         </StyledHint>
       )}
