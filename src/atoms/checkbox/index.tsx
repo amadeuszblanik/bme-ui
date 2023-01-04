@@ -114,6 +114,7 @@ const Input: React.FC<CheckboxProps> = ({
   size,
   disabled,
   variant,
+  ...props
 }) => {
   size = size ?? "medium";
 
@@ -135,6 +136,7 @@ const Input: React.FC<CheckboxProps> = ({
   return (
     <StyledFormControl>
       <StyledNativeCheckbox
+        {...props}
         id={name}
         name={name}
         disabled={disabled}
@@ -150,6 +152,7 @@ const Input: React.FC<CheckboxProps> = ({
           variant={variantDynamic}
           fontSize={fontSize}
           bmeTheme={theme}
+          type="button"
         >
           <StyledCheckboxCheckmark checked={value} onClick={() => onValue(!value)}>
             <BmeIcon name="checkmark" size={sizeInPx.mobile * CHECKMARK_RELATIVE_SIZE} color="light" />
