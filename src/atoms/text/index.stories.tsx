@@ -38,6 +38,13 @@ export default {
     uppercase: { control: "boolean" },
     noBottomMargin: { control: "boolean" },
     color: { options: Object.keys(Theme.colors), control: "select" },
+    fontStyle: { options: [undefined, "normal", "italic"], control: "select" },
+    lineFormat: {
+      options: [undefined, "normal", "nowrap", "pre", "pre-line", "pre-wrap", "break-spaces"],
+      control: "select",
+    },
+    lineHeight: { control: "text" },
+    letterSpacing: { control: "text" },
     sampleText: { control: "text" },
   },
 } as ComponentMeta<ComponentType>;

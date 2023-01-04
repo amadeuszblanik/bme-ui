@@ -28,13 +28,20 @@ export type TextWeights =
   | "Black";
 
 export type TextAlignment = "left" | "center" | "right";
+export type FontStyle = "normal" | "italic";
+export type LineFormat = "normal" | "nowrap" | "pre" | "pre-line" | "pre-wrap" | "break-spaces";
 
 export interface StyledTextProps extends StyledComponent {
-  size: number;
-  weight: string;
+  sizeMobile: number;
+  sizeDesktop: number;
+  weight: number;
+  textTransform: string;
+  lineHeight?: string;
+  letterSpacing?: string;
   color?: ThemeColours;
+  fontStyle?: FontStyle;
+  lineFormat?: LineFormat;
   noBottomMargin?: boolean;
-  textTransform?: string;
   align?: TextAlignment;
 }
 
@@ -42,27 +49,90 @@ const StyledText = styled.p<StyledTextProps>`
   margin-bottom: ${({ noBottomMargin }) => (noBottomMargin ? "0" : "4px")};
   color: ${({ bmeTheme, color }) => (color ? bmeTheme.colors[color] : "var(--color-text)")};
   font-weight: ${({ weight }) => weight};
-  font-size: ${({ size }) => size}px;
+  font-size: ${({ sizeMobile }) => sizeMobile}px;
+  font-style: ${({ fontStyle }) => fontStyle};
+  line-height: ${({ lineHeight }) => lineHeight};
+  letter-spacing: ${({ letterSpacing }) => letterSpacing};
+  white-space: ${({ lineFormat }) => lineFormat || "normal"};
   text-align: ${({ align }) => align || "inherit"};
   text-transform: ${({ textTransform }) => textTransform};
-  --placeholder-height: ${({ size }) => size}px;
+  --placeholder-height: ${({ sizeMobile }) => sizeMobile}px;
   --placeholder-offset-y: 3px;
+
+  @media (min-width: ${({ bmeTheme }) => bmeTheme.breakpoints.desktop}px) {
+    font-size: ${({ sizeDesktop }) => sizeDesktop}px;
+    --placeholder-height: ${({ sizeDesktop }) => sizeDesktop}px;
+  }
 `;
 
+const weightSize: { [key in TextWeights]: number } = {
+  Thin: 100,
+  UltraLight: 200,
+  Light: 300,
+  Regular: 400,
+  Medium: 500,
+  SemiBold: 600,
+  Bold: 700,
+  Heavy: 800,
+  Black: 900,
+};
+
 const variantSize: {
-  [key in TextVariants]: { standard: number; leading: number };
+  [key in TextVariants]: {
+    mobile: {
+      standard: number;
+      leading: number;
+    };
+    desktop: {
+      standard: number;
+      leading: number;
+    };
+  };
 } = {
-  LargeTitle: { standard: 34, leading: 41 },
-  Title1: { standard: 28, leading: 34 },
-  Title2: { standard: 22, leading: 28 },
-  Title3: { standard: 20, leading: 25 },
-  Headline: { standard: 17, leading: 22 },
-  Body: { standard: 17, leading: 22 },
-  Callout: { standard: 16, leading: 21 },
-  Subhead: { standard: 15, leading: 20 },
-  Footnote: { standard: 13, leading: 18 },
-  Caption1: { standard: 12, leading: 16 },
-  Caption2: { standard: 11, leading: 13 },
+  LargeTitle: {
+    mobile: { standard: 34, leading: 41 },
+    desktop: { standard: 34, leading: 41 },
+  },
+  Title1: {
+    mobile: { standard: 28, leading: 34 },
+    desktop: { standard: 28, leading: 34 },
+  },
+  Title2: {
+    mobile: { standard: 22, leading: 28 },
+    desktop: { standard: 22, leading: 28 },
+  },
+  Title3: {
+    mobile: { standard: 20, leading: 25 },
+    desktop: { standard: 20, leading: 25 },
+  },
+  Headline: {
+    mobile: { standard: 17, leading: 22 },
+    desktop: { standard: 17, leading: 22 },
+  },
+  Body: {
+    mobile: { standard: 15, leading: 19 },
+    desktop: { standard: 17, leading: 22 },
+  },
+  Callout: {
+    mobile: { standard: 14, leading: 21 },
+    desktop: { standard: 16, leading: 21 },
+  },
+  Subhead: {
+    mobile: { standard: 15, leading: 19 },
+    desktop: { standard: 15, leading: 19 },
+  },
+  Footnote: {
+    mobile: { standard: 13, leading: 18 },
+    desktop: { standard: 13, leading: 18 },
+  },
+  Caption1: {
+    mobile: { standard: 12, leading: 16 },
+    desktop: { standard: 12, leading: 16 },
+  },
+  Caption2: {
+    mobile: { standard: 11, leading: 13 },
+    desktop: { standard: 11, leading: 13 },
+  },
 };
 
 export interface Props {
@@ -72,6 +142,10 @@ export interface Props {
   leading?: boolean;
   noBottomMargin?: boolean;
   color?: ThemeColours;
+  fontStyle?: FontStyle;
+  lineHeight?: string;
+  letterSpacing?: string;
+  lineFormat?: LineFormat;
   uppercase?: boolean;
   align?: TextAlignment;
 }
@@ -83,17 +157,20 @@ const Component: React.FunctionComponent<Props> = ({
   weight,
   color,
   uppercase,
+  fontStyle,
   ...props
 }) => {
-  const size = variantSize[variant || "Body"][leading ? "leading" : "standard"];
+  const size = variantSize[variant || "Body"];
 
   const { theme } = useContext(ThemeProviderContext);
 
   return (
     <StyledText
-      size={size}
-      weight={weight || "regular"}
+      sizeMobile={size.mobile[leading ? "leading" : "standard"]}
+      sizeDesktop={size.desktop[leading ? "leading" : "standard"]}
+      weight={weightSize[weight || "Regular"]}
       color={color}
+      fontStyle={fontStyle || "normal"}
       textTransform={uppercase ? "uppercase" : undefined}
       bmeTheme={theme}
       {...props}
