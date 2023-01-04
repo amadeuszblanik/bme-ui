@@ -46,6 +46,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   display: flex;
   align-items: center;
   justify-content: center;
+  ${({ width }) => (width ? `width: ${width};` : "")}
   padding: ${({ paddingX, paddingY }) => `${paddingY.mobile}px ${paddingX.mobile}px`};
   color: ${({ bmeTheme, variant, outline, disabled }) =>
     outline
@@ -100,7 +101,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   }
 `;
 
-const Button: React.FC<ButtonProps> = ({ children, size, variant, ...props }) => {
+const Button: React.FC<ButtonProps> = ({ children, size, width, variant, type, ...props }) => {
   size = size ?? "medium";
   variant = variant ?? "blue";
 
@@ -121,12 +122,14 @@ const Button: React.FC<ButtonProps> = ({ children, size, variant, ...props }) =>
 
   return (
     <StyledButton
+      {...props}
+      width={width}
       paddingX={paddingX}
       paddingY={paddingY}
       variant={variant}
       fontSize={fontSize}
       bmeTheme={theme}
-      {...props}
+      type={type}
     >
       {children}
     </StyledButton>
@@ -136,6 +139,7 @@ const Button: React.FC<ButtonProps> = ({ children, size, variant, ...props }) =>
 Button.defaultProps = {
   variant: "blue",
   size: "medium",
+  type: "button",
 };
 
 export default Button;

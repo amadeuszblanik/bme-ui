@@ -7,9 +7,7 @@ export default {
   component: Button,
   argTypes: {
     children: {
-      control: {
-        type: "text",
-      },
+      control: { type: "text" },
     },
     variant: {
       options: THEME_COLOURS_KEYS,
@@ -19,11 +17,20 @@ export default {
       options: ["small", "medium", "large"],
       control: { type: "radio" },
     },
+    width: {
+      control: { type: "text" },
+    },
     outline: {
       control: { type: "boolean" },
     },
     disabled: {
       control: { type: "boolean" },
+    },
+    type: {
+      options: ["button", "submit", "reset"],
+      control: { type: "radio" },
+      defaultValue: "button",
+      description: "Default: button NOT submit",
     },
   },
 } as ComponentMeta<typeof Button>;
