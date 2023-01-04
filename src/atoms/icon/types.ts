@@ -3,13 +3,18 @@ import { StyledComponent } from "../../types/styled-component";
 
 export type IconName = "checkmark" | "lock-closed" | "lock-open" | "close-circle" | "mail" | "person" | "search";
 export const IconNames: string[] = [
+  "barbell",
   "checkmark",
   "close-circle",
   "grid",
+  "heart",
   "lock-closed",
   "lock-open",
   "mail",
+  "medkit",
   "menu",
+  "paw",
+  "people",
   "person",
   "search",
 ];

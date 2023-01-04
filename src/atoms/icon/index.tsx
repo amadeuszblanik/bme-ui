@@ -10,6 +10,11 @@ import { CheckmarkOutline } from "./svg/checkmark-outline";
 import { PersonOutline } from "./svg/person-outline";
 import { GridOutline } from "./svg/grid-outline";
 import { MenuOutline } from "./svg/menu-outline";
+import { BarbellOutline } from "./svg/barbell-outline";
+import { HeartOutline } from "./svg/heart-outline";
+import { MedkitOutline } from "./svg/medkit-outline";
+import { PeopleOutline } from "./svg/people-outline";
+import { PawOutline } from "./svg/paw-outline";
 import ThemeProviderContext from "../../components/theme-provider/context";
 
 const DEFAULT_ICON_SIZE = 24;
@@ -27,11 +32,17 @@ const Icon: React.FC<IconProps> = ({ name, size, color }) => {
   const { theme } = useContext(ThemeProviderContext);
 
   switch (name) {
+    case "barbell":
+      IconToRender = BarbellOutline;
+      break;
     case "checkmark":
       IconToRender = CheckmarkOutline;
       break;
     case "grid":
       IconToRender = GridOutline;
+      break;
+    case "heart":
+      IconToRender = HeartOutline;
       break;
     case "close-circle":
       IconToRender = CloseCircleOutline;
@@ -45,8 +56,17 @@ const Icon: React.FC<IconProps> = ({ name, size, color }) => {
     case "mail":
       IconToRender = MailOutline;
       break;
+    case "medkit":
+      IconToRender = MedkitOutline;
+      break;
     case "menu":
       IconToRender = MenuOutline;
+      break;
+    case "paw":
+      IconToRender = PawOutline;
+      break;
+    case "people":
+      IconToRender = PeopleOutline;
       break;
     case "person":
       IconToRender = PersonOutline;
