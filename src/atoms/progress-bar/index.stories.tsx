@@ -13,13 +13,28 @@ export default {
     },
     label: {
       control: {
-        type: "text",
+        type: "number",
         description: "$0 will be replaced with value formatted as percentage",
       },
     },
     variant: {
       options: THEME_COLOURS_KEYS,
       control: { type: "select" },
+    },
+    width: {
+      control: {
+        type: "text",
+      },
+    },
+    minWidth: {
+      control: {
+        type: "text",
+      },
+    },
+    maxWidth: {
+      control: {
+        type: "text",
+      },
     },
     timeLeft: {
       control: {
