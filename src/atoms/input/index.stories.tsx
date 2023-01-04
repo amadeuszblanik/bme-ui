@@ -5,6 +5,11 @@ export default {
   title: "Atoms/Input",
   component: Input,
   argTypes: {
+    name: {
+      control: {
+        type: "text",
+      },
+    },
     value: {
       control: {
         type: "text",
@@ -42,6 +47,21 @@ export default {
       options: ["small", "medium", "large"],
       control: { type: "radio" },
     },
+    width: {
+      control: {
+        type: "text",
+      },
+    },
+    minWidth: {
+      control: {
+        type: "text",
+      },
+    },
+    maxWidth: {
+      control: {
+        type: "text",
+      },
+    },
     type: {
       options: ["text", "password", "email", "search"],
       control: { type: "select" },
@@ -71,6 +91,7 @@ const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 export const Playground = Template.bind({});
 
 Playground.args = {
+  name: "input",
   size: "medium",
   label: "Input",
 };

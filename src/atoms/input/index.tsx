@@ -4,6 +4,7 @@ import { isEmpty } from "bme-utils";
 import {
   InputProps,
   StyledClearProps,
+  StyledFormControlProps,
   StyledHintProps,
   StyledInputProps,
   StyledLabelProps,
@@ -57,16 +58,21 @@ const ICON_PADDING_X = 8;
 const LABEL_PADDING_X = 8;
 const VARIANT: ThemeColours = "blue";
 
-const StyledFormControl = styled.div`
+const StyledFormControl = styled.div<StyledFormControlProps>`
   position: relative;
   display: inline-flex;
   flex-direction: column;
+  ${({ width }) => width && `width: ${width};`}
+  ${({ minWidth }) => minWidth && `min-width: ${minWidth};`}
+  ${({ maxWidth }) => maxWidth && `max-width: ${maxWidth};`}
+  ${animations(["width", "min-width", "max-width"])}
 `;
 
 const StyledFormControlInput = styled.div`
   position: relative;
   display: flex;
   flex-direction: row;
+  width: 100%;
 `;
 
 const StyledPrefixIcon = styled.div<StyledPrefixIconProps>`
@@ -94,6 +100,7 @@ const StyledLabel = styled.label<StyledLabelProps>`
   font-size: ${({ fontSize }) => fontSize.mobile}px;
   background: ${({ bmeTheme, isFilled }) => (isFilled ? bmeTheme.colors.background : "transparent")};
   transform: translateY(-50%);
+  cursor: text;
   ${animations(["top", "left", "padding", "font-size", "background"])};
 
   @media (min-width: ${({ bmeTheme }) => bmeTheme.breakpoints.desktop}px) {
@@ -109,7 +116,9 @@ const StyledInput = styled.input<StyledInputProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: ${({ width }) => width || "100%"};
+  ${({ minWidth }) => minWidth && `min-width: ${minWidth};`}
+  ${({ maxWidth }) => maxWidth && `max-width: ${maxWidth};`}
   padding: ${({ paddingX, paddingY, fontSize, isPrefixIcon }) =>
     `${paddingY.mobile}px ${paddingX.mobile + ICON_SIZE}px ${paddingY.mobile}px ${
       paddingX.mobile + (isPrefixIcon ? fontSize.mobile + ICON_PADDING_X : EMPTY_ICON_PADDING_X)
@@ -119,9 +128,9 @@ const StyledInput = styled.input<StyledInputProps>`
   background: ${({ bmeTheme }) => bmeTheme.colors.gray5};
   border: ${({ bmeTheme }) => bmeTheme.colors.gray5} solid 2px;
   border-radius: ${({ bmeTheme }) => bmeTheme.radius}px;
-  cursor: pointer;
+  cursor: text;
   appearance: none;
-  ${animations(["background-color", "color", "padding", "font-size"])};
+  ${animations(["width", "min-width", "max-width", "background-color", "color", "padding", "font-size"])};
 
   ${({ bmeTheme, variant, isFilled, disabled }) =>
     isFilled &&
@@ -180,6 +189,7 @@ const StyledHint = styled.div<StyledHintProps>`
 `;
 
 const Input: React.FC<InputProps> = ({
+  name,
   value,
   label,
   placeholder,
@@ -188,6 +198,9 @@ const Input: React.FC<InputProps> = ({
   error,
   valid,
   size,
+  width,
+  minWidth,
+  maxWidth,
   type,
   disabled,
   ...props
@@ -233,7 +246,7 @@ const Input: React.FC<InputProps> = ({
   const isPrefixIcon = PrefixIcon({ iconSize: ICON_SIZE, iconVariant: VARIANT }) !== null;
 
   return (
-    <StyledFormControl>
+    <StyledFormControl width={width} minWidth={minWidth} maxWidth={maxWidth}>
       <StyledFormControlInput>
         {isPrefixIcon && (
           <StyledPrefixIcon paddingX={paddingX} bmeTheme={theme}>
@@ -241,6 +254,7 @@ const Input: React.FC<InputProps> = ({
           </StyledPrefixIcon>
         )}
         <StyledLabel
+          htmlFor={name}
           isFilled={isFilled}
           isPrefixIcon={isPrefixIcon}
           variant={variant}
@@ -251,6 +265,9 @@ const Input: React.FC<InputProps> = ({
           {label}
         </StyledLabel>
         <StyledInput
+          {...props}
+          id={name}
+          name={name}
           isFilled={isFilled}
           isPrefixIcon={isPrefixIcon}
           variant={variant}
@@ -260,7 +277,9 @@ const Input: React.FC<InputProps> = ({
           placeholder={placeholder}
           disabled={disabled}
           type={inputType}
-          {...props}
+          width={width}
+          minWidth={minWidth}
+          maxWidth={maxWidth}
           value={disabled ? "" : value}
           onChange={(event) => onValue(event.target.value)}
           onFocus={() => setIsFocused(true)}
@@ -268,7 +287,13 @@ const Input: React.FC<InputProps> = ({
           bmeTheme={theme}
         />
         {!disabled && (
-          <StyledClear isFilled={!isEmpty(value)} paddingX={paddingX} onClick={() => onValue("")} bmeTheme={theme}>
+          <StyledClear
+            isFilled={!isEmpty(value)}
+            paddingX={paddingX}
+            onClick={() => onValue("")}
+            bmeTheme={theme}
+            type="button"
+          >
             <BmeIcon name="close-circle" size={ICON_SIZE} color={variant} />
           </StyledClear>
         )}
