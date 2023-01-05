@@ -2,6 +2,7 @@ export { default as BmeAvatar } from "./avatar";
 export { default as BmeBox } from "./box";
 export { default as BmeButton } from "./button";
 export { default as BmeCheckbox } from "./checkbox";
+export { default as BmeDropdown } from "./dropdown";
 export { default as BmeIcon } from "./icon";
 export { default as BmeInput } from "./input";
 export { default as BmeProgressBar } from "./progress-bar";
