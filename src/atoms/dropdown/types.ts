@@ -12,8 +12,12 @@ export interface DropdownProps extends React.HTMLAttributes<HTMLSelectElement> {
   value: DropdownItem | null;
   list: DropdownItem[];
   label: string;
+  emptyLabel?: string;
   onValue: (value: DropdownItem | null) => void;
   size?: "small" | "medium" | "large";
+  width?: string;
+  minWidth?: string;
+  maxWidth?: string;
   hint?: string;
   error?: string;
   valid?: string;
@@ -33,6 +37,12 @@ export interface StyledLabelProps extends StyledComponent {
     mobile: number;
     desktop: number;
   };
+}
+
+export interface StyledFormControlProps {
+  width?: string;
+  minWidth?: string;
+  maxWidth?: string;
 }
 
 export interface StyledSelectProps extends StyledComponent {

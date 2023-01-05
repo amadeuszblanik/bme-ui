@@ -30,6 +30,11 @@ export default {
         type: "text",
       },
     },
+    emptyLabel: {
+      control: {
+        type: "text",
+      },
+    },
     placeholder: {
       control: {
         type: "text",
@@ -56,6 +61,21 @@ export default {
     size: {
       options: ["small", "medium", "large"],
       control: { type: "radio" },
+    },
+    width: {
+      control: {
+        type: "text",
+      },
+    },
+    minWidth: {
+      control: {
+        type: "text",
+      },
+    },
+    maxWidth: {
+      control: {
+        type: "text",
+      },
     },
     type: {
       options: ["text", "password", "email", "search"],

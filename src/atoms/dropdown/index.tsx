@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { isEmpty } from "bme-utils";
-import { DropdownProps, StyledSelectProps, StyledHintProps, StyledLabelProps } from "./types";
+import { DropdownProps, StyledSelectProps, StyledHintProps, StyledLabelProps, StyledFormControlProps } from "./types";
 import { ThemeColours } from "../../settings/theme";
 import { animations } from "../../mixins";
 import { StyledClearProps } from "../input/types";
@@ -50,10 +50,14 @@ const ICON_PADDING_X = 8;
 const LABEL_PADDING_X = 8;
 const VARIANT: ThemeColours = "blue";
 
-const StyledFormControl = styled.div`
+const StyledFormControl = styled.div<StyledFormControlProps>`
   position: relative;
   display: inline-flex;
   flex-direction: column;
+  ${({ width }) => width && `width: ${width};`}
+  ${({ minWidth }) => minWidth && `min-width: ${minWidth};`}
+  ${({ maxWidth }) => maxWidth && `max-width: ${maxWidth};`}
+  ${animations(["width", "min-width", "max-width"])}
 `;
 
 const StyledFormControlInput = styled.div`
@@ -133,12 +137,16 @@ const Input: React.FC<DropdownProps> = ({
   name,
   value,
   label,
+  emptyLabel,
   onValue,
   list,
   hint,
   error,
   valid,
   size,
+  width,
+  minWidth,
+  maxWidth,
   disabled,
   variant,
 }) => {
@@ -168,7 +176,7 @@ const Input: React.FC<DropdownProps> = ({
   const isFilled = (isFocused || !!selectedValueKey || !isEmpty(error) || !isEmpty(valid)) && !disabled;
 
   return (
-    <StyledFormControl>
+    <StyledFormControl width={width} minWidth={minWidth} maxWidth={maxWidth}>
       <StyledFormControlInput>
         <StyledLabel
           htmlFor={name}
@@ -194,7 +202,9 @@ const Input: React.FC<DropdownProps> = ({
           disabled={disabled}
           bmeTheme={theme}
         >
-          <option disabled selected={!selectedValueKey} />
+          <option disabled selected={!selectedValueKey}>
+            {emptyLabel || ""}
+          </option>
           {list.map(({ key, label: itemLabel }) => (
             <option key={key} value={key} selected={selectedValueKey === key}>
               {itemLabel}
@@ -202,7 +212,13 @@ const Input: React.FC<DropdownProps> = ({
           ))}
         </StyledSelect>
         {!disabled && (
-          <StyledClear isFilled={!!selectedValueKey} paddingX={paddingX} onClick={() => onValue(null)} bmeTheme={theme}>
+          <StyledClear
+            isFilled={!!selectedValueKey}
+            paddingX={paddingX}
+            onClick={() => onValue(null)}
+            bmeTheme={theme}
+            type="button"
+          >
             <BmeIcon name="close-circle" size={ICON_SIZE} color={variantDynamic} />
           </StyledClear>
         )}
