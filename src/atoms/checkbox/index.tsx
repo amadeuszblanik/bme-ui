@@ -158,7 +158,14 @@ const Input: React.FC<CheckboxProps> = ({
             <BmeIcon name="checkmark" size={sizeInPx.mobile * CHECKMARK_RELATIVE_SIZE} color="light" />
           </StyledCheckboxCheckmark>
         </StyledCheckbox>
-        <StyledLabel disabled={disabled} size={sizeInPx} variant={variantDynamic} fontSize={fontSize} htmlFor={name}>
+        <StyledLabel
+          disabled={disabled}
+          size={sizeInPx}
+          variant={variantDynamic}
+          fontSize={fontSize}
+          htmlFor={name}
+          onClick={() => onValue(!value)}
+        >
           {label}
         </StyledLabel>
       </StyledFormControlInput>
