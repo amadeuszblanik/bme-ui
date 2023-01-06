@@ -48,7 +48,6 @@ const StyledProgressBarValue = styled.i<StyledProgressBarValueProps>`
     }
 
     50% {
-      left: 100%;
       left: calc(100% - 32px);
     }
   }
@@ -84,7 +83,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   error,
   done,
 }) => {
-  value = done ? DONE_VALUE : value ?? error ? DONE_VALUE : value;
+  value = done || error ? DONE_VALUE : value;
   variant = variant ?? VARIANT;
 
   const { theme } = useContext(ThemeProviderContext);
