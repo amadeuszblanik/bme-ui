@@ -12,11 +12,11 @@ export default {
       },
     },
     alignX: {
-      options: [null, "left", "center", "right"],
+      options: [null, "left", "center", "right", "space-between"],
       control: { type: "select" },
     },
     alignY: {
-      options: [null, "top", "center", "bottom"],
+      options: [null, "top", "center", "bottom", "space-between"],
       control: { type: "select" },
     },
     direction: {

@@ -13,12 +13,14 @@ const ALIGN_X_MAP: { [key in AlignX]: string } = {
   left: "flex-start",
   center: "center",
   right: "flex-end",
+  "space-between": "space-between",
 };
 
 const ALIGN_Y_MAP: { [key in AlignY]: string } = {
   top: "flex-start",
   center: "center",
   bottom: "flex-end",
+  "space-between": "space-between",
 };
 
 const StyledBox = styled.div<StyledBoxProps>`

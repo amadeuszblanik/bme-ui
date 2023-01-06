@@ -15,6 +15,15 @@ import { HeartOutline } from "./svg/heart-outline";
 import { MedkitOutline } from "./svg/medkit-outline";
 import { PeopleOutline } from "./svg/people-outline";
 import { PawOutline } from "./svg/paw-outline";
+import { AppsOutline } from "./svg/apps-outline";
+import { BookOutline } from "./svg/book-outline";
+import { ChevronDownOutline } from "./svg/chevron-down-outline";
+import { ChevronForwardOutline } from "./svg/chevron-forward-outline";
+import { CogOutline } from "./svg/cog-outline";
+import { CloseOutline } from "./svg/close-outline";
+import { MedicalOutline } from "./svg/medical-outline";
+import { CreateOutline } from "./svg/create-outline";
+import { WarningOutline } from "./svg/warning-outline";
 import ThemeProviderContext from "../../components/theme-provider/context";
 
 const DEFAULT_ICON_SIZE = 24;
@@ -32,20 +41,41 @@ const Icon: React.FC<IconProps> = ({ name, size, color }) => {
   const { theme } = useContext(ThemeProviderContext);
 
   switch (name) {
+    case "apps":
+      IconToRender = AppsOutline;
+      break;
     case "barbell":
       IconToRender = BarbellOutline;
       break;
+    case "book":
+      IconToRender = BookOutline;
+      break;
     case "checkmark":
       IconToRender = CheckmarkOutline;
+      break;
+    case "chevron-down":
+      IconToRender = ChevronDownOutline;
+      break;
+    case "chevron-forward":
+      IconToRender = ChevronForwardOutline;
+      break;
+    case "close-circle":
+      IconToRender = CloseCircleOutline;
+      break;
+    case "close":
+      IconToRender = CloseOutline;
+      break;
+    case "cog":
+      IconToRender = CogOutline;
+      break;
+    case "create":
+      IconToRender = CreateOutline;
       break;
     case "grid":
       IconToRender = GridOutline;
       break;
     case "heart":
       IconToRender = HeartOutline;
-      break;
-    case "close-circle":
-      IconToRender = CloseCircleOutline;
       break;
     case "lock-closed":
       IconToRender = LockClosedOutline;
@@ -55,6 +85,9 @@ const Icon: React.FC<IconProps> = ({ name, size, color }) => {
       break;
     case "mail":
       IconToRender = MailOutline;
+      break;
+    case "medical":
+      IconToRender = MedicalOutline;
       break;
     case "medkit":
       IconToRender = MedkitOutline;
@@ -73,6 +106,9 @@ const Icon: React.FC<IconProps> = ({ name, size, color }) => {
       break;
     case "search":
       IconToRender = SearchOutline;
+      break;
+    case "warning":
+      IconToRender = WarningOutline;
       break;
   }
 

@@ -59,7 +59,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   font-size: ${({ fontSize }) => fontSize.mobile}px;
   background: ${({ bmeTheme, variant, outline }) => (outline ? `transparent` : bmeTheme.colors[variant])};
   border: ${({ bmeTheme, variant, disabled }) => (disabled ? bmeTheme.colors.gray : bmeTheme.colors[variant])} solid 2px;
-  border-radius: ${({ bmeTheme }) => bmeTheme.radius}px;
+  border-radius: var(--bme-button-radius, ${({ bmeTheme }) => bmeTheme.radius}px);
   cursor: pointer;
   appearance: none;
   ${animations(["background-color", "color", "padding", "font-size"])};
@@ -83,7 +83,7 @@ const StyledButton = styled.button<StyledButtonProps>`
         bottom: -4px;
         left: -4px;
         border: ${({ bmeTheme, variant }) => bmeTheme.colors[variant]} solid 2px;
-        border-radius: ${({ bmeTheme }) => bmeTheme.radius}px;
+        border-radius: var(--bme-button-radius, ${({ bmeTheme }) => bmeTheme.radius}px);
         content: "";
       }
     }
