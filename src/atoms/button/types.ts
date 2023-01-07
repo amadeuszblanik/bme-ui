@@ -9,6 +9,7 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   width?: string;
   outline?: boolean;
   type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 }
 
 export interface StyledButtonProps extends StyledComponent {
