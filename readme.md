@@ -2,9 +2,9 @@
 Beta releases
 
 ## Links
-[npm](https://www.npmjs.com/package/bme-ui)
-[storybook](https://amadeuszblanik.github.io/bme-ui)
-[usage example](https://github.com/amadeuszblanik/wolfie-app)
+* [npm](https://www.npmjs.com/package/bme-ui)
+* [storybook](https://amadeuszblanik.github.io/bme-ui)
+* [usage example](https://github.com/amadeuszblanik/wolfie-app)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
