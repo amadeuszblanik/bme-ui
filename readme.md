@@ -1,13 +1,15 @@
 # BME-UI
-Under development — NOT PUBLIC YET
+Beta releases
 
-## Quick-links
-
+## Links
 [npm](https://www.npmjs.com/package/bme-ui)
 [storybook](https://amadeuszblanik.github.io/bme-ui)
+[usage example](https://github.com/amadeuszblanik/wolfie-app)
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
 
 ## Installation
-
 Use the package manager [npm](https://docs.npmjs.com/cli/install) or [yarn](https://yarnpkg.com/getting-started) to install BME-UI.
 
 ```bash
@@ -22,7 +24,6 @@ Due to styled-compopnents issue you need to add manually styles:
 ```
 
 ## Usage
-
 ```typescript
 import React from 'react';
 import { BMEText } from 'bme-ui';
