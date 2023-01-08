@@ -5,6 +5,7 @@ export { default as BmeCheckbox } from "./checkbox";
 export { default as BmeDropdown } from "./dropdown";
 export { default as BmeIcon } from "./icon";
 export { default as BmeInput } from "./input";
+export { default as BmeInputDate } from "./input-date";
 export { default as BmeLineChart } from "./line-chart";
 export { default as BmeList } from "./list";
 export { default as BmeProgressBar } from "./progress-bar";

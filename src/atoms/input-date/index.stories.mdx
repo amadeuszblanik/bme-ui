@@ -1,0 +1,110 @@
+import { Meta } from '@storybook/addon-docs';
+import Input from "./index";
+import { ThemeProvider } from "styled-components";
+import {
+  BmeLightTheme
+} from "../../../.storybook/preview";
+
+<Meta title="Atoms/Input Date/Docs" />
+
+# Inputs
+Inputs are used to collect data from the user. They can be used in forms, search bars, and more.
+
+## Usage
+Check playground for more examples.
+
+## Types
+<ThemeProvider theme={BmeLightTheme}>
+  <table>
+    <thead>
+    <tr>
+      <th>
+        Type
+      </th>
+      <th>
+        Large
+      </th>
+      <th>
+        Medium
+      </th>
+      <th>
+        Small
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Text</td>
+        <td>
+          <Input label="Label" value="Lorem ipsum" onValue={() => {}} type="text" size="large" />
+        </td>
+        <td>
+          <Input label="Label" value="Lorem ipsum" onValue={() => {}} type="text" size="medium" />
+        </td>
+        <td>
+          <Input label="Label" value="Lorem ipsum" onValue={() => {}} type="text" size="small" />
+        </td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>
+          <Input label="Label" value="Lorem ipsum" onValue={() => {}} type="email" size="large" />
+        </td>
+        <td>
+          <Input label="Label" value="Lorem ipsum" onValue={() => {}} type="email" size="medium" />
+        </td>
+        <td>
+          <Input label="Label" value="Lorem ipsum" onValue={() => {}} type="email" size="small" />
+        </td>
+      </tr>
+      <tr>
+        <td>Password</td>
+        <td>
+          <Input label="Label" value="Lorem ipsum" onValue={() => {}} type="password" size="large" />
+        </td>
+        <td>
+          <Input label="Label" value="Lorem ipsum" onValue={() => {}} type="password" size="medium" />
+        </td>
+        <td>
+          <Input label="Label" value="Lorem ipsum" onValue={() => {}} type="password" size="small" />
+        </td>
+      </tr>
+      <tr>
+        <td>Search</td>
+        <td>
+          <Input label="Label" value="Lorem ipsum" onValue={() => {}} type="search" size="large" />
+        </td>
+        <td>
+          <Input label="Label" value="Lorem ipsum" onValue={() => {}} type="search" size="medium" />
+        </td>
+        <td>
+          <Input label="Label" value="Lorem ipsum" onValue={() => {}} type="search" size="small" />
+        </td>
+      </tr>
+      <tr>
+        <td>Disabled</td>
+        <td>
+          <Input label="Label" value="Lorem ipsum" onValue={() => {}} disabled size="large" />
+        </td>
+        <td>
+          <Input label="Label" value="Lorem ipsum" onValue={() => {}} disabled size="medium" />
+        </td>
+        <td>
+          <Input label="Label" value="Lorem ipsum" onValue={() => {}} disabled size="small" />
+        </td>
+      </tr>
+      <tr>
+        <td>Disabled with icon</td>
+        <td>
+          <Input label="Label" value="Lorem ipsum" onValue={() => {}} type="search" disabled size="large" />
+        </td>
+        <td>
+          <Input label="Label" value="Lorem ipsum" onValue={() => {}} type="search" disabled size="medium" />
+        </td>
+        <td>
+          <Input label="Label" value="Lorem ipsum" onValue={() => {}} type="search" disabled size="small" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ThemeProvider>
