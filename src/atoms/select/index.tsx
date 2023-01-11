@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { isEmpty } from "bme-utils";
-import { DropdownProps, StyledSelectProps, StyledHintProps, StyledLabelProps, StyledFormControlProps } from "./types";
+import { SelectProps, StyledSelectProps, StyledHintProps, StyledLabelProps, StyledFormControlProps } from "./types";
 import { ThemeColours } from "../../settings/theme";
 import { animations } from "../../mixins";
 import { StyledClearProps } from "../input/types";
@@ -133,7 +133,7 @@ const StyledHint = styled.div<StyledHintProps>`
   font-size: ${({ fontSize }) => fontSize.mobile}px;
 `;
 
-const Input: React.FC<DropdownProps> = ({
+const Input: React.FC<SelectProps> = ({
   name,
   value,
   label,

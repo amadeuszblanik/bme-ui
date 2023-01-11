@@ -1,10 +1,10 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { THEME_COLOURS_KEYS } from "../../settings/theme";
-import Dropdown from "./index";
+import Select from "./index";
 
 export default {
-  title: "Atoms/Dropdown",
-  component: Dropdown,
+  title: "Atoms/Select",
+  component: Select,
   argTypes: {
     value: {
       control: {
@@ -99,17 +99,17 @@ export default {
       description: "All other HTMLInput events are supported.",
     },
   },
-} as ComponentMeta<typeof Dropdown>;
+} as ComponentMeta<typeof Select>;
 
-const Template: ComponentStory<typeof Dropdown> = (args) => <Dropdown {...args} />;
+const Template: ComponentStory<typeof Select> = (args) => <Select {...args} />;
 
 export const Playground = Template.bind({});
 export const PlaygroundNullValue = Template.bind({});
 
 Playground.args = {
   size: "medium",
-  name: "Dropdown",
-  label: "Dropdown",
+  name: "Select",
+  label: "Select",
   value: { key: "1", label: "One" },
   list: [
     { key: "1", label: "One" },
@@ -128,8 +128,8 @@ Template.parameters = {
 
 PlaygroundNullValue.args = {
   size: "medium",
-  name: "Dropdown",
-  label: "Dropdown",
+  name: "Select",
+  label: "Select",
   value: null,
   list: [
     { key: "1", label: "One" },
