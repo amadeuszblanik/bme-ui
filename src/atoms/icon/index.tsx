@@ -19,6 +19,7 @@ import { AppsOutline } from "./svg/apps-outline";
 import { BookOutline } from "./svg/book-outline";
 import { ChevronDownOutline } from "./svg/chevron-down-outline";
 import { ChevronForwardOutline } from "./svg/chevron-forward-outline";
+import { ChevronUpOutline } from "./svg/chevron-up-outline";
 import { CogOutline } from "./svg/cog-outline";
 import { CloseOutline } from "./svg/close-outline";
 import { MedicalOutline } from "./svg/medical-outline";
@@ -58,6 +59,9 @@ const Icon: React.FC<IconProps> = ({ name, size, color }) => {
       break;
     case "chevron-forward":
       IconToRender = ChevronForwardOutline;
+      break;
+    case "chevron-up":
+      IconToRender = ChevronUpOutline;
       break;
     case "close-circle":
       IconToRender = CloseCircleOutline;
