@@ -13,6 +13,7 @@
     "dev": "start-storybook -p 6006",
     "build": "rollup -c --bundleConfigAsCjs",
     "build:storybook": "build-storybook",
+    "export:storybook": "build-storybook -s ./public -o docs-build",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src && stylelint './**/*.{css,scss,js,jsx,ts,tsx}'",
     "lint:script": "eslint --ext .js,.jsx,.ts,.tsx src",
     "lint:css": "stylelint './**/*.{css,scss,js,jsx,ts,tsx}'"
