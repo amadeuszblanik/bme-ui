@@ -36,6 +36,10 @@ export const BmeLightTheme = {
     mobile: 0,
     desktop: 768,
   },
+  boxShadow: {
+    primary: "0px 8px 17px rgba(255, 255, 255, 0.08)",
+    secondary: "0px 8px 17px rgba(255, 255, 255, 0.08)",
+  },
 };
 
 export const parameters = {

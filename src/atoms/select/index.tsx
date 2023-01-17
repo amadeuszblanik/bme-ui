@@ -1,141 +1,21 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
+import React, { useContext, useState } from "react";
 import { isEmpty } from "bme-utils";
-import { SelectProps, StyledSelectProps, StyledHintProps, StyledLabelProps, StyledFormControlProps } from "./types";
+import { SelectProps } from "./types";
+import {
+  StyledClear,
+  StyledFormControl,
+  StyledFormControlInput,
+  StyledHint,
+  StyledLabel,
+  StyledSelect,
+} from "./input/styled";
+import { ICON_SIZE, SINGLE_VALUE_INDEX, VALUES, VARIANT } from "./settings";
+import Drawer from "./drawer";
 import { ThemeColours } from "../../settings/theme";
-import { animations } from "../../mixins";
-import { StyledClearProps } from "../input/types";
 import { BmeIcon } from "../index";
 import ThemeProviderContext from "../../components/theme-provider/context";
 
-const SINGLE_VALUE_INDEX = 0;
-
-const VALUES = {
-  mobile: {
-    small: {
-      paddingX: 8,
-      paddingY: 16,
-      fontSize: 16,
-    },
-    medium: {
-      paddingX: 16,
-      paddingY: 16,
-      fontSize: 16,
-    },
-    large: {
-      paddingX: 16,
-      paddingY: 16,
-      fontSize: 16,
-    },
-  },
-  desktop: {
-    small: {
-      paddingX: 8,
-      paddingY: 16,
-      fontSize: 16,
-    },
-    medium: {
-      paddingX: 16,
-      paddingY: 16,
-      fontSize: 16,
-    },
-    large: {
-      paddingX: 20,
-      paddingY: 16,
-      fontSize: 16,
-    },
-  },
-};
-
-const ICON_SIZE = 24;
-const ICON_PADDING_X = 8;
-const LABEL_PADDING_X = 8;
-const VARIANT: ThemeColours = "blue";
-
-const StyledFormControl = styled.div<StyledFormControlProps>`
-  position: relative;
-  display: inline-flex;
-  flex-direction: column;
-  ${({ width }) => width && `width: ${width};`}
-  ${({ minWidth }) => minWidth && `min-width: ${minWidth};`}
-  ${({ maxWidth }) => maxWidth && `max-width: ${maxWidth};`}
-  ${animations(["width", "min-width", "max-width"])}
-`;
-
-const StyledFormControlInput = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-`;
-
-const StyledLabel = styled.label<StyledLabelProps>`
-  position: absolute;
-  top: ${({ isFilled }) => (isFilled ? "0" : "50%")};
-  left: ${({ paddingX }) => paddingX.mobile - LABEL_PADDING_X}px;
-  padding: 0 ${LABEL_PADDING_X}px 0 ${({ isFilled, fontSize }) => (!isFilled ? fontSize.mobile : LABEL_PADDING_X)}px;
-  color: ${({ bmeTheme, variant, isFilled }) => (isFilled ? bmeTheme.colors[variant] : bmeTheme.colors.gray)};
-  font-size: ${({ fontSize }) => fontSize.mobile}px;
-  background: ${({ bmeTheme, isFilled }) => (isFilled ? bmeTheme.colors.background : "transparent")};
-  transform: translateY(-50%);
-  ${animations(["top", "left", "padding", "font-size", "background"])};
-
-  @media (min-width: ${({ bmeTheme }) => bmeTheme.breakpoints.desktop}px) {
-    left: ${({ paddingX }) => paddingX.desktop - LABEL_PADDING_X}px;
-    padding: 0 ${LABEL_PADDING_X}px 0
-      ${({ isFilled, fontSize }) =>
-        !isFilled ? fontSize.desktop + ICON_PADDING_X + LABEL_PADDING_X : LABEL_PADDING_X}px;
-    font-size: ${({ fontSize }) => fontSize.desktop}px;
-  }
-`;
-
-const StyledSelect = styled.select<StyledSelectProps>`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-width: 240px;
-  padding: ${({ paddingX, paddingY }) => `${paddingY.mobile}px ${paddingX.mobile}px;`};
-  color: ${({ bmeTheme, disabled }) => (disabled ? bmeTheme.colors.gray5 : bmeTheme.colors.text)};
-  font-size: ${({ fontSize }) => fontSize.mobile}px;
-  background: ${({ bmeTheme }) => bmeTheme.colors.gray5};
-  border: ${({ bmeTheme }) => bmeTheme.colors.gray5} solid 2px;
-  border-radius: ${({ bmeTheme }) => bmeTheme.radius}px;
-  appearance: none;
-
-  ${({ bmeTheme, variant, isFilled, disabled }) =>
-    isFilled &&
-    `background: transparent;
-      border: ${disabled ? bmeTheme.colors.gray : bmeTheme.colors[variant]} solid 2px;
-      outline: none;`}
-`;
-
-const StyledClear = styled.button<StyledClearProps>`
-  position: absolute;
-  top: 50%;
-  right: ${({ paddingX }) => paddingX.mobile}px;
-  padding: 0;
-  background: transparent;
-  border: none;
-  transform: translateY(-50%);
-  cursor: pointer;
-  opacity: ${({ isFilled }) => (isFilled ? "1" : "0")};
-  appearance: none;
-  ${animations(["right", "opacity"])};
-
-  @media (min-width: ${({ bmeTheme }) => bmeTheme.breakpoints.desktop}px) {
-    right: ${({ paddingX }) => paddingX.desktop}px;
-  }
-`;
-
-const StyledHint = styled.div<StyledHintProps>`
-  padding: ${({ paddingX }) => `4px ${paddingX.mobile}px 0`};
-  color: ${({ bmeTheme, variant }) => bmeTheme.colors[variant]};
-  font-size: ${({ fontSize }) => fontSize.mobile}px;
-`;
-
-const Input: React.FC<SelectProps> = ({
+const Select: React.FC<SelectProps> = ({
   name,
   value,
   label,
@@ -152,6 +32,7 @@ const Input: React.FC<SelectProps> = ({
   disabled,
   variant,
   multiple,
+  native,
   ...props
 }) => {
   size = size ?? "medium";
@@ -177,7 +58,8 @@ const Input: React.FC<SelectProps> = ({
     desktop: VALUES.desktop[size].fontSize,
   };
 
-  const [isFocused, setIsFocused] = React.useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
   const isSelected = !isEmpty(selectedValues);
   const isFilled = (isFocused || isSelected || !isEmpty(error) || !isEmpty(valid)) && !disabled;
 
@@ -194,6 +76,23 @@ const Input: React.FC<SelectProps> = ({
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     onValue(list.find((item) => item.key === event.target.value) || null);
+  };
+
+  const handleDrawerClick = (key: string) => {
+    if (multiple) {
+      const itemToToggle = list.find((item) => item.key === key);
+
+      if (!itemToToggle) {
+        return;
+      }
+
+      const isItemSelected = selectedValues.map((selectedValue) => selectedValue.key).includes(itemToToggle.key);
+      const newValues = isItemSelected
+        ? selectedValues.filter((item) => item.key !== key)
+        : [...selectedValues, itemToToggle];
+
+      onValue(newValues);
+    }
   };
 
   const handleClear = () => {
@@ -222,32 +121,53 @@ const Input: React.FC<SelectProps> = ({
         >
           {label}
         </StyledLabel>
-        <StyledSelect
-          id={name}
-          name={name}
-          fontSize={fontSize}
-          isFilled={isFilled}
-          paddingX={paddingX}
-          paddingY={paddingY}
-          variant={variantDynamic}
-          onChange={handleChange}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
-          value={multiple ? selectedValues.map(({ key }) => key) : selectedValues[SINGLE_VALUE_INDEX]?.key}
-          disabled={disabled}
-          multiple={multiple}
-          bmeTheme={theme}
-          {...props}
-        >
-          <option disabled defaultValue={isEmpty(selectedValues)}>
-            {emptyLabel || ""}
-          </option>
-          {list.map(({ key, label: itemLabel }) => (
-            <option key={key} value={key}>
-              {itemLabel}
-            </option>
-          ))}
-        </StyledSelect>
+        {native ? (
+          <StyledSelect
+            id={name}
+            name={name}
+            fontSize={fontSize}
+            isFilled={isFilled}
+            paddingX={paddingX}
+            paddingY={paddingY}
+            variant={variantDynamic}
+            onChange={handleChange}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
+            value={multiple ? selectedValues.map(({ key }) => key) : selectedValues[SINGLE_VALUE_INDEX]?.key}
+            defaultValue=""
+            disabled={disabled}
+            multiple={multiple}
+            bmeTheme={theme}
+            {...props}
+          >
+            <option disabled>{emptyLabel || ""}</option>
+            {list.map(({ key, label: itemLabel }) => (
+              <option key={key} value={key}>
+                {itemLabel}
+              </option>
+            ))}
+          </StyledSelect>
+        ) : (
+          <StyledSelect
+            as="button"
+            id={name}
+            name={name}
+            fontSize={fontSize}
+            isFilled={isFilled}
+            paddingX={paddingX}
+            paddingY={paddingY}
+            variant={variantDynamic}
+            onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
+            value={multiple ? selectedValues.map(({ key }) => key) : selectedValues[SINGLE_VALUE_INDEX]?.key}
+            disabled={disabled}
+            bmeTheme={theme}
+          >
+            {selectedValues.map((selectedValue) => selectedValue.label).join(", ")}
+            {multiple && ` (${selectedValues.length})`}
+          </StyledSelect>
+        )}
         {!disabled && (
           <StyledClear isFilled={isSelected} paddingX={paddingX} onClick={handleClear} bmeTheme={theme} type="button">
             <BmeIcon name="close-circle" size={ICON_SIZE} color={variantDynamic} />
@@ -259,12 +179,20 @@ const Input: React.FC<SelectProps> = ({
           {hintMessage}
         </StyledHint>
       )}
+      {isDrawerOpen && !native && (
+        <Drawer
+          list={list}
+          selected={selectedValues.map(({ key }) => key)}
+          multiple={multiple || false}
+          onClick={handleDrawerClick}
+        />
+      )}
     </StyledFormControl>
   );
 };
 
-Input.defaultProps = {
+Select.defaultProps = {
   size: "medium",
 };
 
-export default Input;
+export default Select;
