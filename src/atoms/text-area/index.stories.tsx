@@ -5,6 +5,11 @@ export default {
   title: "Atoms/Text area",
   component: TextArea,
   argTypes: {
+    name: {
+      control: {
+        type: "text",
+      },
+    },
     value: {
       control: {
         type: "text",
@@ -41,6 +46,21 @@ export default {
     size: {
       options: ["small", "medium", "large"],
       control: { type: "radio" },
+    },
+    width: {
+      control: {
+        type: "text",
+      },
+    },
+    minWidth: {
+      control: {
+        type: "text",
+      },
+    },
+    maxWidth: {
+      control: {
+        type: "text",
+      },
     },
     disabled: {
       control: { type: "boolean" },

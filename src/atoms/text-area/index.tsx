@@ -1,7 +1,14 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { isEmpty } from "bme-utils";
-import { TextAreaProps, StyledClearProps, StyledHintProps, StyledTextAreaProps, StyledLabelProps } from "./types";
+import {
+  TextAreaProps,
+  StyledClearProps,
+  StyledHintProps,
+  StyledTextAreaProps,
+  StyledLabelProps,
+  StyledFormControlProps,
+} from "./types";
 import { animations } from "../../mixins";
 import { BmeIcon } from "../index";
 import { ThemeColours } from "../../settings/theme";
@@ -49,10 +56,14 @@ const LABEL_PADDING_X = 8;
 const CLEAR_PADDING_Y = 8;
 const VARIANT: ThemeColours = "blue";
 
-const StyledFormControl = styled.div`
+const StyledFormControl = styled.div<StyledFormControlProps>`
   position: relative;
   display: inline-flex;
   flex-direction: column;
+  ${({ width }) => width && `width: ${width};`}
+  ${({ minWidth }) => minWidth && `min-width: ${minWidth};`}
+  ${({ maxWidth }) => maxWidth && `max-width: ${maxWidth};`}
+  ${animations(["width", "min-width", "max-width"])}
 `;
 
 const StyledFormControlInput = styled.div`
@@ -83,7 +94,9 @@ const StyledTextArea = styled.textarea<StyledTextAreaProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: ${({ width }) => width || "100%"};
+  ${({ minWidth }) => minWidth && `min-width: ${minWidth};`}
+  ${({ maxWidth }) => maxWidth && `max-width: ${maxWidth};`}
   padding: ${({ paddingX, paddingY }) =>
     `${paddingY.mobile}px ${paddingX.mobile + ICON_SIZE}px ${paddingY.mobile}px ${paddingX.mobile}px`};
   color: ${({ bmeTheme, disabled }) => (disabled ? bmeTheme.colors.gray5 : bmeTheme.colors.text)};
@@ -151,6 +164,7 @@ const StyledHint = styled.div<StyledHintProps>`
 `;
 
 const Input: React.FC<TextAreaProps> = ({
+  name,
   value,
   label,
   placeholder,
@@ -159,6 +173,9 @@ const Input: React.FC<TextAreaProps> = ({
   error,
   valid,
   size,
+  width,
+  minWidth,
+  maxWidth,
   disabled,
   ...props
 }) => {
@@ -188,12 +205,13 @@ const Input: React.FC<TextAreaProps> = ({
     (isFocused || !isEmpty(placeholder) || !isEmpty(value) || !isEmpty(error) || !isEmpty(valid)) && !disabled;
 
   return (
-    <StyledFormControl>
+    <StyledFormControl width={width} minWidth={minWidth} maxWidth={maxWidth}>
       <StyledFormControlInput>
         <StyledLabel isFilled={isFilled} variant={variant} paddingX={paddingX} fontSize={fontSize} bmeTheme={theme}>
           {label}
         </StyledLabel>
         <StyledTextArea
+          name={name}
           isFilled={isFilled}
           variant={variant}
           paddingX={paddingX}
@@ -205,6 +223,9 @@ const Input: React.FC<TextAreaProps> = ({
           onChange={(event) => onValue(event.target.value)}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
+          width={width}
+          minWidth={minWidth}
+          maxWidth={maxWidth}
           bmeTheme={theme}
           {...props}
         />
