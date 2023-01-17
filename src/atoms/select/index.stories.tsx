@@ -91,7 +91,7 @@ export default {
       action: "onValue",
     },
     onChange: {
-      action: "onValue",
+      action: "onChange",
       description: "Deprecated. Use onValue instead.",
     },
     onClick: {
@@ -107,6 +107,7 @@ export default {
 const Template: ComponentStory<typeof Select> = (args) => <Select {...args} />;
 
 export const Playground = Template.bind({});
+export const PlaygroundMultipleValue = Template.bind({});
 export const PlaygroundNullValue = Template.bind({});
 
 Playground.args = {
@@ -119,6 +120,24 @@ Playground.args = {
     { key: "2", label: "Two" },
     { key: "3", label: "Three" },
   ],
+};
+
+PlaygroundMultipleValue.args = {
+  size: "medium",
+  name: "Select",
+  label: "Select",
+  value: [
+    { key: "1", label: "One" },
+    { key: "2", label: "Two" },
+  ],
+  list: [
+    { key: "1", label: "One" },
+    { key: "2", label: "Two" },
+    { key: "3", label: "Three" },
+    { key: "4", label: "Four" },
+    { key: "5", label: "Five" },
+  ],
+  multiple: true,
 };
 
 Template.parameters = {

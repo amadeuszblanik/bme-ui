@@ -8,6 +8,8 @@ import { StyledClearProps } from "../input/types";
 import { BmeIcon } from "../index";
 import ThemeProviderContext from "../../components/theme-provider/context";
 
+const SINGLE_VALUE_INDEX = 0;
+
 const VALUES = {
   mobile: {
     small: {
@@ -149,9 +151,12 @@ const Input: React.FC<SelectProps> = ({
   maxWidth,
   disabled,
   variant,
+  multiple,
   ...props
 }) => {
   size = size ?? "medium";
+
+  const selectedValues = value ? (Array.isArray(value) ? value : [value]) : [];
 
   const { theme } = useContext(ThemeProviderContext);
 
@@ -173,8 +178,36 @@ const Input: React.FC<SelectProps> = ({
   };
 
   const [isFocused, setIsFocused] = React.useState(false);
-  const selectedValueKey = value?.key;
-  const isFilled = (isFocused || !!selectedValueKey || !isEmpty(error) || !isEmpty(valid)) && !disabled;
+  const isSelected = !isEmpty(selectedValues);
+  const isFilled = (isFocused || isSelected || !isEmpty(error) || !isEmpty(valid)) && !disabled;
+
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    if (multiple) {
+      const selectedOptions = Array.from(event.target.selectedOptions);
+      const values = selectedOptions.map((option) => option.value);
+      onValue(list.filter((item) => values.includes(item.key)));
+
+      return;
+    }
+
+    // @TODO: Fix this
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    onValue(list.find((item) => item.key === event.target.value) || null);
+  };
+
+  const handleClear = () => {
+    if (multiple) {
+      onValue([]);
+
+      return;
+    }
+
+    // @TODO: Fix this
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    onValue(null);
+  };
 
   return (
     <StyledFormControl width={width} minWidth={minWidth} maxWidth={maxWidth}>
@@ -197,30 +230,26 @@ const Input: React.FC<SelectProps> = ({
           paddingX={paddingX}
           paddingY={paddingY}
           variant={variantDynamic}
-          onChange={(e) => onValue(list.find((item) => item.key === e.target.value) || null)}
+          onChange={handleChange}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
+          value={multiple ? selectedValues.map(({ key }) => key) : selectedValues[SINGLE_VALUE_INDEX]?.key}
           disabled={disabled}
+          multiple={multiple}
           bmeTheme={theme}
           {...props}
         >
-          <option disabled selected={!selectedValueKey}>
+          <option disabled defaultValue={isEmpty(selectedValues)}>
             {emptyLabel || ""}
           </option>
           {list.map(({ key, label: itemLabel }) => (
-            <option key={key} value={key} selected={selectedValueKey === key}>
+            <option key={key} value={key}>
               {itemLabel}
             </option>
           ))}
         </StyledSelect>
         {!disabled && (
-          <StyledClear
-            isFilled={!!selectedValueKey}
-            paddingX={paddingX}
-            onClick={() => onValue(null)}
-            bmeTheme={theme}
-            type="button"
-          >
+          <StyledClear isFilled={isSelected} paddingX={paddingX} onClick={handleClear} bmeTheme={theme} type="button">
             <BmeIcon name="close-circle" size={ICON_SIZE} color={variantDynamic} />
           </StyledClear>
         )}

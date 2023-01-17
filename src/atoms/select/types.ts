@@ -7,13 +7,11 @@ export interface SelectItem {
   label: string;
 }
 
-export interface SelectProps extends React.HTMLAttributes<HTMLSelectElement> {
+export interface SelectPropsShared extends React.HTMLAttributes<HTMLSelectElement> {
   name: string;
-  value: SelectItem | null;
   list: SelectItem[];
   label: string;
   emptyLabel?: string;
-  onValue: (value: SelectItem | null) => void;
   size?: "small" | "medium" | "large";
   width?: string;
   minWidth?: string;
@@ -24,8 +22,21 @@ export interface SelectProps extends React.HTMLAttributes<HTMLSelectElement> {
   disabled?: boolean;
   variant?: ThemeColours;
   children?: undefined | null;
-  multiple?: boolean;
 }
+
+export interface SelectPropsSingle extends SelectPropsShared {
+  value: SelectItem | null;
+  onValue: (value: SelectItem | null) => void;
+  multiple?: false;
+}
+
+export interface SelectPropsMultiple extends SelectPropsShared {
+  value: SelectItem[];
+  onValue: (value: SelectItem[]) => void;
+  multiple?: true;
+}
+
+export type SelectProps = SelectPropsSingle | SelectPropsMultiple;
 
 export interface StyledLabelProps extends StyledComponent {
   isFilled: boolean;
