@@ -149,6 +149,7 @@ const Input: React.FC<SelectProps> = ({
   maxWidth,
   disabled,
   variant,
+  ...props
 }) => {
   size = size ?? "medium";
 
@@ -201,6 +202,7 @@ const Input: React.FC<SelectProps> = ({
           onBlur={() => setIsFocused(false)}
           disabled={disabled}
           bmeTheme={theme}
+          {...props}
         >
           <option disabled selected={!selectedValueKey}>
             {emptyLabel || ""}

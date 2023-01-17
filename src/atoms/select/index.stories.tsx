@@ -84,6 +84,9 @@ export default {
     disabled: {
       control: { type: "boolean" },
     },
+    multiple: {
+      control: { type: "boolean" },
+    },
     onValue: {
       action: "onValue",
     },

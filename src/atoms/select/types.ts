@@ -24,6 +24,7 @@ export interface SelectProps extends React.HTMLAttributes<HTMLSelectElement> {
   disabled?: boolean;
   variant?: ThemeColours;
   children?: undefined | null;
+  multiple?: boolean;
 }
 
 export interface StyledLabelProps extends StyledComponent {
