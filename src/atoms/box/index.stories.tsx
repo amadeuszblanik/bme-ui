@@ -6,26 +6,31 @@ export default {
   title: "Atoms/Box",
   component: Box,
   argTypes: {
+    position: {
+      options: [undefined, "static", "relative", "absolute", "fixed", "sticky"],
+      control: { type: "select" },
+    },
     inline: {
       control: {
         type: "boolean",
       },
     },
     alignX: {
-      options: [null, "left", "center", "right", "space-between"],
+      options: [undefined, "left", "center", "right", "space-between"],
       control: { type: "select" },
     },
     alignY: {
-      options: [null, "top", "center", "bottom", "space-between"],
+      options: [undefined, "top", "center", "bottom", "space-between"],
       control: { type: "select" },
     },
     direction: {
-      options: [null, "row", "column"],
+      options: [undefined, "row", "column"],
       control: { type: "select" },
     },
     wrap: {
       control: {
-        type: "boolean",
+        options: [undefined, true, "wrap", "nowrap", "wrap-reverse"],
+        control: { type: "select" },
       },
     },
     width: {
@@ -72,11 +77,11 @@ export default {
       },
     },
     border: {
-      options: [null, ...THEME_COLOURS_KEYS],
+      options: [undefined, ...THEME_COLOURS_KEYS],
       control: { type: "select" },
     },
     background: {
-      options: [null, ...THEME_COLOURS_KEYS],
+      options: [undefined, ...THEME_COLOURS_KEYS],
       control: { type: "select" },
     },
   },

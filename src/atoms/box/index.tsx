@@ -7,7 +7,7 @@ import ThemeProviderContext from "../../components/theme-provider/context";
 const DEFAULT_ALIGN_X: AlignX = "left";
 const DEFAULT_ALIGN_Y: AlignY = "top";
 const DEFAULT_DIRECTION: Direction = "row";
-const DEFAULT_WRAP = false;
+const DEFAULT_WRAP = "nowrap";
 
 const ALIGN_X_MAP: { [key in AlignX]: string } = {
   left: "flex-start",
@@ -24,9 +24,10 @@ const ALIGN_Y_MAP: { [key in AlignY]: string } = {
 };
 
 const StyledBox = styled.div<StyledBoxProps>`
+  ${({ position }) => position && `position: ${position};`}
   display: ${({ inline }) => (inline ? "inline-flex" : "flex")};
   flex-direction: ${({ direction }) => direction};
-  flex-wrap: ${({ wrap }) => (wrap ? "wrap" : "nowrap")};
+  flex-wrap: ${({ wrap }) => wrap};
   align-items: ${({ alignItems }) => alignItems};
   justify-content: ${({ justifyContent }) => justifyContent};
   ${({ width }) => `width: ${width}`};
@@ -75,7 +76,8 @@ const StyledBox = styled.div<StyledBoxProps>`
   }
 `;
 
-const Avatar: React.FC<BoxProps> = ({
+const Box: React.FC<BoxProps> = ({
+  position,
   inline,
   alignX,
   alignY,
@@ -97,7 +99,7 @@ const Avatar: React.FC<BoxProps> = ({
   alignX = alignX || DEFAULT_ALIGN_X;
   alignY = alignY || DEFAULT_ALIGN_Y;
   direction = direction || DEFAULT_DIRECTION;
-  wrap = wrap || DEFAULT_WRAP;
+  const styledWrap = wrap === true ? "wrap" : wrap || DEFAULT_WRAP;
 
   const { theme } = useContext(ThemeProviderContext);
 
@@ -106,11 +108,12 @@ const Avatar: React.FC<BoxProps> = ({
 
   return (
     <StyledBox
+      position={position}
       inline={inline}
       alignItems={alignItems}
       justifyContent={justifyContent}
       direction={direction}
-      wrap={wrap}
+      wrap={styledWrap}
       width={width}
       minWidth={minWidth}
       maxWidth={maxWidth}
@@ -129,4 +132,4 @@ const Avatar: React.FC<BoxProps> = ({
   );
 };
 
-export default Avatar;
+export default Box;

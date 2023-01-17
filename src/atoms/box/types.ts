@@ -8,11 +8,12 @@ export type AlignY = "top" | "center" | "bottom" | "space-between";
 
 export interface BoxProps {
   children: React.ReactNode;
+  position?: "relative" | "absolute" | "fixed";
   inline?: boolean;
   alignX?: AlignX;
   alignY?: AlignY;
   direction?: Direction;
-  wrap?: boolean;
+  wrap?: true | "nowrap" | "wrap" | "wrap-reverse";
   width?: string;
   minWidth?: string;
   maxWidth?: string;
@@ -27,11 +28,12 @@ export interface BoxProps {
 }
 
 export interface StyledBoxProps extends StyledComponent {
+  position?: "static" | "relative" | "absolute" | "fixed" | "sticky";
   inline?: boolean;
   alignItems: string;
   justifyContent: string;
   direction: Direction;
-  wrap: boolean;
+  wrap: "nowrap" | "wrap" | "wrap-reverse";
   width?: string;
   minWidth?: string;
   maxWidth?: string;
