@@ -163,6 +163,7 @@ const Select: React.FC<SelectProps> = ({
             value={multiple ? selectedValues.map(({ key }) => key) : selectedValues[SINGLE_VALUE_INDEX]?.key}
             disabled={disabled}
             bmeTheme={theme}
+            type="button"
           >
             {selectedValues.map((selectedValue) => selectedValue.label).join(", ")}
             {multiple && ` (${selectedValues.length})`}

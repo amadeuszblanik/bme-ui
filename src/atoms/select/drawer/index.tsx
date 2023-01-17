@@ -82,7 +82,13 @@ const Drawer: React.FunctionComponent<DrawerProps> = ({ list, selected, multiple
           const isSelected = selected.includes(item.key);
 
           return (
-            <StyledDrawerItem key={item.key} bmeTheme={theme} selected={isSelected} onClick={() => onClick(item.key)}>
+            <StyledDrawerItem
+              key={item.key}
+              bmeTheme={theme}
+              selected={isSelected}
+              onClick={() => onClick(item.key)}
+              type="button"
+            >
               <StyledDrawerItemIcon
                 visible={isSelected || multiple}
                 selected={isSelected}
