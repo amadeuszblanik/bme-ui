@@ -10,6 +10,7 @@ const StyledDrawerWrapper = styled.div<StyledComponent>`
   position: absolute;
   top: 100%;
   left: 0;
+  z-index: 1000;
   display: block;
   flex-direction: column;
   align-items: center;
