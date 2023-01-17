@@ -169,7 +169,7 @@ const Select: React.FC<SelectProps> = ({
               bmeTheme={theme}
               type="button"
             >
-              {selectedValues.map((selectedValue) => selectedValue.label).join(", ")}
+              {selectedValues.map((selectedValue) => selectedValue.label).join(", ") || "&nbsp;"}
               {multiple && ` (${selectedValues.length})`}
             </StyledSelect>
           )}
