@@ -21,7 +21,7 @@ const StyledModalWrapper = styled.div<StyledModalWrapperProps>`
   justify-content: center;
   width: 100%;
   height: 100%;
-  background: ${({ theme }) => toRgba(theme.colors.backgroundSecondary, BACKGROUND_TRANSPARENCY)};
+  background: ${({ bmeTheme }) => toRgba(bmeTheme.colors.backgroundSecondary, BACKGROUND_TRANSPARENCY)};
   backdrop-filter: blur(4px);
 `;
 
