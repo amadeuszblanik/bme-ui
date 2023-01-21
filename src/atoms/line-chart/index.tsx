@@ -71,6 +71,8 @@ const LABELS_X_TO_SHOW_MOBILE = 3;
 const LABELS_Y_TO_SHOW_DESKTOP = 4;
 const LABELS_X_TO_SHOW_DESKTOP = 5;
 
+const LABELS_X_DIFF = 1;
+
 const DESKTOP_BREAKPOINT = 900;
 
 const MINIMUM_DATA_REQUIRED = 3;
@@ -137,10 +139,11 @@ const Component = ({ data, width: componentWidth, loading }: Props) => {
     value: maxYValue,
     label: pipeNumber(maxYValue),
   });
+
   const labelsX = Array(labelsXToShow)
     .fill(null)
     .map((_, index) => {
-      const value = clamp(minXValue + (rangeX / labelsXToShow) * index, minXValue, maxXValue);
+      const value = clamp(minXValue + (rangeX / (labelsXToShow - LABELS_X_DIFF)) * index, minXValue, maxXValue);
       const label = pipeDate(new Date(value), { month: "short", day: "numeric", year: "2-digit" });
 
       return { value, label };
