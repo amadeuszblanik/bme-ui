@@ -113,89 +113,87 @@ const Select: React.FC<SelectProps> = ({
   };
 
   return (
-    <div ref={ref}>
-      <StyledFormControl width={width} minWidth={minWidth} maxWidth={maxWidth}>
-        <StyledFormControlInput>
-          <StyledLabel
-            htmlFor={name}
-            isFilled={isFilled}
-            variant={variantDynamic}
-            paddingX={paddingX}
+    <StyledFormControl ref={ref} width={width} minWidth={minWidth} maxWidth={maxWidth}>
+      <StyledFormControlInput>
+        <StyledLabel
+          htmlFor={name}
+          isFilled={isFilled}
+          variant={variantDynamic}
+          paddingX={paddingX}
+          fontSize={fontSize}
+          bmeTheme={theme}
+        >
+          {label}
+        </StyledLabel>
+        {native ? (
+          <StyledSelect
+            id={name}
+            name={name}
             fontSize={fontSize}
+            isFilled={isFilled}
+            paddingX={paddingX}
+            paddingY={paddingY}
+            variant={variantDynamic}
+            onChange={handleChange}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
+            value={multiple ? selectedValues.map(({ key }) => key) : selectedValues[SINGLE_VALUE_INDEX]?.key}
+            defaultValue=""
+            disabled={disabled}
+            multiple={multiple}
             bmeTheme={theme}
+            {...props}
           >
-            {label}
-          </StyledLabel>
-          {native ? (
-            <StyledSelect
-              id={name}
-              name={name}
-              fontSize={fontSize}
-              isFilled={isFilled}
-              paddingX={paddingX}
-              paddingY={paddingY}
-              variant={variantDynamic}
-              onChange={handleChange}
-              onFocus={() => setIsFocused(true)}
-              onBlur={() => setIsFocused(false)}
-              value={multiple ? selectedValues.map(({ key }) => key) : selectedValues[SINGLE_VALUE_INDEX]?.key}
-              defaultValue=""
-              disabled={disabled}
-              multiple={multiple}
-              bmeTheme={theme}
-              {...props}
-            >
-              <option disabled>{emptyLabel || ""}</option>
-              {list.map(({ key, label: itemLabel }) => (
-                <option key={key} value={key}>
-                  {itemLabel}
-                </option>
-              ))}
-            </StyledSelect>
-          ) : (
-            <StyledSelect
-              as="button"
-              id={name}
-              name={name}
-              fontSize={fontSize}
-              isFilled={isFilled}
-              paddingX={paddingX}
-              paddingY={paddingY}
-              variant={variantDynamic}
-              onClick={() => setIsDrawerOpen(!isDrawerOpen)}
-              onFocus={() => setIsFocused(true)}
-              onBlur={() => setIsFocused(false)}
-              value={multiple ? selectedValues.map(({ key }) => key) : selectedValues[SINGLE_VALUE_INDEX]?.key}
-              disabled={disabled}
-              bmeTheme={theme}
-              type="button"
-            >
-              {selectedValues.map((selectedValue) => selectedValue.label).join(", ") || "&nbsp;"}
-              {multiple && ` (${selectedValues.length})`}
-            </StyledSelect>
-          )}
-          {!disabled && (
-            <StyledClear isFilled={isSelected} paddingX={paddingX} onClick={handleClear} bmeTheme={theme} type="button">
-              <BmeIcon name="close-circle" size={ICON_SIZE} color={variantDynamic} />
-            </StyledClear>
-          )}
-        </StyledFormControlInput>
+            <option disabled>{emptyLabel || ""}</option>
+            {list.map(({ key, label: itemLabel }) => (
+              <option key={key} value={key}>
+                {itemLabel}
+              </option>
+            ))}
+          </StyledSelect>
+        ) : (
+          <StyledSelect
+            as="button"
+            id={name}
+            name={name}
+            fontSize={fontSize}
+            isFilled={isFilled}
+            paddingX={paddingX}
+            paddingY={paddingY}
+            variant={variantDynamic}
+            onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
+            value={multiple ? selectedValues.map(({ key }) => key) : selectedValues[SINGLE_VALUE_INDEX]?.key}
+            disabled={disabled}
+            bmeTheme={theme}
+            type="button"
+          >
+            {selectedValues.map((selectedValue) => selectedValue.label).join(", ") || "&nbsp;"}
+            {multiple && ` (${selectedValues.length})`}
+          </StyledSelect>
+        )}
         {!disabled && (
-          <StyledHint variant={hintVariant} paddingX={paddingX} fontSize={fontSize} bmeTheme={theme}>
-            {hintMessage}
-          </StyledHint>
+          <StyledClear isFilled={isSelected} paddingX={paddingX} onClick={handleClear} bmeTheme={theme} type="button">
+            <BmeIcon name="close-circle" size={ICON_SIZE} color={variantDynamic} />
+          </StyledClear>
         )}
-        {isDrawerOpen && !native && (
-          <Drawer
-            list={list}
-            selected={selectedValues.map(({ key }) => key)}
-            searchable={searchable}
-            multiple={multiple || false}
-            onClick={handleDrawerClick}
-          />
-        )}
-      </StyledFormControl>
-    </div>
+      </StyledFormControlInput>
+      {!disabled && (
+        <StyledHint variant={hintVariant} paddingX={paddingX} fontSize={fontSize} bmeTheme={theme}>
+          {hintMessage}
+        </StyledHint>
+      )}
+      {isDrawerOpen && !native && (
+        <Drawer
+          list={list}
+          selected={selectedValues.map(({ key }) => key)}
+          searchable={searchable}
+          multiple={multiple || false}
+          onClick={handleDrawerClick}
+        />
+      )}
+    </StyledFormControl>
   );
 };
 

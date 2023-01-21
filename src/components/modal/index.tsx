@@ -63,25 +63,24 @@ const Modal: React.FC<ModalProps> = ({ children, position, onClose }) => {
   return (
     <StyledModalWrapper position={position || "fixed"} bmeTheme={theme}>
       <Box margin="sm">
-        <div ref={ref}>
-          <Box
-            position="relative"
-            direction="column"
-            padding={onClose ? "md|md|sm" : "sm|md"}
-            maxWidth="800px"
-            maxHeight="80vh"
-            background="background"
-            border="gray6"
-            rounded
-          >
-            {onClose && (
-              <StyledModalCloseButton bmeTheme={theme} onClick={onClose}>
-                <Icon name="close" />
-              </StyledModalCloseButton>
-            )}
-            {children}
-          </Box>
-        </div>
+        <Box
+          innerRef={ref}
+          position="relative"
+          direction="column"
+          padding={onClose ? "md|md|sm" : "sm|md"}
+          maxWidth="800px"
+          maxHeight="80vh"
+          background="background"
+          border="gray6"
+          rounded
+        >
+          {onClose && (
+            <StyledModalCloseButton bmeTheme={theme} onClick={onClose}>
+              <Icon name="close" />
+            </StyledModalCloseButton>
+          )}
+          {children}
+        </Box>
       </Box>
     </StyledModalWrapper>
   );

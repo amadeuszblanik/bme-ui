@@ -7,6 +7,7 @@ export type AlignX = "left" | "center" | "right" | "space-between";
 export type AlignY = "top" | "center" | "bottom" | "space-between";
 
 export interface BoxProps {
+  innerRef?: React.RefObject<HTMLDivElement>;
   children: React.ReactNode;
   position?: "relative" | "absolute" | "fixed";
   inline?: boolean;

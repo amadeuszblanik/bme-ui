@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
-const useHook = <T = HTMLElement>(callback: () => void): React.LegacyRef<T> | undefined => {
+const useHook = <T = HTMLElement>(callback: () => void): React.RefObject<T> | undefined => {
   const ref = useRef<T>(null);
 
   useEffect(() => {

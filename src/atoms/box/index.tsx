@@ -77,6 +77,7 @@ const StyledBox = styled.div<StyledBoxProps>`
 `;
 
 const Box: React.FC<BoxProps> = ({
+  innerRef,
   position,
   inline,
   alignX,
@@ -108,6 +109,7 @@ const Box: React.FC<BoxProps> = ({
 
   return (
     <StyledBox
+      ref={innerRef}
       position={position}
       inline={inline}
       alignItems={alignItems}
