@@ -1,9 +1,8 @@
 /* eslint-disable no-magic-numbers */
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { ItemProps } from "./item";
-import Button from "../button";
-import Component, { Props } from "./index";
+import { ListItemProps, ListProps } from "./types";
+import Component from "./index";
 
 export default {
   title: "Atoms/List",
@@ -14,30 +13,35 @@ export default {
   },
 } as ComponentMeta<typeof Component>;
 
-const Template: ComponentStory<typeof Component> = ({ onClick, ...args }: Props & ItemProps) => (
+const Template: ComponentStory<typeof Component> = ({ onClick, ...args }: ListProps & ListItemProps) => (
   <Component {...args}>
     <Component.Item
       onClick={onClick}
-      actions={
-        <Button variant="red" size="small">
-          Delete
-        </Button>
-      }
+      actions={[
+        {
+          variant: "blue",
+          children: "Edit",
+        },
+        {
+          variant: "red",
+          children: "Delete",
+        },
+      ]}
     >
       <div>13.70</div>
       <div>5 Sept at 11:22am</div>
     </Component.Item>
     <Component.Item
-      actions={
-        <>
-          <Button variant="blue" size="small">
-            Edit
-          </Button>
-          <Button variant="red" size="small">
-            Delete
-          </Button>
-        </>
-      }
+      actions={[
+        {
+          variant: "blue",
+          children: "Edit",
+        },
+        {
+          variant: "red",
+          children: "Delete",
+        },
+      ]}
     >
       <div>13.70</div>
       <div>5 Sept at 11:22am</div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { StyledComponent } from "../../types/styled-component";
+import { ButtonProps } from "../button/types";
 
 export interface ListProps {
   label?: string;
@@ -9,7 +10,7 @@ export interface ListProps {
 
 export interface ListItemProps {
   children: string | React.ReactNode;
-  actions?: React.ReactNode;
+  actions?: ButtonProps[];
   onClick?: () => void;
 }
 

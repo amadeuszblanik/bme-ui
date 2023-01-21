@@ -5,6 +5,7 @@ import Icon from "../icon";
 import { paddings } from "../../mixins";
 import { StyledComponent } from "../../types/styled-component";
 import ThemeProviderContext from "../../components/theme-provider/context";
+import Button from "../button";
 
 const TOUCH_STARTING_VALUE = 0;
 const TOUCH_INDEX = 0;
@@ -138,7 +139,11 @@ const Item: React.FC<ListItemProps> = ({ children, actions, onClick }) => {
       )}
       {actions && (
         <StyledListItemActions visible={actionVisible} bmeTheme={theme}>
-          {actions}
+          {actions.map(({ children: actionChildren, ...actionProps }, index) => (
+            <Button key={index} {...actionProps} size="small">
+              {actionChildren}
+            </Button>
+          ))}
         </StyledListItemActions>
       )}
     </StyledLi>
