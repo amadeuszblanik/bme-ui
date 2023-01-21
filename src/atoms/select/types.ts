@@ -21,6 +21,7 @@ export interface SelectPropsShared extends React.HTMLAttributes<HTMLSelectElemen
   valid?: string;
   disabled?: boolean;
   variant?: ThemeColours;
+  searchable?: boolean;
   native?: boolean;
   children?: undefined | null;
 }

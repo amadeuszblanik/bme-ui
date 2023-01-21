@@ -33,6 +33,7 @@ const Select: React.FC<SelectProps> = ({
   disabled,
   variant,
   multiple,
+  searchable,
   native,
   ...props
 }) => {
@@ -188,6 +189,7 @@ const Select: React.FC<SelectProps> = ({
           <Drawer
             list={list}
             selected={selectedValues.map(({ key }) => key)}
+            searchable={searchable}
             multiple={multiple || false}
             onClick={handleDrawerClick}
           />

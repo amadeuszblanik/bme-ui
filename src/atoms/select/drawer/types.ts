@@ -6,6 +6,7 @@ export interface DrawerProps {
   list: SelectItem[];
   onClick: (key: string) => void;
   multiple: boolean;
+  searchable?: boolean;
 }
 
 export interface StyledDrawerItemProps extends StyledComponent {

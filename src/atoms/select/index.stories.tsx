@@ -87,6 +87,10 @@ export default {
     multiple: {
       control: { type: "boolean" },
     },
+    searchable: {
+      description: "Searchable only works without native",
+      control: { type: "boolean" },
+    },
     native: {
       control: { type: "boolean" },
     },
