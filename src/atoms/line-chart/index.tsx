@@ -147,11 +147,18 @@ const Component = ({ data, width: componentWidth, loading }: Props) => {
       const label = pipeDate(new Date(value), { month: "short", day: "numeric", year: "2-digit" });
 
       return { value, label };
-    })
-    .reverse();
+    });
   const labelsXIndexes = getIndexes(labelsX);
 
-  const calculatePointX = (index: number) => (index / dataIndexes) * availableWidth + paddingX;
+  const calculatePointX = (index: number) => {
+    const value = dataChart[index].x;
+
+    const distanceToMinValue = value - minXValue;
+    const percentage = distanceToMinValue / rangeX;
+    const positionX = availableWidth * percentage;
+
+    return paddingX + positionX;
+  };
 
   const calculatePointY = (index: number) => {
     const value = dataChart[index].y;
