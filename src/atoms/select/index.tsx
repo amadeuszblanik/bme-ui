@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { isEmpty } from "bme-utils";
 import { SelectProps } from "./types";
 import {
@@ -13,7 +13,6 @@ import { ICON_SIZE, SINGLE_VALUE_INDEX, VALUES, VARIANT } from "./settings";
 import Drawer from "./drawer";
 import { ThemeColours } from "../../settings/theme";
 import { BmeIcon } from "../index";
-import ThemeProviderContext from "../../components/theme-provider/context";
 import { useClickOutside } from "../../hooks";
 
 const Select: React.FC<SelectProps> = ({
@@ -40,8 +39,6 @@ const Select: React.FC<SelectProps> = ({
   size = size ?? "medium";
 
   const selectedValues = value ? (Array.isArray(value) ? value : [value]) : [];
-
-  const { theme } = useContext(ThemeProviderContext);
 
   const variantDynamic = disabled ? "gray" : error ? "red" : valid ? "green" : variant ?? VARIANT;
   const hintVariant: ThemeColours = error ? "red" : valid ? "green" : "gray";
@@ -121,7 +118,6 @@ const Select: React.FC<SelectProps> = ({
           variant={variantDynamic}
           paddingX={paddingX}
           fontSize={fontSize}
-          bmeTheme={theme}
         >
           {label}
         </StyledLabel>
@@ -141,7 +137,6 @@ const Select: React.FC<SelectProps> = ({
             defaultValue=""
             disabled={disabled}
             multiple={multiple}
-            bmeTheme={theme}
             {...props}
           >
             <option disabled>{emptyLabel || ""}</option>
@@ -166,7 +161,6 @@ const Select: React.FC<SelectProps> = ({
             onBlur={() => setIsFocused(false)}
             value={multiple ? selectedValues.map(({ key }) => key) : selectedValues[SINGLE_VALUE_INDEX]?.key}
             disabled={disabled}
-            bmeTheme={theme}
             type="button"
           >
             {selectedValues.map((selectedValue) => selectedValue.label).join(", ") || "&nbsp;"}
@@ -174,13 +168,13 @@ const Select: React.FC<SelectProps> = ({
           </StyledSelect>
         )}
         {!disabled && (
-          <StyledClear isFilled={isSelected} paddingX={paddingX} onClick={handleClear} bmeTheme={theme} type="button">
+          <StyledClear isFilled={isSelected} paddingX={paddingX} onClick={handleClear} type="button">
             <BmeIcon name="close-circle" size={ICON_SIZE} color={variantDynamic} />
           </StyledClear>
         )}
       </StyledFormControlInput>
       {!disabled && (
-        <StyledHint variant={hintVariant} paddingX={paddingX} fontSize={fontSize} bmeTheme={theme}>
+        <StyledHint variant={hintVariant} paddingX={paddingX} fontSize={fontSize}>
           {hintMessage}
         </StyledHint>
       )}

@@ -1,5 +1,4 @@
 import { css } from "styled-components";
-import theme from "../settings/theme";
 
 const PADDING_SAME_LENGTH = 1;
 const PADDING_X_Y_LENGTH = 2;
@@ -40,7 +39,7 @@ const DEFAULT_SIZES: PaddingSizes = {
   },
 };
 
-const mixin = (value: string | null | undefined, bmeTheme: typeof theme, sizes: PaddingSizes = DEFAULT_SIZES) => {
+const mixin = (value: string | null | undefined, sizes: PaddingSizes = DEFAULT_SIZES) => {
   if (!value) {
     return "";
   }
@@ -68,7 +67,7 @@ const mixin = (value: string | null | undefined, bmeTheme: typeof theme, sizes: 
     return css`
       padding: ${padding.mobile};
 
-      @media (min-width: ${bmeTheme.breakpoints.desktop}px) {
+      @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
         padding: ${padding.desktop};
       }
     `;
@@ -80,7 +79,7 @@ const mixin = (value: string | null | undefined, bmeTheme: typeof theme, sizes: 
     return css`
       padding: ${paddingX.mobile} ${paddingY.mobile};
 
-      @media (min-width: ${bmeTheme.breakpoints.desktop}px) {
+      @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
         padding: ${paddingX.desktop} ${paddingY.desktop};
       }
     `;
@@ -92,7 +91,7 @@ const mixin = (value: string | null | undefined, bmeTheme: typeof theme, sizes: 
     return css`
       padding: ${paddingTop.mobile} ${paddingX.mobile} ${paddingBottom.mobile};
 
-      @media (min-width: ${bmeTheme.breakpoints.desktop}px) {
+      @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
         padding: ${paddingTop.desktop} ${paddingX.desktop} ${paddingBottom.desktop};
       }
     `;
@@ -104,7 +103,7 @@ const mixin = (value: string | null | undefined, bmeTheme: typeof theme, sizes: 
     return css`
       padding: ${paddingTop.mobile} ${paddingRight.mobile} ${paddingBottom.mobile} ${paddingLeft.mobile};
 
-      @media (min-width: ${bmeTheme.breakpoints.desktop}px) {
+      @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
         padding: ${paddingTop.desktop} ${paddingRight.desktop} ${paddingBottom.desktop} ${paddingLeft.desktop};
       }
     `;

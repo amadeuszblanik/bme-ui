@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import { isEmpty } from "bme-utils";
 import Item from "./item";
@@ -6,25 +6,21 @@ import { ListType } from "./types";
 import Text from "../text";
 import Box from "../box";
 import { paddings } from "../../mixins";
-import { StyledComponent } from "../../types/styled-component";
-import ThemeProviderContext from "../../components/theme-provider/context";
 
 const StyledListWrapper = styled.div`
   width: 100%;
 `;
 
-const StyledUl = styled.ul<StyledComponent>`
+const StyledUl = styled.ul`
   width: 100%;
-  ${({ bmeTheme }) => paddings("xs|xs", bmeTheme)};
-  background: ${({ bmeTheme }) => bmeTheme.colors.gray6};
-  border-radius: ${({ bmeTheme }) => bmeTheme.radius}px;
+  ${paddings("xs|xs")};
+  background: ${({ theme }) => theme.colors.gray6};
+  border-radius: ${({ theme }) => theme.radius}px;
 `;
 
 // @TODO: Too tired to thing about that right now
 // eslint-disable-next-line react/prop-types
 const Component: ListType = ({ label, children, emptyMessage }) => {
-  const { theme } = useContext(ThemeProviderContext);
-
   const isEmptyList =
     isEmpty(React.Children.count(children)) ||
     // eslint-disable-next-line react/prop-types
@@ -39,7 +35,7 @@ const Component: ListType = ({ label, children, emptyMessage }) => {
           </Text>
         </Box>
       )}
-      <StyledUl bmeTheme={theme}>
+      <StyledUl>
         {!isEmptyList ? (
           children
         ) : (

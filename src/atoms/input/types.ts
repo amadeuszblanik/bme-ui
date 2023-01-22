@@ -1,6 +1,5 @@
 import React from "react";
 import { ThemeColours } from "../../settings/theme";
-import { StyledComponent } from "../../types/styled-component";
 
 export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   name: string;
@@ -24,14 +23,14 @@ export interface StyledFormControlProps {
   maxWidth?: string;
 }
 
-export interface StyledPrefixIconProps extends StyledComponent {
+export interface StyledPrefixIconProps {
   paddingX: {
     mobile: number;
     desktop: number;
   };
 }
 
-export interface StyledLabelProps extends StyledComponent {
+export interface StyledLabelProps {
   isFilled: boolean;
   isPrefixIcon: boolean;
   variant: ThemeColours;
@@ -45,7 +44,7 @@ export interface StyledLabelProps extends StyledComponent {
   };
 }
 
-export interface StyledInputProps extends StyledComponent {
+export interface StyledInputProps {
   isFilled: boolean;
   isPrefixIcon: boolean;
   variant: ThemeColours;
@@ -66,7 +65,7 @@ export interface StyledInputProps extends StyledComponent {
   };
 }
 
-export interface StyledClearProps extends StyledComponent {
+export interface StyledClearProps {
   isFilled: boolean;
   paddingX: {
     mobile: number;
@@ -74,7 +73,7 @@ export interface StyledClearProps extends StyledComponent {
   };
 }
 
-export interface StyledHintProps extends StyledComponent {
+export interface StyledHintProps {
   variant: ThemeColours;
   paddingX: {
     mobile: number;

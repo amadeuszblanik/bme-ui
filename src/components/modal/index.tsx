@@ -1,12 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import { ModalProps, StyledModalWrapperProps } from "./types";
-import ThemeProviderContext from "../theme-provider/context";
 import Box from "../../atoms/box";
 import { toRgba } from "../../utils";
 import { animations } from "../../mixins";
 import Icon from "../../atoms/icon";
-import { StyledComponent } from "../../types/styled-component";
 import { useClickOutside } from "../../hooks";
 
 const BACKGROUND_TRANSPARENCY = 0.8;
@@ -21,11 +19,11 @@ const StyledModalWrapper = styled.div<StyledModalWrapperProps>`
   justify-content: center;
   width: 100%;
   height: 100%;
-  background: ${({ bmeTheme }) => toRgba(bmeTheme.colors.backgroundSecondary, BACKGROUND_TRANSPARENCY)};
+  background: ${({ theme }) => toRgba(theme.colors.backgroundSecondary, BACKGROUND_TRANSPARENCY)};
   backdrop-filter: blur(4px);
 `;
 
-const StyledModalCloseButton = styled.button<StyledComponent>`
+const StyledModalCloseButton = styled.button`
   position: absolute;
   top: 0;
   right: 0;
@@ -35,10 +33,10 @@ const StyledModalCloseButton = styled.button<StyledComponent>`
   justify-content: center;
   width: 32px;
   height: 32px;
-  color: ${({ bmeTheme }) => bmeTheme.colors.text};
-  background: ${({ bmeTheme }) => bmeTheme.colors.backgroundSecondary};
+  color: ${({ theme }) => theme.colors.text};
+  background: ${({ theme }) => theme.colors.backgroundSecondary};
   border: none;
-  border-radius: ${({ bmeTheme }) => bmeTheme.radius}px;
+  border-radius: ${({ theme }) => theme.radius}px;
   outline: none;
   cursor: pointer;
   appearance: none;
@@ -46,14 +44,12 @@ const StyledModalCloseButton = styled.button<StyledComponent>`
 
   &:hover,
   &:active {
-    color: ${({ bmeTheme }) => bmeTheme.colors.light};
-    background: ${({ bmeTheme }) => bmeTheme.colors.blue};
+    color: ${({ theme }) => theme.colors.light};
+    background: ${({ theme }) => theme.colors.blue};
   }
 `;
 
 const Modal: React.FC<ModalProps> = ({ children, position, onClose }) => {
-  const { theme } = useContext(ThemeProviderContext);
-
   const ref = useClickOutside<HTMLDivElement>(() => {
     if (onClose) {
       onClose();
@@ -61,7 +57,7 @@ const Modal: React.FC<ModalProps> = ({ children, position, onClose }) => {
   });
 
   return (
-    <StyledModalWrapper position={position || "fixed"} bmeTheme={theme}>
+    <StyledModalWrapper position={position || "fixed"}>
       <Box margin="sm">
         <Box
           innerRef={ref}
@@ -75,7 +71,7 @@ const Modal: React.FC<ModalProps> = ({ children, position, onClose }) => {
           rounded
         >
           {onClose && (
-            <StyledModalCloseButton bmeTheme={theme} onClick={onClose}>
+            <StyledModalCloseButton onClick={onClose}>
               <Icon name="close" />
             </StyledModalCloseButton>
           )}

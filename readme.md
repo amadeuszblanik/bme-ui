@@ -13,27 +13,42 @@ Beta releases
 Use the package manager [npm](https://docs.npmjs.com/cli/install) or [yarn](https://yarnpkg.com/getting-started) to install BME-UI.
 
 ```bash
-yarn add bme-ui
-npm install --save bme-ui
+yarn add bme-ui@beta
 ```
-
-Due to styled-compopnents issue you need to add manually styles:
-```scss
-    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
-    @import url('https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css');
+npm install --save bme-ui@beta
 ```
 
 ## Usage
 ```typescript
 import React from 'react';
-import { BMEText } from 'bme-ui';
+import { BmeText } from 'bme-ui';
 
-const Foo: React.FunctionComponent = () => <BMEText>Hello world</BMEText>
+const Foo: React.FunctionComponent = () => <BmeText>Hello world</BmeText>
 
 export default Foo;
 ```
 
 More about usage: [storybook](https://amadeuszblanik.github.io/bme-ui)
+
+## Theme Provider
+
+```typescript
+import { ThemeProvider } from "styled-components";
+import { BmeTest } from "bme-ui";
+import dark from "bme-ui/dist/themes/dark";
+import type { AppProps } from "next/app";
+
+function App({ Component, ...rest }: AppProps) {
+  return (
+      <ThemeProvider theme={dark}>
+        <BmeTest variant="primary" />
+        <Component {...props.pageProps} />
+      </ThemeProvider>
+    );
+}
+
+export default App;
+```
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

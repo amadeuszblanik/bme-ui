@@ -1,9 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { DropdownProps, StyledDropdownListProps } from "./types";
 import Button from "../button";
 import { BmeBox, BmeButton, BmeIcon } from "../index";
-import ThemeProviderContext from "../../components/theme-provider/context";
 import { paddings } from "../../mixins";
 
 const StyledDropdownWrapper = styled.div`
@@ -18,18 +17,16 @@ const StyledDropdownList = styled.div<StyledDropdownListProps>`
   display: flex;
   flex-direction: column;
   width: 100%;
-  ${({ bmeTheme }) => paddings("sm|md", bmeTheme)}
-  background: ${({ bmeTheme }) => bmeTheme.colors.background};
-  border: solid 2px ${({ bmeTheme }) => bmeTheme.colors.gray2};
-  border-radius: ${({ bmeTheme }) => bmeTheme.radius}px;
+  ${paddings("sm|md")}
+  background: ${({ theme }) => theme.colors.background};
+  border: solid 2px ${({ theme }) => theme.colors.gray2};
+  border-radius: ${({ theme }) => theme.radius}px;
 `;
 
 const Dropdown: React.FC<DropdownProps> = ({ children, variant, list, ...props }) => {
   variant = variant ?? "blue";
 
   const [isOpen, setIsOpen] = useState(false);
-
-  const { theme } = useContext(ThemeProviderContext);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -46,7 +43,7 @@ const Dropdown: React.FC<DropdownProps> = ({ children, variant, list, ...props }
         </BmeBox>
       </Button>
       {isOpen && (
-        <StyledDropdownList bmeTheme={theme} variant={variant}>
+        <StyledDropdownList variant={variant}>
           {list.map((item, index) => (
             <BmeButton key={index} onClick={item.onClick} {...props} size="small" variant="background">
               {item.label}

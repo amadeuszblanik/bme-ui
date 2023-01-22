@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import { IconProps, StyledIconProps } from "./types";
 import { CloseCircleOutline } from "./svg/close-circle-outline";
@@ -25,7 +25,6 @@ import { CloseOutline } from "./svg/close-outline";
 import { MedicalOutline } from "./svg/medical-outline";
 import { CreateOutline } from "./svg/create-outline";
 import { WarningOutline } from "./svg/warning-outline";
-import ThemeProviderContext from "../../components/theme-provider/context";
 
 const DEFAULT_ICON_SIZE = 24;
 
@@ -33,13 +32,11 @@ const StyledIcon = styled.i<StyledIconProps>`
   display: flex;
   width: ${({ size }) => size}px;
   height: ${({ size }) => size}px;
-  ${({ bmeTheme, color }) => color && `color: ${bmeTheme.colors[color]}`};
+  ${({ theme, color }) => color && `color: ${theme.colors[color]}`};
 `;
 
 const Icon: React.FC<IconProps> = ({ name, size, color }) => {
   let IconToRender = <>⍰</>;
-
-  const { theme } = useContext(ThemeProviderContext);
 
   switch (name) {
     case "apps":
@@ -117,7 +114,7 @@ const Icon: React.FC<IconProps> = ({ name, size, color }) => {
   }
 
   return (
-    <StyledIcon size={size ?? DEFAULT_ICON_SIZE} color={color} bmeTheme={theme}>
+    <StyledIcon size={size ?? DEFAULT_ICON_SIZE} color={color}>
       {IconToRender}
     </StyledIcon>
   );

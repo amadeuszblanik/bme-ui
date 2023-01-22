@@ -1,6 +1,5 @@
 import React from "react";
 import { ThemeColours } from "../../settings/theme";
-import { StyledComponent } from "../../types/styled-component";
 
 export interface CheckboxProps extends React.HTMLAttributes<HTMLInputElement> {
   name: string;
@@ -28,7 +27,7 @@ export interface StyledLabelProps extends React.HTMLAttributes<HTMLLabelElement>
   };
 }
 
-export interface StyledCheckboxProps extends StyledComponent {
+export interface StyledCheckboxProps {
   disabled: boolean;
   checked: boolean;
   variant: ThemeColours;
@@ -46,7 +45,7 @@ export interface StyledCheckboxCheckmarkProps {
   checked: boolean;
 }
 
-export interface StyledHintProps extends StyledComponent {
+export interface StyledHintProps {
   variant: ThemeColours;
   size: {
     mobile: number;

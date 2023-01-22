@@ -1,6 +1,5 @@
 import React from "react";
 import { ThemeColours } from "../../settings/theme";
-import { StyledComponent } from "../../types/styled-component";
 
 export interface SelectItem {
   key: string;
@@ -40,7 +39,7 @@ export interface SelectPropsMultiple extends SelectPropsShared {
 
 export type SelectProps = SelectPropsSingle | SelectPropsMultiple;
 
-export interface StyledLabelProps extends StyledComponent {
+export interface StyledLabelProps {
   isFilled: boolean;
   variant: ThemeColours;
   paddingX: {
@@ -59,7 +58,7 @@ export interface StyledFormControlProps {
   maxWidth?: string;
 }
 
-export interface StyledSelectProps extends StyledComponent {
+export interface StyledSelectProps {
   isFilled: boolean;
   variant: ThemeColours;
   paddingX: {
@@ -84,7 +83,7 @@ export interface StyledClearProps {
   };
 }
 
-export interface StyledHintProps extends StyledComponent {
+export interface StyledHintProps {
   variant: ThemeColours;
   paddingX: {
     mobile: number;

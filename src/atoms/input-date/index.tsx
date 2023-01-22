@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import { isEmpty } from "bme-utils";
 import {
@@ -12,7 +12,6 @@ import {
 import { animations, isDark } from "../../mixins";
 import { BmeIcon } from "../index";
 import { ThemeColours } from "../../settings/theme";
-import ThemeProviderContext from "../../components/theme-provider/context";
 
 const VALUES = {
   mobile: {
@@ -79,14 +78,14 @@ const StyledLabel = styled.label<StyledLabelProps>`
   display: inline-flex;
   width: ${({ isFilled, paddingX }) => (isFilled ? "auto" : `calc(100% - ${paddingX.mobile - LABEL_PADDING_X}px)`)};
   padding: 0 ${LABEL_PADDING_X}px 0 ${LABEL_PADDING_X}px;
-  color: ${({ bmeTheme, variant, isFilled }) => (isFilled ? bmeTheme.colors[variant] : bmeTheme.colors.gray)};
+  color: ${({ theme, variant, isFilled }) => (isFilled ? theme.colors[variant] : theme.colors.gray)};
   font-size: ${({ fontSize }) => fontSize.mobile}px;
-  background: ${({ bmeTheme, isFilled }) => (isFilled ? bmeTheme.colors.background : bmeTheme.colors.gray5)};
+  background: ${({ theme, isFilled }) => (isFilled ? theme.colors.background : theme.colors.gray5)};
   transform: translateY(-50%);
   cursor: text;
   ${animations(["top", "left", "width", "padding", "font-size", "background"])};
 
-  @media (min-width: ${({ bmeTheme }) => bmeTheme.breakpoints.desktop}px) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     left: ${({ paddingX }) => paddingX.desktop - LABEL_PADDING_X}px;
     width: ${({ isFilled, paddingX }) => (isFilled ? "auto" : `calc(100% - ${paddingX.desktop - LABEL_PADDING_X}px)`)};
     padding: 0 ${LABEL_PADDING_X}px 0 ${LABEL_PADDING_X}px;
@@ -103,47 +102,46 @@ const StyledInput = styled.input<StyledInputProps>`
   ${({ maxWidth }) => maxWidth && `max-width: ${maxWidth};`}
   padding: ${({ paddingX, paddingY }) =>
     `${paddingY.mobile}px ${paddingX.mobile + ICON_SIZE}px ${paddingY.mobile}px ${paddingX.mobile}px`};
-  color: ${({ bmeTheme, disabled }) => (disabled ? bmeTheme.colors.gray5 : bmeTheme.colors.text)};
+  color: ${({ theme, disabled }) => (disabled ? theme.colors.gray5 : theme.colors.text)};
   font-size: ${({ fontSize }) => fontSize.mobile}px;
-  background: ${({ bmeTheme }) => bmeTheme.colors.gray5};
-  border: ${({ bmeTheme }) => bmeTheme.colors.gray5} solid 2px;
-  border-radius: ${({ bmeTheme }) => bmeTheme.radius}px;
+  background: ${({ theme }) => theme.colors.gray5};
+  border: ${({ theme }) => theme.colors.gray5} solid 2px;
+  border-radius: ${({ theme }) => theme.radius}px;
   cursor: text;
   appearance: none;
   ${animations(["width", "min-width", "max-width", "background-color", "color", "padding", "font-size"])};
 
-  ${({ bmeTheme }) =>
-    isDark(bmeTheme.colors.gray5) &&
+  ${({ theme }) =>
+    isDark(theme.colors.gray5) &&
     `
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
   }
   `}
 
-  ${({ bmeTheme, variant, isFilled, disabled }) =>
+  ${({ theme, variant, isFilled, disabled }) =>
     isFilled &&
     `background: transparent;
-      border: ${disabled ? bmeTheme.colors.gray : bmeTheme.colors[variant]} solid 2px;
+      border: ${disabled ? theme.colors.gray : theme.colors[variant]} solid 2px;
       outline: none;`}
 
   &:not([disabled]) {
     &:active,
     &:focus {
       background: transparent;
-      border: ${({ bmeTheme, variant, disabled }) => (disabled ? bmeTheme.colors.gray : bmeTheme.colors[variant])} solid
-        2px;
+      border: ${({ theme, variant, disabled }) => (disabled ? theme.colors.gray : theme.colors[variant])} solid 2px;
       outline: none;
     }
   }
 
   &:disabled,
   &[disabled] {
-    background: ${({ bmeTheme }) => bmeTheme.colors.gray3} !important;
-    border: ${({ bmeTheme }) => bmeTheme.colors.gray3} solid 2px;
+    background: ${({ theme }) => theme.colors.gray3} !important;
+    border: ${({ theme }) => theme.colors.gray3} solid 2px;
     cursor: not-allowed;
   }
 
-  @media (min-width: ${({ bmeTheme }) => bmeTheme.breakpoints.desktop}px) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     padding: ${({ paddingX, paddingY }) =>
       `${paddingY.desktop}px ${paddingX.desktop + ICON_SIZE}px ${paddingY.desktop}px ${paddingX.desktop}px`};
     font-size: ${({ fontSize }) => fontSize.desktop}px;
@@ -163,14 +161,14 @@ const StyledClear = styled.button<StyledClearProps>`
   appearance: none;
   ${animations(["right", "opacity"])};
 
-  @media (min-width: ${({ bmeTheme }) => bmeTheme.breakpoints.desktop}px) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     right: ${({ paddingX }) => paddingX.desktop}px;
   }
 `;
 
 const StyledHint = styled.div<StyledHintProps>`
   padding: ${({ paddingX }) => `4px ${paddingX.mobile}px 0`};
-  color: ${({ bmeTheme, variant }) => bmeTheme.colors[variant]};
+  color: ${({ theme, variant }) => theme.colors[variant]};
   font-size: ${({ fontSize }) => fontSize.mobile}px;
 `;
 
@@ -192,8 +190,6 @@ const Input: React.FC<InputDateProps> = ({
   ...props
 }) => {
   size = size ?? "medium";
-
-  const { theme } = useContext(ThemeProviderContext);
 
   const inputType = type || "date";
   const variant = disabled ? "gray" : error ? "red" : valid ? "green" : VARIANT;
@@ -220,14 +216,7 @@ const Input: React.FC<InputDateProps> = ({
   return (
     <StyledFormControl width={width} minWidth={minWidth} maxWidth={maxWidth}>
       <StyledFormControlInput>
-        <StyledLabel
-          htmlFor={name}
-          isFilled={isFilled}
-          variant={variant}
-          paddingX={paddingX}
-          fontSize={fontSize}
-          bmeTheme={theme}
-        >
+        <StyledLabel htmlFor={name} isFilled={isFilled} variant={variant} paddingX={paddingX} fontSize={fontSize}>
           {label}
         </StyledLabel>
         <StyledInput
@@ -249,22 +238,15 @@ const Input: React.FC<InputDateProps> = ({
           onChange={(event) => onValue(event.target.value)}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          bmeTheme={theme}
         />
         {!disabled && (
-          <StyledClear
-            isFilled={!isEmpty(value)}
-            paddingX={paddingX}
-            onClick={() => onValue("")}
-            bmeTheme={theme}
-            type="button"
-          >
+          <StyledClear isFilled={!isEmpty(value)} paddingX={paddingX} onClick={() => onValue("")} type="button">
             <BmeIcon name="close-circle" size={ICON_SIZE} color={variant} />
           </StyledClear>
         )}
       </StyledFormControlInput>
       {!disabled && (
-        <StyledHint variant={hintVariant} paddingX={paddingX} fontSize={fontSize} bmeTheme={theme}>
+        <StyledHint variant={hintVariant} paddingX={paddingX} fontSize={fontSize}>
           {hintMessage}
         </StyledHint>
       )}

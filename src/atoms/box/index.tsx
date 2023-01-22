@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import { BoxProps, StyledBoxProps, AlignX, AlignY, Direction } from "./types";
 import { animations, isDark, margins, paddings } from "../../mixins";
-import ThemeProviderContext from "../../components/theme-provider/context";
 
 const DEFAULT_ALIGN_X: AlignX = "left";
 const DEFAULT_ALIGN_Y: AlignY = "top";
@@ -36,18 +35,14 @@ const StyledBox = styled.div<StyledBoxProps>`
   ${({ height }) => `height: ${height}`};
   ${({ minHeight }) => `min-height: ${minHeight}`};
   ${({ maxHeight }) => `max-height: ${maxHeight}`};
-  color: ${({ bmeTheme, background }) =>
-    background
-      ? isDark(bmeTheme.colors[background])
-        ? bmeTheme.colors.light
-        : bmeTheme.colors.dark
-      : bmeTheme.colors.text};
-  background: ${({ bmeTheme, background }) => (background ? bmeTheme.colors[background] : "transparent")};
-  border: ${({ bmeTheme, border }) => (border ? `2px solid ${bmeTheme.colors[border]}` : "none")};
-  border-radius: ${({ bmeTheme, rounded }) => (rounded ? bmeTheme.radius : "0")}px;
+  color: ${({ theme, background }) =>
+    background ? (isDark(theme.colors[background]) ? theme.colors.light : theme.colors.dark) : theme.colors.text};
+  background: ${({ theme, background }) => (background ? theme.colors[background] : "transparent")};
+  border: ${({ theme, border }) => (border ? `2px solid ${theme.colors[border]}` : "none")};
+  border-radius: ${({ theme, rounded }) => (rounded ? theme.radius : "0")}px;
 
-  ${({ padding, bmeTheme }) => paddings(padding, bmeTheme)};
-  ${({ margin, bmeTheme }) => margins(margin, bmeTheme)};
+  ${({ padding }) => paddings(padding)};
+  ${({ margin }) => margins(margin)};
   ${animations([
     "color",
     "background",
@@ -63,15 +58,11 @@ const StyledBox = styled.div<StyledBoxProps>`
     "max-width",
   ])};
 
-  --bme-background: ${({ bmeTheme, background }) => (background ? bmeTheme.colors[background] : "transparent")};
-  --bme-color: ${({ bmeTheme, background }) =>
-    background
-      ? isDark(bmeTheme.colors[background])
-        ? bmeTheme.colors.light
-        : bmeTheme.colors.dark
-      : bmeTheme.colors.text};
+  --bme-background: ${({ theme, background }) => (background ? theme.colors[background] : "transparent")};
+  --bme-color: ${({ theme, background }) =>
+    background ? (isDark(theme.colors[background]) ? theme.colors.light : theme.colors.dark) : theme.colors.text};
 
-  @media (min-width: ${({ bmeTheme }) => bmeTheme.breakpoints.desktop}px) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     border-width: 3px;
   }
 `;
@@ -102,8 +93,6 @@ const Box: React.FC<BoxProps> = ({
   direction = direction || DEFAULT_DIRECTION;
   const styledWrap = wrap === true ? "wrap" : wrap || DEFAULT_WRAP;
 
-  const { theme } = useContext(ThemeProviderContext);
-
   const justifyContent = direction === "row" ? ALIGN_X_MAP[alignX] : ALIGN_Y_MAP[alignY];
   const alignItems = direction === "row" ? ALIGN_Y_MAP[alignY] : ALIGN_X_MAP[alignX];
 
@@ -127,7 +116,6 @@ const Box: React.FC<BoxProps> = ({
       rounded={rounded}
       border={border}
       background={background}
-      bmeTheme={theme}
     >
       {children}
     </StyledBox>

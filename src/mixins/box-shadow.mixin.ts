@@ -1,5 +1,5 @@
 import { css } from "styled-components";
-import theme, { ThemeColours } from "../settings/theme";
+import { ThemeColours } from "../settings/theme";
 import { toRgba } from "../utils";
 
 const DEFAULT_TRANSPARENCY = 0.2;
@@ -13,12 +13,11 @@ const LEVELS = {
 };
 
 const mixin = (
-  bmeTheme: typeof theme,
   color: ThemeColours,
   level: "0" | "1" | "2" | "3" | "4" = "0",
   transparency: number = DEFAULT_TRANSPARENCY,
 ) => css`
-  box-shadow: ${LEVELS[level]} ${toRgba(bmeTheme.colors[color], transparency)};
+  box-shadow: ${LEVELS[level]} ${({ theme }) => toRgba(theme.colors[color], transparency)};
 `;
 
 export default mixin;

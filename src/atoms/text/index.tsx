@@ -1,8 +1,6 @@
+import React from "react";
 import styled from "styled-components";
-import React, { useContext } from "react";
 import { ThemeColours } from "../../settings/theme";
-import { StyledComponent } from "../../types/styled-component";
-import ThemeProviderContext from "../../components/theme-provider/context";
 
 export type TextVariants =
   | "LargeTitle"
@@ -31,7 +29,7 @@ export type TextAlignment = "left" | "center" | "right";
 export type FontStyle = "normal" | "italic";
 export type LineFormat = "normal" | "nowrap" | "pre" | "pre-line" | "pre-wrap" | "break-spaces";
 
-export interface StyledTextProps extends StyledComponent {
+export interface StyledTextProps {
   sizeMobile: number;
   sizeDesktop: number;
   weight: number;
@@ -47,7 +45,7 @@ export interface StyledTextProps extends StyledComponent {
 
 const StyledText = styled.p<StyledTextProps>`
   margin-bottom: ${({ noBottomMargin }) => (noBottomMargin ? "0" : "4px")};
-  color: ${({ bmeTheme, color }) => (color ? bmeTheme.colors[color] : "var(--color-text)")};
+  color: ${({ theme, color }) => (color ? theme.colors[color] : "var(--color-text)")};
   font-weight: ${({ weight }) => weight};
   font-size: ${({ sizeMobile }) => sizeMobile}px;
   font-style: ${({ fontStyle }) => fontStyle};
@@ -59,7 +57,7 @@ const StyledText = styled.p<StyledTextProps>`
   --placeholder-height: ${({ sizeMobile }) => sizeMobile}px;
   --placeholder-offset-y: 3px;
 
-  @media (min-width: ${({ bmeTheme }) => bmeTheme.breakpoints.desktop}px) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     font-size: ${({ sizeDesktop }) => sizeDesktop}px;
     --placeholder-height: ${({ sizeDesktop }) => sizeDesktop}px;
   }
@@ -162,8 +160,6 @@ const Component: React.FunctionComponent<Props> = ({
 }) => {
   const size = variantSize[variant || "Body"];
 
-  const { theme } = useContext(ThemeProviderContext);
-
   return (
     <StyledText
       sizeMobile={size.mobile[leading ? "leading" : "standard"]}
@@ -172,7 +168,6 @@ const Component: React.FunctionComponent<Props> = ({
       color={color}
       fontStyle={fontStyle || "normal"}
       textTransform={uppercase ? "uppercase" : undefined}
-      bmeTheme={theme}
       {...props}
     >
       {children}

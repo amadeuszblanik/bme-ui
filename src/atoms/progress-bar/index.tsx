@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import {
   ProgressBarProps,
@@ -8,8 +8,6 @@ import {
 } from "./types";
 import { ThemeColours } from "../../settings/theme";
 import { formatPercentage } from "../../utils";
-import { StyledComponent } from "../../types/styled-component";
-import ThemeProviderContext from "../../components/theme-provider/context";
 import { animations } from "../../mixins";
 
 const VARIANT: ThemeColours = "blue";
@@ -23,21 +21,21 @@ const StyledProgressBarWrapper = styled.div<StyledProgressBarWrapperProps>`
   ${animations(["width", "min-width", "max-width"])}
 `;
 
-const StyledProgressBarTimeLeft = styled.div<StyledComponent>`
-  color: ${({ bmeTheme }) => bmeTheme.colors.gray};
+const StyledProgressBarTimeLeft = styled.div`
+  color: ${({ theme }) => theme.colors.gray};
   font-size: 13px;
   line-height: 20px;
   text-align: right;
 `;
 
-const StyledProgressBar = styled.div<StyledComponent>`
+const StyledProgressBar = styled.div`
   position: relative;
   display: flex;
   width: 100%;
   height: 8px;
   overflow: hidden;
-  background: ${({ bmeTheme }) => bmeTheme.colors.gray5};
-  border-radius: ${({ bmeTheme }) => bmeTheme.radius}px;
+  background: ${({ theme }) => theme.colors.gray5};
+  border-radius: ${({ theme }) => theme.radius}px;
 `;
 
 const StyledProgressBarValue = styled.i<StyledProgressBarValueProps>`
@@ -58,8 +56,8 @@ const StyledProgressBarValue = styled.i<StyledProgressBarValueProps>`
   display: flex;
   width: ${({ value }) => (value !== undefined ? `${value}%` : "32px")};
   height: 8px;
-  background: ${({ bmeTheme, variant }) => bmeTheme.colors[variant]};
-  border-radius: ${({ bmeTheme }) => bmeTheme.radius}px;
+  background: ${({ theme, variant }) => theme.colors[variant]};
+  border-radius: ${({ theme }) => theme.radius}px;
   ${({ value }) => value === undefined && `animation: progress-bar-animation 2s infinite`};
   ${animations(["width", "background"])};
 `;
@@ -67,7 +65,7 @@ const StyledProgressBarValue = styled.i<StyledProgressBarValueProps>`
 const StyledProgressBarLabel = styled.p<StyledProgressBarLabelProps>`
   margin: 8px 0 0;
   padding: 0;
-  color: ${({ bmeTheme, variant }) => bmeTheme.colors[variant]};
+  color: ${({ theme, variant }) => theme.colors[variant]};
   font-size: 16px;
   text-align: center;
 `;
@@ -86,26 +84,21 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   value = done || error ? DONE_VALUE : value;
   variant = variant ?? VARIANT;
 
-  const { theme } = useContext(ThemeProviderContext);
-
   const labelVariant = error ? "red" : done ? "green" : "text";
   const dynamicVariant = error ? "red" : done ? "green" : variant;
   const labelToRender = label ? label.replace("$0", value ? formatPercentage(value) : "…") : undefined;
 
   return (
     <StyledProgressBarWrapper width={width} minWidth={minWidth} maxWidth={maxWidth}>
-      {timeLeft && <StyledProgressBarTimeLeft bmeTheme={theme}>{timeLeft}</StyledProgressBarTimeLeft>}
-      <StyledProgressBar bmeTheme={theme}>
+      {timeLeft && <StyledProgressBarTimeLeft>{timeLeft}</StyledProgressBarTimeLeft>}
+      <StyledProgressBar>
         <StyledProgressBarValue
           value={value !== undefined ? value * PROGRESS_VALUE_MULTIPLIER : undefined}
           variant={dynamicVariant}
-          bmeTheme={theme}
         ></StyledProgressBarValue>
       </StyledProgressBar>
       {labelToRender && (
-        <StyledProgressBarLabel variant={labelVariant} bmeTheme={theme}>
-          {error || done || labelToRender}
-        </StyledProgressBarLabel>
+        <StyledProgressBarLabel variant={labelVariant}>{error || done || labelToRender}</StyledProgressBarLabel>
       )}
     </StyledProgressBarWrapper>
   );

@@ -1,5 +1,4 @@
 import React from "react";
-import { StyledComponent } from "../../types/styled-component";
 
 export interface ModalProps {
   children: React.ReactNode;
@@ -7,6 +6,6 @@ export interface ModalProps {
   onClose?: () => void;
 }
 
-export interface StyledModalWrapperProps extends StyledComponent {
+export interface StyledModalWrapperProps {
   position: "absolute" | "fixed";
 }

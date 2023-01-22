@@ -1,5 +1,4 @@
 import { ThemeColours } from "../../settings/theme";
-import { StyledComponent } from "../../types/styled-component";
 
 export const IconNames = [
   "apps",
@@ -54,13 +53,13 @@ export type IconName =
   | "search"
   | "warning";
 
-export interface IconProps extends React.HTMLAttributes<HTMLElement> {
+export interface IconProps {
   name: IconName;
   color?: ThemeColours;
   size?: number;
 }
 
-export interface StyledIconProps extends StyledComponent {
+export interface StyledIconProps {
   color?: ThemeColours;
   size: number;
 }

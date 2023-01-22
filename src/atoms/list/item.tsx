@@ -1,10 +1,8 @@
-import React, { Children, useContext } from "react";
+import React, { Children } from "react";
 import styled from "styled-components";
 import { ListItemProps, StyledListItemActionsProps, StyledListItemProps } from "./types";
 import Icon from "../icon";
 import { paddings } from "../../mixins";
-import { StyledComponent } from "../../types/styled-component";
-import ThemeProviderContext from "../../components/theme-provider/context";
 import Button from "../button";
 
 const TOUCH_STARTING_VALUE = 0;
@@ -13,14 +11,14 @@ const DRAG_REQUIRED = -10;
 const INDEX_CORRECTION = 1;
 const INDEX_FIRST_ELEMENT = 0;
 
-const StyledLi = styled.li<StyledComponent>`
+const StyledLi = styled.li`
   position: relative;
   display: flex;
   align-items: center;
   width: 100%;
-  ${({ bmeTheme }) => paddings("xs|sm", bmeTheme)}
+  ${paddings("xs|sm")}
   overflow-x: hidden;
-  border-bottom: 1px solid ${({ bmeTheme }) => bmeTheme.colors.gray5};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.gray5};
 
   &:last-child {
     border-bottom: none;
@@ -39,7 +37,7 @@ const StyledListItem = styled.div<StyledListItemProps>`
   will-change: opacity;
 
   *:nth-child(n + 2) {
-    --color-text: ${({ bmeTheme }) => bmeTheme.colors.gray2};
+    --color-text: ${({ theme }) => theme.colors.gray2};
   }
 
   :first-child {
@@ -51,9 +49,9 @@ const StyledListItem = styled.div<StyledListItemProps>`
   }
 `;
 
-const StyledItemIcon = styled.div<StyledComponent>`
+const StyledItemIcon = styled.div`
   display: flex;
-  ${({ bmeTheme }) => paddings("no|xs", bmeTheme)}
+  ${paddings("no|xs")}
   transform: translateY(-1px);
 `;
 
@@ -64,7 +62,7 @@ const StyledListItemActions = styled.div<StyledListItemActionsProps>`
   display: flex;
   justify-content: space-between;
   height: 100%;
-  background: ${({ bmeTheme }) => bmeTheme.colors.red};
+  background: ${({ theme }) => theme.colors.red};
   transform: ${({ visible }) => (visible ? "translateX(-100%)" : "translateX(0)")};
   transition: transform 0.3s ease-in-out;
   will-change: transform;
@@ -76,8 +74,6 @@ const StyledListItemActions = styled.div<StyledListItemActionsProps>`
 `;
 
 const Item: React.FC<ListItemProps> = ({ children, actions, onClick }) => {
-  const { theme } = useContext(ThemeProviderContext);
-
   const [mousePositionY, setMousePositionY] = React.useState(TOUCH_STARTING_VALUE);
   const [actionVisible, setActionVisible] = React.useState(false);
 
@@ -122,23 +118,17 @@ const Item: React.FC<ListItemProps> = ({ children, actions, onClick }) => {
       onMouseLeave={() => setActionVisible(false)}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      bmeTheme={theme}
     >
-      <StyledListItem
-        onClick={onClick}
-        clickable={!!onClick}
-        actionsVisible={!!actions && actionVisible}
-        bmeTheme={theme}
-      >
+      <StyledListItem onClick={onClick} clickable={!!onClick} actionsVisible={!!actions && actionVisible}>
         {clonedChildren}
       </StyledListItem>
       {onClick && (
-        <StyledItemIcon bmeTheme={theme}>
+        <StyledItemIcon>
           <Icon name="chevron-forward" color="gray2" />
         </StyledItemIcon>
       )}
       {actions && (
-        <StyledListItemActions visible={actionVisible} bmeTheme={theme}>
+        <StyledListItemActions visible={actionVisible}>
           {actions.map(({ children: actionChildren, ...actionProps }, index) => (
             <Button key={index} {...actionProps} size="small">
               {actionChildren}

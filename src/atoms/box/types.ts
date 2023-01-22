@@ -1,6 +1,5 @@
 import React from "react";
 import { ThemeColours } from "../../settings/theme";
-import { StyledComponent } from "../../types/styled-component";
 
 export type Direction = "row" | "column";
 export type AlignX = "left" | "center" | "right" | "space-between";
@@ -28,7 +27,7 @@ export interface BoxProps {
   background?: ThemeColours;
 }
 
-export interface StyledBoxProps extends StyledComponent {
+export interface StyledBoxProps {
   position?: "static" | "relative" | "absolute" | "fixed" | "sticky";
   inline?: boolean;
   alignItems: string;

@@ -1,4 +1,3 @@
-import { StyledComponent } from "../../../types/styled-component";
 import { SelectItem } from "../types";
 
 export interface DrawerProps {
@@ -9,11 +8,11 @@ export interface DrawerProps {
   searchable?: boolean;
 }
 
-export interface StyledDrawerItemProps extends StyledComponent {
+export interface StyledDrawerItemProps {
   selected: boolean;
 }
 
-export interface StyledDrawerItemIconProps extends StyledComponent {
+export interface StyledDrawerItemIconProps {
   visible: boolean;
   selected: boolean;
   multiple: boolean;

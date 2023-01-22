@@ -26,7 +26,7 @@ export interface StyledAvatarWrapperProps {
   rounded?: boolean;
 }
 
-export interface StyledAvatarProps extends StyledComponent {
+export interface StyledAvatarProps {
   size: {
     mobile: number;
     desktop: number;

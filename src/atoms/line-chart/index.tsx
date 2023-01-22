@@ -1,12 +1,9 @@
 import styled from "styled-components";
 import { clamp } from "bme-utils";
-import { useContext } from "react";
 import { useScreenSize } from "../../hooks";
 import { getIndexes, toPercentage } from "../../utils";
 import { pipeDate, pipeNumber } from "../../pipes";
 import ProgressBar from "../progress-bar";
-import { StyledComponent } from "../../types/styled-component";
-import ThemeProviderContext from "../../components/theme-provider/context";
 
 const CHART_RATIO = 0.5625;
 
@@ -31,33 +28,33 @@ const StyledChartPlaceholder = styled.div<ChartPlaceholderProps>`
   padding-bottom: ${({ ratio }) => toPercentage(ratio)}%;
 `;
 
-const StyledChartWrapper = styled.svg<StyledComponent>`
+const StyledChartWrapper = styled.svg`
   width: 100%;
   height: 100%;
-  background: ${({ bmeTheme }) => bmeTheme.colors.background};
-  border: ${({ bmeTheme }) => bmeTheme.colors.gray5} 1px solid;
+  background: ${({ theme }) => theme.colors.background};
+  border: ${({ theme }) => theme.colors.gray5} 1px solid;
 `;
 
-const StyledChartPoint = styled.circle<StyledComponent>`
-  fill: ${({ bmeTheme }) => bmeTheme.colors.background};
-  stroke: ${({ bmeTheme }) => bmeTheme.colors.blue};
+const StyledChartPoint = styled.circle`
+  fill: ${({ theme }) => theme.colors.background};
+  stroke: ${({ theme }) => theme.colors.blue};
   stroke-width: 2;
 `;
 
-const StyledChartLine = styled.line<StyledComponent>`
-  stroke: ${({ bmeTheme }) => bmeTheme.colors.blue};
+const StyledChartLine = styled.line`
+  stroke: ${({ theme }) => theme.colors.blue};
   stroke-width: 2;
 `;
 
-const StyledChartLabel = styled.text<StyledComponent>`
+const StyledChartLabel = styled.text`
   font-size: 12px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol";
-  fill: ${({ bmeTheme }) => bmeTheme.colors.gray2};
+  fill: ${({ theme }) => theme.colors.gray2};
 `;
 
-const StyledChartLabelLine = styled.line<StyledComponent>`
-  stroke: ${({ bmeTheme }) => bmeTheme.colors.gray5};
+const StyledChartLabelLine = styled.line`
+  stroke: ${({ theme }) => theme.colors.gray5};
   stroke-width: 2;
   stroke-dasharray: 5, 5;
 `;
@@ -78,8 +75,6 @@ const DESKTOP_BREAKPOINT = 900;
 const MINIMUM_DATA_REQUIRED = 3;
 
 const Component = ({ data, width: componentWidth, loading }: Props) => {
-  const { theme } = useContext(ThemeProviderContext);
-
   const { width: screenWidth } = useScreenSize();
 
   const dataIndexes = getIndexes(data);
@@ -191,11 +186,11 @@ const Component = ({ data, width: componentWidth, loading }: Props) => {
   const calculateLabelLineXY = () => availableHeight + paddingY;
 
   return (
-    <StyledChartWrapper viewBox={`0 0 ${width} ${height}`} bmeTheme={theme}>
+    <StyledChartWrapper viewBox={`0 0 ${width} ${height}`}>
       <g>
         {labelsY.map((label, index) => (
           <g key={index}>
-            <StyledChartLabel x={calculateLabelYX()} y={calculateLabelYY(index)} bmeTheme={theme}>
+            <StyledChartLabel x={calculateLabelYX()} y={calculateLabelYY(index)}>
               {label.label}
             </StyledChartLabel>
             <StyledChartLabelLine
@@ -203,13 +198,12 @@ const Component = ({ data, width: componentWidth, loading }: Props) => {
               x2={calculateLabelLineYY()}
               y1={calculateLabelYY(index)}
               y2={calculateLabelYY(index)}
-              bmeTheme={theme}
             />
           </g>
         ))}
         {labelsX.map((label, index) => (
           <g key={index}>
-            <StyledChartLabel x={calculateLabelXX(index)} y={calculateLabelXY()} bmeTheme={theme}>
+            <StyledChartLabel x={calculateLabelXX(index)} y={calculateLabelXY()}>
               {label.label}
             </StyledChartLabel>
             <StyledChartLabelLine
@@ -217,7 +211,6 @@ const Component = ({ data, width: componentWidth, loading }: Props) => {
               x2={calculateLabelXX(index)}
               y1={0}
               y2={calculateLabelLineXY()}
-              bmeTheme={theme}
             />
           </g>
         ))}
@@ -229,10 +222,9 @@ const Component = ({ data, width: componentWidth, loading }: Props) => {
                 x2={calculateLineX2(index)}
                 y1={calculateLineY1(index)}
                 y2={calculateLineY2(index)}
-                bmeTheme={theme}
               />
             )}
-            <StyledChartPoint cx={calculatePointX(index)} cy={calculatePointY(index)} r={4} bmeTheme={theme} />
+            <StyledChartPoint cx={calculatePointX(index)} cy={calculatePointY(index)} r={4} />
           </g>
         ))}
       </g>

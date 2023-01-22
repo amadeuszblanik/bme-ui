@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import { ButtonProps, StyledButtonProps } from "./types";
 import { animations, isDark } from "../../mixins";
 import { darkenColor } from "../../utils";
-import ThemeProviderContext from "../../components/theme-provider/context";
 
 const VALUES = {
   mobile: {
@@ -48,18 +47,18 @@ const StyledButton = styled.button<StyledButtonProps>`
   justify-content: center;
   ${({ width }) => (width ? `width: ${width};` : "")}
   padding: ${({ paddingX, paddingY }) => `${paddingY.mobile}px ${paddingX.mobile}px`};
-  color: ${({ bmeTheme, variant, outline, disabled }) =>
+  color: ${({ theme, variant, outline, disabled }) =>
     outline
       ? disabled
-        ? bmeTheme.colors.light
-        : bmeTheme.colors[variant]
-      : isDark(bmeTheme.colors[variant])
-      ? bmeTheme.colors.light
-      : bmeTheme.colors.dark};
+        ? theme.colors.light
+        : theme.colors[variant]
+      : isDark(theme.colors[variant])
+      ? theme.colors.light
+      : theme.colors.dark};
   font-size: ${({ fontSize }) => fontSize.mobile}px;
-  background: ${({ bmeTheme, variant, outline }) => (outline ? `transparent` : bmeTheme.colors[variant])};
-  border: ${({ bmeTheme, variant, disabled }) => (disabled ? bmeTheme.colors.gray : bmeTheme.colors[variant])} solid 2px;
-  border-radius: var(--bme-button-radius, ${({ bmeTheme }) => bmeTheme.radius}px);
+  background: ${({ theme, variant, outline }) => (outline ? `transparent` : theme.colors[variant])};
+  border: ${({ theme, variant, disabled }) => (disabled ? theme.colors.gray : theme.colors[variant])} solid 2px;
+  border-radius: var(--bme-button-radius, ${({ theme }) => theme.radius}px);
   cursor: pointer;
   appearance: none;
   ${animations(["background-color", "color", "padding", "font-size"])};
@@ -67,9 +66,9 @@ const StyledButton = styled.button<StyledButtonProps>`
   &:not([disabled]) {
     &:hover,
     &:active {
-      color: ${({ bmeTheme, variant }) =>
-        isDark(darkenColor(bmeTheme.colors[variant]).hex) ? bmeTheme.colors.light : bmeTheme.colors.dark};
-      background: ${({ bmeTheme, variant }) => darkenColor(bmeTheme.colors[variant]).hex};
+      color: ${({ theme, variant }) =>
+        isDark(darkenColor(theme.colors[variant]).hex) ? theme.colors.light : theme.colors.dark};
+      background: ${({ theme, variant }) => darkenColor(theme.colors[variant]).hex};
     }
 
     &:focus {
@@ -82,8 +81,8 @@ const StyledButton = styled.button<StyledButtonProps>`
         right: -4px;
         bottom: -4px;
         left: -4px;
-        border: ${({ bmeTheme, variant }) => bmeTheme.colors[variant]} solid 2px;
-        border-radius: var(--bme-button-radius, ${({ bmeTheme }) => bmeTheme.radius}px);
+        border: ${({ theme, variant }) => theme.colors[variant]} solid 2px;
+        border-radius: var(--bme-button-radius, ${({ theme }) => theme.radius}px);
         content: "";
       }
     }
@@ -91,11 +90,11 @@ const StyledButton = styled.button<StyledButtonProps>`
 
   &:disabled,
   &[disabled] {
-    background: ${({ bmeTheme }) => bmeTheme.colors.gray} !important;
+    background: ${({ theme }) => theme.colors.gray} !important;
     cursor: not-allowed;
   }
 
-  @media (min-width: ${({ bmeTheme }) => bmeTheme.breakpoints.desktop}px) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     padding: ${({ paddingX, paddingY }) => `${paddingY.desktop}px ${paddingX.desktop}px`};
     font-size: ${({ fontSize }) => fontSize.desktop}px;
   }
@@ -104,8 +103,6 @@ const StyledButton = styled.button<StyledButtonProps>`
 const Button: React.FC<ButtonProps> = ({ children, size, width, variant, type, ...props }) => {
   size = size ?? "medium";
   variant = variant ?? "blue";
-
-  const { theme } = useContext(ThemeProviderContext);
 
   const paddingX = {
     mobile: VALUES.mobile[size].paddingX,
@@ -128,7 +125,6 @@ const Button: React.FC<ButtonProps> = ({ children, size, width, variant, type, .
       paddingY={paddingY}
       variant={variant}
       fontSize={fontSize}
-      bmeTheme={theme}
       type={type}
     >
       {children}

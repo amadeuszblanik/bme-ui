@@ -1,5 +1,4 @@
 import { ThemeColours } from "../../settings/theme";
-import { StyledComponent } from "../../types/styled-component";
 import { ButtonProps } from "../button/types";
 
 interface DropdownItem {
@@ -12,7 +11,7 @@ export interface DropdownProps extends ButtonProps {
   list: DropdownItem[];
 }
 
-export interface StyledDropdownListProps extends StyledComponent {
+export interface StyledDropdownListProps {
   // width?: string;
   // paddingX: {
   //   mobile: number;

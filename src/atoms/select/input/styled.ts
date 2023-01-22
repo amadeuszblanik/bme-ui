@@ -27,13 +27,13 @@ export const StyledLabel = styled.label<StyledLabelProps>`
   top: ${({ isFilled }) => (isFilled ? "0" : "50%")};
   left: ${({ paddingX }) => paddingX.mobile - LABEL_PADDING_X}px;
   padding: 0 ${LABEL_PADDING_X}px 0 ${({ isFilled, fontSize }) => (!isFilled ? fontSize.mobile : LABEL_PADDING_X)}px;
-  color: ${({ bmeTheme, variant, isFilled }) => (isFilled ? bmeTheme.colors[variant] : bmeTheme.colors.gray)};
+  color: ${({ theme, variant, isFilled }) => (isFilled ? theme.colors[variant] : theme.colors.gray)};
   font-size: ${({ fontSize }) => fontSize.mobile}px;
-  background: ${({ bmeTheme, isFilled }) => (isFilled ? bmeTheme.colors.background : "transparent")};
+  background: ${({ theme, isFilled }) => (isFilled ? theme.colors.background : "transparent")};
   transform: translateY(-50%);
   ${animations(["top", "left", "padding", "font-size", "background"])};
 
-  @media (min-width: ${({ bmeTheme }) => bmeTheme.breakpoints.desktop}px) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     left: ${({ paddingX }) => paddingX.desktop - LABEL_PADDING_X}px;
     padding: 0 ${LABEL_PADDING_X}px 0
       ${({ isFilled, fontSize }) =>
@@ -51,19 +51,19 @@ export const StyledSelect = styled.select<StyledSelectProps>`
   padding: ${({ paddingX, paddingY }) =>
     `${paddingY.mobile}px ${ICON_PADDING_X + ICON_SIZE + ICON_PADDING_X}px ${paddingY.mobile}px ${paddingX.mobile}px;`};
   overflow: hidden;
-  color: ${({ bmeTheme, disabled }) => (disabled ? bmeTheme.colors.gray5 : bmeTheme.colors.text)};
+  color: ${({ theme, disabled }) => (disabled ? theme.colors.gray5 : theme.colors.text)};
   font-size: ${({ fontSize }) => fontSize.mobile}px;
   white-space: nowrap;
   text-overflow: ellipsis;
-  background: ${({ bmeTheme }) => bmeTheme.colors.gray5};
-  border: ${({ bmeTheme }) => bmeTheme.colors.gray5} solid 2px;
-  border-radius: ${({ bmeTheme }) => bmeTheme.radius}px;
+  background: ${({ theme }) => theme.colors.gray5};
+  border: ${({ theme }) => theme.colors.gray5} solid 2px;
+  border-radius: ${({ theme }) => theme.radius}px;
   appearance: none;
 
-  ${({ bmeTheme, variant, isFilled, disabled }) =>
+  ${({ theme, variant, isFilled, disabled }) =>
     isFilled &&
     `background: transparent;
-      border: ${disabled ? bmeTheme.colors.gray : bmeTheme.colors[variant]} solid 2px;
+      border: ${disabled ? theme.colors.gray : theme.colors[variant]} solid 2px;
       outline: none;`}
 `;
 
@@ -72,7 +72,7 @@ export const StyledClear = styled.button<StyledClearProps>`
   top: 50%;
   right: ${({ paddingX }) => paddingX.mobile}px;
   padding: 0;
-  background: ${({ bmeTheme }) => bmeTheme.colors.background};
+  background: ${({ theme }) => theme.colors.background};
   border: none;
   border-radius: ${ICON_SIZE}px;
   transform: translateY(-50%);
@@ -81,13 +81,13 @@ export const StyledClear = styled.button<StyledClearProps>`
   appearance: none;
   ${animations(["right", "opacity"])};
 
-  @media (min-width: ${({ bmeTheme }) => bmeTheme.breakpoints.desktop}px) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     right: ${({ paddingX }) => paddingX.desktop}px;
   }
 `;
 
 export const StyledHint = styled.div<StyledHintProps>`
   padding: ${({ paddingX }) => `4px ${paddingX.mobile}px 0`};
-  color: ${({ bmeTheme, variant }) => bmeTheme.colors[variant]};
+  color: ${({ theme, variant }) => theme.colors[variant]};
   font-size: ${({ fontSize }) => fontSize.mobile}px;
 `;

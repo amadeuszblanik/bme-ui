@@ -1,5 +1,4 @@
 import React from "react";
-import { StyledComponent } from "../../types/styled-component";
 import { ButtonProps } from "../button/types";
 
 export interface ListProps {
@@ -14,12 +13,12 @@ export interface ListItemProps {
   onClick?: () => void;
 }
 
-export interface StyledListItemProps extends StyledComponent {
+export interface StyledListItemProps {
   clickable: boolean;
   actionsVisible: boolean;
 }
 
-export interface StyledListItemActionsProps extends StyledComponent {
+export interface StyledListItemActionsProps {
   visible: boolean;
 }
 
