@@ -113,6 +113,8 @@ const mixin = (value: string | null | undefined, bmeTheme: typeof theme, sizes: 
   if (values.length > PADDING_TOP_RIGHT_BOTTOM_LEFT_LENGTH) {
     throw new Error("Too many values for padding");
   }
+
+  throw new Error("Unexpected error");
 };
 
 export default mixin;

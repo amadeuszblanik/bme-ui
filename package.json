@@ -1,17 +1,19 @@
 {
   "name": "bme-ui",
-  "version": "1.0.0-beta.18",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "version": "1.0.0-beta.19",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "/dist"
   ],
-  "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
     "dev": "start-storybook -p 6006",
-    "build": "rollup -c --bundleConfigAsCjs",
+    "build": "rm -rf dist && npm run build:prod",
+    "build:dev": "cross-env NODE_ENV=development rollup -c",
+    "build:prod": "cross-env NODE_ENV=production rollup -c",
     "build:storybook": "build-storybook",
     "export:storybook": "build-storybook -s ./public -o docs-build",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src && stylelint './**/*.{css,scss,js,jsx,ts,tsx}'",
@@ -42,11 +44,7 @@
     "@babel/core": "^7.20.5",
     "@babel/preset-react": "^7.18.6",
     "@jest/globals": "^29.3.1",
-    "@rollup/plugin-commonjs": "^23.0.4",
-    "@rollup/plugin-image": "^3.0.1",
-    "@rollup/plugin-node-resolve": "^15.0.1",
-    "@rollup/plugin-terser": "^0.2.0",
-    "@rollup/plugin-typescript": "^10.0.1",
+    "@rollup/plugin-typescript": "^8.3.4",
     "@storybook/addon-actions": "^6.5.14",
     "@storybook/addon-essentials": "^6.5.14",
     "@storybook/addon-interactions": "^6.5.14",
@@ -63,6 +61,7 @@
     "@typescript-eslint/parser": "^5.46.0",
     "babel-loader": "^8.3.0",
     "bme-utils": "^0.1.4",
+    "cross-env": "^7.0.3",
     "eslint": "^8.29.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^3.5.2",
@@ -75,12 +74,13 @@
     "prettier": "^2.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rollup": "^3.7.3",
-    "rollup-plugin-dts": "^5.0.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-postcss": "^4.0.2",
+    "rollup": "^2.77.2",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-esbuild": "^4.9.1",
+    "rollup-plugin-replace": "^2.2.0",
     "storybook-addon-pseudo-states": "^1.15.1",
     "storybook-addon-styled-component-theme": "^2.0.0",
+    "styled-components": "^5.3.6",
     "styled-normalize": "^8.0.7",
     "stylelint": "^14.16.0",
     "stylelint-config-rational-order": "^0.1.2",
@@ -94,10 +94,8 @@
   },
   "peerDependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "dependencies": {
-    "styled-components": "^5.3.6"
+    "react-dom": "^18.2.0",
+    "styled-components": ">= 5.3.0"
   },
   "resolutions": {
     "styled-components": "^5"

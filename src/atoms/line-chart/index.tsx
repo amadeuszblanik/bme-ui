@@ -221,7 +221,7 @@ const Component = ({ data, width: componentWidth, loading }: Props) => {
             />
           </g>
         ))}
-        {dataChart.map((item, index) => (
+        {dataChart.map((_, index) => (
           <g key={index}>
             {index < dataIndexes && (
               <StyledChartLine

@@ -35,7 +35,7 @@ export interface StyledTextProps extends StyledComponent {
   sizeMobile: number;
   sizeDesktop: number;
   weight: number;
-  textTransform: string;
+  textTransform?: string;
   lineHeight?: string;
   letterSpacing?: string;
   color?: ThemeColours;

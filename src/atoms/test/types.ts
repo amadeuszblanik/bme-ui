@@ -1,4 +1,4 @@
-import Theme, { ThemeColours } from "../../settings/theme";
+import { ThemeColours } from "../../settings/theme";
 
 export interface TestProps {
   variant: ThemeColours;
@@ -6,5 +6,4 @@ export interface TestProps {
 
 export interface StyledTestProps {
   variant: ThemeColours;
-  bmeTheme: typeof Theme;
 }

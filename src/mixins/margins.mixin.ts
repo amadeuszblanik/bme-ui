@@ -113,6 +113,8 @@ const mixin = (value: string | null | undefined, bmeTheme: typeof theme, sizes: 
   if (values.length > MARGIN_TOP_RIGHT_BOTTOM_LEFT_LENGTH) {
     throw new Error("Too many values for margin");
   }
+
+  throw new Error("Unexpected error");
 };
 
 export default mixin;
