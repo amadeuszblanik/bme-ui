@@ -60,7 +60,7 @@ const Select: React.FC<SelectProps> = ({
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const isSelected = !isEmpty(selectedValues);
-  const isFilled = (isFocused || isSelected || !isEmpty(error) || !isEmpty(valid)) && !disabled;
+  const isFilled = (isFocused || isSelected || !isEmpty(error) || !isEmpty(valid) || isDrawerOpen) && !disabled;
 
   const ref = useClickOutside<HTMLDivElement>(() => setIsDrawerOpen(false));
 
@@ -163,7 +163,7 @@ const Select: React.FC<SelectProps> = ({
             disabled={disabled}
             type="button"
           >
-            {selectedValues.map((selectedValue) => selectedValue.label).join(", ") || "&nbsp;"}
+            {selectedValues.map((selectedValue) => selectedValue.label).join(", ")}&nbsp;
             {multiple && ` (${selectedValues.length})`}
           </StyledSelect>
         )}
