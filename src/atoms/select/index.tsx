@@ -93,7 +93,14 @@ const Select: React.FC<SelectProps> = ({
         : [...selectedValues, itemToToggle];
 
       onValue(newValues);
+
+      return;
     }
+
+    // @TODO: Fix this
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    onValue(list.find((item) => item.key === key) || null);
   };
 
   const handleClear = () => {
