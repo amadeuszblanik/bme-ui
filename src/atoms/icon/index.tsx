@@ -25,6 +25,7 @@ import { CloseOutline } from "./svg/close-outline";
 import { MedicalOutline } from "./svg/medical-outline";
 import { CreateOutline } from "./svg/create-outline";
 import { WarningOutline } from "./svg/warning-outline";
+import { CameraOutline } from "./svg/camera-outline";
 
 const DEFAULT_ICON_SIZE = 24;
 
@@ -47,6 +48,9 @@ const Icon: React.FC<IconProps> = ({ name, size, color }) => {
       break;
     case "book":
       IconToRender = BookOutline;
+      break;
+    case "camera":
+      IconToRender = CameraOutline;
       break;
     case "checkmark":
       IconToRender = CheckmarkOutline;

@@ -1,4 +1,6 @@
+import React from "react";
 import { ThemeColours } from "../../settings/theme";
+import { IconName } from "../icon/types";
 
 export interface AvatarProps {
   src?: string;
@@ -7,6 +9,12 @@ export interface AvatarProps {
   rounded?: boolean;
   border?: boolean;
   status?: ThemeColours;
+  children?: React.ReactNode;
+}
+
+export interface AvatarActionProps {
+  icon: IconName;
+  onClick: () => void;
 }
 
 export interface StyledAvatarWrapperProps {
@@ -50,4 +58,8 @@ export interface StyledStatusProps {
   };
   variant: ThemeColours;
   rounded?: boolean;
+}
+
+export interface StyledAvatarActionProps {
+  visible: boolean;
 }

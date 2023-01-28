@@ -1,9 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { AvatarProps, StyledAvatarWrapperProps, StyledAvatarProps, StyledStatusProps } from "./types";
+import {
+  AvatarProps,
+  StyledAvatarWrapperProps,
+  StyledAvatarProps,
+  StyledStatusProps,
+  AvatarActionProps,
+  StyledAvatarActionProps,
+} from "./types";
+import Action from "./action";
 import { ThemeColours } from "../../settings/theme";
 import { BmeIcon } from "../index";
-import animationsMixin from "../../mixins/animations.mixin";
+import { animations } from "../../mixins";
 
 const VALUES = {
   mobile: {
@@ -58,9 +66,10 @@ const StyledAvatarWrapper = styled.div<StyledAvatarWrapperProps>`
   display: inline-flex;
   width: ${({ size, borderInner, borderOuter }) => size.mobile + borderInner.mobile + borderOuter.mobile}px;
   height: ${({ size, borderInner, borderOuter }) => size.mobile + borderInner.mobile + borderOuter.mobile}px;
+  overflow: hidden;
   background: ${({ theme, variant }) => theme.colors[variant]};
   border-radius: ${({ theme, rounded, size }) => (rounded ? size.desktop : theme.radius)}px;
-  ${animationsMixin(["width", "height", "border-radius", "background"])};
+  ${animations(["width", "height", "border-radius", "background"])};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     width: ${({ size, borderInner, borderOuter }) => size.desktop + borderInner.desktop + borderOuter.desktop}px;
@@ -83,7 +92,7 @@ const StyledAvatar = styled.div<StyledAvatarProps>`
   border: ${({ borderInner }) => borderInner.mobile}px solid ${({ theme }) => theme.colors.background};
   border-radius: ${({ theme, rounded, size }) => (rounded ? size.desktop : theme.radius)}px;
   transform: translate(-50%, -50%);
-  ${animationsMixin(["width", "height", "border", "border-radius", "background"])};
+  ${animations(["width", "height", "border", "border-radius", "background"])};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     width: ${({ size, borderInner }) => size.desktop + borderInner.desktop}px;
@@ -111,7 +120,7 @@ const StyledStatus = styled.i<StyledStatusProps>`
   border: ${({ borderOuter }) => borderOuter.mobile}px solid ${({ theme }) => theme.colors.background};
   border-radius: ${({ size }) => size.desktop}px;
   transform: ${({ rounded }) => (rounded ? "translate(0, 0)" : "translate(50%, 50%)")};
-  ${animationsMixin(["transform", "background"])};
+  ${animations(["transform", "background"])};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     width: ${({ size, borderOuter }) => (size.desktop + borderOuter.desktop) / STATUS_SIZE_RATIO}px;
@@ -120,11 +129,34 @@ const StyledStatus = styled.i<StyledStatusProps>`
   }
 `;
 
-const Avatar: React.FC<AvatarProps> = ({ src, size, variant, rounded, border, status }) => {
+export const StyledAvatarAction = styled.div<StyledAvatarActionProps>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: ${({ theme }) => theme.colors.blue};
+  opacity: ${({ visible }) => (visible ? "0.88" : "0")};
+  ${animations(["opacity"])};
+`;
+
+const Avatar: React.FC<AvatarProps> & { Action: React.FC<AvatarActionProps> } = ({
+  src,
+  size,
+  variant,
+  rounded,
+  border,
+  status,
+  children,
+}) => {
   size = size ?? "medium";
   variant = variant ?? VARIANT;
 
-  const [isError, setIsError] = React.useState(false);
+  const [isHovered, setIsHovered] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   const displayError = isError || !src;
 
@@ -163,6 +195,9 @@ const Avatar: React.FC<AvatarProps> = ({ src, size, variant, rounded, border, st
       rounded={rounded}
       borderInner={borderInner}
       borderOuter={borderOuter}
+      onMouseOver={() => setIsHovered(true)}
+      onMouseOut={() => setIsHovered(false)}
+      onTouchStart={() => setIsHovered(!isHovered)}
     >
       <StyledAvatar size={sizeValue} variant={variant} rounded={rounded} borderInner={borderInner}>
         {displayError ? (
@@ -172,12 +207,11 @@ const Avatar: React.FC<AvatarProps> = ({ src, size, variant, rounded, border, st
         )}
       </StyledAvatar>
       {status && <StyledStatus size={sizeValue} borderOuter={statusBorderOuter} variant={status} rounded={rounded} />}
+      {children && <StyledAvatarAction visible={isHovered}>{children}</StyledAvatarAction>}
     </StyledAvatarWrapper>
   );
 };
 
-Avatar.defaultProps = {
-  size: "medium",
-};
+Avatar.Action = Action;
 
 export default Avatar;

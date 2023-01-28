@@ -4,6 +4,7 @@ export const IconNames = [
   "apps",
   "barbell",
   "book",
+  "camera",
   "checkmark",
   "chevron-down",
   "chevron-forward",
@@ -31,6 +32,7 @@ export type IconName =
   | "apps"
   | "barbell"
   | "book"
+  | "camera"
   | "checkmark"
   | "chevron-down"
   | "chevron-forward"
