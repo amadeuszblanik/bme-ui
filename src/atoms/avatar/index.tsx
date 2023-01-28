@@ -155,7 +155,7 @@ const Avatar: React.FC<AvatarProps> & { Action: React.FC<AvatarActionProps> } = 
   size = size ?? "medium";
   variant = variant ?? VARIANT;
 
-  const [isHovered, setIsHovered] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
   const [isError, setIsError] = useState(false);
 
   const displayError = isError || !src;
