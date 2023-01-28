@@ -71,7 +71,7 @@ const Modal: React.FC<ModalProps> = ({ children, position, onClose }) => {
           rounded
         >
           {onClose && (
-            <StyledModalCloseButton onClick={onClose}>
+            <StyledModalCloseButton onClick={onClose} type="button">
               <Icon name="close" />
             </StyledModalCloseButton>
           )}
