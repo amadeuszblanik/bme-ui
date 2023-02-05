@@ -35,6 +35,9 @@ const StyledBox = styled.div<StyledBoxProps>`
   ${({ height }) => `height: ${height}`};
   ${({ minHeight }) => `min-height: ${minHeight}`};
   ${({ maxHeight }) => `max-height: ${maxHeight}`};
+  overflow: ${({ overflow }) => overflow};
+  overflow-x: ${({ overflowX }) => overflowX};
+  overflow-y: ${({ overflowY }) => overflowY};
   color: ${({ theme, background }) =>
     background ? (isDark(theme.colors[background]) ? theme.colors.light : theme.colors.dark) : theme.colors.text};
   background: ${({ theme, background }) => (background ? theme.colors[background] : "transparent")};
@@ -70,6 +73,9 @@ const StyledBox = styled.div<StyledBoxProps>`
 const Box: React.FC<BoxProps> = ({
   innerRef,
   position,
+  overflow,
+  overflowX,
+  overflowY,
   inline,
   alignX,
   alignY,
@@ -100,6 +106,9 @@ const Box: React.FC<BoxProps> = ({
     <StyledBox
       ref={innerRef}
       position={position}
+      overflow={overflow}
+      overflowX={overflowX}
+      overflowY={overflowY}
       inline={inline}
       alignItems={alignItems}
       justifyContent={justifyContent}

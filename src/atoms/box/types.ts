@@ -4,11 +4,15 @@ import { ThemeColours } from "../../settings/theme";
 export type Direction = "row" | "column";
 export type AlignX = "left" | "center" | "right" | "space-between";
 export type AlignY = "top" | "center" | "bottom" | "space-between";
+export type Overflow = "visible" | "hidden" | "scroll" | "auto";
 
 export interface BoxProps {
   innerRef?: React.RefObject<HTMLDivElement>;
   children: React.ReactNode;
   position?: "relative" | "absolute" | "fixed";
+  overflow?: Overflow;
+  overflowX?: Overflow;
+  overflowY?: Overflow;
   inline?: boolean;
   alignX?: AlignX;
   alignY?: AlignY;
@@ -29,6 +33,9 @@ export interface BoxProps {
 
 export interface StyledBoxProps {
   position?: "static" | "relative" | "absolute" | "fixed" | "sticky";
+  overflow?: Overflow;
+  overflowX?: Overflow;
+  overflowY?: Overflow;
   inline?: boolean;
   alignItems: string;
   justifyContent: string;

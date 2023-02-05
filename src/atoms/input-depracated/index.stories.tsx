@@ -1,9 +1,9 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Component from "./index";
+import Input from "./index";
 
 export default {
-  title: "Atoms/Input",
-  component: Component,
+  title: "Atoms (Deprecated)/Input",
+  component: Input,
   argTypes: {
     name: {
       control: {
@@ -15,9 +15,32 @@ export default {
         type: "text",
       },
     },
+    label: {
+      control: {
+        type: "text",
+      },
+    },
     placeholder: {
       control: {
         type: "text",
+      },
+    },
+    hint: {
+      control: {
+        type: "text",
+        description: "Hint message. Display order: error > valid > hint",
+      },
+    },
+    error: {
+      control: {
+        type: "text",
+        description: "Error message. Display order: error > valid > hint",
+      },
+    },
+    valid: {
+      control: {
+        type: "text",
+        description: "Valid message. Display order: error > valid > hint",
       },
     },
     size: {
@@ -43,35 +66,34 @@ export default {
       options: ["text", "password", "email", "search"],
       control: { type: "select" },
     },
-    inputMode: {
-      options: ["text", "decimal", "numeric", "tel", "search", "email", "url"],
-      control: { type: "select" },
-    },
     disabled: {
       control: { type: "boolean" },
     },
+    onValue: {
+      action: "onValue",
+    },
     onChange: {
-      action: "onChange",
-      description: "All other HTMLInput events are supported.",
+      action: "onValue",
+      description: "Deprecated. Use onValue instead.",
     },
     onClick: {
       action: "onClick",
-      description: "All other HTMLInput events are supported.",
     },
     onPaste: {
       action: "onPaste",
       description: "All other HTMLInput events are supported.",
     },
   },
-} as ComponentMeta<typeof Component>;
+} as ComponentMeta<typeof Input>;
 
-const Template: ComponentStory<typeof Component> = (args) => <Component {...args} />;
+const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 
 export const Playground = Template.bind({});
 
 Playground.args = {
   name: "input",
   size: "medium",
+  label: "Input",
 };
 
 Template.parameters = {

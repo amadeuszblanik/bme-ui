@@ -1,51 +1,26 @@
 import React from "react";
+import { BmeInputMode } from "../../types";
 import { ThemeColours } from "../../settings/theme";
 
 export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
-  name: string;
-  value: string;
-  label: string;
-  onValue: (value: string) => void;
+  name?: string;
+  type?: "text" | "password" | "email" | "search";
+  inputMode?: BmeInputMode;
   size?: "small" | "medium" | "large";
-  hint?: string;
-  error?: string;
-  valid?: string;
+  variant?: ThemeColours;
   width?: string;
   minWidth?: string;
   maxWidth?: string;
-  type?: "text" | "password" | "email" | "search";
   disabled?: boolean;
 }
 
-export interface StyledFormControlProps {
+export interface StyledInputWrapperProps {
   width?: string;
   minWidth?: string;
   maxWidth?: string;
 }
 
-export interface StyledPrefixIconProps {
-  paddingX: {
-    mobile: number;
-    desktop: number;
-  };
-}
-
-export interface StyledLabelProps {
-  isFilled: boolean;
-  isPrefixIcon: boolean;
-  variant: ThemeColours;
-  paddingX: {
-    mobile: number;
-    desktop: number;
-  };
-  fontSize: {
-    mobile: number;
-    desktop: number;
-  };
-}
-
 export interface StyledInputProps {
-  isFilled: boolean;
   isPrefixIcon: boolean;
   variant: ThemeColours;
   width?: string;
@@ -65,21 +40,8 @@ export interface StyledInputProps {
   };
 }
 
-export interface StyledClearProps {
-  isFilled: boolean;
+export interface StyledPrefixIconProps {
   paddingX: {
-    mobile: number;
-    desktop: number;
-  };
-}
-
-export interface StyledHintProps {
-  variant: ThemeColours;
-  paddingX: {
-    mobile: number;
-    desktop: number;
-  };
-  fontSize: {
     mobile: number;
     desktop: number;
   };

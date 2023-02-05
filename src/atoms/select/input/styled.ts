@@ -1,7 +1,12 @@
 import styled from "styled-components";
-import { StyledFormControlProps, StyledHintProps, StyledLabelProps, StyledSelectProps } from "../types";
+import {
+  StyledClearProps,
+  StyledFormControlProps,
+  StyledHintProps,
+  StyledLabelProps,
+  StyledSelectProps,
+} from "../types";
 import { animations } from "../../../mixins";
-import { StyledClearProps } from "../../input/types";
 import { ICON_PADDING_X, ICON_SIZE, LABEL_PADDING_X } from "../settings";
 
 export const StyledFormControl = styled.div<StyledFormControlProps>`
