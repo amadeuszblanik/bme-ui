@@ -13,6 +13,7 @@ export { default as BmeLineChart } from "./line-chart";
 export { default as BmeList } from "./list";
 export { default as BmeProgressBar } from "./progress-bar";
 export { default as BmeSelect } from "./select";
+export { default as BmeSelectDeprecated } from "./select-deperacated";
 export { default as BmeTag } from "./tag";
 export { default as BmeTest } from "./test";
 export { default as BmeText } from "./text";

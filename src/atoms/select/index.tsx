@@ -1,205 +1,71 @@
-import React, { useState } from "react";
-import { isEmpty } from "bme-utils";
-import { SelectProps } from "./types";
-import {
-  StyledClear,
-  StyledFormControl,
-  StyledFormControlInput,
-  StyledHint,
-  StyledLabel,
-  StyledSelect,
-} from "./input/styled";
-import { ICON_SIZE, SINGLE_VALUE_INDEX, VALUES, VARIANT } from "./settings";
-import Drawer from "./drawer";
-import { ThemeColours } from "../../settings/theme";
-import { BmeIcon } from "../index";
-import { useClickOutside } from "../../hooks";
+import { forwardRef } from "react";
+import styled from "styled-components";
+import { SelectComponent, SelectProps, StyledSelectProps } from "./types";
+import Option from "./option";
+import Group from "./group";
+import { VALUES } from "./settings";
 
-const Select: React.FC<SelectProps> = ({
-  name,
-  value,
-  label,
-  emptyLabel,
-  onValue,
-  list,
-  hint,
-  error,
-  valid,
-  size,
-  width,
-  minWidth,
-  maxWidth,
-  disabled,
-  variant,
-  multiple,
-  searchable,
-  native,
-  ...props
-}) => {
-  size = size ?? "medium";
+export const StyledSelect = styled.select<StyledSelectProps>`
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: ${({ width }) => width || "100%"};
+  min-width: ${({ minWidth }) => minWidth || "240px"};
+  max-width: ${({ maxWidth }) => maxWidth};
+  padding: ${({ paddingX, paddingY }) => `${paddingY.mobile}px ${paddingX.mobile}px`};
+  color: ${({ theme }) => theme.colors.text};
+  font-size: ${({ fontSize }) => fontSize.mobile}px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background: ${({ theme }) => theme.colors.background};
+  border: 2px solid ${({ theme }) => theme.colors.blue};
+  border-radius: ${({ theme }) => theme.radius}px;
+  appearance: none;
 
-  const selectedValues = value ? (Array.isArray(value) ? value : [value]) : [];
+  &:disabled {
+    background: ${({ theme }) => theme.colors.gray5};
+    border-color: ${({ theme }) => theme.colors.gray5};
+    cursor: not-allowed;
+  }
 
-  const variantDynamic = disabled ? "gray" : error ? "red" : valid ? "green" : variant ?? VARIANT;
-  const hintVariant: ThemeColours = error ? "red" : valid ? "green" : "gray";
-  const hintMessage = error || valid || hint;
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
+    padding: ${({ paddingX, paddingY }) => `${paddingY.desktop}px ${paddingX.desktop}px`};
+    font-size: ${({ fontSize }) => fontSize.desktop}px;
+  }
+`;
 
-  const paddingX = {
-    mobile: VALUES.mobile[size].paddingX,
-    desktop: VALUES.desktop[size].paddingX,
-  };
-  const paddingY = {
-    mobile: VALUES.mobile[size].paddingY,
-    desktop: VALUES.desktop[size].paddingY,
-  };
-  const fontSize = {
-    mobile: VALUES.mobile[size].fontSize,
-    desktop: VALUES.desktop[size].fontSize,
-  };
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+const Select: SelectComponent = forwardRef<HTMLSelectElement, SelectProps>(
+  ({ size, variant, children, ...props }, ref) => {
+    size = size ?? "medium";
+    variant = variant ?? "blue";
 
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [isFocused, setIsFocused] = useState(false);
-  const isSelected = !isEmpty(selectedValues);
-  const isFilled = (isFocused || isSelected || !isEmpty(error) || !isEmpty(valid) || isDrawerOpen) && !disabled;
+    const paddingX = {
+      mobile: VALUES.mobile[size].paddingX,
+      desktop: VALUES.desktop[size].paddingX,
+    };
 
-  const ref = useClickOutside<HTMLDivElement>(() => setIsDrawerOpen(false));
+    const paddingY = {
+      mobile: VALUES.mobile[size].paddingY,
+      desktop: VALUES.desktop[size].paddingY,
+    };
 
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    if (multiple) {
-      const selectedOptions = Array.from(event.target.selectedOptions);
-      const values = selectedOptions.map((option) => option.value);
-      onValue(list.filter((item) => values.includes(item.key)));
+    const fontSize = {
+      mobile: VALUES.mobile[size].fontSize,
+      desktop: VALUES.desktop[size].fontSize,
+    };
 
-      return;
-    }
+    return (
+      <StyledSelect ref={ref} paddingX={paddingX} paddingY={paddingY} fontSize={fontSize} variant={variant} {...props}>
+        {children}
+      </StyledSelect>
+    );
+  },
+);
 
-    // @TODO: Fix this
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    onValue(list.find((item) => item.key === event.target.value) || null);
-  };
-
-  const handleDrawerClick = (key: string) => {
-    if (multiple) {
-      const itemToToggle = list.find((item) => item.key === key);
-
-      if (!itemToToggle) {
-        return;
-      }
-
-      const isItemSelected = selectedValues.map((selectedValue) => selectedValue.key).includes(itemToToggle.key);
-      const newValues = isItemSelected
-        ? selectedValues.filter((item) => item.key !== key)
-        : [...selectedValues, itemToToggle];
-
-      onValue(newValues);
-
-      return;
-    }
-
-    // @TODO: Fix this
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    onValue(list.find((item) => item.key === key) || null);
-  };
-
-  const handleClear = () => {
-    if (multiple) {
-      onValue([]);
-
-      return;
-    }
-
-    // @TODO: Fix this
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    onValue(null);
-  };
-
-  return (
-    <StyledFormControl ref={ref} width={width} minWidth={minWidth} maxWidth={maxWidth}>
-      <StyledFormControlInput>
-        <StyledLabel
-          htmlFor={name}
-          isFilled={isFilled}
-          variant={variantDynamic}
-          paddingX={paddingX}
-          fontSize={fontSize}
-        >
-          {label}
-        </StyledLabel>
-        {native ? (
-          <StyledSelect
-            id={name}
-            name={name}
-            fontSize={fontSize}
-            isFilled={isFilled}
-            paddingX={paddingX}
-            paddingY={paddingY}
-            variant={variantDynamic}
-            onChange={handleChange}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
-            value={multiple ? selectedValues.map(({ key }) => key) : selectedValues[SINGLE_VALUE_INDEX]?.key}
-            defaultValue=""
-            disabled={disabled}
-            multiple={multiple}
-            {...props}
-          >
-            <option disabled>{emptyLabel || ""}</option>
-            {list.map(({ key, label: itemLabel }) => (
-              <option key={key} value={key}>
-                {itemLabel}
-              </option>
-            ))}
-          </StyledSelect>
-        ) : (
-          <StyledSelect
-            as="button"
-            id={name}
-            name={name}
-            fontSize={fontSize}
-            isFilled={isFilled}
-            paddingX={paddingX}
-            paddingY={paddingY}
-            variant={variantDynamic}
-            onClick={() => setIsDrawerOpen(!isDrawerOpen)}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
-            value={multiple ? selectedValues.map(({ key }) => key) : selectedValues[SINGLE_VALUE_INDEX]?.key}
-            disabled={disabled}
-            type="button"
-          >
-            {selectedValues.map((selectedValue) => selectedValue.label).join(", ")}&nbsp;
-            {multiple && ` (${selectedValues.length})`}
-          </StyledSelect>
-        )}
-        {!disabled && (
-          <StyledClear isFilled={isSelected} paddingX={paddingX} onClick={handleClear} type="button">
-            <BmeIcon name="close-circle" size={ICON_SIZE} color={variantDynamic} />
-          </StyledClear>
-        )}
-      </StyledFormControlInput>
-      {!disabled && (
-        <StyledHint variant={hintVariant} paddingX={paddingX} fontSize={fontSize}>
-          {hintMessage}
-        </StyledHint>
-      )}
-      {isDrawerOpen && !native && (
-        <Drawer
-          list={list}
-          selected={selectedValues.map(({ key }) => key)}
-          searchable={searchable}
-          multiple={multiple || false}
-          onClick={handleDrawerClick}
-        />
-      )}
-    </StyledFormControl>
-  );
-};
-
-Select.defaultProps = {
-  size: "medium",
-};
+Select.displayName = "BmeSelect";
+Select.Group = Group;
+Select.Option = Option;
 
 export default Select;

@@ -1,10 +1,10 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { THEME_COLOURS_KEYS } from "../../settings/theme";
-import Select from "./index";
+import Component from "./index";
 
 export default {
   title: "Atoms/Select",
-  component: Select,
+  component: Component,
   argTypes: {
     value: {
       control: {
@@ -109,93 +109,38 @@ export default {
       description: "All other HTMLInput events are supported.",
     },
   },
-} as ComponentMeta<typeof Select>;
+} as ComponentMeta<typeof Component>;
 
-const Template: ComponentStory<typeof Select> = (args) => <Select {...args} />;
+const Template: ComponentStory<typeof Component> = (args) => <Component {...args}>
+  <Component.Option value="audi">Audi</Component.Option>
+  <Component.Option value="bmw">BMW</Component.Option>
+  <Component.Option value="mercedes-benz">Mercedes-Benz</Component.Option>
+  <Component.Option value="volkswagen">Volkswagen</Component.Option>
+  <Component.Option value="peugeot">Peugeot</Component.Option>
+  <Component.Option value="porsche">Porsche</Component.Option>
+  <Component.Option value="renault">Renault</Component.Option>
+  <Component.Option value="toyota">Toyota</Component.Option>
+</Component>;
+
+const TemplateGroup: ComponentStory<typeof Component> = (args) => <Component {...args}>
+  <Component.Group label="German">
+    <Component.Option value="audi">Audi</Component.Option>
+    <Component.Option value="bmw">BMW</Component.Option>
+    <Component.Option value="mercedes-benz">Mercedes-Benz</Component.Option>
+    <Component.Option value="volkswagen">Volkswagen</Component.Option>
+    <Component.Option value="porsche">Porsche</Component.Option>
+  </Component.Group>
+  <Component.Group label="French">
+    <Component.Option value="peugeot">Peugeot</Component.Option>
+    <Component.Option value="renault">Renault</Component.Option>
+  </Component.Group>
+  <Component.Group label="Non-european">
+    <Component.Option value="toyota">Toyota</Component.Option>
+  </Component.Group>
+</Component>;
 
 export const Playground = Template.bind({});
-export const PlaygroundMultipleValue = Template.bind({});
-export const PlaygroundMultipleManySelectedValue = Template.bind({});
-export const PlaygroundNullValue = Template.bind({});
-
-Playground.args = {
-  size: "medium",
-  name: "Select",
-  label: "Select",
-  value: { key: "1", label: "One" },
-  list: [
-    { key: "1", label: "One" },
-    { key: "2", label: "Two" },
-    { key: "3", label: "Three" },
-  ],
-};
-
-PlaygroundMultipleValue.args = {
-  size: "medium",
-  name: "Select",
-  label: "Select",
-  value: [
-    { key: "1", label: "One" },
-    { key: "2", label: "Two" },
-  ],
-  list: [
-    { key: "1", label: "One" },
-    { key: "2", label: "Two" },
-    { key: "3", label: "Three" },
-    { key: "4", label: "Four" },
-    { key: "5", label: "Five" },
-    { key: "6", label: "Six" },
-    { key: "7", label: "Seven" },
-    { key: "8", label: "Eight" },
-    { key: "9", label: "Nine" },
-    { key: "10", label: "Ten" },
-    { key: "11", label: "Eleven" },
-    { key: "12", label: "Twelve" },
-    { key: "13", label: "Thirteen" },
-    { key: "14", label: "Fourteen" },
-    { key: "15", label: "Fifteen" },
-  ],
-  multiple: true,
-};
-
-PlaygroundMultipleManySelectedValue.args = {
-  size: "medium",
-  name: "Select",
-  label: "Select",
-  value: [
-    { key: "1", label: "One" },
-    { key: "2", label: "Two" },
-    { key: "3", label: "Three" },
-    { key: "4", label: "Four" },
-    { key: "5", label: "Five" },
-    { key: "6", label: "Six" },
-    { key: "8", label: "Eight" },
-    { key: "9", label: "Nine" },
-    { key: "10", label: "Ten" },
-    { key: "11", label: "Eleven" },
-    { key: "12", label: "Twelve" },
-    { key: "14", label: "Fourteen" },
-    { key: "15", label: "Fifteen" },
-  ],
-  list: [
-    { key: "1", label: "One" },
-    { key: "2", label: "Two" },
-    { key: "3", label: "Three" },
-    { key: "4", label: "Four" },
-    { key: "5", label: "Five" },
-    { key: "6", label: "Six" },
-    { key: "7", label: "Seven" },
-    { key: "8", label: "Eight" },
-    { key: "9", label: "Nine" },
-    { key: "10", label: "Ten" },
-    { key: "11", label: "Eleven" },
-    { key: "12", label: "Twelve" },
-    { key: "13", label: "Thirteen" },
-    { key: "14", label: "Fourteen" },
-    { key: "15", label: "Fifteen" },
-  ],
-  multiple: true,
-};
+export const PlaygroundGroup = TemplateGroup.bind({});
 
 Template.parameters = {
   pseudo: {
@@ -203,18 +148,6 @@ Template.parameters = {
     focus: ["#two", "#three"],
     active: "#three",
   },
-};
-
-PlaygroundNullValue.args = {
-  size: "medium",
-  name: "Select",
-  label: "Select",
-  value: null,
-  list: [
-    { key: "1", label: "One" },
-    { key: "2", label: "Two" },
-    { key: "3", label: "Three" },
-  ],
 };
 
 Template.parameters = {
