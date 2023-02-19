@@ -1,15 +1,7 @@
-import React from "react";
+import { forwardRef } from "react";
 import styled from "styled-components";
-import {
-  CheckboxProps,
-  StyledHintProps,
-  StyledCheckboxProps,
-  StyledLabelProps,
-  StyledCheckboxCheckmarkProps,
-} from "./types";
-import { ThemeColours } from "../../settings/theme";
-import { animations } from "../../mixins";
-import { BmeIcon } from "../index";
+import { CheckboxProps, StyledCheckboxProps } from "./types";
+import { animations, isDark } from "../../mixins";
 
 const VALUES = {
   mobile: {
@@ -42,84 +34,64 @@ const VALUES = {
   },
 };
 
-const VARIANT: ThemeColours = "blue";
 const CHECKMARK_RELATIVE_SIZE = 0.66;
 
-const StyledFormControl = styled.div`
-  position: relative;
-  display: inline-flex;
-  flex-direction: column;
-`;
-
-const StyledFormControlInput = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-`;
-
-const StyledLabel = styled.label<StyledLabelProps>`
-  font-size: ${({ fontSize }) => fontSize}px;
-  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
-`;
-
-const StyledNativeCheckbox = styled.input`
-  display: none;
-`;
-
-const StyledCheckbox = styled.button<StyledCheckboxProps>`
+const StyledCheckbox = styled.input<StyledCheckboxProps>`
   position: relative;
   display: inline-block;
-  width: ${({ size }) => size.mobile}px;
-  height: ${({ size }) => size.mobile}px;
-  margin-right: 8px;
-  background: ${({ theme, variant, disabled, checked }) =>
-    disabled ? theme.colors.gray : checked ? theme.colors[variant] : theme.colors.background};
-  border: 3px solid ${({ theme, variant, disabled }) => (disabled ? theme.colors.gray : theme.colors[variant])};
-  border-radius: ${({ theme }) => theme.radius}px;
+  width: ${({ sizeInPx }) => sizeInPx.mobile}px;
+  height: ${({ sizeInPx }) => sizeInPx.mobile}px;
+  margin: 0;
+  background: ${({ theme }) => theme.colors.background};
+  border: 3px solid ${({ theme, variant }) => theme.colors[variant]};
+  border-radius: ${({ theme, type }) => (type === "radio" ? `1000` : theme.radius)}px;
   ${animations(["background", "border"])};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  appearance: none;
+
+  &:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: ${({ sizeInPx }) => sizeInPx.mobile * CHECKMARK_RELATIVE_SIZE}px;
+    height: ${({ sizeInPx }) => sizeInPx.mobile * CHECKMARK_RELATIVE_SIZE}px;
+    background: ${({ theme, variant }) => (isDark(theme.colors[variant]) ? theme.colors.light : theme.colors.dark)};
+    border-radius: 0;
+    transform: translate(-50%, -50%) scale(0);
+    ${animations(["border-radius", "transform"])};
+    content: "";
+  }
+
+  &:disabled {
+    background: ${({ theme }) => theme.colors.gray};
+    border-color: 3px solid ${({ theme }) => theme.colors.gray};
+  }
+
+  &:checked {
+    background: ${({ theme, variant }) => theme.colors[variant]};
+
+    &:after {
+      border-radius: ${({ theme, type }) => (type === "radio" ? `1000` : theme.radius)}px;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
-    width: ${({ size }) => size.desktop}px;
-    height: ${({ size }) => size.desktop}px;
+    width: ${({ sizeInPx }) => sizeInPx.desktop}px;
+    height: ${({ sizeInPx }) => sizeInPx.desktop}px;
+
+    &:after,
+    &:before {
+      width: ${({ sizeInPx }) => sizeInPx.desktop * CHECKMARK_RELATIVE_SIZE}px;
+      height: ${({ sizeInPx }) => sizeInPx.desktop * CHECKMARK_RELATIVE_SIZE}px;
+    }
   }
 `;
 
-const StyledCheckboxCheckmark = styled.div<StyledCheckboxCheckmarkProps>`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: ${({ checked }) => (checked ? "1" : "0")};
-  ${animations(["opacity"])};
-`;
-
-const StyledHint = styled.div<StyledHintProps>`
-  padding: 4px 0 0;
-  color: ${({ theme, variant }) => theme.colors[variant]};
-  font-size: ${({ fontSize }) => fontSize.mobile}px;
-`;
-
-const Input: React.FC<CheckboxProps> = ({
-  name,
-  value,
-  label,
-  onValue,
-  hint,
-  error,
-  valid,
-  size,
-  disabled,
-  variant,
-  ...props
-}) => {
+const Component = forwardRef<HTMLInputElement, CheckboxProps>(({ size, variant, ...props }, ref) => {
   size = size ?? "medium";
-
-  const variantDynamic = disabled ? "gray" : error ? "red" : valid ? "green" : variant ?? VARIANT;
-  const hintVariant: ThemeColours = error ? "red" : valid ? "green" : "gray";
-  const hintMessage = error || valid || hint;
+  variant = variant ?? "blue";
 
   const sizeInPx = {
     mobile: VALUES.mobile[size].size,
@@ -130,52 +102,14 @@ const Input: React.FC<CheckboxProps> = ({
     desktop: VALUES.desktop[size].fontSize,
   };
 
-  return (
-    <StyledFormControl>
-      <StyledNativeCheckbox
-        {...props}
-        id={name}
-        name={name}
-        disabled={disabled}
-        checked={value}
-        onChange={({ target: { checked } }) => onValue(!checked)}
-        type="checkbox"
-      />
-      <StyledFormControlInput>
-        <StyledCheckbox
-          disabled={disabled ?? false}
-          checked={value}
-          size={sizeInPx}
-          variant={variantDynamic}
-          fontSize={fontSize}
-          type="button"
-        >
-          <StyledCheckboxCheckmark checked={value} onClick={() => onValue(!value)}>
-            <BmeIcon name="checkmark" size={sizeInPx.mobile * CHECKMARK_RELATIVE_SIZE} color="light" />
-          </StyledCheckboxCheckmark>
-        </StyledCheckbox>
-        <StyledLabel
-          disabled={disabled}
-          size={sizeInPx}
-          variant={variantDynamic}
-          fontSize={fontSize}
-          htmlFor={name}
-          onClick={() => onValue(!value)}
-        >
-          {label}
-        </StyledLabel>
-      </StyledFormControlInput>
-      {!disabled && (
-        <StyledHint variant={hintVariant} size={sizeInPx} fontSize={fontSize}>
-          {hintMessage}
-        </StyledHint>
-      )}
-    </StyledFormControl>
-  );
-};
+  return <StyledCheckbox {...props} sizeInPx={sizeInPx} fontSize={fontSize} variant={variant || "blue"} ref={ref} />;
+});
 
-Input.defaultProps = {
+Component.displayName = "BmeCheckbox";
+
+Component.defaultProps = {
   size: "medium",
+  type: "checkbox",
 };
 
-export default Input;
+export default Component;

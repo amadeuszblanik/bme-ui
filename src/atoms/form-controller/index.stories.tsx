@@ -2,6 +2,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Component from "./index";
 import Input from "../input";
 import { THEME_COLOURS_KEYS } from "../../settings/theme";
+import Checkbox from "../checkbox";
 
 export default {
   title: "Atoms/Form controller",
@@ -16,6 +17,10 @@ export default {
       control: {
         type: "text",
       },
+    },
+    labelPosition: {
+      options: ["top", "right", "left"],
+      control: { type: "select" },
     },
     hint: {
       control: {
@@ -71,8 +76,17 @@ const TemplateDouble: ComponentStory<typeof Component> = (args) => (
   </div>
 );
 
+const TemplateCheckbox: ComponentStory<typeof Component> = (args) => (
+  <div style={{ maxWidth: 420, margin: "0 auto" }}>
+    <Component {...args}>
+      <Checkbox name="chechbox" />
+    </Component>
+  </div>
+);
+
 export const Playground = Template.bind({});
 export const PlaygroundDouble = TemplateDouble.bind({});
+export const PlaygroundCheckbox = TemplateCheckbox.bind({});
 
 Playground.args = {
   name: "input",
@@ -82,6 +96,13 @@ Playground.args = {
 };
 
 PlaygroundDouble.args = {
+  name: "input",
+  label: "Input",
+  hint: "0/128",
+  error: "Error message",
+};
+
+PlaygroundCheckbox.args = {
   name: "input",
   label: "Input",
   hint: "0/128",

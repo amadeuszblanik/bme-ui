@@ -21,6 +21,7 @@ const Component: React.FC<FormControllerProps> = ({
   disabled,
   variant,
   children,
+  labelPosition,
 }) => {
   variant = error ? "red" : disabled ? "gray" : variant;
   const hintVariant: ThemeColours = error ? "red" : "gray";
@@ -28,22 +29,24 @@ const Component: React.FC<FormControllerProps> = ({
 
   const cloneChildren = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
-      return React.cloneElement(child as FormControllerChildren, { name, variant, disabled });
+      return React.cloneElement(child as FormControllerChildren, { id: name, name, variant, disabled });
     }
 
     return child;
   });
 
+  const Label = (
+    <StyledLabel htmlFor={name} variant={variant || "text"}>
+      {label}
+    </StyledLabel>
+  );
+
   return (
     <Box direction="column" width={width} minWidth={minWidth} maxWidth={maxWidth} margin="no|no|md">
-      {label && (
-        <Box margin="no|no|xs">
-          <StyledLabel htmlFor={name} variant={variant || "text"}>
-            {label}
-          </StyledLabel>
-        </Box>
-      )}
-      <Box width="100%">{cloneChildren}</Box>
+      {label && labelPosition === "top" && <Box margin="no|no|xs">{Label}</Box>}
+      <Box alignY="center" alignX="space-between" width="100%">
+        {label && labelPosition === "left" && Label} {cloneChildren} {label && labelPosition === "right" && Label}
+      </Box>
       <Box alignX="space-between" width="100%" overflow="hidden">
         {error && (
           <Box margin={hint && "no|xs|no|no"}>
@@ -61,5 +64,9 @@ const Component: React.FC<FormControllerProps> = ({
 };
 
 Component.displayName = "BmeFormController";
+
+Component.defaultProps = {
+  labelPosition: "top",
+};
 
 export default Component;

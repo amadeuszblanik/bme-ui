@@ -2,6 +2,7 @@ export { default as BmeAvatar } from "./avatar";
 export { default as BmeBox } from "./box";
 export { default as BmeButton } from "./button";
 export { default as BmeCheckbox } from "./checkbox";
+export { default as BmeCheckboxDeprecated } from "./checkbox-deprecated";
 export { default as BmeDropdown } from "./dropdown";
 export { default as BmeFormController } from "./form-controller";
 export { default as BmeIcon } from "./icon";

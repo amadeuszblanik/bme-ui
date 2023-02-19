@@ -8,7 +8,7 @@ export type Overflow = "visible" | "hidden" | "scroll" | "auto";
 
 export interface BoxProps {
   innerRef?: React.RefObject<HTMLDivElement>;
-  children: React.ReactNode;
+  children: React.ReactNode | React.ReactNode[];
   position?: "relative" | "absolute" | "fixed";
   overflow?: Overflow;
   overflowX?: Overflow;

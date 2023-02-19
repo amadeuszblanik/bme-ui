@@ -3,7 +3,7 @@ import { THEME_COLOURS_KEYS } from "../../settings/theme";
 import Checkbox from "./index";
 
 export default {
-  title: "Atoms/Checkbox",
+  title: "Atoms (Deprecated)/Checkbox",
   component: Checkbox,
   argTypes: {
     value: {
@@ -53,7 +53,7 @@ export default {
       control: { type: "radio" },
     },
     type: {
-      options: ["checkbox", "radio"],
+      options: ["text", "password", "email", "search"],
       control: { type: "select" },
     },
     disabled: {

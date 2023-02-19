@@ -1,37 +1,29 @@
 import React from "react";
 import { ThemeColours } from "../../settings/theme";
 
-export interface CheckboxProps extends React.HTMLAttributes<HTMLInputElement> {
+export interface CheckboxSharedProps extends React.HTMLAttributes<HTMLInputElement> {
   name: string;
-  value: boolean;
-  label: string;
-  onValue: (value: boolean) => void;
   size?: "small" | "medium" | "large";
-  hint?: string;
-  error?: string;
   valid?: string;
   disabled?: boolean;
   variant?: ThemeColours;
 }
 
-export interface StyledLabelProps extends React.HTMLAttributes<HTMLLabelElement> {
-  disabled?: boolean;
-  variant: ThemeColours;
-  size: {
-    mobile: number;
-    desktop: number;
-  };
-  fontSize: {
-    mobile: number;
-    desktop: number;
-  };
+export interface CheckboxCheckboxProps extends CheckboxSharedProps {
+  type?: "checkbox";
 }
+
+export interface CheckboxRadioProps extends CheckboxSharedProps {
+  id: string;
+  type?: "radio";
+}
+
+export type CheckboxProps = CheckboxCheckboxProps | CheckboxRadioProps;
 
 export interface StyledCheckboxProps {
-  disabled: boolean;
-  checked: boolean;
+  type?: "checkbox" | "radio";
   variant: ThemeColours;
-  size: {
+  sizeInPx: {
     mobile: number;
     desktop: number;
   };
@@ -41,17 +33,9 @@ export interface StyledCheckboxProps {
   };
 }
 
-export interface StyledCheckboxCheckmarkProps {
-  checked: boolean;
-}
-
-export interface StyledHintProps {
+export interface StyledCheckboxIconProps {
   variant: ThemeColours;
   size: {
-    mobile: number;
-    desktop: number;
-  };
-  fontSize: {
     mobile: number;
     desktop: number;
   };
