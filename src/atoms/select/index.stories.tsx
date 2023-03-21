@@ -26,6 +26,11 @@ export default {
         type: "text",
       },
     },
+    emptyValue: {
+      control: {
+        type: "text",
+      },
+    },
     search: {
       description: "Searchable only works without native",
       control: { type: "boolean" },
@@ -55,30 +60,30 @@ export default {
 } as ComponentMeta<typeof Component>;
 
 const Template: ComponentStory<typeof Component> = (args) => <Component {...args}>
-  <Component.Option value="audi">Audi</Component.Option>
-  <Component.Option value="bmw">BMW</Component.Option>
-  <Component.Option value="mercedes-benz">Mercedes-Benz</Component.Option>
-  <Component.Option value="volkswagen">Volkswagen</Component.Option>
-  <Component.Option value="peugeot">Peugeot</Component.Option>
-  <Component.Option value="porsche">Porsche</Component.Option>
-  <Component.Option value="renault">Renault</Component.Option>
-  <Component.Option value="toyota">Toyota</Component.Option>
+  <Component.Option value="vag-audi" label="Audi" />
+  <Component.Option value="bmw" label="BMW" />
+  <Component.Option value="daimler-mercedes-benz" label="Mercedes-Benz" />
+  <Component.Option value="vag-volkswagen" label="Volkswagen" />
+  <Component.Option value="psa-peugeot" label="Peugeot" />
+  <Component.Option value="vag-porsche" label="Porsche" />
+  <Component.Option value="renault" label="Renault" />
+  <Component.Option value="toyota" label="Toyota" />
 </Component>;
 
 const TemplateGroup: ComponentStory<typeof Component> = (args) => <Component {...args}>
   <Component.Group label="German">
-    <Component.Option value="audi">Audi</Component.Option>
-    <Component.Option value="bmw">BMW</Component.Option>
-    <Component.Option value="mercedes-benz">Mercedes-Benz</Component.Option>
-    <Component.Option value="volkswagen">Volkswagen</Component.Option>
-    <Component.Option value="porsche">Porsche</Component.Option>
+    <Component.Option value="vag-audi" label="Audi" />
+    <Component.Option value="bmw" label="BMW" />
+    <Component.Option value="daimler-mercedes-benz" label="Mercedes-Benz" />
+    <Component.Option value="vag-volkswagen" label="Volkswagen" />
+    <Component.Option value="vag-porsche" label="Porsche" />
   </Component.Group>
   <Component.Group label="French">
-    <Component.Option value="peugeot">Peugeot</Component.Option>
-    <Component.Option value="renault">Renault</Component.Option>
+    <Component.Option value="psa-peugeot" label="Peugeot" />
+    <Component.Option value="renault" label="Renault" />
   </Component.Group>
   <Component.Group label="Non-european">
-    <Component.Option value="toyota">Toyota</Component.Option>
+    <Component.Option value="toyota" label="Toyota" disabled />
   </Component.Group>
 </Component>;
 

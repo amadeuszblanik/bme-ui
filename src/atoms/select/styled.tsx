@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import {
+  StyledSelectDrawerOptionProps,
   StyledSelectDrawerProps,
   StyledSelectDrawerSearchProps,
   StyledSelectProps,
   StyledSelectWrapperProps,
 } from "./types";
-import { animations, boxShadow } from "../../mixins";
+import { animations, boxShadow, isDark } from "../../mixins";
 
 export const StyledSelect = styled.select<StyledSelectProps>`
   display: flex;
@@ -94,7 +95,7 @@ export const StyledSelectDrawerGroupLabel = styled.label`
   border-top: 1px solid ${({ theme }) => theme.colors.gray3};
 `;
 
-export const StyledSelectDrawerOption = styled.button`
+export const StyledSelectDrawerOption = styled.button<StyledSelectDrawerOptionProps>`
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -105,6 +106,26 @@ export const StyledSelectDrawerOption = styled.button`
   border: none;
   cursor: pointer;
   appearance: none;
+  ${animations(["color", "background-color"], "350ms")};
+
+  &:not([disabled]) {
+    &:hover {
+      color: ${({ theme }) => (isDark(theme.colors.gray3) ? theme.colors.light : theme.colors.dark)};
+      background: ${({ theme }) => theme.colors.gray3};
+    }
+
+    &:focus {
+      color: ${({ theme, variant }) => (isDark(theme.colors[variant]) ? theme.colors.light : theme.colors.dark)};
+      background: ${({ theme, variant }) => theme.colors[variant]};
+      outline: none;
+    }
+  }
+
+  &:disabled {
+    position: relative;
+    color: ${({ theme }) => theme.colors.gray2};
+    cursor: not-allowed;
+  }
 `;
 
 export const StyledSelectDrawerSearch = styled.input<StyledSelectDrawerSearchProps>`

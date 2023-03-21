@@ -4,6 +4,8 @@ interface Item {
   type: "option";
   key: string;
   label: string;
+  selected: boolean;
+  disabled: boolean;
 }
 
 interface Group {
@@ -27,7 +29,9 @@ const utils = (children: React.ReactNode): ChildrenList => {
         items.push({
           type: "option",
           key: props.value,
-          label: props.children,
+          label: props.label,
+          selected: props.selected || false,
+          disabled: props.disabled || false,
         });
       } else if (type === "optgroup" || (type as any).displayName === "BmeSelectGroup") {
         groups.push({

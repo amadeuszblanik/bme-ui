@@ -1,9 +1,9 @@
 import { forwardRef } from "react";
 import { SelectOptionProps } from "./types";
 
-const SelectOption = forwardRef<HTMLOptionElement, SelectOptionProps>(({ children, ...props }, ref) => (
+const SelectOption = forwardRef<HTMLOptionElement, SelectOptionProps>(({ label, ...props }, ref) => (
   <option ref={ref} {...props}>
-    {children}
+    {label}
   </option>
 ));
 

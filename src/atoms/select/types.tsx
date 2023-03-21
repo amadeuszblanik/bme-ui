@@ -7,6 +7,7 @@ export interface SelectProps {
   native?: boolean;
   onChange?: (event: string) => void;
   value?: string;
+  emptyValue?: string;
   search?: boolean;
   width?: string;
   minWidth?: string;
@@ -16,7 +17,8 @@ export interface SelectProps {
 }
 
 export interface SelectOptionProps {
-  children?: React.ReactNode;
+  label: string;
+  disabled?: boolean;
 }
 
 export interface SelectGroupProps {
@@ -72,6 +74,12 @@ export interface StyledSelectDrawerProps {
   minWidth?: string;
   maxWidth?: string;
   variant: ThemeColours;
+}
+
+export interface StyledSelectDrawerOptionProps {
+  variant: ThemeColours;
+  selected?: boolean;
+  disabled?: boolean;
 }
 
 export interface StyledSelectDrawerSearchProps {

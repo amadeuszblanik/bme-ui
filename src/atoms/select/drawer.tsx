@@ -20,12 +20,17 @@ const Drawer = ({ items, onSelect, search, width, minWidth, maxWidth, variant }:
 
       items.forEach((item) => {
         if (item.type === "option") {
-          if (item.label.toLowerCase().includes(searchValue.toLowerCase())) {
+          if (
+            item.label.toLowerCase().includes(searchValue.toLowerCase()) ||
+            item.key.toLowerCase().includes(searchValue.toLowerCase())
+          ) {
             nextFilteredItems.push(item as any);
           }
         } else if (item.type === "group") {
-          const options = item.options.filter((option) =>
-            option.label.toLowerCase().includes(searchValue.toLowerCase()),
+          const options = item.options.filter(
+            (option) =>
+              option.label.toLowerCase().includes(searchValue.toLowerCase()) ||
+              option.key.toLowerCase().includes(searchValue.toLowerCase()),
           );
 
           if (!isEmpty(options)) {
@@ -50,7 +55,14 @@ const Drawer = ({ items, onSelect, search, width, minWidth, maxWidth, variant }:
       {filteredItems.map((item, index) => {
         if (item.type === "option") {
           return (
-            <StyledSelectDrawerOption key={index} onClick={() => onSelect(item.key)} type="button">
+            <StyledSelectDrawerOption
+              key={index}
+              onClick={() => onSelect(item.key)}
+              variant={variant}
+              selected={item.selected}
+              disabled={item.disabled}
+              type="button"
+            >
               {item.label}
             </StyledSelectDrawerOption>
           );
@@ -59,7 +71,14 @@ const Drawer = ({ items, onSelect, search, width, minWidth, maxWidth, variant }:
             <StyledSelectDrawerGroup key={index}>
               <StyledSelectDrawerGroupLabel>{item.label}</StyledSelectDrawerGroupLabel>
               {item.options.map((option) => (
-                <StyledSelectDrawerOption key={option.key} onClick={() => onSelect(option.key)} type="button">
+                <StyledSelectDrawerOption
+                  key={option.key}
+                  onClick={() => onSelect(option.key)}
+                  variant={variant}
+                  selected={option.selected}
+                  disabled={option.disabled}
+                  type="button"
+                >
                   {option.label}
                 </StyledSelectDrawerOption>
               ))}

@@ -1,4 +1,4 @@
-import { ChangeEvent, forwardRef, useState } from "react";
+import { ChangeEvent, forwardRef, useEffect, useState } from "react";
 import { SelectComponent, SelectProps } from "./types";
 import SelectOption from "./option";
 import SelectGroup from "./group";
@@ -9,7 +9,21 @@ import { childrenToList } from "../../utils";
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>(
   (
-    { size, variant, native, onChange, value, search, width, minWidth, maxWidth, disabled, children, ...props },
+    {
+      size,
+      variant,
+      native,
+      onChange,
+      value,
+      emptyValue,
+      search,
+      width,
+      minWidth,
+      maxWidth,
+      disabled,
+      children,
+      ...props
+    },
     ref,
   ) => {
     size = size ?? "medium";
@@ -30,7 +44,26 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
 
     const items = childrenToList(children);
 
+    const [selectedValue, setSelectedValue] = useState(value);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+    useEffect(() => {
+      let nextValue = value;
+
+      items.forEach((item) => {
+        if (item.type === "option" && item.key === value) {
+          nextValue = item.label;
+        } else if (item.type === "group") {
+          item.options.forEach((option) => {
+            if (option.key === value) {
+              nextValue = option.label;
+            }
+          });
+        }
+      });
+
+      setSelectedValue(nextValue);
+    }, [value, items]);
 
     const handleDrawerSelect = (key: string) => {
       onChange?.(key);
@@ -62,13 +95,13 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
           minWidth={minWidth}
           maxWidth={maxWidth}
         >
-          {native ? children : value || "--"}
+          {native ? children : selectedValue || emptyValue || "——"}
         </StyledSelect>
         {isDrawerOpen && !native && (
           <Drawer
             items={items}
             onSelect={handleDrawerSelect}
-            search={search || true}
+            search={search}
             variant={variant}
             width={width}
             minWidth={minWidth}
