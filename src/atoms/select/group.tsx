@@ -1,9 +1,12 @@
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
+import { SelectGroupProps } from "./types";
 
-const Component = forwardRef<HTMLOptGroupElement, React.OptgroupHTMLAttributes<HTMLOptGroupElement>>((props, ref) => (
-  <optgroup ref={ref} {...props} />
+const SelectGroup = forwardRef<HTMLOptGroupElement, SelectGroupProps>(({ children, ...props }, ref) => (
+  <optgroup ref={ref} {...props}>
+    {children}
+  </optgroup>
 ));
 
-Component.displayName = "BmeSelectOption";
+SelectGroup.displayName = "BmeSelectGroup";
 
-export default Component;
+export default SelectGroup;

@@ -1,7 +1,3 @@
-import { ThemeColours } from "../../settings/theme";
-
-export const SINGLE_VALUE_INDEX = 0;
-
 export const VALUES = {
   mobile: {
     small: {
@@ -38,8 +34,3 @@ export const VALUES = {
     },
   },
 };
-
-export const ICON_SIZE = 24;
-export const ICON_PADDING_X = 8;
-export const LABEL_PADDING_X = 8;
-export const VARIANT: ThemeColours = "blue";

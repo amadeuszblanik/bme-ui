@@ -6,61 +6,29 @@ export default {
   title: "Atoms/Select",
   component: Component,
   argTypes: {
-    value: {
-      control: {
-        type: "object",
-      },
-    },
-    list: {
-      control: {
-        type: "object",
-      },
+    size: {
+      options: ["small", "medium", "large"],
+      control: { type: "radio" },
     },
     variant: {
       options: THEME_COLOURS_KEYS,
       control: { type: "select" },
     },
-    name: {
+    native: {
+      control: { type: "boolean" },
+    },
+    onChange: {
+      action: "onChange",
+      description: "Deprecated. Use onValue instead.",
+    },
+    value: {
       control: {
         type: "text",
       },
     },
-    label: {
-      control: {
-        type: "text",
-      },
-    },
-    emptyLabel: {
-      control: {
-        type: "text",
-      },
-    },
-    placeholder: {
-      control: {
-        type: "text",
-      },
-    },
-    hint: {
-      control: {
-        type: "text",
-        description: "Hint message. Display order: error > valid > hint",
-      },
-    },
-    error: {
-      control: {
-        type: "text",
-        description: "Error message. Display order: error > valid > hint",
-      },
-    },
-    valid: {
-      control: {
-        type: "text",
-        description: "Valid message. Display order: error > valid > hint",
-      },
-    },
-    size: {
-      options: ["small", "medium", "large"],
-      control: { type: "radio" },
+    search: {
+      description: "Searchable only works without native",
+      control: { type: "boolean" },
     },
     width: {
       control: {
@@ -77,36 +45,11 @@ export default {
         type: "text",
       },
     },
-    type: {
-      options: ["text", "password", "email", "search"],
-      control: { type: "select" },
-    },
     disabled: {
       control: { type: "boolean" },
     },
-    multiple: {
-      control: { type: "boolean" },
-    },
-    searchable: {
-      description: "Searchable only works without native",
-      control: { type: "boolean" },
-    },
-    native: {
-      control: { type: "boolean" },
-    },
-    onValue: {
-      action: "onValue",
-    },
-    onChange: {
-      action: "onChange",
-      description: "Deprecated. Use onValue instead.",
-    },
     onClick: {
       action: "onClick",
-    },
-    onPaste: {
-      action: "onPaste",
-      description: "All other HTMLInput events are supported.",
     },
   },
 } as ComponentMeta<typeof Component>;

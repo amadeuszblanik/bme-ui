@@ -1,3 +1,4 @@
+export { default as childrenToList } from "./children-to-list";
 export { default as darkenColor } from "./darken-color";
 export { default as dateDifference } from "./date-difference";
 export { default as formatPercentage } from "./format-percentage";

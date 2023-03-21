@@ -1,9 +1,12 @@
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
+import { SelectOptionProps } from "./types";
 
-const Component = forwardRef<HTMLOptionElement, React.OptionHTMLAttributes<HTMLOptionElement>>((props, ref) => (
-  <option ref={ref} {...props} />
+const SelectOption = forwardRef<HTMLOptionElement, SelectOptionProps>(({ children, ...props }, ref) => (
+  <option ref={ref} {...props}>
+    {children}
+  </option>
 ));
 
-Component.displayName = "BmeSelectOption";
+SelectOption.displayName = "BmeSelectOption";
 
-export default Component;
+export default SelectOption;
