@@ -83,10 +83,6 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
       setIsDrawerOpen(true);
     };
 
-    const handleClose = () => {
-      setIsDrawerOpen(false);
-    };
-
     return (
       <StyledSelectWrapper ref={wrapperRef}>
         <StyledSelect
@@ -111,7 +107,6 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
           <Drawer
             items={items}
             onSelect={handleDrawerSelect}
-            onClose={handleClose}
             search={search}
             multiple={multiple}
             variant={variant}
