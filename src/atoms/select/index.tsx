@@ -88,6 +88,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
         <StyledSelect
           {...props}
           as={native ? "select" : "button"}
+          type={!native ? "button" : undefined}
           ref={ref}
           fontSize={fontSize}
           paddingX={paddingX}

@@ -48,6 +48,7 @@ export interface SelectDrawerProps {
 
 export interface StyledSelectProps {
   variant: ThemeColours;
+  type?: "button";
   width?: string;
   minWidth?: string;
   maxWidth?: string;
