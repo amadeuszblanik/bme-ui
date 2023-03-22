@@ -69,6 +69,7 @@ export const StyledSelectDrawer = styled.div<StyledSelectDrawerProps>`
   width: ${({ width }) => width || "100%"};
   ${({ minWidth }) => minWidth && `min-width: ${minWidth};`}
   ${({ maxWidth }) => maxWidth && `max-width: ${maxWidth};`}
+  max-height: 420px;
   overflow-y: scroll;
   background: ${({ theme }) => theme.colors.background};
   border: 2px solid ${({ theme, variant }) => theme.colors[variant]};
