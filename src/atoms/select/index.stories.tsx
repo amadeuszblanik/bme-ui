@@ -31,7 +31,7 @@ export default {
         type: "text",
       },
     },
-    search: {
+    searchable: {
       description: "Searchable only works without native",
       control: { type: "boolean" },
     },

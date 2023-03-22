@@ -8,7 +8,7 @@ export interface SelectProps {
   onChange?: (event: string | number) => void;
   value?: string | number;
   emptyValue?: string;
-  search?: boolean;
+  searchable?: boolean;
   multiple?: boolean;
   width?: string;
   minWidth?: string;
@@ -36,7 +36,7 @@ export type SelectComponent = React.ForwardRefExoticComponent<
 export interface SelectDrawerProps {
   items: ChildrenList;
   onSelect: (key: string | number) => void;
-  search?: boolean;
+  searchable?: boolean;
   multiple?: boolean;
   width?: string;
   minWidth?: string;

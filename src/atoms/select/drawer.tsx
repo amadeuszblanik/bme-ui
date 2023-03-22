@@ -11,7 +11,7 @@ import {
 import { SelectDrawerProps } from "./types";
 import { ChildrenList } from "../../utils/children-to-list";
 
-const Drawer = ({ items, onSelect, search, width, minWidth, maxWidth, variant }: SelectDrawerProps) => {
+const Drawer = ({ items, onSelect, searchable, width, minWidth, maxWidth, variant }: SelectDrawerProps) => {
   const [searchValue, setSearchValue] = useState<string>("");
   const [filteredItems, setFilteredItems] = useState<ChildrenList>(items);
 
@@ -52,7 +52,7 @@ const Drawer = ({ items, onSelect, search, width, minWidth, maxWidth, variant }:
 
   return (
     <StyledSelectDrawer variant={variant} width={width} minWidth={minWidth} maxWidth={maxWidth}>
-      {search && <StyledSelectDrawerSearch variant={variant} value={searchValue} onChange={handleChange} />}
+      {searchable && <StyledSelectDrawerSearch variant={variant} value={searchValue} onChange={handleChange} />}
       {filteredItems.map((item, index) => {
         if (item.type === "option") {
           return (

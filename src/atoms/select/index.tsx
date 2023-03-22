@@ -17,7 +17,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
       onChange,
       value,
       emptyValue,
-      search,
+      searchable,
       multiple,
       width,
       minWidth,
@@ -108,7 +108,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
           <Drawer
             items={items}
             onSelect={handleDrawerSelect}
-            search={search}
+            searchable={searchable}
             multiple={multiple}
             variant={variant}
             width={width}
