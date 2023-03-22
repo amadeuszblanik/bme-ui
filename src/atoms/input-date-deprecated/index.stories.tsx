@@ -1,9 +1,8 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Input from "./index";
-import { THEME_COLOURS_KEYS } from "../../settings/theme";
 
 export default {
-  title: "Atoms/Input Date",
+  title: "Atoms (Deprecated)/Input Date",
   component: Input,
   argTypes: {
     name: {
@@ -11,17 +10,42 @@ export default {
         type: "text",
       },
     },
-    type: {
-      options: [undefined, "date", "time", "datetime-local"],
-      control: { type: "select" },
+    value: {
+      control: {
+        type: "text",
+      },
+    },
+    label: {
+      control: {
+        type: "text",
+      },
+    },
+    placeholder: {
+      control: {
+        type: "text",
+      },
+    },
+    hint: {
+      control: {
+        type: "text",
+        description: "Hint message. Display order: error > valid > hint",
+      },
+    },
+    error: {
+      control: {
+        type: "text",
+        description: "Error message. Display order: error > valid > hint",
+      },
+    },
+    valid: {
+      control: {
+        type: "text",
+        description: "Valid message. Display order: error > valid > hint",
+      },
     },
     size: {
       options: ["small", "medium", "large"],
       control: { type: "radio" },
-    },
-    variant: {
-      options: THEME_COLOURS_KEYS,
-      control: { type: "select" },
     },
     width: {
       control: {
@@ -38,11 +62,19 @@ export default {
         type: "text",
       },
     },
+    type: {
+      options: [undefined, "date", "time", "datetime-local"],
+      control: { type: "select" },
+    },
     disabled: {
       control: { type: "boolean" },
     },
+    onValue: {
+      action: "onValue",
+    },
     onChange: {
-      action: "onChange",
+      action: "onValue",
+      description: "Deprecated. Use onValue instead.",
     },
     onClick: {
       action: "onClick",
@@ -61,6 +93,7 @@ export const Playground = Template.bind({});
 Playground.args = {
   name: "input",
   size: "medium",
+  label: "Input Date",
 };
 
 Template.parameters = {
