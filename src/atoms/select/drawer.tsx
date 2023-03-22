@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { isEmpty } from "bme-utils";
 import {
   StyledSelectDrawer,
   StyledSelectDrawerGroup,
   StyledSelectDrawerGroupLabel,
   StyledSelectDrawerOption,
+  StyledSelectDrawerOptionSelected,
   StyledSelectDrawerSearch,
 } from "./styled";
 import { SelectDrawerProps } from "./types";
@@ -45,7 +46,7 @@ const Drawer = ({ items, onSelect, search, width, minWidth, maxWidth, variant }:
     }
   }, [searchValue, items]);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
   };
 
@@ -63,6 +64,7 @@ const Drawer = ({ items, onSelect, search, width, minWidth, maxWidth, variant }:
               disabled={item.disabled}
               type="button"
             >
+              {item.selected && <StyledSelectDrawerOptionSelected variant={variant} />}
               {item.label}
             </StyledSelectDrawerOption>
           );
@@ -79,6 +81,7 @@ const Drawer = ({ items, onSelect, search, width, minWidth, maxWidth, variant }:
                   disabled={option.disabled}
                   type="button"
                 >
+                  {option.selected && <StyledSelectDrawerOptionSelected variant={variant} />}
                   {option.label}
                 </StyledSelectDrawerOption>
               ))}

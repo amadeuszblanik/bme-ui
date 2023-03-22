@@ -6,6 +6,7 @@ import { StyledSelect, StyledSelectWrapper } from "./styled";
 import { VALUES } from "./settings";
 import Drawer from "./drawer";
 import { childrenToList } from "../../utils";
+import { useClickOutside } from "../../hooks";
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>(
   (
@@ -17,6 +18,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
       value,
       emptyValue,
       search,
+      multiple,
       width,
       minWidth,
       maxWidth,
@@ -47,6 +49,10 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
     const [selectedValue, setSelectedValue] = useState(value);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
+    const wrapperRef = useClickOutside<HTMLDivElement>(() => {
+      setIsDrawerOpen(false);
+    });
+
     useEffect(() => {
       let nextValue = value;
 
@@ -67,7 +73,6 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
 
     const handleDrawerSelect = (key: string) => {
       onChange?.(key);
-      setIsDrawerOpen(false);
     };
 
     const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -78,16 +83,21 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
       setIsDrawerOpen(true);
     };
 
+    const handleClose = () => {
+      setIsDrawerOpen(false);
+    };
+
     return (
-      <StyledSelectWrapper>
+      <StyledSelectWrapper ref={wrapperRef}>
         <StyledSelect
+          {...props}
           as={native ? "select" : "button"}
           ref={ref}
           fontSize={fontSize}
           paddingX={paddingX}
           paddingY={paddingY}
           variant={variant}
-          {...props}
+          multiple={multiple}
           onChange={handleChange}
           onClick={handleClick}
           disabled={disabled}
@@ -97,11 +107,13 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
         >
           {native ? children : selectedValue || emptyValue || "——"}
         </StyledSelect>
-        {isDrawerOpen && !native && (
+        {isDrawerOpen && (
           <Drawer
             items={items}
             onSelect={handleDrawerSelect}
+            onClose={handleClose}
             search={search}
+            multiple={multiple}
             variant={variant}
             width={width}
             minWidth={minWidth}

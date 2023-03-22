@@ -35,6 +35,9 @@ export default {
       description: "Searchable only works without native",
       control: { type: "boolean" },
     },
+    multiple: {
+      control: { type: "boolean" },
+    },
     width: {
       control: {
         type: "text",
@@ -87,8 +90,38 @@ const TemplateGroup: ComponentStory<typeof Component> = (args) => <Component {..
   </Component.Group>
 </Component>;
 
+const TemplateMultiple: ComponentStory<typeof Component> = (args) => <Component {...args} multiple>
+  <Component.Option value="vag-audi" label="Audi" />
+  <Component.Option value="bmw" label="BMW" />
+  <Component.Option value="daimler-mercedes-benz" label="Mercedes-Benz" selected />
+  <Component.Option value="vag-volkswagen" label="Volkswagen" />
+  <Component.Option value="psa-peugeot" label="Peugeot" />
+  <Component.Option value="vag-porsche" label="Porsche" selected />
+  <Component.Option value="renault" label="Renault" />
+  <Component.Option value="toyota" label="Toyota" />
+</Component>;
+
+const TemplateGroupMultiple: ComponentStory<typeof Component> = (args) => <Component {...args} multiple>
+  <Component.Group label="German">
+    <Component.Option value="vag-audi" label="Audi" />
+    <Component.Option value="bmw" label="BMW" />
+    <Component.Option value="daimler-mercedes-benz" label="Mercedes-Benz" selected />
+    <Component.Option value="vag-volkswagen" label="Volkswagen" />
+    <Component.Option value="vag-porsche" label="Porsche" selected />
+  </Component.Group>
+  <Component.Group label="French">
+    <Component.Option value="psa-peugeot" label="Peugeot" />
+    <Component.Option value="renault" label="Renault" />
+  </Component.Group>
+  <Component.Group label="Non-european">
+    <Component.Option value="toyota" label="Toyota" disabled />
+  </Component.Group>
+</Component>;
+
 export const Playground = Template.bind({});
 export const PlaygroundGroup = TemplateGroup.bind({});
+export const PlaygroundMultiple = TemplateMultiple.bind({});
+export const PlaygroundGroupMultiple = TemplateGroupMultiple.bind({});
 
 Template.parameters = {
   pseudo: {

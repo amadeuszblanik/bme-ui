@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {
   StyledSelectDrawerOptionProps,
+  StyledSelectDrawerOptionSelectedProps,
   StyledSelectDrawerProps,
   StyledSelectDrawerSearchProps,
   StyledSelectProps,
@@ -125,6 +126,27 @@ export const StyledSelectDrawerOption = styled.button<StyledSelectDrawerOptionPr
     position: relative;
     color: ${({ theme }) => theme.colors.gray2};
     cursor: not-allowed;
+  }
+`;
+
+export const StyledSelectDrawerOptionSelected = styled.div<StyledSelectDrawerOptionSelectedProps>`
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  background: ${({ theme, variant }) => theme.colors[variant]};
+  border-radius: ${({ theme }) => theme.radius}px;
+
+  &:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    background: ${({ theme }) => theme.colors.light};
+    border-radius: ${({ theme }) => theme.radius}px;
+    transform: translate(-50%, -50%);
+    content: "";
   }
 `;
 

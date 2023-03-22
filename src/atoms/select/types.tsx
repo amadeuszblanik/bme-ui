@@ -9,6 +9,7 @@ export interface SelectProps {
   value?: string;
   emptyValue?: string;
   search?: boolean;
+  multiple?: boolean;
   width?: string;
   minWidth?: string;
   maxWidth?: string;
@@ -36,6 +37,7 @@ export interface SelectDrawerProps {
   items: ChildrenList;
   onSelect: (key: string) => void;
   search?: boolean;
+  multiple?: boolean;
   width?: string;
   minWidth?: string;
   maxWidth?: string;
@@ -80,6 +82,10 @@ export interface StyledSelectDrawerOptionProps {
   variant: ThemeColours;
   selected?: boolean;
   disabled?: boolean;
+}
+
+export interface StyledSelectDrawerOptionSelectedProps {
+  variant: ThemeColours;
 }
 
 export interface StyledSelectDrawerSearchProps {
