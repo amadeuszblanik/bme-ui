@@ -5,8 +5,8 @@ export interface SelectProps {
   size?: "small" | "medium" | "large";
   variant?: ThemeColours;
   native?: boolean;
-  onChange?: (event: string) => void;
-  value?: string;
+  onChange?: (event: string | number) => void;
+  value?: string | number;
   emptyValue?: string;
   search?: boolean;
   multiple?: boolean;
@@ -35,7 +35,7 @@ export type SelectComponent = React.ForwardRefExoticComponent<
 
 export interface SelectDrawerProps {
   items: ChildrenList;
-  onSelect: (key: string) => void;
+  onSelect: (key: string | number) => void;
   search?: boolean;
   multiple?: boolean;
   width?: string;

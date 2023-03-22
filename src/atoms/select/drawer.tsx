@@ -22,16 +22,16 @@ const Drawer = ({ items, onSelect, search, width, minWidth, maxWidth, variant }:
       items.forEach((item) => {
         if (item.type === "option") {
           if (
-            item.label.toLowerCase().includes(searchValue.toLowerCase()) ||
-            item.key.toLowerCase().includes(searchValue.toLowerCase())
+            String(item.label).toLowerCase().includes(searchValue.toLowerCase()) ||
+            String(item.key).toLowerCase().includes(searchValue.toLowerCase())
           ) {
             nextFilteredItems.push(item as any);
           }
         } else if (item.type === "group") {
           const options = item.options.filter(
             (option) =>
-              option.label.toLowerCase().includes(searchValue.toLowerCase()) ||
-              option.key.toLowerCase().includes(searchValue.toLowerCase()),
+              String(option.label).toLowerCase().includes(searchValue.toLowerCase()) ||
+              String(option.key).toLowerCase().includes(searchValue.toLowerCase()),
           );
 
           if (!isEmpty(options)) {

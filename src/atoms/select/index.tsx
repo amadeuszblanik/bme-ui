@@ -71,7 +71,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
       setSelectedValue(nextValue);
     }, [value, items]);
 
-    const handleDrawerSelect = (key: string) => {
+    const handleDrawerSelect = (key: string | number) => {
       onChange?.(key);
     };
 

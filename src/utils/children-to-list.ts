@@ -2,7 +2,7 @@ import React from "react";
 
 interface Item {
   type: "option";
-  key: string;
+  key: string | number;
   label: string;
   selected: boolean;
   disabled: boolean;
