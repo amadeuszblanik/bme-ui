@@ -1,5 +1,5 @@
 import { ChangeEvent, forwardRef, useEffect, useState } from "react";
-import { SelectProps } from "./types";
+import { SelectComponent, SelectProps } from "./types";
 import SelectOption from "./option";
 import SelectGroup from "./group";
 import { StyledSelect, StyledSelectWrapper } from "./styled";
@@ -119,16 +119,10 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
       </StyledSelectWrapper>
     );
   },
-);
+) as SelectComponent;
 
 Select.displayName = "BmeSelect";
-// @TODO: Temporarily disabled
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 Select.Option = SelectOption;
-// @TODO: Temporarily disabled
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 Select.Group = SelectGroup;
 
 export default Select;

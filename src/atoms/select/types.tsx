@@ -1,3 +1,6 @@
+import { HTMLAttributes } from "react";
+import SelectOption from "./option";
+import SelectGroup from "./group";
 import { ThemeColours } from "../../settings/theme";
 import { ChildrenList } from "../../utils/children-to-list";
 
@@ -17,9 +20,11 @@ export interface SelectProps {
   children?: React.ReactNode;
 }
 
-export interface SelectOptionProps {
+export interface SelectOptionProps extends HTMLAttributes<HTMLOptionElement> {
   label: string;
+  value?: string | number;
   disabled?: boolean;
+  selected?: boolean;
 }
 
 export interface SelectGroupProps {
@@ -35,6 +40,12 @@ export interface SelectDrawerProps {
   minWidth?: string;
   maxWidth?: string;
   variant: ThemeColours;
+}
+
+export interface SelectComponent
+  extends React.ForwardRefExoticComponent<SelectProps & React.RefAttributes<HTMLSelectElement>> {
+  Option: typeof SelectOption;
+  Group: typeof SelectGroup;
 }
 
 // Styled
