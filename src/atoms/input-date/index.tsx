@@ -26,16 +26,22 @@ const Input = forwardRef<HTMLInputElement, InputDateProps>(
       desktop: VALUES.desktop[size].fontSize,
     };
 
-    const dateToString = (date: Date): string | undefined => {
+    const dateToString = (date: Date | string): string | undefined => {
+      const dateObject = new Date(date);
+
+      if (isNaN(dateObject.getTime())) {
+        return date.toString();
+      }
+
       switch (type) {
         case "datetime-local":
-          return firstElement(date.toISOString().split(".")) || undefined;
+          return firstElement(dateObject.toISOString().split(".")) || undefined;
 
         case "time":
-          return firstElement(date.toISOString().split("T")[TIME_POSITION].split(".")) || undefined;
+          return firstElement(dateObject.toISOString().split("T")[TIME_POSITION].split(".")) || undefined;
 
         default:
-          return firstElement(date.toISOString().split("T")) || undefined;
+          return firstElement(dateObject.toISOString().split("T")) || undefined;
       }
     };
 
@@ -44,7 +50,7 @@ const Input = forwardRef<HTMLInputElement, InputDateProps>(
         return undefined;
       }
 
-      return dateToString(new Date(value));
+      return dateToString(value);
     };
 
     const handleChange = ({ target: { value: eventValue } }: ChangeEvent<HTMLInputElement>) => {
