@@ -38,5 +38,4 @@ export const VALUES = {
 };
 
 export const ICON_SIZE = 24;
-export const LABEL_PADDING_X = 8;
 export const VARIANT: ThemeColours = "blue";

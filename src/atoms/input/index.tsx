@@ -143,7 +143,7 @@ const StyledPrefixIcon = styled.div<StyledPrefixIconProps>`
 `;
 
 const Component = forwardRef<HTMLInputElement, InputProps>(
-  ({ name, type, inputMode, size, width, minWidth, maxWidth, variant, ...props }, ref) => {
+  ({ name, type, inputMode, size, onChange, width, minWidth, maxWidth, variant, ...props }, ref) => {
     size = size ?? "medium";
     variant = variant ?? "blue";
 
@@ -162,6 +162,10 @@ const Component = forwardRef<HTMLInputElement, InputProps>(
 
     const isPrefixIcon = PrefixIcon({ type, iconSize: ICON_SIZE, iconVariant: variant }) !== null;
 
+    const handleChange = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) => {
+      onChange?.(value);
+    };
+
     return (
       <StyledInputWrapper width={width} minWidth={minWidth} maxWidth={maxWidth}>
         {isPrefixIcon && (
@@ -174,6 +178,7 @@ const Component = forwardRef<HTMLInputElement, InputProps>(
           name={name}
           id={name}
           {...props}
+          onChange={handleChange}
           paddingX={paddingX}
           paddingY={paddingY}
           fontSize={fontSize}

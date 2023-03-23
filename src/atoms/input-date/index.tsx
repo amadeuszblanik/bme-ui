@@ -1,10 +1,13 @@
-import { forwardRef } from "react";
+import { ChangeEvent, forwardRef } from "react";
+import { firstElement } from "bme-utils";
 import { InputDateProps } from "./types";
 import { VALUES, VARIANT } from "./settings";
 import { StyledInput } from "./styled";
 
+const TIME_POSITION = 1;
+
 const Input = forwardRef<HTMLInputElement, InputDateProps>(
-  ({ name, type, size, variant, width, minWidth, maxWidth, disabled, ...props }, ref) => {
+  ({ name, value, type, size, onChange, variant, width, minWidth, maxWidth, disabled, ...props }, ref) => {
     size = size ?? "medium";
 
     const inputType = type || "date";
@@ -23,10 +26,37 @@ const Input = forwardRef<HTMLInputElement, InputDateProps>(
       desktop: VALUES.desktop[size].fontSize,
     };
 
+    const dateToString = (date: Date): string | undefined => {
+      switch (type) {
+        case "datetime-local":
+          return firstElement(date.toISOString().split(".")) || undefined;
+
+        case "time":
+          return firstElement(date.toISOString().split("T")[TIME_POSITION].split(".")) || undefined;
+
+        default:
+          return firstElement(date.toISOString().split("T")) || undefined;
+      }
+    };
+
+    const inputValue = (): string | undefined => {
+      if (!value) {
+        return undefined;
+      }
+
+      return dateToString(new Date(value));
+    };
+
+    const handleChange = ({ target: { value: eventValue } }: ChangeEvent<HTMLInputElement>) => {
+      onChange?.(eventValue);
+    };
+
     return (
       <StyledInput
         ref={ref}
         {...props}
+        value={inputValue()}
+        onChange={handleChange}
         id={name}
         name={name}
         variant={variant}

@@ -1,10 +1,13 @@
 import React from "react";
 import { ThemeColours } from "../../types";
 
-export interface InputDateProps extends React.HTMLAttributes<HTMLInputElement> {
+// Extend the React.HTMLAttributes interface without onChange
+export interface InputDateProps extends Omit<React.HTMLAttributes<HTMLInputElement>, "onChange"> {
   name: string;
+  value?: string | Date;
   type?: "date" | "time" | "datetime-local";
   size?: "small" | "medium" | "large";
+  onChange?: (value: string) => void;
   variant?: ThemeColours;
   width?: string;
   minWidth?: string;

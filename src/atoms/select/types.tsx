@@ -26,13 +26,6 @@ export interface SelectGroupProps {
   children?: React.ReactNode;
 }
 
-export type SelectComponent = React.ForwardRefExoticComponent<
-  React.PropsWithoutRef<SelectProps> & React.RefAttributes<HTMLSelectElement>
-> & {
-  Option: any;
-  Group: any;
-};
-
 export interface SelectDrawerProps {
   items: ChildrenList;
   onSelect: (key: string | number) => void;

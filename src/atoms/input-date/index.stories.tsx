@@ -11,6 +11,9 @@ export default {
         type: "text",
       },
     },
+    value: {
+      control: { type: "date" },
+    },
     type: {
       options: [undefined, "date", "time", "datetime-local"],
       control: { type: "select" },

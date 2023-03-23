@@ -2,11 +2,13 @@ import React from "react";
 import { BmeInputMode } from "../../types";
 import { ThemeColours } from "../../settings/theme";
 
-export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
+export interface InputProps extends Omit<React.HTMLAttributes<HTMLInputElement>, "onChange"> {
   name?: string;
+  value?: string;
   type?: "text" | "password" | "email" | "search";
   inputMode?: BmeInputMode;
   size?: "small" | "medium" | "large";
+  onChange?: (value: string) => void;
   variant?: ThemeColours;
   width?: string;
   minWidth?: string;
