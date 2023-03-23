@@ -1,7 +1,6 @@
 import React from "react";
 import { ThemeColours } from "../../types";
 
-// Extend the React.HTMLAttributes interface without onChange
 export interface InputDateProps extends Omit<React.HTMLAttributes<HTMLInputElement>, "onChange"> {
   name: string;
   value?: string | Date;
