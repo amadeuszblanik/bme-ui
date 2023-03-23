@@ -9,6 +9,7 @@ export { default as BmeIcon } from "./icon";
 export { default as BmeInput } from "./input";
 export { default as BmeInputDeprecated } from "./input-depracated";
 export { default as BmeInputDate } from "./input-date";
+export { default as BmeInputNumber } from "./input-number";
 export { default as BmeInputDateDeprecated } from "./input-date-deprecated";
 export { default as BmeLineChart } from "./line-chart";
 export { default as BmeList } from "./list";
