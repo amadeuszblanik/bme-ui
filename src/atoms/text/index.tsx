@@ -44,7 +44,7 @@ export interface StyledTextProps {
 }
 
 const StyledText = styled.p<StyledTextProps>`
-  margin-bottom: ${({ noBottomMargin }) => (noBottomMargin ? "0" : "4px")};
+  margin: 0 0 ${({ noBottomMargin }) => (noBottomMargin ? "0" : "4px")};
   color: ${({ theme, color }) => (color ? theme.colors[color] : "var(--color-text)")};
   font-weight: ${({ weight }) => weight};
   font-size: ${({ sizeMobile }) => sizeMobile}px;

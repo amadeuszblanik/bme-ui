@@ -16,7 +16,8 @@ const StyledLi = styled.li`
   display: flex;
   align-items: center;
   width: 100%;
-  ${paddings("xs|sm")}
+  min-height: 42px;
+  ${paddings("xs|md")}
   overflow-x: hidden;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray5};
 

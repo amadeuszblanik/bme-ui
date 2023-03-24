@@ -5,7 +5,7 @@ import Item from "./item";
 import { ListType } from "./types";
 import Text from "../text";
 import Box from "../box";
-import { paddings } from "../../mixins";
+import { margins } from "../../mixins";
 
 const StyledListWrapper = styled.div`
   width: 100%;
@@ -13,7 +13,8 @@ const StyledListWrapper = styled.div`
 
 const StyledUl = styled.ul`
   width: 100%;
-  ${paddings("xs|xs")};
+  ${margins("xs|no")};
+  padding: 0;
   background: ${({ theme }) => theme.colors.gray6};
   border-radius: ${({ theme }) => theme.radius}px;
 `;
@@ -29,8 +30,8 @@ const Component: ListType = ({ label, children, emptyMessage }) => {
   return (
     <StyledListWrapper>
       {label && (
-        <Box padding="no|md">
-          <Text variant="Caption1" color="gray">
+        <Box padding="no|sm">
+          <Text variant="Caption1" color="gray" noBottomMargin>
             {label}
           </Text>
         </Box>
