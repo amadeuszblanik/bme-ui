@@ -41,6 +41,7 @@ export interface StyledTextProps {
   lineFormat?: LineFormat;
   noBottomMargin?: boolean;
   align?: TextAlignment;
+  ellipsis?: boolean;
 }
 
 const StyledText = styled.p<StyledTextProps>`
@@ -56,6 +57,14 @@ const StyledText = styled.p<StyledTextProps>`
   text-transform: ${({ textTransform }) => textTransform};
   --placeholder-height: ${({ sizeMobile }) => sizeMobile}px;
   --placeholder-offset-y: 3px;
+
+  ${({ ellipsis }) =>
+    ellipsis &&
+    `overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;`};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     font-size: ${({ sizeDesktop }) => sizeDesktop}px;
@@ -146,6 +155,7 @@ export interface Props {
   lineFormat?: LineFormat;
   uppercase?: boolean;
   align?: TextAlignment;
+  ellipsis?: boolean;
 }
 
 const Component: React.FunctionComponent<Props> = ({
@@ -156,6 +166,7 @@ const Component: React.FunctionComponent<Props> = ({
   color,
   uppercase,
   fontStyle,
+  ellipsis,
   ...props
 }) => {
   const size = variantSize[variant || "Body"];
@@ -168,6 +179,7 @@ const Component: React.FunctionComponent<Props> = ({
       color={color}
       fontStyle={fontStyle || "normal"}
       textTransform={uppercase ? "uppercase" : undefined}
+      ellipsis={ellipsis}
       {...props}
     >
       {children}

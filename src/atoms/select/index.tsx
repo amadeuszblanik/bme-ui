@@ -7,6 +7,7 @@ import { VALUES } from "./settings";
 import Drawer from "./drawer";
 import { childrenToList } from "../../utils";
 import { useClickOutside } from "../../hooks";
+import Text from "../text";
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>(
   (
@@ -102,7 +103,13 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
           minWidth={minWidth}
           maxWidth={maxWidth}
         >
-          {native ? children : selectedValue || emptyValue || "——"}
+          {native ? (
+            children
+          ) : (
+            <Text lineFormat="nowrap" ellipsis noBottomMargin>
+              {selectedValue || emptyValue || "——"}
+            </Text>
+          )}
         </StyledSelect>
         {isDrawerOpen && (
           <Drawer

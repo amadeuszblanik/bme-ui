@@ -20,12 +20,12 @@ const DEFAULT_SIZES: PaddingSizes = {
   mobile: {
     auto: "auto",
     no: "0",
-    xs: "4px",
-    sm: "8px",
-    md: "16px",
-    lg: "24px",
-    xl: "32px",
-    xxl: "40px",
+    xs: "8px",
+    sm: "16px",
+    md: "24px",
+    lg: "32px",
+    xl: "40px",
+    xxl: "48px",
   },
   desktop: {
     auto: "auto",
