@@ -47,18 +47,20 @@ const Component: React.FC<FormControllerProps> = ({
       <Box alignY="center" alignX="space-between" width="100%">
         {label && labelPosition === "left" && Label} {cloneChildren} {label && labelPosition === "right" && Label}
       </Box>
-      <Box alignX="space-between" width="100%" overflow="hidden">
-        {error && (
-          <Box margin={hint && "no|xs|no|no"}>
-            <Text color={hintVariant}>{error}</Text>
-          </Box>
-        )}
-        {hint && (
-          <Box alignX="right" width={!error ? "100%" : undefined} margin={error && "no|no|no|xs"}>
-            <Text color={errorVariant}>{hint}</Text>
-          </Box>
-        )}
-      </Box>
+      {(error || hint) && (
+        <Box alignX="space-between" width="100%" margin="xs|no|no" overflow="hidden">
+          {error && (
+            <Box margin={hint && "no|xs|no|no"}>
+              <Text color={hintVariant}>{error}</Text>
+            </Box>
+          )}
+          {hint && (
+            <Box alignX="right" width={!error ? "100%" : undefined} margin={error && "no|no|no|xs"}>
+              <Text color={errorVariant}>{hint}</Text>
+            </Box>
+          )}
+        </Box>
+      )}
     </Box>
   );
 };
