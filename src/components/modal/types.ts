@@ -1,9 +1,10 @@
 import React from "react";
 
 export interface ModalProps {
-  children: React.ReactNode;
+  title?: string;
   position?: "absolute" | "fixed";
   onClose?: () => void;
+  children: React.ReactNode;
 }
 
 export interface StyledModalWrapperProps {

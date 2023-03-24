@@ -6,6 +6,7 @@ import { toRgba } from "../../utils";
 import { animations } from "../../mixins";
 import Icon from "../../atoms/icon";
 import { useClickOutside } from "../../hooks";
+import Text from "../../atoms/text";
 
 const BACKGROUND_TRANSPARENCY = 0.8;
 
@@ -23,16 +24,22 @@ const StyledModalWrapper = styled.div<StyledModalWrapperProps>`
   backdrop-filter: blur(4px);
 `;
 
+const StyledModalTopbar = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: ${({ theme }) => theme.colors.background};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.backgroundSecondary};
+`;
+
 const StyledModalCloseButton = styled.button`
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 32px;
   height: 32px;
+  margin: 2px 2px 2px auto;
   color: ${({ theme }) => theme.colors.text};
   background: ${({ theme }) => theme.colors.backgroundSecondary};
   border: none;
@@ -49,7 +56,7 @@ const StyledModalCloseButton = styled.button`
   }
 `;
 
-const Modal: React.FC<ModalProps> = ({ children, position, onClose }) => {
+const Modal: React.FC<ModalProps> = ({ title, position, onClose, children }) => {
   const ref = useClickOutside<HTMLDivElement>(() => {
     if (onClose) {
       onClose();
@@ -63,19 +70,27 @@ const Modal: React.FC<ModalProps> = ({ children, position, onClose }) => {
           innerRef={ref}
           position="relative"
           direction="column"
-          padding={onClose ? "md|md|sm" : "sm|md"}
           maxWidth="800px"
           maxHeight="80vh"
           background="background"
           border="gray6"
           rounded
         >
-          {onClose && (
-            <StyledModalCloseButton onClick={onClose} type="button">
-              <Icon name="close" />
-            </StyledModalCloseButton>
-          )}
-          {children}
+          <StyledModalTopbar>
+            {title && (
+              <Box padding="xs|md">
+                <Text variant="Headline" noBottomMargin>
+                  {title}
+                </Text>
+              </Box>
+            )}
+            {onClose && (
+              <StyledModalCloseButton onClick={onClose} type="button">
+                <Icon name="close" />
+              </StyledModalCloseButton>
+            )}
+          </StyledModalTopbar>
+          <Box padding="sm|md">{children}</Box>
         </Box>
       </Box>
     </StyledModalWrapper>

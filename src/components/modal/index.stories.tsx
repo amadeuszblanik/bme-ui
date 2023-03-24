@@ -6,6 +6,9 @@ export default {
   title: "Molecules/Modal",
   component: Modal,
   argTypes: {
+    title: {
+      control: { type: "text" },
+    },
     position: {
       options: [undefined, "fixed", "absolute"],
       control: { type: "select" },
@@ -42,9 +45,33 @@ const Template: ComponentStory<typeof Modal> = (args) => (
   </div>
 );
 
-export const Playground = Template.bind({});
+const TemplateShort: ComponentStory<typeof Modal> = (args) => (
+  <div
+    style={{
+      position: "relative",
+      width: 420,
+      height: 420,
+      overflow: "hidden",
+      background: "purple",
+      borderRadius: "5px",
+    }}
+  >
+    <Modal {...args}>
+      Lorem ipsum dolor sit amet
+    </Modal>
+  </div>
+);
 
-Playground.args = {};
+export const Playground = Template.bind({});
+export const PlaygroundShort = TemplateShort.bind({});
+
+Playground.args = {
+  title: "Modal title",
+};
+
+PlaygroundShort.args = {
+  title: "Modal title",
+}
 
 Template.parameters = {
   pseudo: {
