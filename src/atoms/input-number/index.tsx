@@ -1,4 +1,4 @@
-import { ChangeEvent, forwardRef } from "react";
+import { ChangeEvent, forwardRef, useEffect, useState } from "react";
 import { InputDateProps } from "./types";
 import { VALUES, VARIANT } from "./settings";
 import { StyledInput } from "./styled";
@@ -8,6 +8,12 @@ const Input = forwardRef<HTMLInputElement, InputDateProps>(
     { name, value, size, inputMode, pattern, onChange, variant, width, minWidth, maxWidth, disabled, ...props },
     ref,
   ) => {
+    const [shadowValue, setShadowValue] = useState(String(value || ""));
+
+    useEffect(() => {
+      setShadowValue(String(value || ""));
+    }, [value]);
+
     size = size ?? "medium";
     variant = variant || VARIANT;
 
@@ -24,15 +30,26 @@ const Input = forwardRef<HTMLInputElement, InputDateProps>(
       desktop: VALUES.desktop[size].fontSize,
     };
 
-    const handleChange = ({ target: { valueAsNumber } }: ChangeEvent<HTMLInputElement>) => {
-      onChange?.(valueAsNumber);
+    const stringToNumber = (valueAsString: string) => Number(valueAsString.replace(/,/g, "."));
+
+    const handleChange = ({ target: { value: inputValue } }: ChangeEvent<HTMLInputElement>) => {
+      if (pattern) {
+        if (!new RegExp(pattern).test(inputValue)) {
+          onChange?.(stringToNumber(shadowValue));
+
+          return;
+        }
+      }
+
+      setShadowValue(inputValue);
+      onChange?.(stringToNumber(inputValue));
     };
 
     return (
       <StyledInput
         ref={ref}
         {...props}
-        value={value}
+        value={shadowValue}
         inputMode={inputMode}
         pattern={pattern}
         onChange={handleChange}
@@ -43,10 +60,11 @@ const Input = forwardRef<HTMLInputElement, InputDateProps>(
         paddingY={paddingY}
         fontSize={fontSize}
         disabled={disabled}
-        type="number"
+        type="text"
         width={width}
         minWidth={minWidth}
         maxWidth={maxWidth}
+        formNoValidate
       />
     );
   },
@@ -57,6 +75,7 @@ Input.displayName = "BmeInputDate";
 Input.defaultProps = {
   size: "medium",
   inputMode: "numeric",
+  pattern: "^-?\\d+([.,]\\d*)?$",
 };
 
 export default Input;
