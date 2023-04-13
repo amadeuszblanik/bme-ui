@@ -6,83 +6,91 @@ export default {
   title: "Atoms/Box",
   component: Box,
   argTypes: {
+    innerRef: {
+      description: 'Reference to the inner `div` element.',
+    },
+    children: {
+      description: 'Content to render inside the box.',
+    },
     position: {
-      options: [undefined, "static", "relative", "absolute", "fixed", "sticky"],
-      control: { type: "select" },
+      control: { type: 'radio', options: ['relative', 'absolute', 'fixed'] },
+      description: 'Positioning of the box.',
+    },
+    overflow: {
+      control: { type: 'radio', options: ['auto', 'hidden', 'scroll', 'visible'] },
+      description: 'Overflow of the box.',
+    },
+    overflowX: {
+      control: { type: 'radio', options: ['auto', 'hidden', 'scroll', 'visible'] },
+      description: 'Horizontal overflow of the box.',
+    },
+    overflowY: {
+      control: { type: 'radio', options: ['auto', 'hidden', 'scroll', 'visible'] },
+      description: 'Vertical overflow of the box.',
     },
     inline: {
-      control: {
-        type: "boolean",
-      },
+      control: { type: 'boolean' },
+      description: 'Whether the box should be displayed as an inline element.',
     },
     alignX: {
-      options: [undefined, "left", "center", "right", "space-between"],
-      control: { type: "select" },
+      control: { type: 'radio', options: ['left', 'center', 'right', 'space-between'] },
+      description: 'Horizontal alignment of the box.',
     },
     alignY: {
-      options: [undefined, "top", "center", "bottom", "space-between"],
-      control: { type: "select" },
+      control: { type: 'radio', options: ['top', 'center', 'bottom', 'space-between'] },
+      description: 'Vertical alignment of the box.',
     },
     direction: {
-      options: [undefined, "row", "column"],
-      control: { type: "select" },
+      control: { type: 'radio', options: ['row', 'column'] },
+      description: 'Direction of the flexbox layout inside the box.',
     },
     wrap: {
-      control: {
-        options: [undefined, true, "wrap", "nowrap", "wrap-reverse"],
-        control: { type: "select" },
-      },
+      control: { type: 'radio', options: [true, 'nowrap', 'wrap', 'wrap-reverse'] },
+      description: 'Whether the flexbox layout should wrap its contents, and in what way.',
     },
     width: {
-      control: {
-        type: "text",
-      },
+      control: { type: 'text' },
+      description: 'Width of the box.',
     },
     minWidth: {
-      control: {
-        type: "text",
-      },
+      control: { type: 'text' },
+      description: 'Minimum width of the box.',
     },
     maxWidth: {
-      control: {
-        type: "text",
-      },
+      control: { type: 'text' },
+      description: 'Maximum width of the box.',
     },
     height: {
-      control: {
-        type: "text",
-      },
+      control: { type: 'text' },
+      description: 'Height of the box.',
     },
     minHeight: {
-      control: {
-        type: "text",
-      },
+      control: { type: 'text' },
+      description: 'Minimum height of the box.',
     },
     maxHeight: {
-      control: {
-        type: "text",
-      },
+      control: { type: 'text' },
+      description: 'Maximum height of the box.',
     },
     padding: {
-      control: {
-        type: "text",
-      },
+      control: { type: 'text' },
+      description: 'Padding of the box.',
     },
     margin: {
-      control: { type: "text" },
+      control: { type: 'text' },
+      description: 'Margin of the box.',
     },
     rounded: {
-      control: {
-        type: "boolean",
-      },
+      control: { type: 'boolean' },
+      description: 'Whether the box should have rounded corners.',
     },
     border: {
-      options: [undefined, ...THEME_COLOURS_KEYS],
-      control: { type: "select" },
+      control: { type: 'select', options: THEME_COLOURS_KEYS },
+      description: 'Colour of the box border.',
     },
     background: {
-      options: [undefined, ...THEME_COLOURS_KEYS],
-      control: { type: "select" },
+      control: { type: 'select', options: THEME_COLOURS_KEYS },
+      description: 'Background colour of the box.',
     },
   },
 } as ComponentMeta<typeof Box>;

@@ -8,12 +8,16 @@ export default {
   component: Icon,
   argTypes: {
     name: {
-      options: IconNames,
-      control: { type: "select" },
+      control: { type: 'select', options: IconNames },
+      description: 'The name of the icon to display.',
     },
     color: {
-      options: THEME_COLOURS_KEYS,
-      control: { type: "select" },
+      control: { type: 'select', options: THEME_COLOURS_KEYS },
+      description: 'Colour of the icon.',
+    },
+    size: {
+      control: { type: 'number', min: 0 },
+      description: 'Size of the icon in pixels.',
     },
   },
 } as ComponentMeta<typeof Icon>;

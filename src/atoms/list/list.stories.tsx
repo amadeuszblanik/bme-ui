@@ -8,8 +8,27 @@ export default {
   title: "Atoms/List",
   component: Component,
   argTypes: {
-    label: { control: "text" },
-    onClick: { action: "onClick" },
+    label: {
+      description: 'The label for the list',
+      type: {
+        required: false,
+        summary: 'string',
+      },
+    },
+    children: {
+      description: 'The child elements to be rendered inside the list',
+      type: {
+        required: true,
+        summary: 'React.ReactNode',
+      },
+    },
+    emptyMessage: {
+      description: 'The message to display when there are no child elements to display',
+      type: {
+        required: false,
+        summary: 'string | React.ReactNode',
+      },
+    },
   },
 } as ComponentMeta<typeof Component>;
 

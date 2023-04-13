@@ -2,82 +2,57 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import TextArea from "./index";
 
 export default {
-  title: "Atoms/Text area",
+  title: "Atoms (Deprecated)/Text area",
   component: TextArea,
   argTypes: {
     name: {
-      control: {
-        type: "text",
-      },
+      description: "The name of the textarea input",
+      control: { type: "text" },
     },
     value: {
-      control: {
-        type: "text",
-      },
+      description: "The value of the textarea input",
+      control: { type: "text" },
     },
     label: {
-      control: {
-        type: "text",
-      },
-    },
-    placeholder: {
-      control: {
-        type: "text",
-      },
-    },
-    hint: {
-      control: {
-        type: "text",
-        description: "Hint message. Display order: error > valid > hint",
-      },
-    },
-    error: {
-      control: {
-        type: "text",
-        description: "Error message. Display order: error > valid > hint",
-      },
-    },
-    valid: {
-      control: {
-        type: "text",
-        description: "Valid message. Display order: error > valid > hint",
-      },
-    },
-    size: {
-      options: ["small", "medium", "large"],
-      control: { type: "radio" },
-    },
-    width: {
-      control: {
-        type: "text",
-      },
-    },
-    minWidth: {
-      control: {
-        type: "text",
-      },
-    },
-    maxWidth: {
-      control: {
-        type: "text",
-      },
-    },
-    disabled: {
-      control: { type: "boolean" },
+      description: "The label for the textarea input",
+      control: { type: "text" },
     },
     onValue: {
-      action: "onValue",
+      description: "The callback function called when the textarea value changes",
+      action: "changed",
     },
-    onChange: {
-      action: "onValue",
-      description: "Deprecated. Use onValue instead.",
+    size: {
+      description: "The size of the textarea input",
+      options: ["small", "medium", "large"],
+      control: { type: "select" },
     },
-    onClick: {
-      action: "onClick",
+    width: {
+      description: "The width of the textarea input",
+      control: { type: "text" },
     },
-    onPaste: {
-      action: "onPaste",
-      description: "All other HTMLInput events are supported.",
+    minWidth: {
+      description: "The minimum width of the textarea input",
+      control: { type: "text" },
+    },
+    maxWidth: {
+      description: "The maximum width of the textarea input",
+      control: { type: "text" },
+    },
+    hint: {
+      description: "The hint message for the textarea input",
+      control: { type: "text" },
+    },
+    error: {
+      description: "The error message for the textarea input",
+      control: { type: "text" },
+    },
+    valid: {
+      description: "The valid message for the textarea input",
+      control: { type: "text" },
+    },
+    disabled: {
+      description: "Whether the textarea input is disabled",
+      control: { type: "boolean" },
     },
   },
 } as ComponentMeta<typeof TextArea>;

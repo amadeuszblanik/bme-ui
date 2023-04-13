@@ -7,57 +7,56 @@ export default {
   component: Component,
   argTypes: {
     size: {
-      options: ["small", "medium", "large"],
-      control: { type: "radio" },
+      description: "The size of the select component.",
+      control: { type: "select", options: ["small", "medium", "large"] },
     },
     variant: {
-      options: THEME_COLOURS_KEYS,
-      control: { type: "select" },
+      description: "The variant (color scheme) of the select component.",
+      control: { type: "select", options: THEME_COLOURS_KEYS },
     },
     native: {
+      description: "Whether to use the native select element or a custom implementation.",
       control: { type: "boolean" },
     },
     onChange: {
-      action: "onChange",
-      description: "Deprecated. Use onValue instead.",
+      description: "Callback function invoked when the selected value changes.",
+      control: null,
     },
     value: {
-      control: {
-        type: "text",
-      },
+      description: "The currently selected value of the select component.",
+      control: { type: "text" },
     },
     emptyValue: {
-      control: {
-        type: "text",
-      },
+      description: "The text to display when no value is selected.",
+      control: { type: "text" },
     },
     searchable: {
-      description: "Searchable only works without native",
+      description: "Whether to enable searching for options.",
       control: { type: "boolean" },
     },
     multiple: {
+      description: "Whether to allow selecting multiple options.",
       control: { type: "boolean" },
     },
     width: {
-      control: {
-        type: "text",
-      },
+      description: "The width of the select component.",
+      control: { type: "text" },
     },
     minWidth: {
-      control: {
-        type: "text",
-      },
+      description: "The minimum width of the select component.",
+      control: { type: "text" },
     },
     maxWidth: {
-      control: {
-        type: "text",
-      },
+      description: "The maximum width of the select component.",
+      control: { type: "text" },
     },
     disabled: {
+      description: "Whether the select component is disabled.",
       control: { type: "boolean" },
     },
-    onClick: {
-      action: "onClick",
+    children: {
+      description: "The child elements to be rendered as options.",
+      control: null,
     },
   },
 } as ComponentMeta<typeof Component>;

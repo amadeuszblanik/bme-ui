@@ -62,4 +62,9 @@ export interface StyledStatusProps {
 
 export interface StyledAvatarActionProps {
   visible: boolean;
+  rounded?: boolean;
+  size: {
+    mobile: number;
+    desktop: number;
+  };
 }

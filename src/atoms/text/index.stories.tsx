@@ -1,24 +1,8 @@
 /* eslint-disable no-magic-numbers */
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Theme from "../../settings/theme";
+import { THEME_COLOURS_KEYS } from "../../settings/theme";
 import Component, { Props } from "./index";
-
-const TEXT_VARIANTS = [
-  "LargeTitle",
-  "Title1",
-  "Title2",
-  "Title3",
-  "Headline",
-  "Body",
-  "Callout",
-  "Subhead",
-  "Footnote",
-  "Caption1",
-  "Caption2",
-];
-
-const TEXT_WEIGHTS = ["thin", "light", "regular", "medium", "semibold", "bold", "heavy", "black"];
 
 type ComponentType = React.FunctionComponent<Props & { sampleText: string }>;
 
@@ -26,26 +10,77 @@ export default {
   title: "Atoms/Text",
   component: Component,
   argTypes: {
+    vachildren: {
+      type: { name: "string", required: true },
+      description: "The text content to be displayed",
+      control: { type: "text" },
+    },
     variant: {
-      options: TEXT_VARIANTS,
-      control: "select",
+      type: "string",
+      description: "The typography variant to be used",
+      control: { type: "select", options: ["LargeTitle", "Title1", "Title2", "Title3", "Headline", "Body", "Callout", "Subhead", "Footnote", "Caption1", "Caption2"] },
     },
     weight: {
-      options: TEXT_WEIGHTS,
-      control: "select",
+      type: "string",
+      description: "The font weight to be used",
+      control: { type: "select", options: ["Thin", "UltraLight", "Light", "Regular", "Medium", "SemiBold", "Bold", "Heavy", "Black"] },
     },
-    leading: { control: "boolean" },
-    uppercase: { control: "boolean" },
-    noBottomMargin: { control: "boolean" },
-    color: { options: Object.keys(Theme.colors), control: "select" },
-    fontStyle: { options: [undefined, "normal", "italic"], control: "select" },
+    leading: {
+      type: { name: "boolean" },
+      description: "Whether to apply additional line-height to the text",
+      control: { type: "boolean" },
+    },
+    noBottomMargin: {
+      type: { name: "boolean" },
+      description: "Whether to remove the default bottom margin",
+      control: { type: "boolean" },
+    },
+    color: {
+      type: {
+        name: "string",
+        required: false,
+      },
+      description: "The text color to be used",
+      control: { type: "select", options: THEME_COLOURS_KEYS },
+    },
+    fontStyle: {
+      type: {
+        name: "string",
+        required: false,
+      },
+      description: "The font style to be used",
+      control: { type: "select", options: ["normal", "italic"] },
+    },
+    lineHeight: {
+      type: { name: "string", required: false },
+      description: "The line height to be used",
+      control: { type: "text" },
+    },
+    letterSpacing: {
+      type: { name: "string", required: false },
+      description: "The letter spacing to be used",
+      control: { type: "text" },
+    },
     lineFormat: {
-      options: [undefined, "normal", "nowrap", "pre", "pre-line", "pre-wrap", "break-spaces"],
-      control: "select",
+      type: "string",
+      description: "The line format to be used",
+      control: { type: "select", options: ["normal", "nowrap", "pre", "pre-line", "pre-wrap", "break-spaces"] },
     },
-    lineHeight: { control: "text" },
-    letterSpacing: { control: "text" },
-    sampleText: { control: "text" },
+    uppercase: {
+      type: { name: "boolean" },
+      description: "Whether to convert the text to uppercase",
+      control: { type: "boolean" },
+    },
+    align: {
+      type: "string",
+      description: "The text alignment to be used",
+      control: { type: "select", options: ["left", "center", "right"] },
+    },
+    ellipsis: {
+      type: { name: "boolean" },
+      description: "Whether to display an ellipsis for text that overflows its container",
+      control: { type: "boolean" },
+    },
   },
 } as ComponentMeta<ComponentType>;
 

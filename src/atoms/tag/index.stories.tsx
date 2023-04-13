@@ -8,24 +8,24 @@ export default {
   component: Tag,
   argTypes: {
     label: {
-      control: {
-        type: "text",
-      },
+      description: 'The text label of the tag',
+      control: { type: 'text' },
     },
     size: {
-      options: ["small", "medium", "large"],
-      control: { type: "radio" },
+      description: 'The size of the tag',
+      control: { type: 'radio', options: ['small', 'medium', 'large'] },
     },
     variant: {
-      options: THEME_COLOURS_KEYS,
-      control: { type: "select" },
+      description: 'The color variant of the tag',
+      control: { type: 'select', options: THEME_COLOURS_KEYS },
     },
     icon: {
-      options: [undefined, ...IconNames],
-      control: { type: "select" },
+      description: 'The name of the icon to display next to the label',
+      control: { type: 'select', options: IconNames },
     },
     onRemove: {
-      action: "onRemove",
+      description: 'Callback function to handle removal of the tag',
+      action: 'removed',
     },
   },
 } as ComponentMeta<typeof Tag>;

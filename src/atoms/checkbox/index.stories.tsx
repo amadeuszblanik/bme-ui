@@ -6,72 +6,32 @@ export default {
   title: "Atoms/Checkbox",
   component: Checkbox,
   argTypes: {
-    value: {
-      control: {
-        type: "boolean",
-      },
-    },
-    variant: {
-      options: THEME_COLOURS_KEYS,
-      control: { type: "select" },
-    },
     name: {
-      control: {
-        type: "text",
-      },
-    },
-    label: {
-      control: {
-        type: "text",
-      },
-    },
-    placeholder: {
-      control: {
-        type: "text",
-      },
-    },
-    hint: {
-      control: {
-        type: "text",
-        description: "Hint message. Display order: error > valid > hint",
-      },
-    },
-    error: {
-      control: {
-        type: "text",
-        description: "Error message. Display order: error > valid > hint",
-      },
-    },
-    valid: {
-      control: {
-        type: "text",
-        description: "Valid message. Display order: error > valid > hint",
-      },
+      description: 'The name of the input field.',
     },
     size: {
-      options: ["small", "medium", "large"],
-      control: { type: "radio" },
+      control: { type: 'select', options: ['small', 'medium', 'large'] },
+      description: 'Size of the checkbox or radio button.',
     },
-    type: {
-      options: ["checkbox", "radio"],
-      control: { type: "select" },
+    valid: {
+      control: { type: 'text' },
+      description: 'Validation message to display when the input is invalid.',
     },
     disabled: {
-      control: { type: "boolean" },
+      control: { type: 'boolean' },
+      description: 'Whether the input is disabled.',
     },
-    onValue: {
-      action: "onValue",
+    variant: {
+      control: { type: 'select', options: THEME_COLOURS_KEYS },
+      description: 'Colour variant of the input.',
     },
-    onChange: {
-      action: "onValue",
-      description: "Deprecated. Use onValue instead.",
+    id: {
+      control: { type: 'text' },
+      description: 'ID of the radio input (only applicable if type is "radio").',
     },
-    onClick: {
-      action: "onClick",
-    },
-    onPaste: {
-      action: "onPaste",
-      description: "All other HTMLInput events are supported.",
+    type: {
+      control: { type: 'select', options: ['checkbox', 'radio'] },
+      description: 'Type of the input.',
     },
   },
 } as ComponentMeta<typeof Checkbox>;
@@ -83,7 +43,6 @@ export const Playground = Template.bind({});
 Playground.args = {
   size: "medium",
   name: "checkbox",
-  label: "Checkbox",
 };
 
 Template.parameters = {

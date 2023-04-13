@@ -139,6 +139,7 @@ export const StyledAvatarAction = styled.div<StyledAvatarActionProps>`
   width: 100%;
   height: 100%;
   background: ${({ theme }) => theme.colors.blue};
+  border-radius: ${({ theme, rounded, size }) => (rounded ? size.desktop : theme.radius)}px;
   opacity: ${({ visible }) => (visible ? "0.88" : "0")};
   ${animations(["opacity"])};
 `;
@@ -207,7 +208,11 @@ const Avatar: React.FC<AvatarProps> & { Action: React.FC<AvatarActionProps> } = 
         )}
       </StyledAvatar>
       {status && <StyledStatus size={sizeValue} borderOuter={statusBorderOuter} variant={status} rounded={rounded} />}
-      {children && <StyledAvatarAction visible={isHovered}>{children}</StyledAvatarAction>}
+      {children && (
+        <StyledAvatarAction visible={isHovered} rounded={rounded} size={sizeValue}>
+          {children}
+        </StyledAvatarAction>
+      )}
     </StyledAvatarWrapper>
   );
 };

@@ -1,9 +1,9 @@
 import { ChangeEvent, forwardRef, useEffect, useState } from "react";
-import { InputDateProps } from "./types";
+import { InputNumberProps } from "./types";
 import { VALUES, VARIANT } from "./settings";
 import { StyledInput } from "./styled";
 
-const Input = forwardRef<HTMLInputElement, InputDateProps>(
+const Input = forwardRef<HTMLInputElement, InputNumberProps>(
   (
     { name, value, size, inputMode, pattern, onChange, variant, width, minWidth, maxWidth, disabled, ...props },
     ref,

@@ -7,49 +7,85 @@ export default {
   component: ProgressBar,
   argTypes: {
     value: {
+      description: 'The progress value, between 0 and 100',
+      type: {
+        required: false,
+        summary: 'number',
+      },
       control: {
-        type: "number",
+        type: 'range',
+        min: 0,
+        max: 100,
+        step: 1,
       },
     },
     label: {
-      control: {
-        type: "number",
-        description: "$0 will be replaced with value formatted as percentage",
+      description: 'The label for the progress bar',
+      type: {
+        required: false,
+        summary: 'string',
       },
     },
     variant: {
-      options: THEME_COLOURS_KEYS,
-      control: { type: "select" },
+      description: 'The color variant for the progress bar',
+      type: {
+        required: false,
+        summary: 'string',
+      },
+      control: {
+        type: 'select',
+        options: THEME_COLOURS_KEYS,
+      },
     },
     width: {
+      description: 'The width of the progress bar',
+      type: {
+        required: false,
+        summary: 'string',
+      },
       control: {
-        type: "text",
+        type: 'text',
       },
     },
     minWidth: {
+      description: 'The minimum width of the progress bar',
+      type: {
+        required: false,
+        summary: 'string',
+      },
       control: {
-        type: "text",
+        type: 'text',
       },
     },
     maxWidth: {
+      description: 'The maximum width of the progress bar',
+      type: {
+        required: false,
+        summary: 'string',
+      },
       control: {
-        type: "text",
+        type: 'text',
       },
     },
     timeLeft: {
-      control: {
-        type: "text",
-        description: "In seconds",
+      description: 'The estimated time left until completion',
+      type: {
+        required: false,
+        summary: 'string',
       },
     },
     error: {
-      control: {
-        type: "text",
+      description: 'The error message to display when progress bar encounters an error',
+      type: {
+        required: false,
+        summary: 'string',
       },
     },
     done: {
-      control: {
-        type: "text",
+      description: 'The completion message to display when progress bar is finished',
+      type: {
+        required: false,
+        summary: 'string',
       },
     },
   },

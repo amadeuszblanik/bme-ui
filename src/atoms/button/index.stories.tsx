@@ -7,30 +7,31 @@ export default {
   component: Button,
   argTypes: {
     children: {
-      control: { type: "text" },
+      description: 'Content to display inside the button.',
     },
     variant: {
-      options: THEME_COLOURS_KEYS,
-      control: { type: "select" },
+      control: { type: 'select', options: THEME_COLOURS_KEYS },
+      description: 'Colour variant of the button.',
     },
     size: {
-      options: ["small", "medium", "large"],
-      control: { type: "radio" },
+      control: { type: 'radio', options: ['small', 'medium', 'large'] },
+      description: 'Size of the button.',
     },
     width: {
-      control: { type: "text" },
+      control: { type: 'text' },
+      description: 'Width of the button.',
     },
     outline: {
-      control: { type: "boolean" },
-    },
-    disabled: {
-      control: { type: "boolean" },
+      control: { type: 'boolean' },
+      description: 'Whether the button should have an outline instead of a solid fill.',
     },
     type: {
-      options: ["button", "submit", "reset"],
-      control: { type: "radio" },
-      defaultValue: "button",
-      description: "Default: button NOT submit",
+      control: { type: 'radio', options: ['button', 'submit', 'reset'] },
+      description: 'Type of the button.',
+    },
+    disabled: {
+      control: { type: 'boolean' },
+      description: 'Whether the button is disabled.',
     },
   },
 } as ComponentMeta<typeof Button>;

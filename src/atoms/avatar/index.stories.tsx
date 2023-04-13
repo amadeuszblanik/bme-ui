@@ -1,40 +1,47 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { THEME_COLOURS_KEYS } from "../../settings/theme";
 import Avatar from "./index";
+import { IconNames } from "../icon/types";
 
 export default {
   title: "Atoms/Avatar",
   component: Avatar,
   argTypes: {
     src: {
-      control: {
-        type: "text",
-      },
-    },
-    variant: {
-      options: THEME_COLOURS_KEYS,
-      control: { type: "select" },
+      control: { type: 'text' },
+      description: 'URL of the image to display in the avatar.',
     },
     size: {
-      options: ["small", "medium", "large"],
-      control: { type: "radio" },
+      control: { type: 'radio', options: ['small', 'medium', 'large'] },
+      description: 'Size of the avatar.',
+    },
+    variant: {
+      control: { type: 'select', options: THEME_COLOURS_KEYS },
+      description: 'Variant of the avatar.',
     },
     rounded: {
-      control: {
-        type: "boolean",
-      },
+      control: { type: 'boolean' },
+      description: 'Whether the avatar should be rounded.',
     },
     border: {
-      control: {
-        type: "boolean",
-      },
+      control: { type: 'boolean' },
+      description: 'Whether the avatar should have a border.',
     },
     status: {
-      options: [null, ...THEME_COLOURS_KEYS],
-      control: { type: "select" },
+      control: { type: 'select', options: THEME_COLOURS_KEYS },
+      description: 'Status of the avatar.',
+    },
+    children: {
+      control: { type: 'text' },
+      description: 'Children to render inside the avatar, such as initials or icons.',
+    },
+    actionIcon: {
+      control: { type: 'select', options: IconNames },
+      description: 'Icon of the avatar action.',
     },
     actionOnClick: {
       action: "actionOnClick()",
+      description: '(Action) clicked',
     }
   },
 } as ComponentMeta<typeof Avatar>;
@@ -42,7 +49,7 @@ export default {
 const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />;
 
 const TemplateWithAction: ComponentStory<typeof Avatar> = ({ ...args }) => <Avatar {...args}>
-  <Avatar.Action icon="camera" onClick={args.actionOnClick} />
+  <Avatar.Action icon={args.actionIcon || "camera"} onClick={args.actionOnClick} />
 </Avatar>;
 
 export const Playground = Template.bind({});

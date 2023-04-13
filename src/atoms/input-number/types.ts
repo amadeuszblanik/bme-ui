@@ -1,7 +1,7 @@
 import React from "react";
 import { ThemeColours } from "../../types";
 
-export interface InputDateProps extends Omit<React.HTMLAttributes<HTMLInputElement>, "onChange"> {
+export interface InputNumberProps extends Omit<React.HTMLAttributes<HTMLInputElement>, "onChange"> {
   name: string;
   value?: number;
   size?: "small" | "medium" | "large";

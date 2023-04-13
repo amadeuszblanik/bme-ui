@@ -7,52 +7,43 @@ export default {
   component: Input,
   argTypes: {
     name: {
-      control: {
-        type: "text",
-      },
+      control: { type: 'text' },
+      description: 'The name of the input field.',
     },
     value: {
-      control: { type: "date" },
+      control: { type: 'text' },
+      description: 'The value of the input field.',
     },
     type: {
-      options: [undefined, "date", "time", "datetime-local"],
-      control: { type: "select" },
+      control: { type: 'radio', options: ['date', 'time', 'datetime-local'] },
+      description: 'The type of the input field.',
     },
     size: {
-      options: ["small", "medium", "large"],
-      control: { type: "radio" },
-    },
-    variant: {
-      options: THEME_COLOURS_KEYS,
-      control: { type: "select" },
-    },
-    width: {
-      control: {
-        type: "text",
-      },
-    },
-    minWidth: {
-      control: {
-        type: "text",
-      },
-    },
-    maxWidth: {
-      control: {
-        type: "text",
-      },
-    },
-    disabled: {
-      control: { type: "boolean" },
+      control: { type: 'radio', options: ['small', 'medium', 'large'] },
+      description: 'The size of the input field.',
     },
     onChange: {
-      action: "onChange",
+      description: 'Callback function to handle input changes.',
     },
-    onClick: {
-      action: "onClick",
+    variant: {
+      control: { type: 'select', options: THEME_COLOURS_KEYS },
+      description: 'Colour variant of the input field.',
     },
-    onPaste: {
-      action: "onPaste",
-      description: "All other HTMLInput events are supported.",
+    width: {
+      control: { type: 'text' },
+      description: 'Width of the input field.',
+    },
+    minWidth: {
+      control: { type: 'text' },
+      description: 'Minimum width of the input field.',
+    },
+    maxWidth: {
+      control: { type: 'text' },
+      description: 'Maximum width of the input field.',
+    },
+    disabled: {
+      control: { type: 'boolean' },
+      description: 'Whether the input field is disabled.',
     },
   },
 } as ComponentMeta<typeof Input>;

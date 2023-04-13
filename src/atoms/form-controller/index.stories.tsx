@@ -9,50 +9,46 @@ export default {
   component: Component,
   argTypes: {
     name: {
-      control: {
-        type: "text",
-      },
+      description: 'The name of the form field.',
     },
     label: {
-      control: {
-        type: "text",
-      },
-    },
-    labelPosition: {
-      options: ["top", "right", "left"],
-      control: { type: "select" },
+      control: { type: 'text' },
+      description: 'Label text to display above or beside the form field.',
     },
     hint: {
-      control: {
-        type: "text",
-      },
+      control: { type: 'text' },
+      description: 'Additional text to display below or beside the form field.',
     },
     error: {
-      control: {
-        type: "text",
-      },
+      control: { type: 'text' },
+      description: 'Error message to display if the form field is invalid.',
     },
     width: {
-      control: {
-        type: "text",
-      },
+      control: { type: 'text' },
+      description: 'Width of the form field container.',
     },
     minWidth: {
-      control: {
-        type: "text",
-      },
+      control: { type: 'text' },
+      description: 'Minimum width of the form field container.',
     },
     maxWidth: {
-      control: {
-        type: "text",
-      },
+      control: { type: 'text' },
+      description: 'Maximum width of the form field container.',
     },
     disabled: {
-      control: { type: "boolean" },
+      control: { type: 'boolean' },
+      description: 'Whether the form field is disabled.',
     },
     variant: {
-      options: THEME_COLOURS_KEYS,
-      control: { type: "select" },
+      control: { type: 'select', options: THEME_COLOURS_KEYS },
+      description: 'Colour variant of the form field.',
+    },
+    children: {
+      description: 'The input or checkbox element to be controlled by the form.',
+    },
+    labelPosition: {
+      control: { type: 'radio', options: ['top', 'right', 'left'] },
+      description: 'Position of the label relative to the form field.',
     },
   },
 } as ComponentMeta<typeof Component>;

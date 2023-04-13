@@ -3,11 +3,38 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Component from "./index";
 
 export default {
-  title: "Atoms/Line chart",
+  title: 'Atoms/Line chart',
   component: Component,
   argTypes: {
-    data: { control: "array" },
-    width: { control: "number" },
+    data: {
+      control: "array",
+      description: 'An array of LineChartItem objects, containing the data points for the chart',
+      type: {
+        required: true,
+        summary: 'LineChartItem[]',
+      },
+    },
+    width: {
+      description: 'The width of the chart component, in pixels',
+      type: {
+        required: false,
+        summary: 'number',
+      },
+      control: {
+        type: 'number',
+        min: 0,
+      },
+    },
+    loading: {
+      description: 'If true, the chart is in a loading state and is not displaying any data',
+      type: {
+        required: false,
+        summary: 'boolean',
+      },
+      control: {
+        type: 'boolean',
+      },
+    },
   },
 } as ComponentMeta<typeof Component>;
 

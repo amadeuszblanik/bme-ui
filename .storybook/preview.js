@@ -50,6 +50,11 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  options: {
+    storySort: {
+      order: ["Getting started", "Atoms", "Molecules"],
+    }
+  }
 };
 
 export const decorators = [

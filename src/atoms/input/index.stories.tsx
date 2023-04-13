@@ -1,66 +1,56 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Component from "./index";
+import { THEME_COLOURS_KEYS } from "../../settings/theme";
 
 export default {
   title: "Atoms/Input",
   component: Component,
   argTypes: {
     name: {
-      control: {
-        type: "text",
-      },
+      control: { type: 'text' },
+      description: 'The name of the input field.',
     },
     value: {
-      control: {
-        type: "text",
-      },
-    },
-    placeholder: {
-      control: {
-        type: "text",
-      },
-    },
-    size: {
-      options: ["small", "medium", "large"],
-      control: { type: "radio" },
-    },
-    width: {
-      control: {
-        type: "text",
-      },
-    },
-    minWidth: {
-      control: {
-        type: "text",
-      },
-    },
-    maxWidth: {
-      control: {
-        type: "text",
-      },
+      control: { type: 'text' },
+      description: 'The value of the input field.',
     },
     type: {
-      options: ["text", "password", "email", "search"],
-      control: { type: "select" },
+      control: { type: 'radio', options: ['text', 'password', 'email', 'search'] },
+      description: 'The type of the input field.',
     },
     inputMode: {
-      options: ["text", "decimal", "numeric", "tel", "search", "email", "url"],
-      control: { type: "select" },
+      control: { type: 'select', options: ['text', 'decimal', 'numeric', 'tel', 'search', 'email', 'url'] },
+      description: 'The input mode of the field.',
     },
-    disabled: {
-      control: { type: "boolean" },
+    size: {
+      control: { type: 'radio', options: ['small', 'medium', 'large'] },
+      description: 'The size of the input field.',
     },
     onChange: {
-      action: "onChange",
-      description: "All other HTMLInput events are supported.",
-    },
-    onClick: {
-      action: "onClick",
-      description: "All other HTMLInput events are supported.",
+      description: 'Callback function to handle input changes.',
     },
     onPaste: {
-      action: "onPaste",
-      description: "All other HTMLInput events are supported.",
+      description: 'Callback function to handle input paste.',
+    },
+    variant: {
+      control: { type: 'select', options: THEME_COLOURS_KEYS },
+      description: 'Colour variant of the input field.',
+    },
+    width: {
+      control: { type: 'text' },
+      description: 'Width of the input field.',
+    },
+    minWidth: {
+      control: { type: 'text' },
+      description: 'Minimum width of the input field.',
+    },
+    maxWidth: {
+      control: { type: 'text' },
+      description: 'Maximum width of the input field.',
+    },
+    disabled: {
+      control: { type: 'boolean' },
+      description: 'Whether the input field is disabled.',
     },
   },
 } as ComponentMeta<typeof Component>;
