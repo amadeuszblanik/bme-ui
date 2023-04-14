@@ -3,7 +3,7 @@ import { clamp } from "bme-utils";
 import { useScreenSize } from "../../hooks";
 import { getIndexes, toPercentage } from "../../utils";
 import { pipeDate, pipeNumber } from "../../pipes";
-import ProgressBar from "../progress-bar";
+import Spinner from "../spinner";
 
 const CHART_RATIO = 0.5625;
 
@@ -24,8 +24,18 @@ interface ChartPlaceholderProps {
 
 const StyledChartPlaceholder = styled.div<ChartPlaceholderProps>`
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   padding-bottom: ${({ ratio }) => toPercentage(ratio)}%;
+`;
+
+const StyledChartPlaceholderContent = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 const StyledChartWrapper = styled.svg`
@@ -84,7 +94,9 @@ const Component = ({ data, width: componentWidth, loading }: Props) => {
   if (loading) {
     return (
       <StyledChartPlaceholder ratio={CHART_RATIO}>
-        <ProgressBar />
+        <StyledChartPlaceholderContent>
+          <Spinner />
+        </StyledChartPlaceholderContent>
       </StyledChartPlaceholder>
     );
   }
