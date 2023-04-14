@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/addon-docs';
+import { ThemeProvider } from "styled-components";
+import theme from "../../settings/theme";
+import { IconNames } from "./types";
+import Icon from "./index";
+
+<Meta title="Atoms/Icon/Docs" />
+
+# Icon
+Icon component is used to display icons.
+
+## Usage
+Check playground for more examples.
+
+## Icons
+<ThemeProvider theme={theme}>
+  <div style={{ display: "flex", alignItems: "center",  flexWrap: "wrap", paddingTop: "16px" }}>
+    {IconNames.map((iconName) => (
+      <div style={{ display: "flex", width: "33%", alignItems: "center", marginBottom: "16px" }}>
+        <Icon name={iconName} color="dark" />
+        <span style={{ marginLeft: "10px" }}>{iconName}</span>
+      </div>
+    ))}
+  </div>
+</ThemeProvider>
