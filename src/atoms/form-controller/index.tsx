@@ -45,7 +45,8 @@ const Component: React.FC<FormControllerProps> = ({
     <Box direction="column" width={width} minWidth={minWidth} maxWidth={maxWidth} margin="no|no|md">
       {label && labelPosition === "top" && <Box margin="no|no|xs">{Label}</Box>}
       <Box alignY="center" alignX="space-between" width="100%">
-        {label && labelPosition === "left" && Label} {cloneChildren} {label && labelPosition === "right" && Label}
+        {label && labelPosition === "left" && <Box padding="no|sm|no|no">{Label}</Box>} {cloneChildren}{" "}
+        {label && labelPosition === "right" && <Box padding="no|no|no|sm">{Label}</Box>}
       </Box>
       {(error || hint) && (
         <Box alignX="space-between" width="100%" margin="xs|no|no" overflow="hidden">

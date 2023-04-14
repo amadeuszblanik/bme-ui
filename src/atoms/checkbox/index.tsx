@@ -39,6 +39,7 @@ const CHECKMARK_RELATIVE_SIZE = 0.66;
 const StyledCheckbox = styled.input<StyledCheckboxProps>`
   position: relative;
   display: inline-block;
+  flex-shrink: 0;
   width: ${({ sizeInPx }) => sizeInPx.mobile}px;
   height: ${({ sizeInPx }) => sizeInPx.mobile}px;
   margin: 0;

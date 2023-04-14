@@ -1,11 +1,10 @@
 import { forwardRef } from "react";
 import styled from "styled-components";
-import { InputProps, StyledInputProps, StyledInputWrapperProps } from "./types";
+import { InputProps, StyledInputProps, StyledInputWrapperProps, StyledPrefixIconProps } from "./types";
 import { animations } from "../../mixins";
 import { BmeInputMode } from "../../types";
 import { ThemeColours } from "../../settings/theme";
 import { BmeIcon } from "../index";
-import { StyledPrefixIconProps } from "../input-depracated/types";
 
 const VALUES = {
   mobile: {
