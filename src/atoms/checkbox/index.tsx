@@ -90,7 +90,7 @@ const StyledCheckbox = styled.input<StyledCheckboxProps>`
   }
 `;
 
-const Component = forwardRef<HTMLInputElement, CheckboxProps>(({ size, variant, ...props }, ref) => {
+const Component = forwardRef<HTMLInputElement, CheckboxProps>(({ size, variant, value, onChange, ...props }, ref) => {
   size = size ?? "medium";
   variant = variant ?? "blue";
 
@@ -103,7 +103,23 @@ const Component = forwardRef<HTMLInputElement, CheckboxProps>(({ size, variant, 
     desktop: VALUES.desktop[size].fontSize,
   };
 
-  return <StyledCheckbox {...props} sizeInPx={sizeInPx} fontSize={fontSize} variant={variant || "blue"} ref={ref} />;
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (onChange) {
+      onChange(event.target.checked || false);
+    }
+  };
+
+  return (
+    <StyledCheckbox
+      {...props}
+      sizeInPx={sizeInPx}
+      fontSize={fontSize}
+      variant={variant || "blue"}
+      checked={value}
+      onChange={handleChange}
+      ref={ref}
+    />
+  );
 });
 
 Component.displayName = "BmeCheckbox";

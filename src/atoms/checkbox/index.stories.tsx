@@ -33,6 +33,14 @@ export default {
       control: { type: 'select', options: ['checkbox', 'radio'] },
       description: 'Type of the input.',
     },
+    value: {
+      control: { type: 'boolean' },
+      description: 'Value of the input.',
+    },
+    onChange: {
+      action: 'changed',
+      description: 'Function to call when the input changes.',
+    }
   },
 } as ComponentMeta<typeof Checkbox>;
 

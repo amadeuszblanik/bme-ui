@@ -1,12 +1,14 @@
 import React from "react";
 import { ThemeColours } from "../../settings/theme";
 
-export interface CheckboxSharedProps extends React.HTMLAttributes<HTMLInputElement> {
+export interface CheckboxSharedProps extends Omit<React.HTMLAttributes<HTMLInputElement>, "onChange"> {
   name: string;
   size?: "small" | "medium" | "large";
   valid?: string;
   disabled?: boolean;
   variant?: ThemeColours;
+  value?: boolean;
+  onChange?: (value: boolean) => void;
 }
 
 export interface CheckboxCheckboxProps extends CheckboxSharedProps {
