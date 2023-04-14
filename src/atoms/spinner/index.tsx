@@ -79,7 +79,7 @@ const Spinner: React.FC<SpinnerProps> = ({ size, variant, strokeWidth }) => {
           cy={cy}
           r={r}
           strokeWidth={strokeWidth || sizeValue / 10}
-          variant={variant || "blue"}
+          variant={variant || "text"}
           dashValue={dashValue}
         />
       </SpinnerSvg>
