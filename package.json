@@ -1,6 +1,6 @@
 {
   "name": "bme-ui",
-  "version": "1.0.0-beta.36",
+  "version": "1.0.0-beta.37",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -62,6 +62,7 @@
     "babel-loader": "^8.3.0",
     "bme-utils": "^0.1.7",
     "cross-env": "^7.0.3",
+    "esbuild": "^0.17.16",
     "eslint": "^8.29.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^3.5.2",
