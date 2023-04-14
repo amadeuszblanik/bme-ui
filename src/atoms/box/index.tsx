@@ -61,9 +61,9 @@ const StyledBox = styled.div<StyledBoxProps>`
     "max-width",
   ])};
 
-  --bme-background: ${({ theme, background }) => (background ? theme.colors[background] : "transparent")};
-  --bme-color: ${({ theme, background }) =>
-    background ? (isDark(theme.colors[background]) ? theme.colors.light : theme.colors.dark) : theme.colors.text};
+  ${({ theme, background }) => background && `--bme-background: ${theme.colors[background]}`};
+  ${({ theme, background }) =>
+    background && `--bme-color: ${isDark(theme.colors[background]) ? theme.colors.light : theme.colors.dark}`};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     border-width: 3px;

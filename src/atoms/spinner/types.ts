@@ -11,7 +11,7 @@ export interface StyledSpinnerSvgProps {
 }
 
 export interface StyledSpinnerSvgCircleProps {
-  variant: ThemeColours;
+  variant?: ThemeColours;
   dashValue: number;
   strokeWidth: number;
 }

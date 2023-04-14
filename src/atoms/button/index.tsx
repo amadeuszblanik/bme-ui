@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { ButtonProps, StyledButtonProps } from "./types";
-import { animations, isDark } from "../../mixins";
+import { animations, grayish, isDark } from "../../mixins";
 import { darkenColor } from "../../utils";
+import Spinner from "../spinner";
+import Box from "../box";
 
 const VALUES = {
   mobile: {
@@ -57,11 +59,19 @@ const StyledButton = styled.button<StyledButtonProps>`
       : theme.colors.dark};
   font-size: ${({ fontSize }) => fontSize.mobile}px;
   background: ${({ theme, variant, outline }) => (outline ? `transparent` : theme.colors[variant])};
-  border: ${({ theme, variant, disabled }) => (disabled ? theme.colors.gray : theme.colors[variant])} solid 2px;
+  border: ${({ theme, variant, disabled }) => (disabled ? grayish(variant) : theme.colors[variant])} solid 2px;
   border-radius: var(--bme-button-radius, ${({ theme }) => theme.radius}px);
   cursor: pointer;
   appearance: none;
   ${animations(["background-color", "color", "padding", "font-size"])};
+  --bme-color: ${({ theme, variant, outline, disabled }) =>
+    outline
+      ? disabled
+        ? theme.colors.light
+        : theme.colors[variant]
+      : isDark(theme.colors[variant])
+      ? theme.colors.light
+      : theme.colors.dark};
 
   &:not([disabled]) {
     &:hover,
@@ -90,7 +100,7 @@ const StyledButton = styled.button<StyledButtonProps>`
 
   &:disabled,
   &[disabled] {
-    background: ${({ theme }) => theme.colors.gray} !important;
+    background: ${({ variant }) => grayish(variant)} !important;
     cursor: not-allowed;
   }
 
@@ -100,7 +110,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   }
 `;
 
-const Button: React.FC<ButtonProps> = ({ children, size, width, variant, type, ...props }) => {
+const Button: React.FC<ButtonProps> = ({ children, size, width, variant, type, disabled, loading, ...props }) => {
   size = size ?? "medium";
   variant = variant ?? "blue";
 
@@ -126,7 +136,13 @@ const Button: React.FC<ButtonProps> = ({ children, size, width, variant, type, .
       variant={variant}
       fontSize={fontSize}
       type={type}
+      disabled={disabled || loading}
     >
+      {loading && (
+        <Box padding="no|sm|no|no">
+          <Spinner size="small" />
+        </Box>
+      )}
       {children}
     </StyledButton>
   );

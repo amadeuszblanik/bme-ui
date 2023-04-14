@@ -33,6 +33,10 @@ export default {
       control: { type: 'boolean' },
       description: 'Whether the button is disabled.',
     },
+    loading: {
+      control: { type: 'boolean' },
+      description: 'Whether the button is loading.',
+    }
   },
 } as ComponentMeta<typeof Button>;
 
