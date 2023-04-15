@@ -15,7 +15,8 @@
     "build:dev": "cross-env NODE_ENV=development rollup -c",
     "build:prod": "cross-env NODE_ENV=production rollup -c",
     "build:storybook": "build-storybook",
-    "export:storybook": "build-storybook -s ./public -o docs-build",
+    "export:storybook": "build-storybook -s ./public",
+    "deploy:storybook": "gh-pages -d storybook-static",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src && stylelint './**/*.{css,scss,js,jsx,ts,tsx}'",
     "lint:script": "eslint --ext .js,.jsx,.ts,.tsx src",
     "lint:css": "stylelint './**/*.{css,scss,js,jsx,ts,tsx}'"
@@ -70,6 +71,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "gh-pages": "^5.0.0",
     "husky": "^4.3.8",
     "jest": "^29.3.1",
     "prettier": "^2.8.1",

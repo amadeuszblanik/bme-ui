@@ -233,4 +233,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-!/docs-build/
+/docs-build/
+/storybook-static/
