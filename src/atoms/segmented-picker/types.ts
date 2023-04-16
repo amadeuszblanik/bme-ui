@@ -5,7 +5,7 @@ export type SegmentedPickerChildren = React.ReactElement<SegmentedPickerItemProp
 export interface SegmentedPickerProps {
   value?: string | number;
   onChange?: (value: string | number) => void;
-  children: SegmentedPickerChildren;
+  children: SegmentedPickerChildren[] | SegmentedPickerChildren;
 }
 
 export interface SegmentedPickerItemProps {
