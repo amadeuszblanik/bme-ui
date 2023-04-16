@@ -63,7 +63,7 @@ const StyledBox = styled.div<StyledBoxProps>`
 
   ${({ theme, background }) => background && `--bme-background: ${theme.colors[background]}`};
   ${({ theme, background }) =>
-    background && `--bme-color: ${isDark(theme.colors[background]) ? theme.colors.light : theme.colors.dark}`};
+    background && `--bme-text: ${isDark(theme.colors[background]) ? theme.colors.light : theme.colors.dark}`};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     border-width: 3px;

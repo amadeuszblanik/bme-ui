@@ -43,5 +43,5 @@ export const SpinnerSvgCircle = styled.circle<StyledSpinnerSvgCircleProps>`
   stroke-dashoffset: ${({ dashValue }) => dashValue};
   stroke-linecap: round;
   animation: dash 1.5s ease-in-out infinite;
-  stroke: ${({ theme, variant }) => (variant ? theme.colors[variant] : "var(--bme-color)")};
+  stroke: ${({ theme, variant }) => (variant ? theme.colors[variant] : "var(--bme-text)")};
 `;

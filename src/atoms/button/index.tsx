@@ -64,7 +64,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   cursor: pointer;
   appearance: none;
   ${animations(["background-color", "color", "padding", "font-size"])};
-  --bme-color: ${({ theme, variant, outline, disabled }) =>
+  --bme-text: ${({ theme, variant, outline, disabled }) =>
     outline
       ? disabled
         ? theme.colors.light
