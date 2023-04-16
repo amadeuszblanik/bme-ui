@@ -11,7 +11,7 @@ export default {
       description: 'The name of the input field.',
     },
     value: {
-      control: { type: 'text' },
+      control: { type: 'date' },
       description: 'The value of the input field.',
     },
     type: {
