@@ -5,7 +5,7 @@ const PADDING_X_Y_LENGTH = 2;
 const PADDING_TOP_RIGHT_BOTTOM_LENGTH = 3;
 const PADDING_TOP_RIGHT_BOTTOM_LEFT_LENGTH = 4;
 
-const ALLOWED_VALUES = ["auto", "no", "xs", "sm", "md", "lg", "xl", "xxl"];
+const ALLOWED_VALUES = ["auto", "no", "xs3", "xs2", "xs", "sm", "md", "lg", "xl", "xxl"];
 
 interface PaddingSizes {
   mobile: {
@@ -20,6 +20,8 @@ const DEFAULT_SIZES: PaddingSizes = {
   mobile: {
     auto: "auto",
     no: "0",
+    xs3: "2px",
+    xs2: "4px",
     xs: "8px",
     sm: "16px",
     md: "24px",
@@ -30,6 +32,8 @@ const DEFAULT_SIZES: PaddingSizes = {
   desktop: {
     auto: "auto",
     no: "0",
+    xs3: "2px",
+    xs2: "4px",
     xs: "8px",
     sm: "16px",
     md: "24px",

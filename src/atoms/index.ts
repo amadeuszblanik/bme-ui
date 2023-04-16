@@ -11,6 +11,7 @@ export { default as BmeLineChart } from "./line-chart";
 export { default as BmeList } from "./list";
 export { default as BmeSpinner } from "./spinner";
 export { default as BmeProgressBar } from "./progress-bar";
+export { default as BmeSegmentedPicker } from "./segmented-picker";
 export { default as BmeSelect } from "./select";
 export { default as BmeTag } from "./tag";
 export { default as BmeText } from "./text";
