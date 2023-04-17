@@ -18,9 +18,9 @@ export default {
       description: 'Whether the item is currently selected. (Will be overwriten by the parent SegmentedPicker)',
       type: { name: 'boolean', required: false },
     },
-    onChange: {
-      action: 'onChange',
-      description: 'Function to be called when the item is selected. (Will be overwriten by the parent SegmentedPicker)',
+    onClick: {
+      action: 'onClick',
+      description: 'Function to be called when the item is selected.',
       type: { name: '(value: string | number) => void', required: false },
     },
     divider: {

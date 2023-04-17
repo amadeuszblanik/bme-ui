@@ -21,10 +21,6 @@ const Component: React.FC<SegmentedPickerProps> & { Item: React.FC<SegmentedPick
   onChange,
   children,
 }) => {
-  const handleChange = (tag: string | number) => () => {
-    onChange?.(tag);
-  };
-
   const childrenArray = React.Children.toArray(children) as SegmentedPickerChildren[];
 
   const cloneChildren = React.Children.map(children, (child, index) => {
@@ -34,9 +30,14 @@ const Component: React.FC<SegmentedPickerProps> & { Item: React.FC<SegmentedPick
       const isSelected = value === child.props.tag;
       const isNextSelected = nextChild?.props.tag === value;
 
+      const handleClick = () => {
+        onChange?.(child.props.tag);
+        child.props.onClick?.(child.props.tag);
+      };
+
       return React.cloneElement(child as SegmentedPickerChildren, {
         selected: isSelected,
-        onChange: handleChange(child.props.tag),
+        onClick: handleClick,
         divider: !isSelected && !isNextSelected,
       });
     }

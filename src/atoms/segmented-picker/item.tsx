@@ -41,9 +41,9 @@ const StyledSegmentedPickerItem = styled.button<StyledSegmentedPickerItemProps>`
   }
 `;
 
-const Compontent: React.FC<SegmentedPickerItemProps> = ({ tag, onChange, selected, divider, children }) => {
+const Compontent: React.FC<SegmentedPickerItemProps> = ({ tag, onClick, selected, divider, children }) => {
   const handleClick = () => {
-    onChange?.(tag);
+    onClick?.(tag);
   };
 
   return (

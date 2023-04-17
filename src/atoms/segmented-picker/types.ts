@@ -11,7 +11,7 @@ export interface SegmentedPickerProps {
 export interface SegmentedPickerItemProps {
   tag: string | number;
   selected?: boolean;
-  onChange?: (value: string | number) => void;
+  onClick?: (value: string | number) => void;
   divider?: boolean;
   children: React.ReactNode | string;
 }
