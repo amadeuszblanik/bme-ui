@@ -22,6 +22,10 @@ const pascalCaseToKebabCase = (str) => {
   return kebabCaseWords.join("-");
 }
 
+const lowerCaseFirstLetter = (str) => {
+  return str.charAt(0).toLowerCase() + str.slice(1);
+}
+
 const main = async () => {
   let iconNames = [];
 
@@ -87,9 +91,7 @@ ${iconNames.map(iconName => `import ${iconName} from "./svg/${pascalCaseToKebabC
 
 const IconRender = (name: IconName) => {
   switch (name) {
-${iconNames.map(iconName => `    case "${iconName}":\n      return ${iconName};`).join("\n")}
-    default:
-      return <>⍰</>;
+${iconNames.map(iconName => `    case "${pascalCaseToKebabCase(iconName).toLowerCase()}":\n      return ${iconName};`).join("\n")}
   }
 };
 
@@ -102,9 +104,9 @@ export default IconRender;
 
     const iconTypesFileContent = `import { ThemeColours } from "../../settings/theme";
 
-export const IconNames = ${JSON.stringify(iconNames)};
+export const IconNames = ${JSON.stringify(iconNames.map((iconName) => pascalCaseToKebabCase(iconName).toLowerCase()))};
 
-export type IconName = ${iconNames.map(iconName => `"${iconName}"`).join(" | ")};
+export type IconName = ${iconNames.map(iconName => `"${pascalCaseToKebabCase(iconName).toLowerCase()}"`).join(" | ")};
 
 export interface IconProps {
   name: IconName;

@@ -924,1852 +924,1850 @@ import Woman from "./svg/woman";
 
 const IconRender = (name: IconName) => {
   switch (name) {
-    case "AccessibilityOutline":
+    case "accessibility-outline":
       return AccessibilityOutline;
-    case "Accessibility":
+    case "accessibility":
       return Accessibility;
-    case "AddCircleOutline":
+    case "add-circle-outline":
       return AddCircleOutline;
-    case "AddCircle":
+    case "add-circle":
       return AddCircle;
-    case "AddOutline":
+    case "add-outline":
       return AddOutline;
-    case "Add":
+    case "add":
       return Add;
-    case "AirplaneOutline":
+    case "airplane-outline":
       return AirplaneOutline;
-    case "Airplane":
+    case "airplane":
       return Airplane;
-    case "AlarmOutline":
+    case "alarm-outline":
       return AlarmOutline;
-    case "Alarm":
+    case "alarm":
       return Alarm;
-    case "AlbumsOutline":
+    case "albums-outline":
       return AlbumsOutline;
-    case "Albums":
+    case "albums":
       return Albums;
-    case "AlertCircleOutline":
+    case "alert-circle-outline":
       return AlertCircleOutline;
-    case "AlertCircle":
+    case "alert-circle":
       return AlertCircle;
-    case "AlertOutline":
+    case "alert-outline":
       return AlertOutline;
-    case "Alert":
+    case "alert":
       return Alert;
-    case "AmericanFootballOutline":
+    case "american-football-outline":
       return AmericanFootballOutline;
-    case "AmericanFootball":
+    case "american-football":
       return AmericanFootball;
-    case "AnalyticsOutline":
+    case "analytics-outline":
       return AnalyticsOutline;
-    case "Analytics":
+    case "analytics":
       return Analytics;
-    case "ApertureOutline":
+    case "aperture-outline":
       return ApertureOutline;
-    case "Aperture":
+    case "aperture":
       return Aperture;
-    case "AppsOutline":
+    case "apps-outline":
       return AppsOutline;
-    case "Apps":
+    case "apps":
       return Apps;
-    case "ArchiveOutline":
+    case "archive-outline":
       return ArchiveOutline;
-    case "Archive":
+    case "archive":
       return Archive;
-    case "ArrowBackCircleOutline":
+    case "arrow-back-circle-outline":
       return ArrowBackCircleOutline;
-    case "ArrowBackCircle":
+    case "arrow-back-circle":
       return ArrowBackCircle;
-    case "ArrowBackOutline":
+    case "arrow-back-outline":
       return ArrowBackOutline;
-    case "ArrowBack":
+    case "arrow-back":
       return ArrowBack;
-    case "ArrowDownCircleOutline":
+    case "arrow-down-circle-outline":
       return ArrowDownCircleOutline;
-    case "ArrowDownCircle":
+    case "arrow-down-circle":
       return ArrowDownCircle;
-    case "ArrowDownOutline":
+    case "arrow-down-outline":
       return ArrowDownOutline;
-    case "ArrowDown":
+    case "arrow-down":
       return ArrowDown;
-    case "ArrowForwardCircleOutline":
+    case "arrow-forward-circle-outline":
       return ArrowForwardCircleOutline;
-    case "ArrowForwardCircle":
+    case "arrow-forward-circle":
       return ArrowForwardCircle;
-    case "ArrowForwardOutline":
+    case "arrow-forward-outline":
       return ArrowForwardOutline;
-    case "ArrowForward":
+    case "arrow-forward":
       return ArrowForward;
-    case "ArrowRedoCircleOutline":
+    case "arrow-redo-circle-outline":
       return ArrowRedoCircleOutline;
-    case "ArrowRedoCircle":
+    case "arrow-redo-circle":
       return ArrowRedoCircle;
-    case "ArrowRedoOutline":
+    case "arrow-redo-outline":
       return ArrowRedoOutline;
-    case "ArrowRedo":
+    case "arrow-redo":
       return ArrowRedo;
-    case "ArrowUndoCircleOutline":
+    case "arrow-undo-circle-outline":
       return ArrowUndoCircleOutline;
-    case "ArrowUndoCircle":
+    case "arrow-undo-circle":
       return ArrowUndoCircle;
-    case "ArrowUndoOutline":
+    case "arrow-undo-outline":
       return ArrowUndoOutline;
-    case "ArrowUndo":
+    case "arrow-undo":
       return ArrowUndo;
-    case "ArrowUpCircleOutline":
+    case "arrow-up-circle-outline":
       return ArrowUpCircleOutline;
-    case "ArrowUpCircle":
+    case "arrow-up-circle":
       return ArrowUpCircle;
-    case "ArrowUpOutline":
+    case "arrow-up-outline":
       return ArrowUpOutline;
-    case "ArrowUp":
+    case "arrow-up":
       return ArrowUp;
-    case "AtCircleOutline":
+    case "at-circle-outline":
       return AtCircleOutline;
-    case "AtCircle":
+    case "at-circle":
       return AtCircle;
-    case "AtOutline":
+    case "at-outline":
       return AtOutline;
-    case "At":
+    case "at":
       return At;
-    case "AttachOutline":
+    case "attach-outline":
       return AttachOutline;
-    case "Attach":
+    case "attach":
       return Attach;
-    case "BackspaceOutline":
+    case "backspace-outline":
       return BackspaceOutline;
-    case "Backspace":
+    case "backspace":
       return Backspace;
-    case "BagAddOutline":
+    case "bag-add-outline":
       return BagAddOutline;
-    case "BagAdd":
+    case "bag-add":
       return BagAdd;
-    case "BagCheckOutline":
+    case "bag-check-outline":
       return BagCheckOutline;
-    case "BagCheck":
+    case "bag-check":
       return BagCheck;
-    case "BagHandleOutline":
+    case "bag-handle-outline":
       return BagHandleOutline;
-    case "BagHandle":
+    case "bag-handle":
       return BagHandle;
-    case "BagOutline":
+    case "bag-outline":
       return BagOutline;
-    case "BagRemoveOutline":
+    case "bag-remove-outline":
       return BagRemoveOutline;
-    case "BagRemove":
+    case "bag-remove":
       return BagRemove;
-    case "Bag":
+    case "bag":
       return Bag;
-    case "BalloonOutline":
+    case "balloon-outline":
       return BalloonOutline;
-    case "Balloon":
+    case "balloon":
       return Balloon;
-    case "BanOutline":
+    case "ban-outline":
       return BanOutline;
-    case "Ban":
+    case "ban":
       return Ban;
-    case "BandageOutline":
+    case "bandage-outline":
       return BandageOutline;
-    case "Bandage":
+    case "bandage":
       return Bandage;
-    case "BarChartOutline":
+    case "bar-chart-outline":
       return BarChartOutline;
-    case "BarChart":
+    case "bar-chart":
       return BarChart;
-    case "BarbellOutline":
+    case "barbell-outline":
       return BarbellOutline;
-    case "Barbell":
+    case "barbell":
       return Barbell;
-    case "BarcodeOutline":
+    case "barcode-outline":
       return BarcodeOutline;
-    case "Barcode":
+    case "barcode":
       return Barcode;
-    case "BaseballOutline":
+    case "baseball-outline":
       return BaseballOutline;
-    case "Baseball":
+    case "baseball":
       return Baseball;
-    case "BasketOutline":
+    case "basket-outline":
       return BasketOutline;
-    case "Basket":
+    case "basket":
       return Basket;
-    case "BasketballOutline":
+    case "basketball-outline":
       return BasketballOutline;
-    case "Basketball":
+    case "basketball":
       return Basketball;
-    case "BatteryChargingOutline":
+    case "battery-charging-outline":
       return BatteryChargingOutline;
-    case "BatteryCharging":
+    case "battery-charging":
       return BatteryCharging;
-    case "BatteryDeadOutline":
+    case "battery-dead-outline":
       return BatteryDeadOutline;
-    case "BatteryDead":
+    case "battery-dead":
       return BatteryDead;
-    case "BatteryFullOutline":
+    case "battery-full-outline":
       return BatteryFullOutline;
-    case "BatteryFull":
+    case "battery-full":
       return BatteryFull;
-    case "BatteryHalfOutline":
+    case "battery-half-outline":
       return BatteryHalfOutline;
-    case "BatteryHalf":
+    case "battery-half":
       return BatteryHalf;
-    case "BeakerOutline":
+    case "beaker-outline":
       return BeakerOutline;
-    case "Beaker":
+    case "beaker":
       return Beaker;
-    case "BedOutline":
+    case "bed-outline":
       return BedOutline;
-    case "Bed":
+    case "bed":
       return Bed;
-    case "BeerOutline":
+    case "beer-outline":
       return BeerOutline;
-    case "Beer":
+    case "beer":
       return Beer;
-    case "BicycleOutline":
+    case "bicycle-outline":
       return BicycleOutline;
-    case "Bicycle":
+    case "bicycle":
       return Bicycle;
-    case "BluetoothOutline":
+    case "bluetooth-outline":
       return BluetoothOutline;
-    case "Bluetooth":
+    case "bluetooth":
       return Bluetooth;
-    case "BoatOutline":
+    case "boat-outline":
       return BoatOutline;
-    case "Boat":
+    case "boat":
       return Boat;
-    case "BodyOutline":
+    case "body-outline":
       return BodyOutline;
-    case "Body":
+    case "body":
       return Body;
-    case "BonfireOutline":
+    case "bonfire-outline":
       return BonfireOutline;
-    case "Bonfire":
+    case "bonfire":
       return Bonfire;
-    case "BookOutline":
+    case "book-outline":
       return BookOutline;
-    case "Book":
+    case "book":
       return Book;
-    case "BookmarkOutline":
+    case "bookmark-outline":
       return BookmarkOutline;
-    case "Bookmark":
+    case "bookmark":
       return Bookmark;
-    case "BookmarksOutline":
+    case "bookmarks-outline":
       return BookmarksOutline;
-    case "Bookmarks":
+    case "bookmarks":
       return Bookmarks;
-    case "BowlingBallOutline":
+    case "bowling-ball-outline":
       return BowlingBallOutline;
-    case "BowlingBall":
+    case "bowling-ball":
       return BowlingBall;
-    case "BriefcaseOutline":
+    case "briefcase-outline":
       return BriefcaseOutline;
-    case "Briefcase":
+    case "briefcase":
       return Briefcase;
-    case "BrowsersOutline":
+    case "browsers-outline":
       return BrowsersOutline;
-    case "Browsers":
+    case "browsers":
       return Browsers;
-    case "BrushOutline":
+    case "brush-outline":
       return BrushOutline;
-    case "Brush":
+    case "brush":
       return Brush;
-    case "BugOutline":
+    case "bug-outline":
       return BugOutline;
-    case "Bug":
+    case "bug":
       return Bug;
-    case "BuildOutline":
+    case "build-outline":
       return BuildOutline;
-    case "Build":
+    case "build":
       return Build;
-    case "BulbOutline":
+    case "bulb-outline":
       return BulbOutline;
-    case "Bulb":
+    case "bulb":
       return Bulb;
-    case "BusOutline":
+    case "bus-outline":
       return BusOutline;
-    case "Bus":
+    case "bus":
       return Bus;
-    case "BusinessOutline":
+    case "business-outline":
       return BusinessOutline;
-    case "Business":
+    case "business":
       return Business;
-    case "CafeOutline":
+    case "cafe-outline":
       return CafeOutline;
-    case "Cafe":
+    case "cafe":
       return Cafe;
-    case "CalculatorOutline":
+    case "calculator-outline":
       return CalculatorOutline;
-    case "Calculator":
+    case "calculator":
       return Calculator;
-    case "CalendarClearOutline":
+    case "calendar-clear-outline":
       return CalendarClearOutline;
-    case "CalendarClear":
+    case "calendar-clear":
       return CalendarClear;
-    case "CalendarNumberOutline":
+    case "calendar-number-outline":
       return CalendarNumberOutline;
-    case "CalendarNumber":
+    case "calendar-number":
       return CalendarNumber;
-    case "CalendarOutline":
+    case "calendar-outline":
       return CalendarOutline;
-    case "Calendar":
+    case "calendar":
       return Calendar;
-    case "CallOutline":
+    case "call-outline":
       return CallOutline;
-    case "Call":
+    case "call":
       return Call;
-    case "CameraOutline":
+    case "camera-outline":
       return CameraOutline;
-    case "CameraReverseOutline":
+    case "camera-reverse-outline":
       return CameraReverseOutline;
-    case "CameraReverse":
+    case "camera-reverse":
       return CameraReverse;
-    case "Camera":
+    case "camera":
       return Camera;
-    case "CarOutline":
+    case "car-outline":
       return CarOutline;
-    case "CarSportOutline":
+    case "car-sport-outline":
       return CarSportOutline;
-    case "CarSport":
+    case "car-sport":
       return CarSport;
-    case "Car":
+    case "car":
       return Car;
-    case "CardOutline":
+    case "card-outline":
       return CardOutline;
-    case "Card":
+    case "card":
       return Card;
-    case "CaretBackCircleOutline":
+    case "caret-back-circle-outline":
       return CaretBackCircleOutline;
-    case "CaretBackCircle":
+    case "caret-back-circle":
       return CaretBackCircle;
-    case "CaretBackOutline":
+    case "caret-back-outline":
       return CaretBackOutline;
-    case "CaretBack":
+    case "caret-back":
       return CaretBack;
-    case "CaretDownCircleOutline":
+    case "caret-down-circle-outline":
       return CaretDownCircleOutline;
-    case "CaretDownCircle":
+    case "caret-down-circle":
       return CaretDownCircle;
-    case "CaretDownOutline":
+    case "caret-down-outline":
       return CaretDownOutline;
-    case "CaretDown":
+    case "caret-down":
       return CaretDown;
-    case "CaretForwardCircleOutline":
+    case "caret-forward-circle-outline":
       return CaretForwardCircleOutline;
-    case "CaretForwardCircle":
+    case "caret-forward-circle":
       return CaretForwardCircle;
-    case "CaretForwardOutline":
+    case "caret-forward-outline":
       return CaretForwardOutline;
-    case "CaretForward":
+    case "caret-forward":
       return CaretForward;
-    case "CaretUpCircleOutline":
+    case "caret-up-circle-outline":
       return CaretUpCircleOutline;
-    case "CaretUpCircle":
+    case "caret-up-circle":
       return CaretUpCircle;
-    case "CaretUpOutline":
+    case "caret-up-outline":
       return CaretUpOutline;
-    case "CaretUp":
+    case "caret-up":
       return CaretUp;
-    case "CartOutline":
+    case "cart-outline":
       return CartOutline;
-    case "Cart":
+    case "cart":
       return Cart;
-    case "CashOutline":
+    case "cash-outline":
       return CashOutline;
-    case "Cash":
+    case "cash":
       return Cash;
-    case "CellularOutline":
+    case "cellular-outline":
       return CellularOutline;
-    case "Cellular":
+    case "cellular":
       return Cellular;
-    case "ChatboxEllipsesOutline":
+    case "chatbox-ellipses-outline":
       return ChatboxEllipsesOutline;
-    case "ChatboxEllipses":
+    case "chatbox-ellipses":
       return ChatboxEllipses;
-    case "ChatboxOutline":
+    case "chatbox-outline":
       return ChatboxOutline;
-    case "Chatbox":
+    case "chatbox":
       return Chatbox;
-    case "ChatbubbleEllipsesOutline":
+    case "chatbubble-ellipses-outline":
       return ChatbubbleEllipsesOutline;
-    case "ChatbubbleEllipses":
+    case "chatbubble-ellipses":
       return ChatbubbleEllipses;
-    case "ChatbubbleOutline":
+    case "chatbubble-outline":
       return ChatbubbleOutline;
-    case "Chatbubble":
+    case "chatbubble":
       return Chatbubble;
-    case "ChatbubblesOutline":
+    case "chatbubbles-outline":
       return ChatbubblesOutline;
-    case "Chatbubbles":
+    case "chatbubbles":
       return Chatbubbles;
-    case "CheckboxOutline":
+    case "checkbox-outline":
       return CheckboxOutline;
-    case "Checkbox":
+    case "checkbox":
       return Checkbox;
-    case "CheckmarkCircleOutline":
+    case "checkmark-circle-outline":
       return CheckmarkCircleOutline;
-    case "CheckmarkCircle":
+    case "checkmark-circle":
       return CheckmarkCircle;
-    case "CheckmarkDoneCircleOutline":
+    case "checkmark-done-circle-outline":
       return CheckmarkDoneCircleOutline;
-    case "CheckmarkDoneCircle":
+    case "checkmark-done-circle":
       return CheckmarkDoneCircle;
-    case "CheckmarkDoneOutline":
+    case "checkmark-done-outline":
       return CheckmarkDoneOutline;
-    case "CheckmarkDone":
+    case "checkmark-done":
       return CheckmarkDone;
-    case "CheckmarkOutline":
+    case "checkmark-outline":
       return CheckmarkOutline;
-    case "Checkmark":
+    case "checkmark":
       return Checkmark;
-    case "ChevronBackCircleOutline":
+    case "chevron-back-circle-outline":
       return ChevronBackCircleOutline;
-    case "ChevronBackCircle":
+    case "chevron-back-circle":
       return ChevronBackCircle;
-    case "ChevronBackOutline":
+    case "chevron-back-outline":
       return ChevronBackOutline;
-    case "ChevronBack":
+    case "chevron-back":
       return ChevronBack;
-    case "ChevronCollapseOutline":
+    case "chevron-collapse-outline":
       return ChevronCollapseOutline;
-    case "ChevronCollapse":
+    case "chevron-collapse":
       return ChevronCollapse;
-    case "ChevronDownCircleOutline":
+    case "chevron-down-circle-outline":
       return ChevronDownCircleOutline;
-    case "ChevronDownCircle":
+    case "chevron-down-circle":
       return ChevronDownCircle;
-    case "ChevronDownOutline":
+    case "chevron-down-outline":
       return ChevronDownOutline;
-    case "ChevronDown":
+    case "chevron-down":
       return ChevronDown;
-    case "ChevronExpandOutline":
+    case "chevron-expand-outline":
       return ChevronExpandOutline;
-    case "ChevronExpand":
+    case "chevron-expand":
       return ChevronExpand;
-    case "ChevronForwardCircleOutline":
+    case "chevron-forward-circle-outline":
       return ChevronForwardCircleOutline;
-    case "ChevronForwardCircle":
+    case "chevron-forward-circle":
       return ChevronForwardCircle;
-    case "ChevronForwardOutline":
+    case "chevron-forward-outline":
       return ChevronForwardOutline;
-    case "ChevronForward":
+    case "chevron-forward":
       return ChevronForward;
-    case "ChevronUpCircleOutline":
+    case "chevron-up-circle-outline":
       return ChevronUpCircleOutline;
-    case "ChevronUpCircle":
+    case "chevron-up-circle":
       return ChevronUpCircle;
-    case "ChevronUpOutline":
+    case "chevron-up-outline":
       return ChevronUpOutline;
-    case "ChevronUp":
+    case "chevron-up":
       return ChevronUp;
-    case "ClipboardOutline":
+    case "clipboard-outline":
       return ClipboardOutline;
-    case "Clipboard":
+    case "clipboard":
       return Clipboard;
-    case "CloseCircleOutline":
+    case "close-circle-outline":
       return CloseCircleOutline;
-    case "CloseCircle":
+    case "close-circle":
       return CloseCircle;
-    case "CloseOutline":
+    case "close-outline":
       return CloseOutline;
-    case "Close":
+    case "close":
       return Close;
-    case "CloudCircleOutline":
+    case "cloud-circle-outline":
       return CloudCircleOutline;
-    case "CloudCircle":
+    case "cloud-circle":
       return CloudCircle;
-    case "CloudDoneOutline":
+    case "cloud-done-outline":
       return CloudDoneOutline;
-    case "CloudDone":
+    case "cloud-done":
       return CloudDone;
-    case "CloudDownloadOutline":
+    case "cloud-download-outline":
       return CloudDownloadOutline;
-    case "CloudDownload":
+    case "cloud-download":
       return CloudDownload;
-    case "CloudOfflineOutline":
+    case "cloud-offline-outline":
       return CloudOfflineOutline;
-    case "CloudOffline":
+    case "cloud-offline":
       return CloudOffline;
-    case "CloudOutline":
+    case "cloud-outline":
       return CloudOutline;
-    case "CloudUploadOutline":
+    case "cloud-upload-outline":
       return CloudUploadOutline;
-    case "CloudUpload":
+    case "cloud-upload":
       return CloudUpload;
-    case "Cloud":
+    case "cloud":
       return Cloud;
-    case "CloudyNightOutline":
+    case "cloudy-night-outline":
       return CloudyNightOutline;
-    case "CloudyNight":
+    case "cloudy-night":
       return CloudyNight;
-    case "CloudyOutline":
+    case "cloudy-outline":
       return CloudyOutline;
-    case "Cloudy":
+    case "cloudy":
       return Cloudy;
-    case "CodeDownloadOutline":
+    case "code-download-outline":
       return CodeDownloadOutline;
-    case "CodeDownload":
+    case "code-download":
       return CodeDownload;
-    case "CodeOutline":
+    case "code-outline":
       return CodeOutline;
-    case "CodeSlashOutline":
+    case "code-slash-outline":
       return CodeSlashOutline;
-    case "CodeSlash":
+    case "code-slash":
       return CodeSlash;
-    case "CodeWorkingOutline":
+    case "code-working-outline":
       return CodeWorkingOutline;
-    case "CodeWorking":
+    case "code-working":
       return CodeWorking;
-    case "Code":
+    case "code":
       return Code;
-    case "CogOutline":
+    case "cog-outline":
       return CogOutline;
-    case "Cog":
+    case "cog":
       return Cog;
-    case "ColorFillOutline":
+    case "color-fill-outline":
       return ColorFillOutline;
-    case "ColorFill":
+    case "color-fill":
       return ColorFill;
-    case "ColorFilterOutline":
+    case "color-filter-outline":
       return ColorFilterOutline;
-    case "ColorFilter":
+    case "color-filter":
       return ColorFilter;
-    case "ColorPaletteOutline":
+    case "color-palette-outline":
       return ColorPaletteOutline;
-    case "ColorPalette":
+    case "color-palette":
       return ColorPalette;
-    case "ColorWandOutline":
+    case "color-wand-outline":
       return ColorWandOutline;
-    case "ColorWand":
+    case "color-wand":
       return ColorWand;
-    case "CompassOutline":
+    case "compass-outline":
       return CompassOutline;
-    case "Compass":
+    case "compass":
       return Compass;
-    case "ConstructOutline":
+    case "construct-outline":
       return ConstructOutline;
-    case "Construct":
+    case "construct":
       return Construct;
-    case "ContractOutline":
+    case "contract-outline":
       return ContractOutline;
-    case "Contract":
+    case "contract":
       return Contract;
-    case "ContrastOutline":
+    case "contrast-outline":
       return ContrastOutline;
-    case "Contrast":
+    case "contrast":
       return Contrast;
-    case "CopyOutline":
+    case "copy-outline":
       return CopyOutline;
-    case "Copy":
+    case "copy":
       return Copy;
-    case "CreateOutline":
+    case "create-outline":
       return CreateOutline;
-    case "Create":
+    case "create":
       return Create;
-    case "CropOutline":
+    case "crop-outline":
       return CropOutline;
-    case "Crop":
+    case "crop":
       return Crop;
-    case "CubeOutline":
+    case "cube-outline":
       return CubeOutline;
-    case "Cube":
+    case "cube":
       return Cube;
-    case "CutOutline":
+    case "cut-outline":
       return CutOutline;
-    case "Cut":
+    case "cut":
       return Cut;
-    case "DesktopOutline":
+    case "desktop-outline":
       return DesktopOutline;
-    case "Desktop":
+    case "desktop":
       return Desktop;
-    case "DiamondOutline":
+    case "diamond-outline":
       return DiamondOutline;
-    case "Diamond":
+    case "diamond":
       return Diamond;
-    case "DiceOutline":
+    case "dice-outline":
       return DiceOutline;
-    case "Dice":
+    case "dice":
       return Dice;
-    case "DiscOutline":
+    case "disc-outline":
       return DiscOutline;
-    case "Disc":
+    case "disc":
       return Disc;
-    case "DocumentAttachOutline":
+    case "document-attach-outline":
       return DocumentAttachOutline;
-    case "DocumentAttach":
+    case "document-attach":
       return DocumentAttach;
-    case "DocumentLockOutline":
+    case "document-lock-outline":
       return DocumentLockOutline;
-    case "DocumentLock":
+    case "document-lock":
       return DocumentLock;
-    case "DocumentOutline":
+    case "document-outline":
       return DocumentOutline;
-    case "DocumentTextOutline":
+    case "document-text-outline":
       return DocumentTextOutline;
-    case "DocumentText":
+    case "document-text":
       return DocumentText;
-    case "Document":
+    case "document":
       return Document;
-    case "DocumentsOutline":
+    case "documents-outline":
       return DocumentsOutline;
-    case "Documents":
+    case "documents":
       return Documents;
-    case "DownloadOutline":
+    case "download-outline":
       return DownloadOutline;
-    case "Download":
+    case "download":
       return Download;
-    case "DuplicateOutline":
+    case "duplicate-outline":
       return DuplicateOutline;
-    case "Duplicate":
+    case "duplicate":
       return Duplicate;
-    case "EarOutline":
+    case "ear-outline":
       return EarOutline;
-    case "Ear":
+    case "ear":
       return Ear;
-    case "EarthOutline":
+    case "earth-outline":
       return EarthOutline;
-    case "Earth":
+    case "earth":
       return Earth;
-    case "EaselOutline":
+    case "easel-outline":
       return EaselOutline;
-    case "Easel":
+    case "easel":
       return Easel;
-    case "EggOutline":
+    case "egg-outline":
       return EggOutline;
-    case "Egg":
+    case "egg":
       return Egg;
-    case "EllipseOutline":
+    case "ellipse-outline":
       return EllipseOutline;
-    case "Ellipse":
+    case "ellipse":
       return Ellipse;
-    case "EllipsisHorizontalCircleOutline":
+    case "ellipsis-horizontal-circle-outline":
       return EllipsisHorizontalCircleOutline;
-    case "EllipsisHorizontalCircle":
+    case "ellipsis-horizontal-circle":
       return EllipsisHorizontalCircle;
-    case "EllipsisHorizontalOutline":
+    case "ellipsis-horizontal-outline":
       return EllipsisHorizontalOutline;
-    case "EllipsisHorizontal":
+    case "ellipsis-horizontal":
       return EllipsisHorizontal;
-    case "EllipsisVerticalCircleOutline":
+    case "ellipsis-vertical-circle-outline":
       return EllipsisVerticalCircleOutline;
-    case "EllipsisVerticalCircle":
+    case "ellipsis-vertical-circle":
       return EllipsisVerticalCircle;
-    case "EllipsisVerticalOutline":
+    case "ellipsis-vertical-outline":
       return EllipsisVerticalOutline;
-    case "EllipsisVertical":
+    case "ellipsis-vertical":
       return EllipsisVertical;
-    case "EnterOutline":
+    case "enter-outline":
       return EnterOutline;
-    case "Enter":
+    case "enter":
       return Enter;
-    case "ExitOutline":
+    case "exit-outline":
       return ExitOutline;
-    case "Exit":
+    case "exit":
       return Exit;
-    case "ExpandOutline":
+    case "expand-outline":
       return ExpandOutline;
-    case "Expand":
+    case "expand":
       return Expand;
-    case "ExtensionPuzzleOutline":
+    case "extension-puzzle-outline":
       return ExtensionPuzzleOutline;
-    case "ExtensionPuzzle":
+    case "extension-puzzle":
       return ExtensionPuzzle;
-    case "EyeOffOutline":
+    case "eye-off-outline":
       return EyeOffOutline;
-    case "EyeOff":
+    case "eye-off":
       return EyeOff;
-    case "EyeOutline":
+    case "eye-outline":
       return EyeOutline;
-    case "Eye":
+    case "eye":
       return Eye;
-    case "EyedropOutline":
+    case "eyedrop-outline":
       return EyedropOutline;
-    case "Eyedrop":
+    case "eyedrop":
       return Eyedrop;
-    case "FastFoodOutline":
+    case "fast-food-outline":
       return FastFoodOutline;
-    case "FastFood":
+    case "fast-food":
       return FastFood;
-    case "FemaleOutline":
+    case "female-outline":
       return FemaleOutline;
-    case "Female":
+    case "female":
       return Female;
-    case "FileTrayFullOutline":
+    case "file-tray-full-outline":
       return FileTrayFullOutline;
-    case "FileTrayFull":
+    case "file-tray-full":
       return FileTrayFull;
-    case "FileTrayOutline":
+    case "file-tray-outline":
       return FileTrayOutline;
-    case "FileTrayStackedOutline":
+    case "file-tray-stacked-outline":
       return FileTrayStackedOutline;
-    case "FileTrayStacked":
+    case "file-tray-stacked":
       return FileTrayStacked;
-    case "FileTray":
+    case "file-tray":
       return FileTray;
-    case "FilmOutline":
+    case "film-outline":
       return FilmOutline;
-    case "Film":
+    case "film":
       return Film;
-    case "FilterCircleOutline":
+    case "filter-circle-outline":
       return FilterCircleOutline;
-    case "FilterCircle":
+    case "filter-circle":
       return FilterCircle;
-    case "FilterOutline":
+    case "filter-outline":
       return FilterOutline;
-    case "Filter":
+    case "filter":
       return Filter;
-    case "FingerPrintOutline":
+    case "finger-print-outline":
       return FingerPrintOutline;
-    case "FingerPrint":
+    case "finger-print":
       return FingerPrint;
-    case "FishOutline":
+    case "fish-outline":
       return FishOutline;
-    case "Fish":
+    case "fish":
       return Fish;
-    case "FitnessOutline":
+    case "fitness-outline":
       return FitnessOutline;
-    case "Fitness":
+    case "fitness":
       return Fitness;
-    case "FlagOutline":
+    case "flag-outline":
       return FlagOutline;
-    case "Flag":
+    case "flag":
       return Flag;
-    case "FlameOutline":
+    case "flame-outline":
       return FlameOutline;
-    case "Flame":
+    case "flame":
       return Flame;
-    case "FlashOffOutline":
+    case "flash-off-outline":
       return FlashOffOutline;
-    case "FlashOff":
+    case "flash-off":
       return FlashOff;
-    case "FlashOutline":
+    case "flash-outline":
       return FlashOutline;
-    case "Flash":
+    case "flash":
       return Flash;
-    case "FlashlightOutline":
+    case "flashlight-outline":
       return FlashlightOutline;
-    case "Flashlight":
+    case "flashlight":
       return Flashlight;
-    case "FlaskOutline":
+    case "flask-outline":
       return FlaskOutline;
-    case "Flask":
+    case "flask":
       return Flask;
-    case "FlowerOutline":
+    case "flower-outline":
       return FlowerOutline;
-    case "Flower":
+    case "flower":
       return Flower;
-    case "FolderOpenOutline":
+    case "folder-open-outline":
       return FolderOpenOutline;
-    case "FolderOpen":
+    case "folder-open":
       return FolderOpen;
-    case "FolderOutline":
+    case "folder-outline":
       return FolderOutline;
-    case "Folder":
+    case "folder":
       return Folder;
-    case "FootballOutline":
+    case "football-outline":
       return FootballOutline;
-    case "Football":
+    case "football":
       return Football;
-    case "FootstepsOutline":
+    case "footsteps-outline":
       return FootstepsOutline;
-    case "Footsteps":
+    case "footsteps":
       return Footsteps;
-    case "FunnelOutline":
+    case "funnel-outline":
       return FunnelOutline;
-    case "Funnel":
+    case "funnel":
       return Funnel;
-    case "GameControllerOutline":
+    case "game-controller-outline":
       return GameControllerOutline;
-    case "GameController":
+    case "game-controller":
       return GameController;
-    case "GiftOutline":
+    case "gift-outline":
       return GiftOutline;
-    case "Gift":
+    case "gift":
       return Gift;
-    case "GitBranchOutline":
+    case "git-branch-outline":
       return GitBranchOutline;
-    case "GitBranch":
+    case "git-branch":
       return GitBranch;
-    case "GitCommitOutline":
+    case "git-commit-outline":
       return GitCommitOutline;
-    case "GitCommit":
+    case "git-commit":
       return GitCommit;
-    case "GitCompareOutline":
+    case "git-compare-outline":
       return GitCompareOutline;
-    case "GitCompare":
+    case "git-compare":
       return GitCompare;
-    case "GitMergeOutline":
+    case "git-merge-outline":
       return GitMergeOutline;
-    case "GitMerge":
+    case "git-merge":
       return GitMerge;
-    case "GitNetworkOutline":
+    case "git-network-outline":
       return GitNetworkOutline;
-    case "GitNetwork":
+    case "git-network":
       return GitNetwork;
-    case "GitPullRequestOutline":
+    case "git-pull-request-outline":
       return GitPullRequestOutline;
-    case "GitPullRequest":
+    case "git-pull-request":
       return GitPullRequest;
-    case "GlassesOutline":
+    case "glasses-outline":
       return GlassesOutline;
-    case "Glasses":
+    case "glasses":
       return Glasses;
-    case "GlobeOutline":
+    case "globe-outline":
       return GlobeOutline;
-    case "Globe":
+    case "globe":
       return Globe;
-    case "GolfOutline":
+    case "golf-outline":
       return GolfOutline;
-    case "Golf":
+    case "golf":
       return Golf;
-    case "GridOutline":
+    case "grid-outline":
       return GridOutline;
-    case "Grid":
+    case "grid":
       return Grid;
-    case "HammerOutline":
+    case "hammer-outline":
       return HammerOutline;
-    case "Hammer":
+    case "hammer":
       return Hammer;
-    case "HandLeftOutline":
+    case "hand-left-outline":
       return HandLeftOutline;
-    case "HandLeft":
+    case "hand-left":
       return HandLeft;
-    case "HandRightOutline":
+    case "hand-right-outline":
       return HandRightOutline;
-    case "HandRight":
+    case "hand-right":
       return HandRight;
-    case "HappyOutline":
+    case "happy-outline":
       return HappyOutline;
-    case "Happy":
+    case "happy":
       return Happy;
-    case "HardwareChipOutline":
+    case "hardware-chip-outline":
       return HardwareChipOutline;
-    case "HardwareChip":
+    case "hardware-chip":
       return HardwareChip;
-    case "HeadsetOutline":
+    case "headset-outline":
       return HeadsetOutline;
-    case "Headset":
+    case "headset":
       return Headset;
-    case "HeartCircleOutline":
+    case "heart-circle-outline":
       return HeartCircleOutline;
-    case "HeartCircle":
+    case "heart-circle":
       return HeartCircle;
-    case "HeartDislikeCircleOutline":
+    case "heart-dislike-circle-outline":
       return HeartDislikeCircleOutline;
-    case "HeartDislikeCircle":
+    case "heart-dislike-circle":
       return HeartDislikeCircle;
-    case "HeartDislikeOutline":
+    case "heart-dislike-outline":
       return HeartDislikeOutline;
-    case "HeartDislike":
+    case "heart-dislike":
       return HeartDislike;
-    case "HeartHalfOutline":
+    case "heart-half-outline":
       return HeartHalfOutline;
-    case "HeartHalf":
+    case "heart-half":
       return HeartHalf;
-    case "HeartOutline":
+    case "heart-outline":
       return HeartOutline;
-    case "Heart":
+    case "heart":
       return Heart;
-    case "HelpBuoyOutline":
+    case "help-buoy-outline":
       return HelpBuoyOutline;
-    case "HelpBuoy":
+    case "help-buoy":
       return HelpBuoy;
-    case "HelpCircleOutline":
+    case "help-circle-outline":
       return HelpCircleOutline;
-    case "HelpCircle":
+    case "help-circle":
       return HelpCircle;
-    case "HelpOutline":
+    case "help-outline":
       return HelpOutline;
-    case "Help":
+    case "help":
       return Help;
-    case "HomeOutline":
+    case "home-outline":
       return HomeOutline;
-    case "Home":
+    case "home":
       return Home;
-    case "HourglassOutline":
+    case "hourglass-outline":
       return HourglassOutline;
-    case "Hourglass":
+    case "hourglass":
       return Hourglass;
-    case "IceCreamOutline":
+    case "ice-cream-outline":
       return IceCreamOutline;
-    case "IceCream":
+    case "ice-cream":
       return IceCream;
-    case "IdCardOutline":
+    case "id-card-outline":
       return IdCardOutline;
-    case "IdCard":
+    case "id-card":
       return IdCard;
-    case "ImageOutline":
+    case "image-outline":
       return ImageOutline;
-    case "Image":
+    case "image":
       return Image;
-    case "ImagesOutline":
+    case "images-outline":
       return ImagesOutline;
-    case "Images":
+    case "images":
       return Images;
-    case "InfiniteOutline":
+    case "infinite-outline":
       return InfiniteOutline;
-    case "Infinite":
+    case "infinite":
       return Infinite;
-    case "InformationCircleOutline":
+    case "information-circle-outline":
       return InformationCircleOutline;
-    case "InformationCircle":
+    case "information-circle":
       return InformationCircle;
-    case "InformationOutline":
+    case "information-outline":
       return InformationOutline;
-    case "Information":
+    case "information":
       return Information;
-    case "InvertModeOutline":
+    case "invert-mode-outline":
       return InvertModeOutline;
-    case "InvertMode":
+    case "invert-mode":
       return InvertMode;
-    case "JournalOutline":
+    case "journal-outline":
       return JournalOutline;
-    case "Journal":
+    case "journal":
       return Journal;
-    case "KeyOutline":
+    case "key-outline":
       return KeyOutline;
-    case "Key":
+    case "key":
       return Key;
-    case "KeypadOutline":
+    case "keypad-outline":
       return KeypadOutline;
-    case "Keypad":
+    case "keypad":
       return Keypad;
-    case "LanguageOutline":
+    case "language-outline":
       return LanguageOutline;
-    case "Language":
+    case "language":
       return Language;
-    case "LaptopOutline":
+    case "laptop-outline":
       return LaptopOutline;
-    case "Laptop":
+    case "laptop":
       return Laptop;
-    case "LayersOutline":
+    case "layers-outline":
       return LayersOutline;
-    case "Layers":
+    case "layers":
       return Layers;
-    case "LeafOutline":
+    case "leaf-outline":
       return LeafOutline;
-    case "Leaf":
+    case "leaf":
       return Leaf;
-    case "LibraryOutline":
+    case "library-outline":
       return LibraryOutline;
-    case "Library":
+    case "library":
       return Library;
-    case "LinkOutline":
+    case "link-outline":
       return LinkOutline;
-    case "Link":
+    case "link":
       return Link;
-    case "ListCircleOutline":
+    case "list-circle-outline":
       return ListCircleOutline;
-    case "ListCircle":
+    case "list-circle":
       return ListCircle;
-    case "ListOutline":
+    case "list-outline":
       return ListOutline;
-    case "List":
+    case "list":
       return List;
-    case "LocateOutline":
+    case "locate-outline":
       return LocateOutline;
-    case "Locate":
+    case "locate":
       return Locate;
-    case "LocationOutline":
+    case "location-outline":
       return LocationOutline;
-    case "Location":
+    case "location":
       return Location;
-    case "LockClosedOutline":
+    case "lock-closed-outline":
       return LockClosedOutline;
-    case "LockClosed":
+    case "lock-closed":
       return LockClosed;
-    case "LockOpenOutline":
+    case "lock-open-outline":
       return LockOpenOutline;
-    case "LockOpen":
+    case "lock-open":
       return LockOpen;
-    case "LogInOutline":
+    case "log-in-outline":
       return LogInOutline;
-    case "LogIn":
+    case "log-in":
       return LogIn;
-    case "LogOutOutline":
+    case "log-out-outline":
       return LogOutOutline;
-    case "LogOut":
+    case "log-out":
       return LogOut;
-    case "LogoAlipay":
+    case "logo-alipay":
       return LogoAlipay;
-    case "LogoAmazon":
+    case "logo-amazon":
       return LogoAmazon;
-    case "LogoAmplify":
+    case "logo-amplify":
       return LogoAmplify;
-    case "LogoAndroid":
+    case "logo-android":
       return LogoAndroid;
-    case "LogoAngular":
+    case "logo-angular":
       return LogoAngular;
-    case "LogoAppleAppstore":
+    case "logo-apple-appstore":
       return LogoAppleAppstore;
-    case "LogoAppleAr":
+    case "logo-apple-ar":
       return LogoAppleAr;
-    case "LogoApple":
+    case "logo-apple":
       return LogoApple;
-    case "LogoBehance":
+    case "logo-behance":
       return LogoBehance;
-    case "LogoBitbucket":
+    case "logo-bitbucket":
       return LogoBitbucket;
-    case "LogoBitcoin":
+    case "logo-bitcoin":
       return LogoBitcoin;
-    case "LogoBuffer":
+    case "logo-buffer":
       return LogoBuffer;
-    case "LogoCapacitor":
+    case "logo-capacitor":
       return LogoCapacitor;
-    case "LogoChrome":
+    case "logo-chrome":
       return LogoChrome;
-    case "LogoClosedCaptioning":
+    case "logo-closed-captioning":
       return LogoClosedCaptioning;
-    case "LogoCodepen":
+    case "logo-codepen":
       return LogoCodepen;
-    case "LogoCss3":
+    case "logo-css3":
       return LogoCss3;
-    case "LogoDesignernews":
+    case "logo-designernews":
       return LogoDesignernews;
-    case "LogoDeviantart":
+    case "logo-deviantart":
       return LogoDeviantart;
-    case "LogoDiscord":
+    case "logo-discord":
       return LogoDiscord;
-    case "LogoDocker":
+    case "logo-docker":
       return LogoDocker;
-    case "LogoDribbble":
+    case "logo-dribbble":
       return LogoDribbble;
-    case "LogoDropbox":
+    case "logo-dropbox":
       return LogoDropbox;
-    case "LogoEdge":
+    case "logo-edge":
       return LogoEdge;
-    case "LogoElectron":
+    case "logo-electron":
       return LogoElectron;
-    case "LogoEuro":
+    case "logo-euro":
       return LogoEuro;
-    case "LogoFacebook":
+    case "logo-facebook":
       return LogoFacebook;
-    case "LogoFigma":
+    case "logo-figma":
       return LogoFigma;
-    case "LogoFirebase":
+    case "logo-firebase":
       return LogoFirebase;
-    case "LogoFirefox":
+    case "logo-firefox":
       return LogoFirefox;
-    case "LogoFlickr":
+    case "logo-flickr":
       return LogoFlickr;
-    case "LogoFoursquare":
+    case "logo-foursquare":
       return LogoFoursquare;
-    case "LogoGithub":
+    case "logo-github":
       return LogoGithub;
-    case "LogoGitlab":
+    case "logo-gitlab":
       return LogoGitlab;
-    case "LogoGooglePlaystore":
+    case "logo-google-playstore":
       return LogoGooglePlaystore;
-    case "LogoGoogle":
+    case "logo-google":
       return LogoGoogle;
-    case "LogoHackernews":
+    case "logo-hackernews":
       return LogoHackernews;
-    case "LogoHtml5":
+    case "logo-html5":
       return LogoHtml5;
-    case "LogoInstagram":
+    case "logo-instagram":
       return LogoInstagram;
-    case "LogoIonic":
+    case "logo-ionic":
       return LogoIonic;
-    case "LogoIonitron":
+    case "logo-ionitron":
       return LogoIonitron;
-    case "LogoJavascript":
+    case "logo-javascript":
       return LogoJavascript;
-    case "LogoLaravel":
+    case "logo-laravel":
       return LogoLaravel;
-    case "LogoLinkedin":
+    case "logo-linkedin":
       return LogoLinkedin;
-    case "LogoMarkdown":
+    case "logo-markdown":
       return LogoMarkdown;
-    case "LogoMastodon":
+    case "logo-mastodon":
       return LogoMastodon;
-    case "LogoMedium":
+    case "logo-medium":
       return LogoMedium;
-    case "LogoMicrosoft":
+    case "logo-microsoft":
       return LogoMicrosoft;
-    case "LogoNoSmoking":
+    case "logo-no-smoking":
       return LogoNoSmoking;
-    case "LogoNodejs":
+    case "logo-nodejs":
       return LogoNodejs;
-    case "LogoNpm":
+    case "logo-npm":
       return LogoNpm;
-    case "LogoOctocat":
+    case "logo-octocat":
       return LogoOctocat;
-    case "LogoPaypal":
+    case "logo-paypal":
       return LogoPaypal;
-    case "LogoPinterest":
+    case "logo-pinterest":
       return LogoPinterest;
-    case "LogoPlaystation":
+    case "logo-playstation":
       return LogoPlaystation;
-    case "LogoPwa":
+    case "logo-pwa":
       return LogoPwa;
-    case "LogoPython":
+    case "logo-python":
       return LogoPython;
-    case "LogoReact":
+    case "logo-react":
       return LogoReact;
-    case "LogoReddit":
+    case "logo-reddit":
       return LogoReddit;
-    case "LogoRss":
+    case "logo-rss":
       return LogoRss;
-    case "LogoSass":
+    case "logo-sass":
       return LogoSass;
-    case "LogoSkype":
+    case "logo-skype":
       return LogoSkype;
-    case "LogoSlack":
+    case "logo-slack":
       return LogoSlack;
-    case "LogoSnapchat":
+    case "logo-snapchat":
       return LogoSnapchat;
-    case "LogoSoundcloud":
+    case "logo-soundcloud":
       return LogoSoundcloud;
-    case "LogoStackoverflow":
+    case "logo-stackoverflow":
       return LogoStackoverflow;
-    case "LogoSteam":
+    case "logo-steam":
       return LogoSteam;
-    case "LogoStencil":
+    case "logo-stencil":
       return LogoStencil;
-    case "LogoTableau":
+    case "logo-tableau":
       return LogoTableau;
-    case "LogoTiktok":
+    case "logo-tiktok":
       return LogoTiktok;
-    case "LogoTumblr":
+    case "logo-tumblr":
       return LogoTumblr;
-    case "LogoTux":
+    case "logo-tux":
       return LogoTux;
-    case "LogoTwitch":
+    case "logo-twitch":
       return LogoTwitch;
-    case "LogoTwitter":
+    case "logo-twitter":
       return LogoTwitter;
-    case "LogoUsd":
+    case "logo-usd":
       return LogoUsd;
-    case "LogoVenmo":
+    case "logo-venmo":
       return LogoVenmo;
-    case "LogoVercel":
+    case "logo-vercel":
       return LogoVercel;
-    case "LogoVimeo":
+    case "logo-vimeo":
       return LogoVimeo;
-    case "LogoVk":
+    case "logo-vk":
       return LogoVk;
-    case "LogoVue":
+    case "logo-vue":
       return LogoVue;
-    case "LogoWebComponent":
+    case "logo-web-component":
       return LogoWebComponent;
-    case "LogoWechat":
+    case "logo-wechat":
       return LogoWechat;
-    case "LogoWhatsapp":
+    case "logo-whatsapp":
       return LogoWhatsapp;
-    case "LogoWindows":
+    case "logo-windows":
       return LogoWindows;
-    case "LogoWordpress":
+    case "logo-wordpress":
       return LogoWordpress;
-    case "LogoXbox":
+    case "logo-xbox":
       return LogoXbox;
-    case "LogoXing":
+    case "logo-xing":
       return LogoXing;
-    case "LogoYahoo":
+    case "logo-yahoo":
       return LogoYahoo;
-    case "LogoYen":
+    case "logo-yen":
       return LogoYen;
-    case "LogoYoutube":
+    case "logo-youtube":
       return LogoYoutube;
-    case "MagnetOutline":
+    case "magnet-outline":
       return MagnetOutline;
-    case "Magnet":
+    case "magnet":
       return Magnet;
-    case "MailOpenOutline":
+    case "mail-open-outline":
       return MailOpenOutline;
-    case "MailOpen":
+    case "mail-open":
       return MailOpen;
-    case "MailOutline":
+    case "mail-outline":
       return MailOutline;
-    case "MailUnreadOutline":
+    case "mail-unread-outline":
       return MailUnreadOutline;
-    case "MailUnread":
+    case "mail-unread":
       return MailUnread;
-    case "Mail":
+    case "mail":
       return Mail;
-    case "MaleFemaleOutline":
+    case "male-female-outline":
       return MaleFemaleOutline;
-    case "MaleFemale":
+    case "male-female":
       return MaleFemale;
-    case "MaleOutline":
+    case "male-outline":
       return MaleOutline;
-    case "Male":
+    case "male":
       return Male;
-    case "ManOutline":
+    case "man-outline":
       return ManOutline;
-    case "Man":
+    case "man":
       return Man;
-    case "MapOutline":
+    case "map-outline":
       return MapOutline;
-    case "Map":
+    case "map":
       return Map;
-    case "MedalOutline":
+    case "medal-outline":
       return MedalOutline;
-    case "Medal":
+    case "medal":
       return Medal;
-    case "MedicalOutline":
+    case "medical-outline":
       return MedicalOutline;
-    case "Medical":
+    case "medical":
       return Medical;
-    case "MedkitOutline":
+    case "medkit-outline":
       return MedkitOutline;
-    case "Medkit":
+    case "medkit":
       return Medkit;
-    case "MegaphoneOutline":
+    case "megaphone-outline":
       return MegaphoneOutline;
-    case "Megaphone":
+    case "megaphone":
       return Megaphone;
-    case "MenuOutline":
+    case "menu-outline":
       return MenuOutline;
-    case "Menu":
+    case "menu":
       return Menu;
-    case "MicCircleOutline":
+    case "mic-circle-outline":
       return MicCircleOutline;
-    case "MicCircle":
+    case "mic-circle":
       return MicCircle;
-    case "MicOffCircleOutline":
+    case "mic-off-circle-outline":
       return MicOffCircleOutline;
-    case "MicOffCircle":
+    case "mic-off-circle":
       return MicOffCircle;
-    case "MicOffOutline":
+    case "mic-off-outline":
       return MicOffOutline;
-    case "MicOff":
+    case "mic-off":
       return MicOff;
-    case "MicOutline":
+    case "mic-outline":
       return MicOutline;
-    case "Mic":
+    case "mic":
       return Mic;
-    case "MoonOutline":
+    case "moon-outline":
       return MoonOutline;
-    case "Moon":
+    case "moon":
       return Moon;
-    case "MoveOutline":
+    case "move-outline":
       return MoveOutline;
-    case "Move":
+    case "move":
       return Move;
-    case "MusicalNoteOutline":
+    case "musical-note-outline":
       return MusicalNoteOutline;
-    case "MusicalNote":
+    case "musical-note":
       return MusicalNote;
-    case "MusicalNotesOutline":
+    case "musical-notes-outline":
       return MusicalNotesOutline;
-    case "MusicalNotes":
+    case "musical-notes":
       return MusicalNotes;
-    case "NavigateCircleOutline":
+    case "navigate-circle-outline":
       return NavigateCircleOutline;
-    case "NavigateCircle":
+    case "navigate-circle":
       return NavigateCircle;
-    case "NavigateOutline":
+    case "navigate-outline":
       return NavigateOutline;
-    case "Navigate":
+    case "navigate":
       return Navigate;
-    case "NewspaperOutline":
+    case "newspaper-outline":
       return NewspaperOutline;
-    case "Newspaper":
+    case "newspaper":
       return Newspaper;
-    case "NotificationsCircleOutline":
+    case "notifications-circle-outline":
       return NotificationsCircleOutline;
-    case "NotificationsCircle":
+    case "notifications-circle":
       return NotificationsCircle;
-    case "NotificationsOffCircleOutline":
+    case "notifications-off-circle-outline":
       return NotificationsOffCircleOutline;
-    case "NotificationsOffCircle":
+    case "notifications-off-circle":
       return NotificationsOffCircle;
-    case "NotificationsOffOutline":
+    case "notifications-off-outline":
       return NotificationsOffOutline;
-    case "NotificationsOff":
+    case "notifications-off":
       return NotificationsOff;
-    case "NotificationsOutline":
+    case "notifications-outline":
       return NotificationsOutline;
-    case "Notifications":
+    case "notifications":
       return Notifications;
-    case "NuclearOutline":
+    case "nuclear-outline":
       return NuclearOutline;
-    case "Nuclear":
+    case "nuclear":
       return Nuclear;
-    case "NutritionOutline":
+    case "nutrition-outline":
       return NutritionOutline;
-    case "Nutrition":
+    case "nutrition":
       return Nutrition;
-    case "OpenOutline":
+    case "open-outline":
       return OpenOutline;
-    case "Open":
+    case "open":
       return Open;
-    case "OptionsOutline":
+    case "options-outline":
       return OptionsOutline;
-    case "Options":
+    case "options":
       return Options;
-    case "PaperPlaneOutline":
+    case "paper-plane-outline":
       return PaperPlaneOutline;
-    case "PaperPlane":
+    case "paper-plane":
       return PaperPlane;
-    case "PartlySunnyOutline":
+    case "partly-sunny-outline":
       return PartlySunnyOutline;
-    case "PartlySunny":
+    case "partly-sunny":
       return PartlySunny;
-    case "PauseCircleOutline":
+    case "pause-circle-outline":
       return PauseCircleOutline;
-    case "PauseCircle":
+    case "pause-circle":
       return PauseCircle;
-    case "PauseOutline":
+    case "pause-outline":
       return PauseOutline;
-    case "Pause":
+    case "pause":
       return Pause;
-    case "PawOutline":
+    case "paw-outline":
       return PawOutline;
-    case "Paw":
+    case "paw":
       return Paw;
-    case "PencilOutline":
+    case "pencil-outline":
       return PencilOutline;
-    case "Pencil":
+    case "pencil":
       return Pencil;
-    case "PeopleCircleOutline":
+    case "people-circle-outline":
       return PeopleCircleOutline;
-    case "PeopleCircle":
+    case "people-circle":
       return PeopleCircle;
-    case "PeopleOutline":
+    case "people-outline":
       return PeopleOutline;
-    case "People":
+    case "people":
       return People;
-    case "PersonAddOutline":
+    case "person-add-outline":
       return PersonAddOutline;
-    case "PersonAdd":
+    case "person-add":
       return PersonAdd;
-    case "PersonCircleOutline":
+    case "person-circle-outline":
       return PersonCircleOutline;
-    case "PersonCircle":
+    case "person-circle":
       return PersonCircle;
-    case "PersonOutline":
+    case "person-outline":
       return PersonOutline;
-    case "PersonRemoveOutline":
+    case "person-remove-outline":
       return PersonRemoveOutline;
-    case "PersonRemove":
+    case "person-remove":
       return PersonRemove;
-    case "Person":
+    case "person":
       return Person;
-    case "PhoneLandscapeOutline":
+    case "phone-landscape-outline":
       return PhoneLandscapeOutline;
-    case "PhoneLandscape":
+    case "phone-landscape":
       return PhoneLandscape;
-    case "PhonePortraitOutline":
+    case "phone-portrait-outline":
       return PhonePortraitOutline;
-    case "PhonePortrait":
+    case "phone-portrait":
       return PhonePortrait;
-    case "PieChartOutline":
+    case "pie-chart-outline":
       return PieChartOutline;
-    case "PieChart":
+    case "pie-chart":
       return PieChart;
-    case "PinOutline":
+    case "pin-outline":
       return PinOutline;
-    case "Pin":
+    case "pin":
       return Pin;
-    case "PintOutline":
+    case "pint-outline":
       return PintOutline;
-    case "Pint":
+    case "pint":
       return Pint;
-    case "PizzaOutline":
+    case "pizza-outline":
       return PizzaOutline;
-    case "Pizza":
+    case "pizza":
       return Pizza;
-    case "PlanetOutline":
+    case "planet-outline":
       return PlanetOutline;
-    case "Planet":
+    case "planet":
       return Planet;
-    case "PlayBackCircleOutline":
+    case "play-back-circle-outline":
       return PlayBackCircleOutline;
-    case "PlayBackCircle":
+    case "play-back-circle":
       return PlayBackCircle;
-    case "PlayBackOutline":
+    case "play-back-outline":
       return PlayBackOutline;
-    case "PlayBack":
+    case "play-back":
       return PlayBack;
-    case "PlayCircleOutline":
+    case "play-circle-outline":
       return PlayCircleOutline;
-    case "PlayCircle":
+    case "play-circle":
       return PlayCircle;
-    case "PlayForwardCircleOutline":
+    case "play-forward-circle-outline":
       return PlayForwardCircleOutline;
-    case "PlayForwardCircle":
+    case "play-forward-circle":
       return PlayForwardCircle;
-    case "PlayForwardOutline":
+    case "play-forward-outline":
       return PlayForwardOutline;
-    case "PlayForward":
+    case "play-forward":
       return PlayForward;
-    case "PlayOutline":
+    case "play-outline":
       return PlayOutline;
-    case "PlaySkipBackCircleOutline":
+    case "play-skip-back-circle-outline":
       return PlaySkipBackCircleOutline;
-    case "PlaySkipBackCircle":
+    case "play-skip-back-circle":
       return PlaySkipBackCircle;
-    case "PlaySkipBackOutline":
+    case "play-skip-back-outline":
       return PlaySkipBackOutline;
-    case "PlaySkipBack":
+    case "play-skip-back":
       return PlaySkipBack;
-    case "PlaySkipForwardCircleOutline":
+    case "play-skip-forward-circle-outline":
       return PlaySkipForwardCircleOutline;
-    case "PlaySkipForwardCircle":
+    case "play-skip-forward-circle":
       return PlaySkipForwardCircle;
-    case "PlaySkipForwardOutline":
+    case "play-skip-forward-outline":
       return PlaySkipForwardOutline;
-    case "PlaySkipForward":
+    case "play-skip-forward":
       return PlaySkipForward;
-    case "Play":
+    case "play":
       return Play;
-    case "PodiumOutline":
+    case "podium-outline":
       return PodiumOutline;
-    case "Podium":
+    case "podium":
       return Podium;
-    case "PowerOutline":
+    case "power-outline":
       return PowerOutline;
-    case "Power":
+    case "power":
       return Power;
-    case "PricetagOutline":
+    case "pricetag-outline":
       return PricetagOutline;
-    case "Pricetag":
+    case "pricetag":
       return Pricetag;
-    case "PricetagsOutline":
+    case "pricetags-outline":
       return PricetagsOutline;
-    case "Pricetags":
+    case "pricetags":
       return Pricetags;
-    case "PrintOutline":
+    case "print-outline":
       return PrintOutline;
-    case "Print":
+    case "print":
       return Print;
-    case "PrismOutline":
+    case "prism-outline":
       return PrismOutline;
-    case "Prism":
+    case "prism":
       return Prism;
-    case "PulseOutline":
+    case "pulse-outline":
       return PulseOutline;
-    case "Pulse":
+    case "pulse":
       return Pulse;
-    case "PushOutline":
+    case "push-outline":
       return PushOutline;
-    case "Push":
+    case "push":
       return Push;
-    case "QrCodeOutline":
+    case "qr-code-outline":
       return QrCodeOutline;
-    case "QrCode":
+    case "qr-code":
       return QrCode;
-    case "RadioButtonOffOutline":
+    case "radio-button-off-outline":
       return RadioButtonOffOutline;
-    case "RadioButtonOff":
+    case "radio-button-off":
       return RadioButtonOff;
-    case "RadioButtonOnOutline":
+    case "radio-button-on-outline":
       return RadioButtonOnOutline;
-    case "RadioButtonOn":
+    case "radio-button-on":
       return RadioButtonOn;
-    case "RadioOutline":
+    case "radio-outline":
       return RadioOutline;
-    case "Radio":
+    case "radio":
       return Radio;
-    case "RainyOutline":
+    case "rainy-outline":
       return RainyOutline;
-    case "Rainy":
+    case "rainy":
       return Rainy;
-    case "ReaderOutline":
+    case "reader-outline":
       return ReaderOutline;
-    case "Reader":
+    case "reader":
       return Reader;
-    case "ReceiptOutline":
+    case "receipt-outline":
       return ReceiptOutline;
-    case "Receipt":
+    case "receipt":
       return Receipt;
-    case "RecordingOutline":
+    case "recording-outline":
       return RecordingOutline;
-    case "Recording":
+    case "recording":
       return Recording;
-    case "RefreshCircleOutline":
+    case "refresh-circle-outline":
       return RefreshCircleOutline;
-    case "RefreshCircle":
+    case "refresh-circle":
       return RefreshCircle;
-    case "RefreshOutline":
+    case "refresh-outline":
       return RefreshOutline;
-    case "Refresh":
+    case "refresh":
       return Refresh;
-    case "ReloadCircleOutline":
+    case "reload-circle-outline":
       return ReloadCircleOutline;
-    case "ReloadCircle":
+    case "reload-circle":
       return ReloadCircle;
-    case "ReloadOutline":
+    case "reload-outline":
       return ReloadOutline;
-    case "Reload":
+    case "reload":
       return Reload;
-    case "RemoveCircleOutline":
+    case "remove-circle-outline":
       return RemoveCircleOutline;
-    case "RemoveCircle":
+    case "remove-circle":
       return RemoveCircle;
-    case "RemoveOutline":
+    case "remove-outline":
       return RemoveOutline;
-    case "Remove":
+    case "remove":
       return Remove;
-    case "ReorderFourOutline":
+    case "reorder-four-outline":
       return ReorderFourOutline;
-    case "ReorderFour":
+    case "reorder-four":
       return ReorderFour;
-    case "ReorderThreeOutline":
+    case "reorder-three-outline":
       return ReorderThreeOutline;
-    case "ReorderThree":
+    case "reorder-three":
       return ReorderThree;
-    case "ReorderTwoOutline":
+    case "reorder-two-outline":
       return ReorderTwoOutline;
-    case "ReorderTwo":
+    case "reorder-two":
       return ReorderTwo;
-    case "RepeatOutline":
+    case "repeat-outline":
       return RepeatOutline;
-    case "Repeat":
+    case "repeat":
       return Repeat;
-    case "ResizeOutline":
+    case "resize-outline":
       return ResizeOutline;
-    case "Resize":
+    case "resize":
       return Resize;
-    case "RestaurantOutline":
+    case "restaurant-outline":
       return RestaurantOutline;
-    case "Restaurant":
+    case "restaurant":
       return Restaurant;
-    case "ReturnDownBackOutline":
+    case "return-down-back-outline":
       return ReturnDownBackOutline;
-    case "ReturnDownBack":
+    case "return-down-back":
       return ReturnDownBack;
-    case "ReturnDownForwardOutline":
+    case "return-down-forward-outline":
       return ReturnDownForwardOutline;
-    case "ReturnDownForward":
+    case "return-down-forward":
       return ReturnDownForward;
-    case "ReturnUpBackOutline":
+    case "return-up-back-outline":
       return ReturnUpBackOutline;
-    case "ReturnUpBack":
+    case "return-up-back":
       return ReturnUpBack;
-    case "ReturnUpForwardOutline":
+    case "return-up-forward-outline":
       return ReturnUpForwardOutline;
-    case "ReturnUpForward":
+    case "return-up-forward":
       return ReturnUpForward;
-    case "RibbonOutline":
+    case "ribbon-outline":
       return RibbonOutline;
-    case "Ribbon":
+    case "ribbon":
       return Ribbon;
-    case "RocketOutline":
+    case "rocket-outline":
       return RocketOutline;
-    case "Rocket":
+    case "rocket":
       return Rocket;
-    case "RoseOutline":
+    case "rose-outline":
       return RoseOutline;
-    case "Rose":
+    case "rose":
       return Rose;
-    case "SadOutline":
+    case "sad-outline":
       return SadOutline;
-    case "Sad":
+    case "sad":
       return Sad;
-    case "SaveOutline":
+    case "save-outline":
       return SaveOutline;
-    case "Save":
+    case "save":
       return Save;
-    case "ScaleOutline":
+    case "scale-outline":
       return ScaleOutline;
-    case "Scale":
+    case "scale":
       return Scale;
-    case "ScanCircleOutline":
+    case "scan-circle-outline":
       return ScanCircleOutline;
-    case "ScanCircle":
+    case "scan-circle":
       return ScanCircle;
-    case "ScanOutline":
+    case "scan-outline":
       return ScanOutline;
-    case "Scan":
+    case "scan":
       return Scan;
-    case "SchoolOutline":
+    case "school-outline":
       return SchoolOutline;
-    case "School":
+    case "school":
       return School;
-    case "SearchCircleOutline":
+    case "search-circle-outline":
       return SearchCircleOutline;
-    case "SearchCircle":
+    case "search-circle":
       return SearchCircle;
-    case "SearchOutline":
+    case "search-outline":
       return SearchOutline;
-    case "Search":
+    case "search":
       return Search;
-    case "SendOutline":
+    case "send-outline":
       return SendOutline;
-    case "Send":
+    case "send":
       return Send;
-    case "ServerOutline":
+    case "server-outline":
       return ServerOutline;
-    case "Server":
+    case "server":
       return Server;
-    case "SettingsOutline":
+    case "settings-outline":
       return SettingsOutline;
-    case "Settings":
+    case "settings":
       return Settings;
-    case "ShapesOutline":
+    case "shapes-outline":
       return ShapesOutline;
-    case "Shapes":
+    case "shapes":
       return Shapes;
-    case "ShareOutline":
+    case "share-outline":
       return ShareOutline;
-    case "ShareSocialOutline":
+    case "share-social-outline":
       return ShareSocialOutline;
-    case "ShareSocial":
+    case "share-social":
       return ShareSocial;
-    case "Share":
+    case "share":
       return Share;
-    case "ShieldCheckmarkOutline":
+    case "shield-checkmark-outline":
       return ShieldCheckmarkOutline;
-    case "ShieldCheckmark":
+    case "shield-checkmark":
       return ShieldCheckmark;
-    case "ShieldHalfOutline":
+    case "shield-half-outline":
       return ShieldHalfOutline;
-    case "ShieldHalf":
+    case "shield-half":
       return ShieldHalf;
-    case "ShieldOutline":
+    case "shield-outline":
       return ShieldOutline;
-    case "Shield":
+    case "shield":
       return Shield;
-    case "ShirtOutline":
+    case "shirt-outline":
       return ShirtOutline;
-    case "Shirt":
+    case "shirt":
       return Shirt;
-    case "ShuffleOutline":
+    case "shuffle-outline":
       return ShuffleOutline;
-    case "Shuffle":
+    case "shuffle":
       return Shuffle;
-    case "SkullOutline":
+    case "skull-outline":
       return SkullOutline;
-    case "Skull":
+    case "skull":
       return Skull;
-    case "SnowOutline":
+    case "snow-outline":
       return SnowOutline;
-    case "Snow":
+    case "snow":
       return Snow;
-    case "SparklesOutline":
+    case "sparkles-outline":
       return SparklesOutline;
-    case "Sparkles":
+    case "sparkles":
       return Sparkles;
-    case "SpeedometerOutline":
+    case "speedometer-outline":
       return SpeedometerOutline;
-    case "Speedometer":
+    case "speedometer":
       return Speedometer;
-    case "SquareOutline":
+    case "square-outline":
       return SquareOutline;
-    case "Square":
+    case "square":
       return Square;
-    case "StarHalfOutline":
+    case "star-half-outline":
       return StarHalfOutline;
-    case "StarHalf":
+    case "star-half":
       return StarHalf;
-    case "StarOutline":
+    case "star-outline":
       return StarOutline;
-    case "Star":
+    case "star":
       return Star;
-    case "StatsChartOutline":
+    case "stats-chart-outline":
       return StatsChartOutline;
-    case "StatsChart":
+    case "stats-chart":
       return StatsChart;
-    case "StopCircleOutline":
+    case "stop-circle-outline":
       return StopCircleOutline;
-    case "StopCircle":
+    case "stop-circle":
       return StopCircle;
-    case "StopOutline":
+    case "stop-outline":
       return StopOutline;
-    case "Stop":
+    case "stop":
       return Stop;
-    case "StopwatchOutline":
+    case "stopwatch-outline":
       return StopwatchOutline;
-    case "Stopwatch":
+    case "stopwatch":
       return Stopwatch;
-    case "StorefrontOutline":
+    case "storefront-outline":
       return StorefrontOutline;
-    case "Storefront":
+    case "storefront":
       return Storefront;
-    case "SubwayOutline":
+    case "subway-outline":
       return SubwayOutline;
-    case "Subway":
+    case "subway":
       return Subway;
-    case "SunnyOutline":
+    case "sunny-outline":
       return SunnyOutline;
-    case "Sunny":
+    case "sunny":
       return Sunny;
-    case "SwapHorizontalOutline":
+    case "swap-horizontal-outline":
       return SwapHorizontalOutline;
-    case "SwapHorizontal":
+    case "swap-horizontal":
       return SwapHorizontal;
-    case "SwapVerticalOutline":
+    case "swap-vertical-outline":
       return SwapVerticalOutline;
-    case "SwapVertical":
+    case "swap-vertical":
       return SwapVertical;
-    case "SyncCircleOutline":
+    case "sync-circle-outline":
       return SyncCircleOutline;
-    case "SyncCircle":
+    case "sync-circle":
       return SyncCircle;
-    case "SyncOutline":
+    case "sync-outline":
       return SyncOutline;
-    case "Sync":
+    case "sync":
       return Sync;
-    case "TabletLandscapeOutline":
+    case "tablet-landscape-outline":
       return TabletLandscapeOutline;
-    case "TabletLandscape":
+    case "tablet-landscape":
       return TabletLandscape;
-    case "TabletPortraitOutline":
+    case "tablet-portrait-outline":
       return TabletPortraitOutline;
-    case "TabletPortrait":
+    case "tablet-portrait":
       return TabletPortrait;
-    case "TelescopeOutline":
+    case "telescope-outline":
       return TelescopeOutline;
-    case "Telescope":
+    case "telescope":
       return Telescope;
-    case "TennisballOutline":
+    case "tennisball-outline":
       return TennisballOutline;
-    case "Tennisball":
+    case "tennisball":
       return Tennisball;
-    case "TerminalOutline":
+    case "terminal-outline":
       return TerminalOutline;
-    case "Terminal":
+    case "terminal":
       return Terminal;
-    case "TextOutline":
+    case "text-outline":
       return TextOutline;
-    case "Text":
+    case "text":
       return Text;
-    case "ThermometerOutline":
+    case "thermometer-outline":
       return ThermometerOutline;
-    case "Thermometer":
+    case "thermometer":
       return Thermometer;
-    case "ThumbsDownOutline":
+    case "thumbs-down-outline":
       return ThumbsDownOutline;
-    case "ThumbsDown":
+    case "thumbs-down":
       return ThumbsDown;
-    case "ThumbsUpOutline":
+    case "thumbs-up-outline":
       return ThumbsUpOutline;
-    case "ThumbsUp":
+    case "thumbs-up":
       return ThumbsUp;
-    case "ThunderstormOutline":
+    case "thunderstorm-outline":
       return ThunderstormOutline;
-    case "Thunderstorm":
+    case "thunderstorm":
       return Thunderstorm;
-    case "TicketOutline":
+    case "ticket-outline":
       return TicketOutline;
-    case "Ticket":
+    case "ticket":
       return Ticket;
-    case "TimeOutline":
+    case "time-outline":
       return TimeOutline;
-    case "Time":
+    case "time":
       return Time;
-    case "TimerOutline":
+    case "timer-outline":
       return TimerOutline;
-    case "Timer":
+    case "timer":
       return Timer;
-    case "TodayOutline":
+    case "today-outline":
       return TodayOutline;
-    case "Today":
+    case "today":
       return Today;
-    case "ToggleOutline":
+    case "toggle-outline":
       return ToggleOutline;
-    case "Toggle":
+    case "toggle":
       return Toggle;
-    case "TrailSignOutline":
+    case "trail-sign-outline":
       return TrailSignOutline;
-    case "TrailSign":
+    case "trail-sign":
       return TrailSign;
-    case "TrainOutline":
+    case "train-outline":
       return TrainOutline;
-    case "Train":
+    case "train":
       return Train;
-    case "TransgenderOutline":
+    case "transgender-outline":
       return TransgenderOutline;
-    case "Transgender":
+    case "transgender":
       return Transgender;
-    case "TrashBinOutline":
+    case "trash-bin-outline":
       return TrashBinOutline;
-    case "TrashBin":
+    case "trash-bin":
       return TrashBin;
-    case "TrashOutline":
+    case "trash-outline":
       return TrashOutline;
-    case "Trash":
+    case "trash":
       return Trash;
-    case "TrendingDownOutline":
+    case "trending-down-outline":
       return TrendingDownOutline;
-    case "TrendingDown":
+    case "trending-down":
       return TrendingDown;
-    case "TrendingUpOutline":
+    case "trending-up-outline":
       return TrendingUpOutline;
-    case "TrendingUp":
+    case "trending-up":
       return TrendingUp;
-    case "TriangleOutline":
+    case "triangle-outline":
       return TriangleOutline;
-    case "Triangle":
+    case "triangle":
       return Triangle;
-    case "TrophyOutline":
+    case "trophy-outline":
       return TrophyOutline;
-    case "Trophy":
+    case "trophy":
       return Trophy;
-    case "TvOutline":
+    case "tv-outline":
       return TvOutline;
-    case "Tv":
+    case "tv":
       return Tv;
-    case "UmbrellaOutline":
+    case "umbrella-outline":
       return UmbrellaOutline;
-    case "Umbrella":
+    case "umbrella":
       return Umbrella;
-    case "UnlinkOutline":
+    case "unlink-outline":
       return UnlinkOutline;
-    case "Unlink":
+    case "unlink":
       return Unlink;
-    case "VideocamOffOutline":
+    case "videocam-off-outline":
       return VideocamOffOutline;
-    case "VideocamOff":
+    case "videocam-off":
       return VideocamOff;
-    case "VideocamOutline":
+    case "videocam-outline":
       return VideocamOutline;
-    case "Videocam":
+    case "videocam":
       return Videocam;
-    case "VolumeHighOutline":
+    case "volume-high-outline":
       return VolumeHighOutline;
-    case "VolumeHigh":
+    case "volume-high":
       return VolumeHigh;
-    case "VolumeLowOutline":
+    case "volume-low-outline":
       return VolumeLowOutline;
-    case "VolumeLow":
+    case "volume-low":
       return VolumeLow;
-    case "VolumeMediumOutline":
+    case "volume-medium-outline":
       return VolumeMediumOutline;
-    case "VolumeMedium":
+    case "volume-medium":
       return VolumeMedium;
-    case "VolumeMuteOutline":
+    case "volume-mute-outline":
       return VolumeMuteOutline;
-    case "VolumeMute":
+    case "volume-mute":
       return VolumeMute;
-    case "VolumeOffOutline":
+    case "volume-off-outline":
       return VolumeOffOutline;
-    case "VolumeOff":
+    case "volume-off":
       return VolumeOff;
-    case "WalkOutline":
+    case "walk-outline":
       return WalkOutline;
-    case "Walk":
+    case "walk":
       return Walk;
-    case "WalletOutline":
+    case "wallet-outline":
       return WalletOutline;
-    case "Wallet":
+    case "wallet":
       return Wallet;
-    case "WarningOutline":
+    case "warning-outline":
       return WarningOutline;
-    case "Warning":
+    case "warning":
       return Warning;
-    case "WatchOutline":
+    case "watch-outline":
       return WatchOutline;
-    case "Watch":
+    case "watch":
       return Watch;
-    case "WaterOutline":
+    case "water-outline":
       return WaterOutline;
-    case "Water":
+    case "water":
       return Water;
-    case "WifiOutline":
+    case "wifi-outline":
       return WifiOutline;
-    case "Wifi":
+    case "wifi":
       return Wifi;
-    case "WineOutline":
+    case "wine-outline":
       return WineOutline;
-    case "Wine":
+    case "wine":
       return Wine;
-    case "WomanOutline":
+    case "woman-outline":
       return WomanOutline;
-    case "Woman":
+    case "woman":
       return Woman;
-    default:
-      return <>⍰</>;
   }
 };
 
