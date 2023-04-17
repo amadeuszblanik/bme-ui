@@ -8,12 +8,10 @@ const MARGIN_TOP_RIGHT_BOTTOM_LEFT_LENGTH = 4;
 const ALLOWED_VALUES = ["auto", "no", "xs", "sm", "md", "lg", "xl", "xxl"];
 
 interface MarginSizes {
-  mobile: {
-    [key: typeof ALLOWED_VALUES[number]]: string;
-  };
-  desktop: {
-    [key: typeof ALLOWED_VALUES[number]]: string;
-  };
+  // eslint-disable-next-line prettier/prettier
+  mobile: Record<typeof ALLOWED_VALUES[number], string>;
+  // eslint-disable-next-line prettier/prettier
+  desktop: Record<typeof ALLOWED_VALUES[number], string>;
 }
 
 const DEFAULT_SIZES: MarginSizes = {

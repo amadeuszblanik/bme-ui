@@ -19,7 +19,8 @@
     "deploy:storybook": "gh-pages -d storybook-static",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src && stylelint './**/*.{css,scss,js,jsx,ts,tsx}'",
     "lint:script": "eslint --ext .js,.jsx,.ts,.tsx src",
-    "lint:css": "stylelint './**/*.{css,scss,js,jsx,ts,tsx}'"
+    "lint:css": "stylelint './**/*.{css,scss,js,jsx,ts,tsx}'",
+    "assets:icons": "node ./src-assets/scripts/icons.js"
   },
   "repository": {
     "type": "git",
@@ -55,6 +56,10 @@
     "@storybook/react": "^6.5.14",
     "@storybook/testing-library": "^0.0.13",
     "@stylelint/postcss-css-in-js": "^0.38.0",
+    "@svgr/core": "^7.0.0",
+    "@svgr/plugin-jsx": "^7.0.0",
+    "@svgr/plugin-prettier": "^7.0.0",
+    "@svgr/plugin-svgo": "^7.0.0",
     "@types/jest": "^29.2.4",
     "@types/react": "^18.0.26",
     "@types/styled-components": "^5.1.26",
