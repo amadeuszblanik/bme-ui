@@ -49,5 +49,6 @@ const Component: React.FC<SegmentedPickerProps> & { Item: React.FC<SegmentedPick
 };
 
 Component.Item = Item;
+Component.displayName = "BmeSegmentedPicker";
 
 export default Component;

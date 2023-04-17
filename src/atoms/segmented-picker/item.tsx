@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { SegmentedPickerItemProps, StyledSegmentedPickerItemProps } from "./types";
 import { animations, background, buttonReset, paddings } from "../../mixins";
+import Component from "./index";
 
 const RADIUS_MULTIPLIER = 2;
 
@@ -52,5 +53,7 @@ const Compontent: React.FC<SegmentedPickerItemProps> = ({ tag, onClick, selected
     </StyledSegmentedPickerItem>
   );
 };
+
+Component.displayName = "BmeSegmentedPickerItem";
 
 export default Compontent;
